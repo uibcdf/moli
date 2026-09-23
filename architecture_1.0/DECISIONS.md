@@ -28,34 +28,40 @@ MOLI may delegate to MolSys-AI or access MolSysSuite APIs directly.
 
 ## Naming convention
 
-The following names have distinct architectural meanings and should be used consistently in repositories, documentation, APIs, and team communication:
+- **MOLI** — platform/umbrella: `uibcdf/moli`.
+- **MOLI Agent** — scientific agent: `uibcdf/moli-agent`.
+- **MolSys-AI** — MolSysSuite-specialized AI subsystem/umbrella: `uibcdf/molsys-ai`.
+- **MolSys-AI Agent** — MolSysSuite specialist agent: `uibcdf/molsys-ai-agent`.
+- **MolSys-AI Server** — remote inference/Software Knowledge/docs-assistant services: `uibcdf/molsys-ai-server`.
+- **MolSys-AI Client** — lightweight typed SDK: `uibcdf/molsys-ai-client`.
 
-- **MOLI** — the Molecular Intelligence platform and umbrella project. Repository: `uibcdf/moli`.
-- **MOLI Agent** — the scientific reasoning and agency component operating across Scientific Context and MolSysSuite. Repository: `uibcdf/moli-agent`.
-- **MolSys-AI** — the MolSysSuite-specialized AI subsystem and umbrella project. Repository: `uibcdf/molsys-ai`.
-- **MolSys-AI Agent** — the specialist agent that understands and operates MolSysSuite. Repository: `uibcdf/molsys-ai-agent`.
-- **MolSys-AI Server** — remote inference, MolSysSuite software-knowledge, retrieval/RAG, and documentation-assistant services. Repository: `uibcdf/molsys-ai-server`.
-- **MolSys-AI Client** — lightweight typed SDK for MolSys-AI remote services. Repository: `uibcdf/molsys-ai-client`.
-
-Thus `MOLI` should not be used as shorthand for `MOLI Agent`, and `MolSys-AI` should not be used as shorthand for `MolSys-AI Agent` when the distinction matters.
-
-MOLI Agent may delegate MolSysSuite-specialist work to MolSys-AI Agent, but neither agent is a mandatory gateway to the underlying scientific components.
+MOLI Agent may delegate to MolSys-AI Agent, but neither agent is a mandatory gateway.
 
 ## Deployment model
-Architecture 1.0 is deployment-independent and local-first/remote-ready.
+Architecture 1.0 is deployment-independent and local-first/remote-ready. Scientific semantics remain stable across local, shared, remote, distributed, and hybrid deployments. Architecture 1.0 does not prescribe microservices or providers.
 
-Scientific semantics must remain stable across local, shared, remote, distributed, and hybrid deployments. Architecture 1.0 does not prescribe microservices, cloud providers, schedulers, container systems, or a specific control-plane/compute-plane implementation.
-
-A Run remains the same kind of scientific object regardless of execution location; backend, hardware, software environment, seed, and other execution details belong to provenance/reproducibility metadata.
+A Run remains the same kind of scientific object regardless of execution location; execution details belong to provenance/reproducibility metadata.
 
 ## Object identity and portability
-Important persistent scientific objects should be serializable and referencable.
+Important persistent scientific objects should be serializable and referencable. Stable scientific identity should not depend solely on process, path, database location, machine, or service endpoint.
 
-Stable scientific identity should not depend solely on an in-memory object, transient filesystem path, database location, machine, or service endpoint. References should preserve semantic ownership and support movement from local to remote storage/services without redefining the object.
+Architecture 1.0 freezes stable referencability and explicit provenance while leaving identifier syntax, serialization, storage, versioning implementation, and resolution open.
 
-Architecture 1.0 freezes the requirement for stable referencability and explicit provenance, but leaves identifier syntax, serialization format, storage backend, versioning implementation, and resolution mechanism open.
+Identity, version/revision, content location, resolution, and authorization are distinct concerns.
 
-Identity, version/revision, content location, resolution, and authorization are distinct concerns where relevant.
+## Visibility, confidentiality, and publication
+
+Semantic ownership does not determine visibility.
+
+Sabueso may contain public or private Knowledge; Praxis may contain public or private Know-how; Nextia may contain public or private Discovery context. Public/open-source implementations do not imply public scientific content.
+
+`semantic ownership ≠ visibility ≠ publication status`.
+
+`promotion ≠ publication`.
+
+A private DiscoveryProject may promote curated Knowledge or validated Know-how into controlled/private Sabueso or Praxis context. Publication, patenting, embargo, sharing, and internal retention are separate governance decisions.
+
+MOLI may therefore operate as open infrastructure for private science. Context Assembly and remote execution must respect authorization, disclosure policy, and trust boundaries.
 
 ## Interoperability
 Ownership does not imply isolation. Conceptual bidirectionality does not imply circular package dependencies.
