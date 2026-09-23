@@ -26,6 +26,22 @@ MolSys-AI remains in the MolSysSuite domain as its specialist agent. It may comb
 
 MOLI may delegate to MolSys-AI or access MolSysSuite APIs directly.
 
+## Deployment model
+Architecture 1.0 is deployment-independent and local-first/remote-ready.
+
+Scientific semantics must remain stable across local, shared, remote, distributed, and hybrid deployments. Architecture 1.0 does not prescribe microservices, cloud providers, schedulers, container systems, or a specific control-plane/compute-plane implementation.
+
+A Run remains the same kind of scientific object regardless of execution location; backend, hardware, software environment, seed, and other execution details belong to provenance/reproducibility metadata.
+
+## Object identity and portability
+Important persistent scientific objects should be serializable and referencable.
+
+Stable scientific identity should not depend solely on an in-memory object, transient filesystem path, database location, machine, or service endpoint. References should preserve semantic ownership and support movement from local to remote storage/services without redefining the object.
+
+Architecture 1.0 freezes the requirement for stable referencability and explicit provenance, but leaves identifier syntax, serialization format, storage backend, versioning implementation, and resolution mechanism open.
+
+Identity, version/revision, content location, resolution, and authorization are distinct concerns where relevant.
+
 ## Interoperability
 Ownership does not imply isolation. Conceptual bidirectionality does not imply circular package dependencies.
 
