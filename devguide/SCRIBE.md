@@ -673,6 +673,133 @@ Then use the TcTIM Phase 1 notebook to expose missing semantics.
 
 A similar later experiment in TopoMT should test scientific-analysis capture, nested MolSysSuite execution, Results/Artifacts, and Run correlation.
 
+
+
+## Routing is resolved from context, not hard-coded destinations
+
+Instrumentation should not normally encode project-specific destinations inside decorators.
+
+Prefer the separation:
+
+    recording profile
+        says WHAT kind of operation is being recorded
+
+    active ProjectContext
+        says WHERE in the current project scope it belongs
+
+    ownership / routing policy
+        says WHAT Scribe may record, reference, or route
+
+For example, avoid coupling a reusable TopoMT function to a specific project path such as:
+
+    @scribe.record(destination="TcTIM/C3/E7")
+
+The same instrumented function should be reusable in another project without modification.
+
+Project/campaign/run/work-scope destinations are resolved from propagated context and Workspace configuration.
+
+Explicit destination overrides may exist for exceptional cases, but should not become the normal integration mechanism.
+
+## Operation identity versus scientific-object identity
+
+A recorded operation has an identity independent of the scientific objects it may create.
+
+For example:
+
+    Operation OP17
+        TopoMT.detect_pockets(...)
+        status = failed
+
+        Result = none
+
+The failed operation remains part of provenance even though no Result exists.
+
+Likewise, nested execution may contain:
+
+    Run R1
+        ├── Operation OP1 — MolSysMT.prepare
+        ├── Operation OP2 — TopoMT.detect
+        └── Operation OP3 — MolSysViewer.scene
+
+Each operation may reference parent operation, Run, ExecutionPlan, correlation identity, inputs, outputs, lifecycle, and implementation metadata.
+
+Scientific objects such as Result R71 or Artifact A12 retain their own component-owned identities.
+
+> **Operation identity records that an action occurred or was attempted; scientific-object identity records the domain objects created or referenced by that action.**
+
+## Semantic consumption provenance
+
+Reproducibility and audit may require recording not only what an operation created, but also which existing scientific objects it **meaningfully consumed**.
+
+This must not become instrumentation of every Python read/access.
+
+Record semantic consumption when an object's use materially contributes to a consequential scientific operation, decision, interpretation, context assembly, or generated output.
+
+Examples include a Decision or AgentAction consuming:
+
+    KnowledgeSnapshot KS7
+    Evidence E3
+    Evidence E4
+    Protocol P2
+    Result R19
+
+or a Scientific Communication operation consuming a particular ProjectStateSnapshot and Conclusions.
+
+This is especially important for reconstructing ContextAssembly:
+
+    what information was available
+        ↓
+    what subset was selected
+        ↓
+    what consequential operation consumed it
+
+Consumption references should preserve stable object/version/snapshot identity where appropriate.
+
+> **Scribe records meaningful scientific dependencies, not incidental implementation-level reads.**
+
+## Recording reliability policy
+
+Not every provenance event has the same tolerance for recording failure.
+
+Scribe should support a governed reliability policy, conceptually including at least:
+
+### Strict recording
+
+The consequential operation must not be considered committed/successful if required provenance cannot be durably recorded.
+
+Likely candidates include operations such as:
+
+    DecisionApproved
+    ProjectGraph mutation
+    ProjectRelease
+    irreversible/external consequential action
+
+The exact catalog is policy-driven and not frozen here.
+
+### Best-effort / buffered recording
+
+The scientific operation may proceed when immediate provenance persistence is temporarily unavailable, provided Scribe can safely buffer and later reconcile the record.
+
+Potential examples include selected local/HPC execution telemetry where blocking the scientific calculation would be disproportionate.
+
+Buffered records must preserve ordering/correlation/integrity sufficiently for reconciliation, and the ProjectRecord must expose unresolved provenance gaps rather than silently treating them as complete.
+
+### Policy resolution
+
+Recording reliability may depend on:
+
+    profile
+    operation type
+    active project policy
+    authorization
+    destination availability
+    deployment mode
+
+The decorator should not independently decide whether an operation is strict.
+
+> **A provenance failure must never be silently indistinguishable from successful complete recording.**
+
+
 ## What Scribe should not become
 
 Scribe should not become:
@@ -705,7 +832,8 @@ Before freezing an API/package, Phase 1 pilots should help determine:
 - async/distributed/nested execution;
 - performance/overhead;
 - failure behavior when provenance storage is temporarily unavailable;
-- whether recording can buffer/reconcile offline;
+- strict versus best-effort recording policy and which semantic operations require each;
+- buffering, ordering, integrity, and reconciliation of offline/distributed records;
 - testing strategy for provenance completeness.
 
 ## Guiding principles
@@ -723,3 +851,11 @@ Before freezing an API/package, Phase 1 pilots should help determine:
 > **Scribe should make provenance easier to do correctly than to omit, while keeping component APIs independently usable outside MOLI.**
 
 > **Structured records come before human-readable reporting.**
+
+> **Profiles describe what is recorded; active context and ownership/routing policy determine where it belongs.**
+
+> **Operation identity is distinct from the identities of scientific objects produced or consumed by the operation.**
+
+> **Record meaningful scientific consumption/dependencies, not incidental implementation reads.**
+
+> **Recording reliability is policy-driven; provenance failure must never masquerade as a complete successful record.**
