@@ -36,3 +36,14 @@
 34. Public/open-source frameworks may operate on private, proprietary, embargoed, or otherwise controlled scientific content.
 35. LEARN and promotion into Sabueso/Praxis do not imply publication; `promotion ≠ publication`.
 36. Context Assembly and remote execution must respect disclosure policy and trust boundaries.
+
+37. A MOLI project distinguishes ProjectWorkspace, Nextia ProjectGraph, MOLI ProjectRecord, and ProjectStore; these concerns must not be collapsed.
+38. Nextia ProjectGraph owns structured scientific continuity of a DiscoveryProject; it is graph-shaped, extensible, and preserves rejected, superseded, reopened, and historical scientific states.
+39. MOLI ProjectRecord provides cross-platform provenance continuity for audit, trace, replay, integrity, and release without duplicating component-owned scientific objects.
+40. Components own their scientific objects; MOLI provides project-scoped organization, stable cross-component references, provenance infrastructure, and portability.
+41. Participating components should satisfy a common provenance contract appropriate to their persistent objects and consequential events.
+42. A shared mutable scientific megastore is not the integration model; use component ownership + stable references + typed ProjectGraph relationships + composed ProjectRecord.
+43. ProjectWorkspace is a logical contract independent of ProjectStore physical topology.
+44. Notebooks are human orchestration documents, not the authoritative ProjectRecord.
+45. Scientific Communication is derived from the ProjectGraph and ProjectRecord; reports, slides, and videos are not the source of truth.
+46. Replay follows the recorded trajectory without new scientific reasoning; rerun creates a new trajectory and may make different decisions.
