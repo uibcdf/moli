@@ -240,3 +240,311 @@ When MOLI Agent participates, preserve the identity of the context supplied to i
 - assembly time/version.
 
 The goal is not to make a future LLM answer identically. It is to know **what information the original agent had available**.
+
+
+## ProjectStateSnapshot
+
+At meaningful boundaries, a DiscoveryProject should expose an immutable/versioned state snapshot referencing, as applicable:
+
+- KnowledgeSnapshot;
+- Questions, Hypotheses, Strategies, Campaigns;
+- Decisions and approvals;
+- ExecutionPlans and Runs;
+- Results and Artifacts;
+- Observations, Evidence, Conclusions;
+- Candidates;
+- relevant AgentActions.
+
+Snapshots support historical inspection and state diffs such as `PS17 → PS18`, which can also ground ProgressBrief generation.
+
+## Append-only EventLedger
+
+Beneath mutable/current views, MOLI should preserve an append-only or equivalently immutable history of consequential events, for example:
+
+    CardCreated
+    SourceAssertionAdded
+    HypothesisCreated
+    DecisionProposed
+    DecisionApproved
+    ExecutionPlanFrozen
+    RunStarted
+    RunCompleted
+    ResultCreated
+    ObservationRecorded
+    EvidenceLinked
+    ConclusionApproved
+
+Objects may acquire new states; meaningful historical sequence must not be silently rewritten.
+
+The exact event-sourcing implementation is open. The invariant is reconstructable history.
+
+## ProjectManifest
+
+A completed or snapshotted project should expose a manifest/index describing its reproducible scientific record.
+
+Conceptually it references:
+
+- project identity and MOLI architecture/schema versions;
+- KnowledgeSnapshots;
+- Questions/Hypotheses;
+- Decisions/approvals;
+- ExecutionPlans/Runs;
+- Capability/Protocol versions;
+- environments and inputs;
+- Results/Artifacts;
+- Observations/Evidence/Conclusions;
+- AgentActions/HumanActions;
+- ProjectStateSnapshots;
+- timeline/EventLedger;
+- communication artifacts.
+
+The manifest need not embed all data. It may index immutable/content-addressed objects owned by their proper components.
+
+The name and exact serialization remain open.
+
+## IntegrityManifest
+
+Names and paths are insufficient to prove identity.
+
+Where practical use cryptographic content hashes or equivalent immutable identities for external input snapshots, transformed inputs, Protocol definitions, ExecutionPlans, environments/containers, code snapshots, Artifacts, and important manifests.
+
+Audit should answer:
+
+> **Is this actually the object that was used?**
+
+not merely whether a similarly named file still exists.
+
+## Audit, Trace, Replay, and Rerun are different
+
+### Audit
+
+`project.audit()`
+
+Question:
+
+> What happened, in what order, under whose authority, and why?
+
+Audit executes nothing.
+
+### Trace
+
+`project.trace(conclusion)`
+
+Question:
+
+> Why do we believe this specific statement?
+
+Conceptually:
+
+    Conclusion
+        ↑
+    Evidence
+        ↑
+    Observation
+        ↑
+    Result
+        ↑
+    Run
+        ↑
+    ExecutionPlan
+        ↑
+    Protocol / Capability
+        ↑
+    Inputs / SourceAssertions
+
+### Replay
+
+`project.replay()`
+
+Question:
+
+> Can we execute the recorded historical trajectory again?
+
+Replay uses recorded Decisions, ExecutionPlans, inputs, versions, environments, and seeds.
+
+**Replay must not require an LLM or agent to reason again.**
+
+### Rerun
+
+`project.rerun()`
+
+Question:
+
+> If MOLI investigates this starting state again, what trajectory does it choose now?
+
+Rerun invokes new agent/scientific decision-making and may produce a different path.
+
+> **Replay reproduces an executed scientific trajectory; rerun creates a new discovery trajectory.**
+
+## Replay granularity
+
+A project is graph-shaped. Future replay may target:
+
+- a single Run;
+- an ExecutionPlan;
+- a Campaign;
+- a project branch;
+- the complete recorded computational trajectory.
+
+Trace should likewise work from an individual Conclusion, Evidence item, Result, or Artifact.
+
+## Verification of reproduction
+
+Reproducibility does not always mean bitwise-identical output.
+
+Useful verification categories are:
+
+- **Recorded** — complete historical specification/provenance is available.
+- **Executable** — the recorded computation can be reconstructed and launched.
+- **Computationally reproducible** — outputs reproduce exactly or within method-appropriate numerical/statistical tolerances.
+- **Scientifically reproducible** — the scientifically relevant interpretation remains supported under defined reproduction criteria.
+
+These are verification categories, not platform scores.
+
+For stochastic simulations, meaningful distributional equivalence may matter more than an identical trajectory.
+
+## Scientific Communication consumes the record
+
+ProjectBriefings, ProgressBriefs, ProjectReports, slides, web reports, and videos should derive from the structured Scientific Record.
+
+    ProjectManifest
+          +
+    ProjectStateSnapshot
+          +
+    scientific object graph
+          +
+    Results / Artifacts
+             ↓
+            MOLI
+             ↓
+         LLM / renderer
+             ↓
+    ScientificCommunicationArtifact
+             ↓
+       PDF / HTML / Slides / Video
+
+Communication is a derived view.
+
+If a report contains a narrative error, correct the report; do not rewrite scientific history to match it.
+
+## Claims in reports should be traceable
+
+Where feasible, substantive report claims should reference the scientific objects supporting them:
+
+    report claim
+         ↓
+    Conclusion
+         ↓
+      Evidence
+         ↓
+    Observation
+         ↓
+       Result
+         ↓
+        Run
+
+Reports may cite Sabueso SourceAssertions directly when communicating external knowledge rather than project conclusions.
+
+## LLM independence
+
+If all LLM services disappeared after project completion, MOLI should still retain:
+
+- Questions and Hypotheses;
+- Decisions and explicit rationales;
+- alternatives and approvals;
+- ExecutionPlans;
+- commands/API invocations;
+- inputs and transformations;
+- Protocol/Capability identities;
+- software/environment versions;
+- seeds;
+- Runs and logs;
+- Results and Artifacts;
+- Observations;
+- Evidence;
+- Conclusions;
+- Knowledge/Project snapshots;
+- integrity hashes;
+- event history.
+
+The project remains auditable and its recorded computational work remains replayable to the extent allowed by preserved software/data/resources.
+
+A different future LLM may generate a new narrative from the same Scientific Record without becoming a dependency of the science.
+
+## Relationship to Phase 1 and Phase 2 pilots
+
+The provenance model should be the same regardless of who orchestrates the work.
+
+### Phase 1
+
+    Human
+       ↓
+    Decision
+       ↓
+    ExecutionPlan
+       ↓
+    Run
+
+### Phase 2
+
+    MOLI Agent
+       ↓ proposes
+    Decision
+       ↓ approved as required
+    ExecutionPlan
+       ↓
+    Run
+
+After the Decision is materialized, the reproducible execution path is the same kind of platform record.
+
+This is essential: agentic automation changes who proposes/orchestrates scientific work, not the provenance standard.
+
+## Ownership summary
+
+The design should preserve distributed semantic ownership:
+
+- Sabueso owns external knowledge objects and knowledge snapshots.
+- Praxis owns reusable methodological semantics.
+- MolSysSuite components own their execution-specific Results/Artifacts and local provenance.
+- Nextia owns DiscoveryProject interpretation/history and stable references connecting those objects.
+- MOLI Agent owns its action/proposal records.
+- humans/policy authority own recorded approvals where applicable.
+- MOLI composes cross-platform manifests/views and scientific communication.
+
+Nextia may act as the central Discovery graph/ledger without copying all underlying objects.
+
+## Design constraint
+
+The Scientific Record must not be a chat transcript.
+
+Conversation may be useful operational context, but the authoritative project history consists of structured platform objects and their immutable/versioned relationships.
+
+## Concepts to formalize before implementation
+
+This document identifies several concepts whose exact representation still requires design:
+
+- ExecutionPlan / RunManifest boundary;
+- DecisionRecord richness and approval semantics;
+- KnowledgeSnapshot;
+- ContextAssembly identity;
+- AgentActionRecord;
+- HumanAction / ApprovalRecord;
+- ProjectStateSnapshot;
+- EventLedger;
+- ProjectManifest;
+- IntegrityManifest;
+- replay verification criteria.
+
+Not every concept must become an independent Python class. Some may be manifests, events, views, or cross-component references.
+
+The requirement is semantic coverage, not class proliferation.
+
+## Guiding principles
+
+> **Agent reasoning may choose a scientific path, but once a path is chosen, the chosen decision, execution plan, inputs, parameters, environment, outputs, observations, evidence, and subsequent decisions must become persistent platform objects. Reproducing the historical path must not require the agent to reason again.**
+
+> **Replay reproduces an executed scientific trajectory; rerun creates a new discovery trajectory. They are not the same operation.**
+
+> **Components record; Nextia connects; MOLI explains.**
+
+> **The science must survive the disappearance of the LLM that helped produce it.**
