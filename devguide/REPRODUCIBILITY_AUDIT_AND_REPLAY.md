@@ -63,7 +63,7 @@ The platform writes its own history while work happens.
 - **MOLI Agent** records scientifically relevant proposals, explicit rationales, context identities, and tool actions.
 - **Humans** record consequential approvals/decisions where required.
 
-These distributed records form the authoritative **Scientific Record**. MOLI/LLMs later read and communicate it; they do not reconstruct it from chat history.
+These distributed records, connected through the Nextia **ProjectGraph** and MOLI **ProjectRecord**, form the authoritative scientific record. MOLI/LLMs later read and communicate it; they do not reconstruct it from chat history.
 
 ## KnowledgeSnapshot
 
@@ -787,7 +787,7 @@ The design should preserve distributed semantic ownership:
 - humans/policy authority own recorded approvals where applicable.
 - MOLI composes cross-platform manifests/views and scientific communication.
 
-Nextia may act as the central Discovery graph/ledger without copying all underlying objects.
+Nextia owns the **ProjectGraph**, the central structured scientific continuity of the DiscoveryProject, without copying all underlying component objects. MOLI composes the broader **ProjectRecord** for provenance continuity. See [`../architecture_1.0/PROJECT_ARCHITECTURE.md`](../architecture_1.0/PROJECT_ARCHITECTURE.md).
 
 ## Design constraint
 
