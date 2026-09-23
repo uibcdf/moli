@@ -20,7 +20,7 @@ The initial executable governance core provides:
 - a reusable component checker;
 - local governance-surface CI gates in Sabueso, Praxis, Nextia, and MOLI Agent.
 
-The current core deliberately does **not** impose MolSysSuite-specific Python, Ruff, CI-matrix, release, packaging, Zenodo, or badge policies.
+Shared engineering policies (Python support, Python CI, Ruff/pytest quality tooling, release versions, repository badges, Zenodo/DOI archival) are documented in `policies/`; `moli.toml` records which repositories or capabilities each one applies to. MolSysSuite-specific extensions for its internally governed members remain in MolSysSuite.
 
 Cross-repository byte-level guide synchronization is currently a checked convention and manual synchronization step; automation may be added when the coordination load justifies it.
 
