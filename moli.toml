@@ -94,6 +94,7 @@ applies_to = ["guide-delivery:vendored"]
 filename = "MOLI_GUIDE.md"
 copy_mode = "byte-identical"
 agents_reference_required = true
+validator = "devtools/scripts/check_component_guides.py"
 
 [components.sabueso]
 repository = "uibcdf/sabueso"

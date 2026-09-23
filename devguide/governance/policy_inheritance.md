@@ -34,3 +34,9 @@ receives MOLI guidance. `vendored` means it keeps a byte-identical root
 `MOLI_GUIDE.md`. `reference` means a delegated governance repository routes
 readers to MOLI without copying that guide. This delivery choice does not
 change policy inheritance or platform membership.
+
+Direct components with `vendored` delivery keep a root `AGENTS.md` that points
+to the copied guide. MOLI's
+`devtools/scripts/check_component_guides.py` checks byte equality and that
+route against the component repositories. The scheduled guide audit catches
+drift between the canonical source and published copies.

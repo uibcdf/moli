@@ -118,6 +118,10 @@ def validate_registry(root: Path) -> list[str]:
         errors.append("moli.toml: component guide must select vendored delivery")
     if not (root / str(guide.get("filename", ""))).is_file():
         errors.append("moli.toml: canonical component guide is missing")
+    if guide.get("validator") != "devtools/scripts/check_component_guides.py":
+        errors.append("moli.toml: component guide validator is not registered")
+    elif not (root / guide["validator"]).is_file():
+        errors.append("moli.toml: component guide validator is missing")
     python = policies.get("python", {})
     python_ci = policies.get("python_ci", {})
     if python_ci.get("routine_python") not in python.get("ci_versions", []):

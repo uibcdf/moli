@@ -1,0 +1,36 @@
+name: MOLI component guide synchronization
+
+on:
+  push:
+    paths:
+      - "MOLI_GUIDE.md"
+      - "moli.toml"
+      - "devtools/scripts/check_component_guides.py"
+      - ".github/workflows/check-component-guides.yml"
+  schedule:
+    - cron: "29 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out MOLI governance
+        uses: actions/checkout@v4
+        with:
+          path: workspace/moli
+      - name: Check out directly governed components
+        working-directory: workspace
+        run: |
+          python moli/devtools/scripts/check_component_guides.py \
+            --list-repositories | while read -r repository; do
+              name="${repository#*/}"
+              git clone --depth=1 "https://github.com/${repository}.git" "$name"
+            done
+      - name: Check canonical guide copies and agent routes
+        run: >-
+          python workspace/moli/devtools/scripts/check_component_guides.py
+          workspace
