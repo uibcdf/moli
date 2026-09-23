@@ -16,13 +16,14 @@ REQUIRED = [
 ]
 
 
-def check(root: Path, canonical_guide: Path | None = None) -> list[str]:
+def check(root: Path, canonical_guide: Path | None = None, require_direct_guide: bool = True) -> list[str]:
     errors: list[str] = []
-    for relative in REQUIRED:
+    required = REQUIRED if require_direct_guide else [item for item in REQUIRED if item != "MOLI_GUIDE.md"]
+    for relative in required:
         if not (root / relative).is_file():
             errors.append(f"{relative}: missing")
     agents = root / "AGENTS.md"
-    if agents.is_file() and "MOLI_GUIDE.md" not in agents.read_text(encoding="utf-8"):
+    if require_direct_guide and agents.is_file() and "MOLI_GUIDE.md" not in agents.read_text(encoding="utf-8"):
         errors.append("AGENTS.md: must reference MOLI_GUIDE.md")
     if canonical_guide is not None and (root / "MOLI_GUIDE.md").is_file():
         if (root / "MOLI_GUIDE.md").read_bytes() != canonical_guide.read_bytes():
@@ -34,8 +35,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("target", type=Path)
     parser.add_argument("--canonical-guide", type=Path)
+    parser.add_argument("--delegated", action="store_true", help="Check a MOLI component with delegated internal governance; do not require a vendored MOLI_GUIDE.md.")
     args = parser.parse_args()
-    errors = check(args.target.resolve(), args.canonical_guide.resolve() if args.canonical_guide else None)
+    errors = check(args.target.resolve(), args.canonical_guide.resolve() if args.canonical_guide else None, require_direct_guide=not args.delegated)
     if errors:
         for error in errors:
             print(error, file=sys.stderr)
