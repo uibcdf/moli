@@ -118,6 +118,16 @@ def validate_registry(root: Path) -> list[str]:
         errors.append("moli.toml: component guide must select vendored delivery")
     if not (root / str(guide.get("filename", ""))).is_file():
         errors.append("moli.toml: canonical component guide is missing")
+    python = policies.get("python", {})
+    python_ci = policies.get("python_ci", {})
+    if python_ci.get("routine_python") not in python.get("ci_versions", []):
+        errors.append("moli.toml: routine Python must be in supported CI versions")
+    if python_ci.get("routine_events") != ["push", "pull_request"]:
+        errors.append("moli.toml: routine CI must cover pushes and pull requests")
+    if python_ci.get("routine_os") != "linux" or "linux" not in python_ci.get("full_matrix_os", []):
+        errors.append("moli.toml: Python CI must include Linux")
+    if policies.get("python_quality", {}).get("target_version") != "py311":
+        errors.append("moli.toml: Ruff must target the oldest supported Python")
     release = policies.get("release_version", {})
     pattern = release.get("pattern")
     if not isinstance(pattern, str):
