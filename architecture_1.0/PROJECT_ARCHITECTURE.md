@@ -322,6 +322,8 @@ Components may emit consequential events into the MOLI EventLedger.
 
 The exact interface is not frozen.
 
+A current implementation direction is **Scribe**, documented in [`../devguide/SCRIBE.md`](../devguide/SCRIBE.md): low-friction semantic instrumentation using decorators, propagated project context, explicit recording APIs, safe serializers/redaction, recording profiles, event emission, and ownership-aware routing. Scribe is not a new scientific component, and its package/repository boundary remains open.
+
 The goal is that MOLI can ask of an object:
 
 > What are you?
