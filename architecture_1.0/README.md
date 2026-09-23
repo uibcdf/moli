@@ -26,7 +26,8 @@ Conceptual interoperability does not imply circular package dependencies.
 - `MOLSYS_AI.md` — MolSys-AI as the MolSysSuite specialist agent and its boundary with MOLI Agent.
 - `DEPLOYMENT_MODEL.md` — deployment-independent, local-first/remote-ready evolution from local resources to shared, remote, distributed, or hybrid infrastructure.
 - `OBJECT_IDENTITY_AND_PORTABILITY.md` — serialization, stable identity, referencability, versioning, provenance, and location-independent scientific objects.
+- `VISIBILITY_AND_CONFIDENTIALITY.md` — separation of semantic ownership from visibility/publication, enabling open infrastructure with private or controlled scientific context and discovery programs.
 
 These documents refine consequences of the frozen architecture; they do not introduce a new top-level structural boundary.
 
-Architecture 1.0 deliberately separates scientific semantics from deployment topology. Important scientific objects should be serializable and referencable so that local implementations can evolve toward shared or remote services without redefining their scientific meaning.
+Architecture 1.0 deliberately separates scientific semantics from deployment topology and from visibility/publication policy. Important scientific objects should be serializable and referencable so local implementations can evolve toward shared or remote services without redefining their scientific meaning, while authorization and confidentiality remain independently enforceable.
