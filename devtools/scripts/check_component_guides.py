@@ -21,7 +21,7 @@ def vendored_components(registry: dict[str, object]) -> list[str]:
 
 
 def check(workspace: Path, registry: dict[str, object]) -> list[str]:
-    """Return missing, changed, or unreferenced guide findings."""
+    """Return guide-delivery and direct Python classification findings."""
     guide = str(registry["policies"]["component_guide"]["filename"])
     source = workspace / "moli" / guide
     if not source.is_file():
@@ -38,6 +38,20 @@ def check(workspace: Path, registry: dict[str, object]) -> list[str]:
         agents = root / "AGENTS.md"
         if not agents.is_file() or guide not in agents.read_text(encoding="utf-8"):
             findings.append(f"{agents}: must reference {guide}")
+        pyproject = root / "pyproject.toml"
+        if pyproject.is_file():
+            try:
+                project = tomllib.loads(pyproject.read_text(encoding="utf-8")).get("project", {})
+            except tomllib.TOMLDecodeError:
+                findings.append(f"{pyproject}: invalid TOML")
+                continue
+            component = next(
+                item for item in registry["components"].values() if item["repository"] == repository
+            )
+            if project.get("name") and "python-package" not in component.get("capabilities", []):
+                findings.append(
+                    f"{repository}: declared Python project needs python-package capability in moli.toml"
+                )
     return findings
 
 

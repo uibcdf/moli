@@ -52,6 +52,28 @@ class ComponentGuideTests(unittest.TestCase):
             self.assertTrue(any("differs from MOLI" in item for item in findings))
             self.assertTrue(any("must reference" in item for item in findings))
 
+    def test_python_project_requires_registered_capability(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            workspace = Path(temporary)
+            source = workspace / "moli/MOLI_GUIDE.md"
+            source.parent.mkdir()
+            source.write_text("canonical\n", encoding="utf-8")
+            component = workspace / "sabueso"
+            component.mkdir()
+            (component / "MOLI_GUIDE.md").write_bytes(source.read_bytes())
+            (component / "AGENTS.md").write_text("Read MOLI_GUIDE.md\n", encoding="utf-8")
+            (component / "pyproject.toml").write_text(
+                '[project]\nname = "sabueso"\n', encoding="utf-8"
+            )
+            findings = check(workspace, REGISTRY)
+            self.assertTrue(any("needs python-package capability" in item for item in findings))
+
+            REGISTRY["components"]["sabueso"]["capabilities"] = ["python-package"]
+            try:
+                self.assertEqual(check(workspace, REGISTRY), [])
+            finally:
+                del REGISTRY["components"]["sabueso"]["capabilities"]
+
 
 if __name__ == "__main__":
     unittest.main()

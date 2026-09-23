@@ -12,6 +12,7 @@ OPEN = {"open", "active", "blocked", "partial"}
 CLOSED = {"resolved", "withdrawn", "superseded"}
 VERIFICATION = {"reproduced", "measured", "inspected", "upstream", "asserted"}
 ISSUE = re.compile(r"^uibcdf/[A-Za-z0-9_.-]+#[1-9][0-9]*$")
+PYTHON_ECOSYSTEM_STATES = {"pending", "partial", "adopted", "excepted"}
 
 
 def front_matter(path: Path) -> dict[str, str]:
@@ -66,6 +67,48 @@ def validate_reports(root: Path) -> list[str]:
     return errors
 
 
+def validate_python_ecosystem_reviews(
+    components: dict[str, dict], policies: dict[str, dict]
+) -> list[str]:
+    """Require an adoption review for each directly governed Python package."""
+    errors: list[str] = []
+    expected = {
+        "python_support_libraries": ["argdigest", "depdigest", "smonitor", "pyunitwizard"],
+        "python_developer_tools": ["pytest-receptor", "gh-run-receptor"],
+    }
+    for name, packages in expected.items():
+        policy = policies.get(name, {})
+        if policy.get("status") != "accepted":
+            errors.append(f"moli.toml: policy {name} is not accepted")
+        if policy.get("applies_to") != ["capability:python-package"]:
+            errors.append(f"moli.toml: policy {name} must apply to Python packages")
+        key = "libraries" if name == "python_support_libraries" else "tools"
+        if policy.get(key) != packages:
+            errors.append(f"moli.toml: policy {name} has unexpected {key}")
+        if policy.get("review_field") != "python_ecosystem_review":
+            errors.append(f"moli.toml: policy {name} must require a review")
+        if not policy.get("normative"):
+            errors.append(f"moli.toml: policy {name} has no normative document")
+    for name, component in components.items():
+        if "python-package" not in component.get("capabilities", []):
+            continue
+        if component.get("internal_governance") == "delegated":
+            continue
+        review = component.get("python_ecosystem_review")
+        if not isinstance(review, dict):
+            errors.append(f"moli.toml: component {name} needs a Python ecosystem review")
+            continue
+        repository = component.get("repository", "")
+        issue = review.get("issue", "")
+        if not isinstance(issue, str) or not ISSUE.fullmatch(issue) or not issue.startswith(
+            f"{repository}#"
+        ):
+            errors.append(f"moli.toml: component {name} has an invalid review issue")
+        if review.get("state") not in PYTHON_ECOSYSTEM_STATES:
+            errors.append(f"moli.toml: component {name} has an invalid review state")
+    return errors
+
+
 def validate_registry(root: Path) -> list[str]:
     errors: list[str] = []
     path = root / "moli.toml"
@@ -96,6 +139,7 @@ def validate_registry(root: Path) -> list[str]:
         if component.get("internal_governance") == "delegated" and not component.get("internal_governance_repository"):
             errors.append(f"moli.toml: component {name} has no internal governance repository")
     policies = data.get("policies", {})
+    errors.extend(validate_python_ecosystem_reviews(registered, policies))
     for name in (
         "reporting_lifecycle",
         "cross_component_feedback",
