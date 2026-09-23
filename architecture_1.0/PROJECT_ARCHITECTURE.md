@@ -725,7 +725,206 @@ from:
 This is necessary for long-lived audit and honest replay preflight.
 
 
-## 28. Design principles
+
+
+## 28. Three-level project integration model
+
+The project architecture can be understood through three levels:
+
+### Level 1 — Component records
+
+    Sabueso
+    Praxis
+    Nextia
+    MolSysSuite
+    ...
+
+Each component owns and records the objects whose scientific semantics belong to it.
+
+### Level 2 — MOLI provenance infrastructure
+
+    stable identity and references
+    EventLedger
+    integrity
+    snapshots / manifests
+    cross-component lineage
+    replay / verification
+
+This level connects distributed records without taking semantic ownership from their components.
+
+### Level 3 — MOLI project views and operations
+
+    ProjectManifest
+    Audit
+    Trace
+    Replay
+    Timeline
+    Scientific Communication
+
+These are project-level compositions over the lower levels.
+
+The three-level model is explanatory, not a requirement for three physical services or databases.
+
+## 29. Preferred initial Workspace materialization
+
+Architecture remains storage/deployment independent, but an initial local implementation should prefer a **human-browsable filesystem Workspace** when practical.
+
+This supports Phase 1 scientific work in Jupyter and makes the project inspectable without requiring remote infrastructure.
+
+A local Workspace may materialize the logical scopes described earlier while using references/manifests for data that live elsewhere.
+
+This preference does not freeze the directory layout and does not make filesystem paths scientific identities.
+
+## 30. Version-control guidance
+
+The Workspace should distinguish material that is naturally version-controlled from large or externally managed scientific data.
+
+Typically suitable for Git or equivalent source version control:
+
+    project descriptor
+    notebooks
+    manifests
+    small structured records
+    schemas/configuration
+    selected communication artifacts
+
+Typically referenced through ProjectStore rather than committed directly:
+
+    trajectories
+    large datasets
+    large molecular ensembles
+    model weights
+    large generated Artifacts
+
+This is operational guidance rather than an absolute rule. ProjectManifest/Artifact metadata should identify the authoritative location and content identity regardless of version-control choice.
+
+## 31. Workspace descriptor as bootstrap contract
+
+A project descriptor such as the conceptual `moli.project.toml` is not merely descriptive metadata.
+
+It is the bootstrap entry point through which MOLI and participating components discover the project-scoped logical context:
+
+    project identity
+    architecture/schema version
+    logical scopes
+    component participation
+    ProjectRecord entry points
+    ProjectStore resolution
+    authorization/visibility context
+    release state
+
+Components should receive resolved project context rather than inventing independent project paths.
+
+The exact filename and schema remain open.
+
+## 32. Historical ProjectGraph views, diffs, and timeline
+
+Because ProjectGraph is versioned/evolvable and the ProjectRecord preserves chronological provenance, MOLI should eventually support three distinct inspection capabilities:
+
+### Historical graph view
+
+Inspect/reconstruct the scientific graph at a prior snapshot, release, or time boundary.
+
+Conceptually:
+
+    project.graph.at(snapshot_or_time)
+
+### Graph/state diff
+
+Inspect what scientific state changed between two checkpoints.
+
+Conceptually:
+
+    project.graph.diff(T1, T2)
+
+This can ground ProgressBrief generation.
+
+### Project timeline
+
+Present a chronological view composed from Nextia scientific changes and relevant EventLedger events.
+
+Conceptually:
+
+    project.timeline()
+
+The API names are illustrative, not frozen.
+
+A timeline is a view over semantic/project provenance; it is not a replacement for ProjectGraph or EventLedger.
+
+## 33. ProjectRecord views may be virtual
+
+MOLI may compose project-wide views from:
+
+    Sabueso records
+        +
+    Praxis records
+        +
+    Nextia ProjectGraph
+        +
+    MolSysSuite execution records
+        +
+    EventLedger / manifests
+        ↓
+    project-wide view
+
+Architecture does **not** require MOLI to persist a second global database/graph containing copies of all component objects.
+
+A ProjectRecord view may be materialized, cached, indexed, or computed on demand.
+
+> **Federated/composed ProjectRecord does not imply duplicated persistent global graph.**
+
+This preserves the no-megastore ownership principle while allowing complete project-level Audit/Trace/Replay views.
+
+## 34. Portable export modes
+
+Project portability should support at least two conceptual export modes.
+
+### Reference export
+
+Packages the portable project record while allowing large or externally controlled data to remain referenced:
+
+    project descriptor
+    ProjectManifest / IntegrityManifest
+    ProjectGraph snapshot/release
+    EventLedger
+    notebooks
+    environment specifications
+    small Artifacts
+    stable references to external/large Artifacts
+    checksums
+
+### Self-contained archival export
+
+Attempts to include all legally and technically retainable inputs/Artifacts required for independent archival/replay.
+
+Objects that cannot be embedded because of size, licensing, authorization, or external-service constraints remain explicit unresolved/external dependencies rather than disappearing from the manifest.
+
+Exact archive format and CLI are implementation-open.
+
+## 35. Why Nextia provides scientific continuity
+
+Nextia does not provide ProjectGraph continuity because it governs or owns Sabueso, Praxis, or MolSysSuite.
+
+It provides continuity because **Discovery is the domain in which previous Knowledge, actions, Results, and Evidence acquire project-specific scientific meaning and motivate subsequent Questions, Hypotheses, Decisions, and work**.
+
+Thus:
+
+    Sabueso
+        what external sources assert
+
+    Praxis
+        how scientific work can be performed
+
+    MolSysSuite
+        what was computed / produced
+
+    Nextia ProjectGraph
+        what those things mean for this DiscoveryProject
+        and how that meaning leads to subsequent work
+
+This is semantic continuity, not hierarchical control.
+
+## 36. Design principles
 
 > **ProjectGraph is the evolving scientific graph of a DiscoveryProject and is owned by Nextia.**
 
@@ -750,3 +949,13 @@ This is necessary for long-lived audit and honest replay preflight.
 > **MOLI requires auditable cross-component consistency and explicit partial/failure states rather than fictitious distributed atomicity.**
 
 > **Stable historical references remain meaningful even when their current targets are unavailable or unauthorized.**
+
+> **The project architecture has three conceptual levels: component-owned records, MOLI provenance infrastructure, and composed project-level views/operations.**
+
+> **A human-browsable local Workspace is the preferred initial materialization when practical, while scientific identity remains independent of filesystem layout.**
+
+> **ProjectRecord views may be federated or virtual; MOLI does not require a duplicated persistent global graph.**
+
+> **Project portability distinguishes reference exports from self-contained archival exports.**
+
+> **Nextia provides scientific continuity through Discovery semantics, not hierarchical control over other components.**
