@@ -35,6 +35,17 @@ development_version = "3.13"
 ci_versions = ["3.11", "3.12", "3.13"]
 normative = "devguide/policies/python_policy.md"
 
+[policies.python.transition]
+status = "active"
+target_requires_python = ">=3.11,<3.15"
+target_ci_versions = ["3.11", "3.12", "3.13", "3.14"]
+
+[[policies.python.transition.components]]
+name = "sabueso"
+issue = ""
+state = "admitted"
+note = "Python 3.14 support predates MOLI engineering-governance adoption and is continuously tested."
+
 [policies.python_ci]
 status = "accepted"
 applies_to = ["capability:python-package"]
