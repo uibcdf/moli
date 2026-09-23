@@ -27,6 +27,48 @@ normative = "devguide/governance/cross_component_feedback.md"
 provider_report_required = true
 consumer_cross_link_required = true
 
+[policies.python]
+status = "accepted"
+applies_to = ["capability:python-package"]
+requires_python = ">=3.11,<3.14"
+development_version = "3.13"
+ci_versions = ["3.11", "3.12", "3.13"]
+normative = "devguide/policies/python_policy.md"
+
+[policies.python_ci]
+status = "accepted"
+applies_to = ["capability:python-package"]
+routine_python = "3.13"
+full_matrix_frequency = "weekly"
+normative = "devguide/policies/python_ci_policy.md"
+
+[policies.python_quality]
+status = "accepted"
+applies_to = ["capability:python-package"]
+formatter = "ruff"
+linter = "ruff"
+test_runner = "pytest"
+ruff_version = "0.16.5"
+required_lint_rules = ["E4", "E7", "E9", "F", "I"]
+normative = "devguide/policies/python_tooling_policy.md"
+
+[policies.release_version]
+status = "accepted"
+applies_to = ["repository"]
+format = "X.Y.Z"
+public_prereleases = false
+normative = "devguide/policies/release_version_policy.md"
+
+[policies.repository_badges]
+status = "accepted"
+applies_to = ["repository"]
+normative = "devguide/policies/repository_badges.md"
+
+[policies.zenodo_archival]
+status = "accepted"
+applies_to = ["repository"]
+normative = "devguide/policies/zenodo_policy.md"
+
 [policies.component_guide]
 status = "accepted"
 applies_to = ["direct-component"]
@@ -39,24 +81,28 @@ repository = "uibcdf/sabueso"
 domain = "scientific-context"
 role = "knowledge"
 governance = "direct"
+capabilities = ["python-package"]
 
 [components.praxis]
 repository = "uibcdf/praxis"
 domain = "scientific-context"
 role = "methodology"
 governance = "direct"
+capabilities = []
 
 [components.nextia]
 repository = "uibcdf/nextia"
 domain = "scientific-context"
 role = "discovery"
 governance = "direct"
+capabilities = []
 
 [components.molsyssuite]
 repository = "uibcdf/molsyssuite"
 domain = "molecular-modeling"
 role = "modeling-ecosystem"
 governance = "direct"
+capabilities = ["governed-ecosystem"]
 internal_governance = "delegated"
 internal_governance_repository = "uibcdf/molsyssuite"
 
@@ -65,3 +111,4 @@ repository = "uibcdf/moli-agent"
 domain = "reasoning"
 role = "scientific-agent"
 governance = "direct"
+capabilities = []
