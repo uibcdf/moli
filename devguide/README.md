@@ -27,6 +27,7 @@ Cross-repository byte-level guide synchronization is currently a checked convent
 ## Structure
 
 - `governance/` — ownership, reporting, cross-component coordination, and membership/delegation rules.
+- `governance/policy_inheritance.md` — single-source MOLI engineering policy and delegated adoption.
 - `policies/` — shared policies accepted for directly governed MOLI repositories.
 - `pending_bugs/` — durable analyses of active platform bugs when needed.
 - `pending_proposals/` — durable analyses of active platform proposals when needed.

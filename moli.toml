@@ -1,4 +1,4 @@
-schema_version = "0.2"
+schema_version = "0.3"
 
 [platform]
 name = "MOLI"
@@ -10,6 +10,8 @@ governance_model = "component-governance-with-internal-delegation"
 repository = "uibcdf/moli"
 guide = "MOLI_GUIDE.md"
 reporting_protocol = "devguide/governance/reporting_protocol.md"
+policy_inheritance = "transitive-by-capability"
+policy_inheritance_contract = "devguide/governance/policy_inheritance.md"
 
 [policies.reporting_lifecycle]
 status = "accepted"
@@ -67,6 +69,7 @@ normative = "devguide/policies/python_tooling_policy.md"
 status = "accepted"
 applies_to = ["repository"]
 format = "X.Y.Z"
+pattern = '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$'
 public_prereleases = false
 normative = "devguide/policies/release_version_policy.md"
 
@@ -82,7 +85,7 @@ normative = "devguide/policies/zenodo_policy.md"
 
 [policies.component_guide]
 status = "accepted"
-applies_to = ["direct-component"]
+applies_to = ["guide-delivery:vendored"]
 filename = "MOLI_GUIDE.md"
 copy_mode = "byte-identical"
 agents_reference_required = true
@@ -92,6 +95,7 @@ repository = "uibcdf/sabueso"
 domain = "scientific-context"
 role = "knowledge"
 governance = "direct"
+guide_delivery = "vendored"
 capabilities = ["python-package"]
 
 [components.praxis]
@@ -99,6 +103,7 @@ repository = "uibcdf/praxis"
 domain = "scientific-context"
 role = "methodology"
 governance = "direct"
+guide_delivery = "vendored"
 capabilities = []
 
 [components.nextia]
@@ -106,6 +111,7 @@ repository = "uibcdf/nextia"
 domain = "scientific-context"
 role = "discovery"
 governance = "direct"
+guide_delivery = "vendored"
 capabilities = []
 
 [components.molsyssuite]
@@ -113,6 +119,7 @@ repository = "uibcdf/molsyssuite"
 domain = "molecular-modeling"
 role = "modeling-ecosystem"
 governance = "direct"
+guide_delivery = "reference"
 capabilities = ["governed-ecosystem"]
 internal_governance = "delegated"
 internal_governance_repository = "uibcdf/molsyssuite"
@@ -122,4 +129,5 @@ repository = "uibcdf/moli-agent"
 domain = "reasoning"
 role = "scientific-agent"
 governance = "direct"
+guide_delivery = "vendored"
 capabilities = []

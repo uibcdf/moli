@@ -4,7 +4,9 @@ Normative for public releases of MOLI repositories unless an explicit exception 
 
 ## Public identity
 
-Public releases use exactly `X.Y.Z`: three non-negative decimal integers, no `v` prefix and no alpha, beta, rc, dev, post, or local suffix.
+Public releases use exactly `X.Y.Z`: three non-negative decimal integers without
+leading zeroes except for zero itself, no `v` prefix and no alpha, beta, rc,
+dev, post, or local suffix. The accepted pattern is recorded in `moli.toml`.
 
 The project/package version, Git tag, and GitHub Release tag use the same public version.
 

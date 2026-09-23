@@ -73,11 +73,28 @@ def validate_registry(root: Path) -> list[str]:
         data = tomllib.loads(path.read_text(encoding="utf-8"))
     except (OSError, tomllib.TOMLDecodeError) as error:
         return [f"moli.toml: {error}"]
+    if data.get("schema_version") != "0.3":
+        errors.append("moli.toml: unsupported schema_version")
+    governance = data.get("governance", {})
+    if governance.get("policy_inheritance") != "transitive-by-capability":
+        errors.append("moli.toml: policy inheritance must be transitive by capability")
+    inheritance_contract = governance.get("policy_inheritance_contract")
+    if not isinstance(inheritance_contract, str) or not (root / inheritance_contract).is_file():
+        errors.append("moli.toml: policy inheritance contract is missing")
     required = {"sabueso", "praxis", "nextia", "molsyssuite", "moli-agent"}
-    components = set(data.get("components", {}))
+    registered = data.get("components", {})
+    components = set(registered)
     missing = sorted(required - components)
     if missing:
         errors.append("moli.toml: missing components: " + ", ".join(missing))
+    for name, component in registered.items():
+        delivery = component.get("guide_delivery")
+        if delivery not in {"vendored", "reference"}:
+            errors.append(f"moli.toml: component {name} has invalid guide delivery")
+        if delivery == "reference" and component.get("internal_governance") != "delegated":
+            errors.append(f"moli.toml: component {name} needs delegated governance to reference the guide")
+        if component.get("internal_governance") == "delegated" and not component.get("internal_governance_repository"):
+            errors.append(f"moli.toml: component {name} has no internal governance repository")
     policies = data.get("policies", {})
     for name in (
         "reporting_lifecycle",
@@ -92,6 +109,25 @@ def validate_registry(root: Path) -> list[str]:
     ):
         if policies.get(name, {}).get("status") != "accepted":
             errors.append(f"moli.toml: policy {name} is not accepted")
+    for name, policy in policies.items():
+        normative = policy.get("normative")
+        if normative is not None and (not isinstance(normative, str) or not (root / normative).is_file()):
+            errors.append(f"moli.toml: policy {name} has no existing normative document")
+    guide = policies.get("component_guide", {})
+    if guide.get("applies_to") != ["guide-delivery:vendored"]:
+        errors.append("moli.toml: component guide must select vendored delivery")
+    if not (root / str(guide.get("filename", ""))).is_file():
+        errors.append("moli.toml: canonical component guide is missing")
+    release = policies.get("release_version", {})
+    pattern = release.get("pattern")
+    if not isinstance(pattern, str):
+        errors.append("moli.toml: release-version pattern is missing")
+    else:
+        try:
+            if re.fullmatch(pattern, "1.2.3") is None or re.fullmatch(pattern, "01.2.3") is not None:
+                errors.append("moli.toml: release-version pattern is not canonical X.Y.Z")
+        except re.error:
+            errors.append("moli.toml: release-version pattern is invalid")
     return errors
 
 
