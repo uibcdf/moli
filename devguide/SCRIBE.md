@@ -340,6 +340,148 @@ Under a MOLI `strict` recording policy, pause may be forbidden for a Run or othe
 
 The exact policy is open.
 
+
+
+## Standalone ScientificRecord capabilities
+
+A completed standalone RecordingSession should expose a durable **ScientificRecord** or equivalent object representing the captured computational work.
+
+The exact class/API name is not frozen.
+
+Its purpose is to make Scribe useful for reproducibility even when no MOLI project exists.
+
+Conceptually, a standalone record should support capabilities such as:
+
+### Inspect
+
+Determine what was recorded:
+
+    operations
+    inputs
+    outputs
+    Artifacts
+    implementations / versions
+    environment
+    lifecycle / failures
+    recording gaps
+
+### Timeline
+
+Reconstruct the chronological order of recorded operations and lifecycle events.
+
+This is a computational recording timeline, not a Nextia Discovery timeline.
+
+### Dependencies / lineage
+
+Follow meaningful operation and data dependencies:
+
+    OP1
+      ↓ produces
+    MS1
+      ↓ consumed_by
+    OP2
+      ↓ produces
+    R1
+
+This should support cross-component records such as MolSysMT → TopoMT.
+
+### Audit
+
+Answer computational provenance questions such as:
+
+    What was executed?
+    With which inputs?
+    With which parameters?
+    With which software/environment?
+    In what order?
+    What failed or was retried?
+    What outputs were produced?
+
+Standalone Scribe audit does not reconstruct scientific rationale that was never recorded by an owning semantic component.
+
+### Verify
+
+Check integrity and availability of recorded inputs, outputs, Artifacts, manifests, and other content-addressed objects where applicable.
+
+### Export
+
+Package or serialize the ScientificRecord for sharing, archival, later inspection, or later import/reference into MOLI.
+
+Large/external Artifacts may remain referenced according to the record/store model.
+
+### Computational replay
+
+Where the recorded operations, inputs, implementations, environments, and resources permit, Scribe may support replay of recorded computational operations.
+
+Conceptually, future APIs might resemble:
+
+    record.inspect()
+    record.timeline()
+    record.dependencies(...)
+    record.audit()
+    record.verify()
+    record.export(...)
+    record.replay(...)
+
+These names are illustrative only.
+
+## Scribe replay versus MOLI replay
+
+The word `replay` has different scope depending on available context.
+
+### Scribe standalone replay
+
+Reproduces **recorded computation**.
+
+For example:
+
+    MolSysMT.convert
+        ↓
+    TopoMT.detect_pockets
+        ↓
+    TopoMT.characterize
+
+Scribe can know what operations were executed, their dependencies, inputs, parameters, environment, outputs, and failures.
+
+It does not inherently know why a scientist chose that computational path unless the relevant semantic owner explicitly recorded that information.
+
+### MOLI replay
+
+Reproduces a **recorded scientific project trajectory** using the richer ProjectRecord:
+
+    Decision
+        ↓
+    ExecutionPlan
+        ↓
+    computational operations / Runs
+        ↓
+    Results
+        ↓
+    recorded project progression
+
+MOLI replay can therefore use Scribe computational provenance as part of a larger trajectory containing Nextia Discovery semantics, Praxis methodology, Sabueso Knowledge dependencies, approvals, and project context.
+
+Thus:
+
+    Scribe standalone
+        computational provenance
+        +
+        computational reproducibility
+
+    MOLI + Scribe
+        computational provenance
+        +
+        scientific provenance
+        +
+        Discovery trajectory
+        +
+        project-level replay
+
+> **Scribe replay reproduces recorded computation; MOLI replay reproduces a recorded scientific project trajectory.**
+
+The two should share underlying execution/provenance machinery rather than becoming incompatible replay systems.
+
+
 ## Standalone record import into MOLI
 
 A standalone Scribe record may later become useful inside a MOLI project.
@@ -1243,6 +1385,10 @@ Before freezing an API/package, Phase 1 pilots should help determine:
 > **Scribe should make provenance easier to do correctly than to omit, while keeping component APIs independently usable outside MOLI.**
 
 > **Scribe is useful standalone for reproducible scientific computation; MOLI enriches the same recording substrate with project and Discovery context.**
+
+> **A standalone ScientificRecord should be independently inspectable, auditable, verifiable, exportable, and computationally replayable where the recorded environment permits.**
+
+> **Scribe replay reproduces recorded computation; MOLI replay reproduces a recorded scientific project trajectory.**
 
 > **Instrumented component APIs remain normal standalone APIs when no recording context is active.**
 
