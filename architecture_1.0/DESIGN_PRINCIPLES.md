@@ -52,3 +52,12 @@
 48. Nextia owns ProjectGraph Discovery semantics; EventLedger records consequential changes but is not the semantic source of Discovery meaning.
 49. Cross-component workflows must preserve explicit partial/failure/cancellation states and correlation identity; MOLI requires auditable consistency rather than fictitious distributed atomicity.
 50. Stable historical references remain meaningful when current targets are unavailable, unauthorized, archived, or externally removed; resolution state must not be confused with historical nonexistence.
+
+51. Project architecture has three conceptual levels: component-owned records, MOLI provenance infrastructure, and composed project-level views/operations; this does not prescribe three physical services.
+52. A human-browsable local filesystem Workspace is the preferred initial materialization when practical, without coupling scientific identity to paths.
+53. Small structured project material may be version-controlled while large scientific Artifacts may remain in ProjectStore; authoritative identity/location is expressed through manifests/references.
+54. The project descriptor is the bootstrap contract for resolving project-scoped context; components should not invent independent project paths.
+55. Historical ProjectGraph views, state/graph diffs, and chronological project timelines are required conceptual inspection capabilities; exact APIs remain open.
+56. ProjectRecord/project-wide graph views may be virtual, materialized, cached, or computed; architecture does not require a duplicated persistent global graph.
+57. Project portability distinguishes reference export from self-contained archival export, with unavailable/non-embeddable dependencies remaining explicit.
+58. Nextia provides scientific continuity through Discovery semantics, not hierarchical control over Sabueso, Praxis, or MolSysSuite.
