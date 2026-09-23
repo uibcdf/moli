@@ -2,28 +2,47 @@
 
 ## Principle
 
-Each repository owns its implementation. MOLI owns only shared platform contracts and directly governed cross-component policy.
+Each repository owns its implementation. MOLI owns contracts shared between MOLI components and platform-wide governance.
 
 > **A concern is governed at the lowest level that owns the shared contract it affects.**
 
-## Local ownership
+## MOLI component ownership
 
-Sabueso, Praxis, Nextia, and MOLI Agent own their local code, tests, APIs, scientific behavior, release decisions, and component-specific documentation.
+Sabueso, Praxis, Nextia, MolSysSuite, and MOLI Agent are components of MOLI.
 
-A local implementation detail does not become a MOLI platform decision merely because the repository belongs to MOLI.
+Each component owns its local implementation and component-specific behavior.
 
 ## Platform ownership
 
-`uibcdf/moli` owns decisions that define or change relationships shared across directly governed components or the wider platform boundary.
+`uibcdf/moli` owns decisions that define or change relationships between MOLI components or the wider platform contract.
 
-Examples include stable cross-component reference semantics, SourceAssertion/Evidence boundaries, Capability invocation contracts, Context Assembly contracts, visibility/disclosure principles, and Scientific Context ↔ MolSysSuite interoperability.
+Examples include SourceAssertion/Evidence boundaries, Capability invocation contracts, Context Assembly, visibility/disclosure principles, and Scientific Context ↔ MolSysSuite interoperability.
 
-## Delegated domains
+## Components with internal governance
 
-MolSysSuite is a delegated governance domain. Its internal policies and component contracts are owned by `uibcdf/molsyssuite`.
+MolSysSuite is both:
 
-MOLI governs only contracts that cross between MolSysSuite and the rest of the platform.
+1. a component of MOLI; and
+2. a governed ecosystem with its own members.
+
+MOLI governs the contract of MolSysSuite **as a MOLI component**.
+
+`uibcdf/molsyssuite` governs MolSysSuite's internal repositories, policies, tooling, membership, and shared component contracts.
+
+Thus:
+
+```text
+MolSysSuite ↔ Nextia contract   → MOLI
+MolSysMT ↔ TopoMT contract      → MolSysSuite
+TopoMT implementation          → TopoMT
+```
+
+Internal governance delegation does not remove MolSysSuite from MOLI's component model.
+
+## Scientific Context
+
+Scientific Context is a conceptual grouping of Sabueso, Praxis, and Nextia, not a separate governance repository.
 
 ## Exceptions
 
-If ownership is ambiguous, open the issue at the lowest plausible owner and cross-link/escalate to MOLI when evidence shows a shared contract is involved. Do not solve ambiguity by duplicating implementation or authoritative issues.
+If ownership is ambiguous, begin at the lowest plausible owner and escalate/cross-link when evidence shows that a higher-level shared contract is involved. Do not duplicate implementation or authoritative issues.
