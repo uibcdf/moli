@@ -4,7 +4,7 @@ schema_version = "0.1"
 name = "MOLI"
 repository = "uibcdf/moli"
 architecture = "architecture_1.0"
-governance_model = "direct-plus-delegated"
+governance_model = "component-governance-with-internal-delegation"
 
 [components.sabueso]
 repository = "uibcdf/sabueso"
@@ -24,13 +24,16 @@ domain = "scientific-context"
 role = "discovery"
 governance = "direct"
 
+[components.molsyssuite]
+repository = "uibcdf/molsyssuite"
+domain = "molecular-modeling"
+role = "modeling-ecosystem"
+governance = "direct"
+internal_governance = "delegated"
+internal_governance_repository = "uibcdf/molsyssuite"
+
 [components.moli-agent]
 repository = "uibcdf/moli-agent"
 domain = "reasoning"
 role = "scientific-agent"
 governance = "direct"
-
-[domains.molsyssuite]
-repository = "uibcdf/molsyssuite"
-domain = "molecular-modeling"
-governance = "delegated"
