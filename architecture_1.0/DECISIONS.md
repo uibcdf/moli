@@ -103,3 +103,20 @@ Project-scoped references to shared Sabueso/Praxis objects do not imply project 
 Cross-component scientific operations preserve explicit lifecycle/partial/failure/cancellation states and correlation identity. Architecture 1.0 requires auditable consistency rather than pretending distributed operations are atomically completed.
 
 Stable historical references remain part of the record even when their current targets are unavailable, unauthorized, archived, or externally removed.
+
+
+## Project architecture implementation consequences
+
+Project integration is understood at three conceptual levels: component-owned records, MOLI provenance infrastructure, and composed project-level views/operations. These levels do not imply separate physical services.
+
+A human-browsable local filesystem Workspace is the preferred initial materialization when practical. The project descriptor acts as the bootstrap contract; participating components receive project-scoped context instead of inventing paths.
+
+Small structured records/notebooks/manifests may be version-controlled while large Artifacts remain in ProjectStore and are referenced by stable identity/content metadata.
+
+ProjectGraph must support historical inspection, state/graph diffs, and chronological timeline views conceptually; exact APIs are not frozen.
+
+ProjectRecord/project-wide views may be virtual/materialized/cached/computed. MOLI does not require a duplicated persistent global graph.
+
+Portability distinguishes reference export from self-contained archival export.
+
+Nextia provides scientific continuity because Discovery gives project-specific meaning to Knowledge, Results, Evidence, and subsequent Decisions; this does not make Nextia the hierarchical owner of other components.
