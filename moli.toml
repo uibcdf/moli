@@ -42,7 +42,7 @@ target_ci_versions = ["3.11", "3.12", "3.13", "3.14"]
 
 [[policies.python.transition.components]]
 name = "sabueso"
-issue = ""
+issue = "uibcdf/sabueso#3"
 state = "admitted"
 note = "Python 3.14 support predates MOLI engineering-governance adoption and is continuously tested."
 
