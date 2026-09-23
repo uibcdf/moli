@@ -610,7 +610,122 @@ The complete project-level architecture is:
 
 These are complementary responsibilities, not competing stores.
 
-## 22. Design principles
+
+
+## 23. Project-scoped references to shared objects
+
+Not every object referenced by a project is owned by or physically contained inside that project.
+
+Sabueso Knowledge and Praxis Know-how may be shared across many projects.
+
+The Workspace therefore provides **project scope and references**, not forced duplication or project ownership.
+
+For example:
+
+    TcTIM ProjectGraph
+        |
+        +--> Sabueso SourceAssertion SA42
+        +--> Praxis Protocol P12
+
+SA42 and P12 may remain globally/shared owned objects while the project records which version/snapshot it relied on.
+
+A project-specific snapshot/reference must preserve enough identity/version information to reconstruct the historical dependency without converting shared Knowledge/Know-how into project-owned copies.
+
+> **Project membership/reference does not imply semantic ownership or physical containment.**
+
+## 24. ProjectGraph semantic ownership
+
+Nextia owns the semantic Discovery objects that give the ProjectGraph scientific meaning, including Questions, Hypotheses, Strategies, Campaigns, project Decisions, Observations, Evidence, and Conclusions.
+
+The ProjectGraph may contain typed references to externally owned objects such as SourceAssertions, Protocols, ExecutionPlans, Runs, Results, Artifacts, molecular systems, and Candidates when those objects are owned elsewhere.
+
+A technical event or Run does not become a Nextia semantic object merely because it is referenced by the graph.
+
+Conversely, the ProjectRecord does not become the owner of a Decision or Conclusion merely because it records its creation/version/integrity.
+
+## 25. EventLedger versus ProjectGraph
+
+The EventLedger and ProjectGraph have different authority.
+
+- **ProjectGraph** is the semantic scientific state/history of Discovery.
+- **EventLedger** is chronological provenance that records consequential changes/actions across the project.
+
+For example:
+
+    Nextia creates Decision D17
+            |
+            +--> ProjectGraph gains/versions D17
+            |
+            +--> EventLedger records DecisionCreated(D17)
+
+The event records that a semantic change occurred; it does not define the scientific meaning of D17.
+
+Rebuilding a ProjectGraph view from events may be technically possible in a future implementation, but Architecture 1.0 does not require event sourcing as the semantic storage model.
+
+> **EventLedger records change; ProjectGraph owns Discovery meaning.**
+
+## 26. Cross-component consistency and incomplete operations
+
+A scientific operation may span several components:
+
+    Decision
+       ↓
+    ExecutionPlan
+       ↓
+    Run
+       ↓
+    Result
+       ↓
+    Observation
+
+Failures may occur between any two steps.
+
+MOLI must not hide partial cross-component state or falsely imply atomic scientific completion.
+
+Cross-component orchestration should therefore support explicit lifecycle/status and correlation identity sufficient to distinguish:
+
+- requested;
+- accepted;
+- started;
+- partially completed;
+- completed;
+- failed;
+- cancelled;
+- superseded/abandoned.
+
+Where one logical action produces objects in several components, those records should share a correlation/operation identity or equivalent linkage.
+
+Compensation/recovery must create new provenance rather than deleting evidence of the failed partial operation.
+
+A ProjectGraph relationship that depends on an external Result should not be treated as satisfied until the referenced Result exists in an admissible state.
+
+The exact transaction/distributed-consistency mechanism is implementation-open.
+
+> **MOLI requires auditable consistency, not fictitious distributed atomicity.**
+
+## 27. Reference resolution and unavailable objects
+
+Stable references may temporarily or permanently fail to resolve because of authorization, retention, remote-service failure, archival state, or deleted/unavailable external content.
+
+The ProjectGraph and ProjectRecord must preserve the reference and its historical identity even when current content cannot be resolved.
+
+Consumers should distinguish:
+
+    resolvable
+    unavailable
+    unauthorized
+    archived/offline
+    externally removed
+    unknown
+
+from:
+
+    object never existed
+
+This is necessary for long-lived audit and honest replay preflight.
+
+
+## 28. Design principles
 
 > **ProjectGraph is the evolving scientific graph of a DiscoveryProject and is owned by Nextia.**
 
@@ -627,3 +742,11 @@ These are complementary responsibilities, not competing stores.
 > **The ProjectGraph may continue to grow after Conclusions; new Knowledge/Evidence can open new branches without rewriting history.**
 
 > **The scientific project must remain auditable and replayable without the LLM that helped orchestrate it.**
+
+> **Project membership/reference does not imply semantic ownership or physical containment.**
+
+> **EventLedger records change; ProjectGraph owns Discovery meaning.**
+
+> **MOLI requires auditable cross-component consistency and explicit partial/failure states rather than fictitious distributed atomicity.**
+
+> **Stable historical references remain meaningful even when their current targets are unavailable or unauthorized.**
