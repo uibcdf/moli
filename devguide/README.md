@@ -35,3 +35,8 @@ Cross-repository byte-level guide synchronization is currently a checked convent
 - `templates/` — shared reporting templates.
 
 GitHub issues are the stable identity for reported work. The concise component-facing summary is the root `MOLI_GUIDE.md`.
+
+
+## Cross-platform scientific communication
+
+[`SCIENTIFIC_COMMUNICATION.md`](SCIENTIFIC_COMMUNICATION.md) records the long-term MOLI capability for producing traceable ProjectBriefings, ProgressBriefs, and ProjectReports from Scientific Context, modeling, and Discovery state, with multiple renderings such as written dossiers, slides, interactive reports, and future narrated video.
