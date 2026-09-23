@@ -1,10 +1,38 @@
-schema_version = "0.1"
+schema_version = "0.2"
 
 [platform]
 name = "MOLI"
 repository = "uibcdf/moli"
 architecture = "architecture_1.0"
 governance_model = "component-governance-with-internal-delegation"
+
+[governance]
+repository = "uibcdf/moli"
+guide = "MOLI_GUIDE.md"
+reporting_protocol = "devguide/governance/reporting_protocol.md"
+
+[policies.reporting_lifecycle]
+status = "accepted"
+applies_to = ["direct-component"]
+normative = "devguide/governance/reporting_protocol.md"
+open_statuses = ["open", "active", "blocked", "partial"]
+closed_statuses = ["resolved", "withdrawn", "superseded"]
+issue_identity = true
+archive_mode = "repository-local"
+
+[policies.cross_component_feedback]
+status = "accepted"
+applies_to = ["direct-component"]
+normative = "devguide/governance/cross_component_feedback.md"
+provider_report_required = true
+consumer_cross_link_required = true
+
+[policies.component_guide]
+status = "accepted"
+applies_to = ["direct-component"]
+filename = "MOLI_GUIDE.md"
+copy_mode = "byte-identical"
+agents_reference_required = true
 
 [components.sabueso]
 repository = "uibcdf/sabueso"
