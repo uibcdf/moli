@@ -79,7 +79,17 @@ def validate_registry(root: Path) -> list[str]:
     if missing:
         errors.append("moli.toml: missing components: " + ", ".join(missing))
     policies = data.get("policies", {})
-    for name in ("reporting_lifecycle", "cross_component_feedback", "component_guide"):
+    for name in (
+        "reporting_lifecycle",
+        "cross_component_feedback",
+        "component_guide",
+        "python",
+        "python_ci",
+        "python_quality",
+        "release_version",
+        "repository_badges",
+        "zenodo_archival",
+    ):
         if policies.get(name, {}).get("status") != "accepted":
             errors.append(f"moli.toml: policy {name} is not accepted")
     return errors
