@@ -2,7 +2,9 @@
 
 ## Status
 
-**Scribe** is the working name for the low-friction provenance/instrumentation mechanism that may implement important parts of the MOLI Provenance Contract.
+**Scribe** is the working name for a lightweight scientific recording and provenance layer for reproducible computational work. MOLI uses Scribe as its instrumentation substrate and enriches it with project, knowledge, methodology, discovery, authority, and cross-component context.
+
+Scribe may therefore be useful both **standalone** and **inside MOLI**.
 
 Scribe is an **implementation direction**, not a new scientific component alongside Sabueso, Praxis, Nextia, or MolSysSuite, and this document does not yet freeze a package/repository boundary or exact Python API.
 
@@ -73,6 +75,324 @@ For example, TopoMT may produce Result R71 and Scribe may record the complete op
 > **Nextia owns Discovery meaning; Scribe records the provenance and evolution of that meaning in the ProjectGraph.**
 
 Scribe therefore remains active when work enters Nextia. It can instrument the explicit operation that creates an Observation, links Evidence to a Hypothesis, records a Decision, rejects/supersedes a Hypothesis, or otherwise mutates the ProjectGraph. What Scribe must not do is invent that Discovery meaning merely because it observed an upstream computation.
+
+
+
+## Standalone reproducibility and MOLI-enriched provenance
+
+Scribe should not exist only as hidden MOLI plumbing.
+
+A researcher using MolSysSuite components independently should be able to activate Scribe and obtain a reproducible scientific record without installing or adopting the MOLI platform.
+
+Conceptually:
+
+                    Scribe
+          scientific recording runtime
+                      |
+           +----------+----------+
+           |                     |
+           v                     v
+      standalone mode         MOLI mode
+           |                     |
+    researcher records       ProjectContext
+    scientific operations         |
+           |                     v
+           v                ProjectRecord
+    standalone record         EventLedger
+    replay metadata          ProjectGraph changes
+
+The same instrumented component APIs should work in both modes.
+
+### Standalone example
+
+Conceptually:
+
+    import scribe
+
+    scribe.start("tim_analysis")
+
+    system = molsysmt.convert(...)
+    pockets = topomt.detect_pockets(system)
+    features = topomt.characterize(pockets)
+
+    record = scribe.stop()
+
+Scribe may capture:
+
+    MolSysMT / TopoMT versions
+    operation identities
+    inputs / stable references
+    parameters
+    environment
+    operation dependencies
+    outputs / Artifacts
+    hashes
+    timestamps
+    warnings / failures
+
+This has scientific value independently of MOLI.
+
+### Cross-component standalone records
+
+A standalone recording may span several instrumented libraries:
+
+    ScientificRecord
+        |
+        +-- OP1 MolSysMT.convert
+        |       input -> output MS1
+        |
+        +-- OP2 TopoMT.detect_pockets
+        |       consumes MS1
+        |       produces R1
+        |
+        +-- OP3 TopoMT.characterize
+                consumes R1
+                produces R2
+
+Scribe can therefore improve reproducibility across MolSysSuite even when no MOLI ProjectGraph or ProjectRecord exists.
+
+## Lightweight runtime and dependency direction
+
+Instrumented scientific libraries must not depend on MOLI merely to use Scribe.
+
+A desirable dependency direction is conceptually:
+
+    TopoMT -------> Scribe
+    MolSysMT -----> Scribe
+    Sabueso ------> Scribe
+    Nextia -------> Scribe
+
+    MOLI ---------> Scribe
+    MOLI ---------> Sabueso / Nextia / MolSysSuite / ...
+
+and not:
+
+    TopoMT -------> MOLI
+
+Scribe should therefore be capable of becoming a lightweight MOLI-independent runtime/distribution if implementation experience supports that boundary.
+
+Its core concerns may include:
+
+    operation identity
+    recording sessions
+    context propagation
+    capture
+    serialization / stable references
+    redaction
+    lifecycle
+    correlation
+    events
+    routing hooks
+
+MOLI can then enrich/configure Scribe with richer project semantics, profiles, destinations, authorization, and ProjectRecord/EventLedger integration.
+
+The final repository/package boundary remains open until tested.
+
+## Dormant instrumentation
+
+A component may remain instrumented even when no recorder is active.
+
+Conceptually:
+
+    instrumented function called
+              |
+              v
+      active recording context?
+          /             \
+        no               yes
+        |                 |
+        v                 v
+    execute normally   capture + route
+
+The inactive path should have negligible practical overhead and should not change scientific behavior.
+
+This allows ordinary users to call:
+
+    topomt.detect_pockets(system)
+
+without knowing that the function is Scribe-aware.
+
+Instrumentation is activated only when a recording session/context/backend is active.
+
+## RecordingSession
+
+The activation mechanisms should converge on one underlying concept: a **RecordingSession** or equivalent runtime state.
+
+A session may carry:
+
+    recording identity
+    name / label
+    start / stop time
+    active context
+    correlation state
+    recording profiles
+    routing/backend configuration
+    lifecycle/status
+    integrity state
+
+The exact object/API is not frozen.
+
+Different user interfaces should open/configure/close the same underlying recording mechanism.
+
+## Activation mode 1 — start / stop
+
+For notebooks and exploratory scientific work, explicit recorder-style activation should be first-class.
+
+Conceptually:
+
+    scribe.start("my_analysis")
+
+    ... scientific work across cells/functions ...
+
+    record = scribe.stop()
+
+This matches the mental model of switching on a recorder, doing the work, and switching it off.
+
+It is particularly appropriate for Jupyter because a Python `with` block is inconvenient across multiple notebook cells.
+
+All instrumented semantic operations between start and stop are associated with the active RecordingSession according to context/routing policy.
+
+### Interrupted sessions
+
+A missing `stop()` must not erase provenance.
+
+If the kernel/process fails or the user forgets to stop recording, the session should remain detectable as something such as:
+
+    interrupted
+    incomplete
+    unclosed
+
+rather than appearing as a successfully closed complete record.
+
+Recovery/reconciliation behavior remains an implementation question.
+
+## Activation mode 2 — context manager
+
+Scripts and bounded operations may prefer:
+
+    with scribe.recording("my_analysis"):
+        ...
+
+The context manager provides reliable cleanup/finalization semantics when exceptions occur.
+
+An exception can close the session with an appropriate failed/partial status rather than losing the record.
+
+The context manager is a convenience interface, not the mandatory Scribe usage pattern.
+
+## Activation mode 3 — MOLI-managed recording
+
+Inside MOLI, users should not normally need to manually start Scribe for every operation.
+
+Opening/executing a MOLI project/run may activate and configure the RecordingSession automatically.
+
+Conceptually:
+
+    project = moli.open_project(...)
+
+    ... project execution ...
+
+MOLI supplies the richer active context:
+
+    Project
+    Workspace
+    Campaign / work scope
+    ExecutionPlan
+    Run
+    actor
+    authorization
+    correlation
+    routing
+    EventLedger
+    ProjectRecord
+
+The scientific component APIs remain the same ones used standalone.
+
+Thus:
+
+    standalone:
+        researcher explicitly activates Scribe
+
+    MOLI:
+        platform activates/configures Scribe
+
+The recording substrate remains shared.
+
+## Pause and resume
+
+Standalone recording may eventually support:
+
+    scribe.pause()
+    ...
+    scribe.resume()
+
+This can be useful during exploratory notebook work when a researcher deliberately does not want selected activity included in the active scientific recording.
+
+However, pause/resume must never create invisible gaps.
+
+Scribe should record explicit lifecycle events such as:
+
+    RecordingPaused
+    RecordingResumed
+
+and the resulting record must reveal that recording was discontinuous.
+
+Under a MOLI `strict` recording policy, pause may be forbidden for a Run or other consequential scope whose provenance is required to be complete.
+
+The exact policy is open.
+
+## Standalone record import into MOLI
+
+A standalone Scribe record may later become useful inside a MOLI project.
+
+Conceptually:
+
+    standalone Scribe record
+            |
+            | import / attach / reference
+            v
+       MOLI ProjectRecord
+            |
+            v
+    Nextia ProjectGraph interpretation
+
+For example, computational Results generated earlier with MolSysMT + TopoMT + Scribe may already have robust execution provenance.
+
+A later MOLI project may reference/import that record, after which Nextia can create project-specific Observations, Evidence, Decisions, or other Discovery semantics without rewriting the original execution history.
+
+Import does not automatically turn standalone Results into Evidence.
+
+The exact import/reference mechanism and trust/integrity validation remain open.
+
+## One recording substrate, different context richness
+
+Standalone Scribe and MOLI-integrated Scribe must not become two incompatible provenance systems.
+
+Conceptually:
+
+    Scribe standalone
+        operation
+        inputs
+        parameters
+        environment
+        outputs
+        dependencies
+        lifecycle
+
+    Scribe inside MOLI
+        all of the above
+            +
+        Project
+        Campaign / work scope
+        ExecutionPlan / Run
+        KnowledgeSnapshot references
+        Praxis references
+        Nextia ProjectGraph mutations
+        authorization
+        EventLedger
+        ProjectRecord
+
+MOLI enriches the context; it does not replace the underlying recording model.
+
 
 ## Instrumentation mechanisms
 
@@ -885,7 +1205,12 @@ Scribe should not become:
 
 Before freezing an API/package, Phase 1 pilots should help determine:
 
-- package/repository boundary: embedded MOLI infrastructure, `scribe`, `moli-scribe`, or another distribution;
+- package/repository boundary: lightweight independent `scribe`, MOLI-embedded infrastructure, `moli-scribe`, or another distribution;
+- standalone recording schema and persistence backend;
+- RecordingSession lifecycle and crash/interruption recovery;
+- inactive/no-recorder overhead;
+- standalone record import/reference into MOLI and integrity/trust validation;
+- pause/resume semantics and strict-policy restrictions;
 - decorator/context-manager/explicit API balance;
 - exact profile catalog;
 - component registration/discovery;
@@ -916,6 +1241,14 @@ Before freezing an API/package, Phase 1 pilots should help determine:
 > **Instrumentation should be low-friction but never silently violate semantic ownership, authorization, or confidentiality.**
 
 > **Scribe should make provenance easier to do correctly than to omit, while keeping component APIs independently usable outside MOLI.**
+
+> **Scribe is useful standalone for reproducible scientific computation; MOLI enriches the same recording substrate with project and Discovery context.**
+
+> **Instrumented component APIs remain normal standalone APIs when no recording context is active.**
+
+> **Start/stop, context-manager recording, and MOLI-managed activation are interfaces to the same underlying RecordingSession concept.**
+
+> **Recording gaps, interruption, pause, and provenance failure must be explicit rather than silently disappearing from the record.**
 
 > **Structured records come before human-readable reporting.**
 
