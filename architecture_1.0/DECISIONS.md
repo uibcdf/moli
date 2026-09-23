@@ -92,3 +92,14 @@ The ProjectGraph may continue to grow after Conclusions. Historical states/relea
 Replay uses recorded Decisions/ExecutionPlans and does not require new LLM reasoning; rerun creates a new discovery trajectory.
 
 Scientific Communication is a derived view over the ProjectGraph/ProjectRecord and is not the authoritative scientific record.
+
+
+## Project graph, shared references, and consistency
+
+Nextia owns the semantic Discovery objects of the ProjectGraph. EventLedger records consequential change but does not replace ProjectGraph semantic authority.
+
+Project-scoped references to shared Sabueso/Praxis objects do not imply project ownership or physical duplication.
+
+Cross-component scientific operations preserve explicit lifecycle/partial/failure/cancellation states and correlation identity. Architecture 1.0 requires auditable consistency rather than pretending distributed operations are atomically completed.
+
+Stable historical references remain part of the record even when their current targets are unavailable, unauthorized, archived, or externally removed.
