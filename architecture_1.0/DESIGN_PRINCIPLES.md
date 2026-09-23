@@ -47,3 +47,8 @@
 44. Notebooks are human orchestration documents, not the authoritative ProjectRecord.
 45. Scientific Communication is derived from the ProjectGraph and ProjectRecord; reports, slides, and videos are not the source of truth.
 46. Replay follows the recorded trajectory without new scientific reasoning; rerun creates a new trajectory and may make different decisions.
+
+47. Project scope/reference to shared Sabueso/Praxis objects does not imply project ownership or physical duplication.
+48. Nextia owns ProjectGraph Discovery semantics; EventLedger records consequential changes but is not the semantic source of Discovery meaning.
+49. Cross-component workflows must preserve explicit partial/failure/cancellation states and correlation identity; MOLI requires auditable consistency rather than fictitious distributed atomicity.
+50. Stable historical references remain meaningful when current targets are unavailable, unauthorized, archived, or externally removed; resolution state must not be confused with historical nonexistence.
