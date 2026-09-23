@@ -1,0 +1,36 @@
+schema_version = "0.1"
+
+[platform]
+name = "MOLI"
+repository = "uibcdf/moli"
+architecture = "architecture_1.0"
+governance_model = "direct-plus-delegated"
+
+[components.sabueso]
+repository = "uibcdf/sabueso"
+domain = "scientific-context"
+role = "knowledge"
+governance = "direct"
+
+[components.praxis]
+repository = "uibcdf/praxis"
+domain = "scientific-context"
+role = "methodology"
+governance = "direct"
+
+[components.nextia]
+repository = "uibcdf/nextia"
+domain = "scientific-context"
+role = "discovery"
+governance = "direct"
+
+[components.moli-agent]
+repository = "uibcdf/moli-agent"
+domain = "reasoning"
+role = "scientific-agent"
+governance = "direct"
+
+[domains.molsyssuite]
+repository = "uibcdf/molsyssuite"
+domain = "molecular-modeling"
+governance = "delegated"
