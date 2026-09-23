@@ -322,7 +322,7 @@ Components may emit consequential events into the MOLI EventLedger.
 
 The exact interface is not frozen.
 
-A current implementation direction is **Recorda** (originally designed under the working name Scribe), documented from the MOLI integration perspective in [`../devguide/SCRIBE.md`](../devguide/SCRIBE.md). Recorda provides low-friction semantic instrumentation using decorators, propagated context, explicit recording APIs, safe serializers/redaction, recording profiles, event emission, and ownership-aware routing. Recorda is an independent scientific recording/provenance library rather than a new MOLI scientific component; MOLI enriches it with ProjectContext, ProjectRecord/EventLedger, Nextia ProjectGraph, authority, and replay context.
+A current implementation direction is **Recorda** (originally designed under the working name Scribe), documented from the MOLI integration perspective in [`../devguide/RECORDA.md`](../devguide/RECORDA.md). Recorda provides low-friction semantic instrumentation using decorators, propagated context, explicit recording APIs, safe serializers/redaction, recording profiles, event emission, and ownership-aware routing. Recorda is an independent scientific recording/provenance library rather than a new MOLI scientific component; MOLI enriches it with ProjectContext, ProjectRecord/EventLedger, Nextia ProjectGraph, authority, and replay context.
 
 The goal is that MOLI can ask of an object:
 
