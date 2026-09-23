@@ -45,3 +45,8 @@ GitHub issues are the stable identity for reported work. The concise component-f
 ## Reproducibility, audit, trace, and replay
 
 [`REPRODUCIBILITY_AUDIT_AND_REPLAY.md`](REPRODUCIBILITY_AUDIT_AND_REPLAY.md) records the cross-platform requirement that completed MOLI projects remain independently auditable and that their recorded computational trajectories can be replayed without requiring an LLM/agent to reason again. It distinguishes Decision, ExecutionPlan, Run, scientific interpretation, snapshots/manifests, and the separate operations Audit, Trace, Replay, and Rerun.
+
+
+## Scribe provenance instrumentation
+
+[`SCRIBE.md`](SCRIBE.md) records the implementation direction for **Scribe**, MOLI's low-friction provenance recorder/instrumentation mechanism. Scribe combines semantic recording profiles, project-context propagation, safe input/output capture, event emission, and ownership-aware routing so component APIs can contribute to ProjectRecord/EventLedger without becoming dependent on MOLI Agent or duplicating scientific ownership.
