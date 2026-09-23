@@ -32,3 +32,7 @@
 30. Object identity, version/revision, content location, resolution, and authorization are distinct concerns where scientifically relevant.
 31. Remote or distributed execution must preserve scientific semantics, provenance, reproducibility information, and auditable references.
 32. Infrastructure should evolve around the scientific model rather than forcing deployment-specific concepts into scientific semantics.
+33. Semantic ownership, visibility, authorization, and publication status are independent concerns.
+34. Public/open-source frameworks may operate on private, proprietary, embargoed, or otherwise controlled scientific content.
+35. LEARN and promotion into Sabueso/Praxis do not imply publication; `promotion ≠ publication`.
+36. Context Assembly and remote execution must respect disclosure policy and trust boundaries.
