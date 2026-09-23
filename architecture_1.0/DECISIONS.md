@@ -72,3 +72,23 @@ Sabueso: SourceAssertion. Nextia: Evidence. Cross-cutting: Provenance.
 `SourceAssertion ≠ Evidence ≠ Provenance`.
 
 Other frozen boundaries remain: Capability≠Protocol; Project≠Engine; Strategy≠Protocol; Campaign≠Protocol; Artifact≠Result≠Observation≠Evidence; graph-shaped Discovery; Focus+Goal; contextual roles; stable references; auditable history.
+
+
+## Project-level architecture
+
+A real MOLI project distinguishes four complementary concepts:
+
+- **MOLI Project Workspace** — logical project-scoped organization/access context.
+- **Nextia ProjectGraph** — evolving structured scientific graph and continuity of the DiscoveryProject.
+- **MOLI ProjectRecord** — complete cross-platform provenance/history required for audit, traceability and replay.
+- **MOLI ProjectStore** — physical storage backend(s).
+
+`ProjectGraph ≠ ProjectRecord ≠ ProjectWorkspace ≠ ProjectStore`.
+
+Nextia owns scientific continuity; MOLI provenance infrastructure composes provenance continuity. Components retain semantic ownership of their objects and participate through stable references and a common provenance contract rather than arbitrary writes into a shared scientific megastore.
+
+The ProjectGraph may continue to grow after Conclusions. Historical states/releases remain reconstructable.
+
+Replay uses recorded Decisions/ExecutionPlans and does not require new LLM reasoning; rerun creates a new discovery trajectory.
+
+Scientific Communication is a derived view over the ProjectGraph/ProjectRecord and is not the authoritative scientific record.
