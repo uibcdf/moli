@@ -47,6 +47,6 @@ GitHub issues are the stable identity for reported work. The concise component-f
 [`REPRODUCIBILITY_AUDIT_AND_REPLAY.md`](REPRODUCIBILITY_AUDIT_AND_REPLAY.md) records the cross-platform requirement that completed MOLI projects remain independently auditable and that their recorded computational trajectories can be replayed without requiring an LLM/agent to reason again. It distinguishes Decision, ExecutionPlan, Run, scientific interpretation, snapshots/manifests, and the separate operations Audit, Trace, Replay, and Rerun.
 
 
-## Scribe provenance instrumentation
+## Recorda provenance instrumentation (formerly Scribe)
 
-[`SCRIBE.md`](SCRIBE.md) records the implementation direction for **Scribe**, MOLI's low-friction provenance recorder/instrumentation mechanism. Scribe combines semantic recording profiles, project-context propagation, safe input/output capture, event emission, and ownership-aware routing so component APIs can contribute to ProjectRecord/EventLedger without becoming dependent on MOLI Agent or duplicating scientific ownership.
+[`SCRIBE.md`](SCRIBE.md) is intentionally retained as MOLI's integration specification for **Recorda** (originally designed under the working name Scribe). It explains how Recorda instrumentation, project-context propagation, safe capture, semantic profiles, event emission, and ownership-aware routing contribute to ProjectRecord/EventLedger and Nextia ProjectGraph evolution. The standalone/general design is maintained in `uibcdf/recorda`.
