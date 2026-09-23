@@ -27,3 +27,8 @@
 25. Discovery improves knowledge and methodology.
 26. Avoid pharmacology-specific core assumptions.
 27. AI-generated methodology is not automatically validated methodology.
+28. Scientific architecture and deployment topology are independent concerns; Architecture 1.0 is local-first and remote-ready without prescribing microservices.
+29. Important persistent scientific objects should be serializable and referencable, with stable identity independent of transient process, filesystem, database, machine, or service location.
+30. Object identity, version/revision, content location, resolution, and authorization are distinct concerns where scientifically relevant.
+31. Remote or distributed execution must preserve scientific semantics, provenance, reproducibility information, and auditable references.
+32. Infrastructure should evolve around the scientific model rather than forcing deployment-specific concepts into scientific semantics.
