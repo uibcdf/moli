@@ -278,6 +278,10 @@ The ProjectReport makes the resulting scientific history and learning understand
 
 None of these artifacts performs the LEARN promotion automatically. Communication and promotion remain separate operations.
 
+## Authoritative scientific record
+
+Scientific Communication consumes the persistent project record defined in [`REPRODUCIBILITY_AUDIT_AND_REPLAY.md`](REPRODUCIBILITY_AUDIT_AND_REPLAY.md). Briefings, progress reports, final reports, slides, and videos are derived views over that record; they are not the source of truth and must not be required to reconstruct project history.
+
 ## Structured artifacts, not new epistemic primitives
 
 ProjectBriefing, ProgressBrief, and ProjectReport are **communication artifacts**.
