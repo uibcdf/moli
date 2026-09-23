@@ -27,6 +27,7 @@ Conceptual interoperability does not imply circular package dependencies.
 - `DEPLOYMENT_MODEL.md` — deployment-independent, local-first/remote-ready evolution from local resources to shared, remote, distributed, or hybrid infrastructure.
 - `OBJECT_IDENTITY_AND_PORTABILITY.md` — serialization, stable identity, referencability, versioning, provenance, and location-independent scientific objects.
 - `VISIBILITY_AND_CONFIDENTIALITY.md` — separation of semantic ownership from visibility/publication, enabling open infrastructure with private or controlled scientific context and discovery programs.
+- `PROJECT_ARCHITECTURE.md` — project-level organization: MOLI Project Workspace, Nextia ProjectGraph, MOLI ProjectRecord, ProjectStore, provenance contract, and their relationship to audit/replay/communication.
 
 These documents refine consequences of the frozen architecture; they do not introduce a new top-level structural boundary.
 
