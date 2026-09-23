@@ -1,14 +1,14 @@
-# Scribe — MOLI Provenance Instrumentation
+# Scribe / Recorda — MOLI Provenance Integration
 
-## Status
+## Status and naming
 
-**Scribe** is the working name for a lightweight scientific recording and provenance layer for reproducible computational work. MOLI uses Scribe as its instrumentation substrate and enriches it with project, knowledge, methodology, discovery, authority, and cross-component context.
+The mechanism originally designed in MOLI under the working name **Scribe** is now implemented conceptually as the independent library **Recorda** (`uibcdf/recorda`).
 
-Scribe may therefore be useful both **standalone** and **inside MOLI**.
+This file is intentionally retained in MOLI. It is the MOLI-side architectural/integration specification: a reader of MOLI should be able to understand how scientific operations and semantic changes are recorded, routed into the ProjectRecord/EventLedger, and connected to Nextia ProjectGraph evolution without needing to reconstruct that design from another repository.
 
-Scribe is an **implementation direction**, not a new scientific component alongside Sabueso, Praxis, Nextia, or MolSysSuite, and this document does not yet freeze a package/repository boundary or exact Python API.
+The standalone/general Recorda design is canonical in the Recorda repository. MOLI-specific ownership, routing, ProjectContext, ProjectGraph, ProjectRecord, and replay requirements remain documented here.
 
-The name evokes a scribe whose role is to observe and faithfully record what happens without deciding what the science means.
+> **Recorda is the recording substrate; MOLI supplies the richer project and Discovery context.**
 
 ## Purpose
 
@@ -16,7 +16,7 @@ MOLI requires distributed components to preserve enough structured provenance fo
 
 Requiring every scientific function to hand-write this infrastructure would create duplicated boilerplate and inconsistent records.
 
-Scribe should provide a common, low-friction way to instrument **scientifically meaningful operations** across MOLI components.
+Recorda should provide a common, low-friction way to instrument **scientifically meaningful operations** across MOLI components.
 
 Conceptually:
 
@@ -28,7 +28,7 @@ Conceptually:
     DockingMT ------|
     ...             |
                     v
-                 Scribe
+                 Recorda
        context + instrumentation
        profiles + safe capture
        routing + event emission
@@ -42,9 +42,9 @@ Conceptually:
 
 Component-owned scientific objects remain owned by their components.
 
-## Scribe records; it does not interpret
+## Recorda records; it does not interpret
 
-Scribe's central boundary is:
+Recorda's central boundary is:
 
     AUTOMATIC / STRUCTURED RECORDING
 
@@ -66,27 +66,27 @@ versus:
     whether it supports/contradicts
     what Decision should follow
 
-The second category belongs to Nextia Discovery semantics and must not be inferred merely because Scribe observed a computation.
+The second category belongs to Nextia Discovery semantics and must not be inferred merely because Recorda observed a computation.
 
-For example, TopoMT may produce Result R71 and Scribe may record the complete operation. Only an explicit Nextia operation should create an Observation or Evidence relationship saying what R71 means for a Hypothesis.
+For example, TopoMT may produce Result R71 and Recorda may record the complete operation. Only an explicit Nextia operation should create an Observation or Evidence relationship saying what R71 means for a Hypothesis.
 
-> **Components own scientific meaning; Scribe records consequential operations and semantic changes.**
+> **Components own scientific meaning; Recorda records consequential operations and semantic changes.**
 
-> **Nextia owns Discovery meaning; Scribe records the provenance and evolution of that meaning in the ProjectGraph.**
+> **Nextia owns Discovery meaning; Recorda records the provenance and evolution of that meaning in the ProjectGraph.**
 
-Scribe therefore remains active when work enters Nextia. It can instrument the explicit operation that creates an Observation, links Evidence to a Hypothesis, records a Decision, rejects/supersedes a Hypothesis, or otherwise mutates the ProjectGraph. What Scribe must not do is invent that Discovery meaning merely because it observed an upstream computation.
+Recorda therefore remains active when work enters Nextia. It can instrument the explicit operation that creates an Observation, links Evidence to a Hypothesis, records a Decision, rejects/supersedes a Hypothesis, or otherwise mutates the ProjectGraph. What Recorda must not do is invent that Discovery meaning merely because it observed an upstream computation.
 
 
 
 ## Standalone reproducibility and MOLI-enriched provenance
 
-Scribe should not exist only as hidden MOLI plumbing.
+Recorda should not exist only as hidden MOLI plumbing.
 
-A researcher using MolSysSuite components independently should be able to activate Scribe and obtain a reproducible scientific record without installing or adopting the MOLI platform.
+A researcher using MolSysSuite components independently should be able to activate Recorda and obtain a reproducible scientific record without installing or adopting the MOLI platform.
 
 Conceptually:
 
-                    Scribe
+                    Recorda
           scientific recording runtime
                       |
            +----------+----------+
@@ -107,17 +107,17 @@ The same instrumented component APIs should work in both modes.
 
 Conceptually:
 
-    import scribe
+    import recorda
 
-    scribe.start("tim_analysis")
+    recorda.start("tim_analysis")
 
     system = molsysmt.convert(...)
     pockets = topomt.detect_pockets(system)
     features = topomt.characterize(pockets)
 
-    record = scribe.stop()
+    record = recorda.stop()
 
-Scribe may capture:
+Recorda may capture:
 
     MolSysMT / TopoMT versions
     operation identities
@@ -149,27 +149,27 @@ A standalone recording may span several instrumented libraries:
                 consumes R1
                 produces R2
 
-Scribe can therefore improve reproducibility across MolSysSuite even when no MOLI ProjectGraph or ProjectRecord exists.
+Recorda can therefore improve reproducibility across MolSysSuite even when no MOLI ProjectGraph or ProjectRecord exists.
 
 ## Lightweight runtime and dependency direction
 
-Instrumented scientific libraries must not depend on MOLI merely to use Scribe.
+Instrumented scientific libraries must not depend on MOLI merely to use Recorda.
 
 A desirable dependency direction is conceptually:
 
-    TopoMT -------> Scribe
-    MolSysMT -----> Scribe
-    Sabueso ------> Scribe
-    Nextia -------> Scribe
+    TopoMT -------> Recorda
+    MolSysMT -----> Recorda
+    Sabueso ------> Recorda
+    Nextia -------> Recorda
 
-    MOLI ---------> Scribe
+    MOLI ---------> Recorda
     MOLI ---------> Sabueso / Nextia / MolSysSuite / ...
 
 and not:
 
     TopoMT -------> MOLI
 
-Scribe should therefore be capable of becoming a lightweight MOLI-independent runtime/distribution if implementation experience supports that boundary.
+Recorda should therefore be capable of becoming a lightweight MOLI-independent runtime/distribution if implementation experience supports that boundary.
 
 Its core concerns may include:
 
@@ -184,7 +184,7 @@ Its core concerns may include:
     events
     routing hooks
 
-MOLI can then enrich/configure Scribe with richer project semantics, profiles, destinations, authorization, and ProjectRecord/EventLedger integration.
+MOLI can then enrich/configure Recorda with richer project semantics, profiles, destinations, authorization, and ProjectRecord/EventLedger integration.
 
 The final repository/package boundary remains open until tested.
 
@@ -210,7 +210,7 @@ This allows ordinary users to call:
 
     topomt.detect_pockets(system)
 
-without knowing that the function is Scribe-aware.
+without knowing that the function is Recorda-aware.
 
 Instrumentation is activated only when a recording session/context/backend is active.
 
@@ -240,11 +240,11 @@ For notebooks and exploratory scientific work, explicit recorder-style activatio
 
 Conceptually:
 
-    scribe.start("my_analysis")
+    recorda.start("my_analysis")
 
     ... scientific work across cells/functions ...
 
-    record = scribe.stop()
+    record = recorda.stop()
 
 This matches the mental model of switching on a recorder, doing the work, and switching it off.
 
@@ -270,18 +270,18 @@ Recovery/reconciliation behavior remains an implementation question.
 
 Scripts and bounded operations may prefer:
 
-    with scribe.recording("my_analysis"):
+    with recorda.recording("my_analysis"):
         ...
 
 The context manager provides reliable cleanup/finalization semantics when exceptions occur.
 
 An exception can close the session with an appropriate failed/partial status rather than losing the record.
 
-The context manager is a convenience interface, not the mandatory Scribe usage pattern.
+The context manager is a convenience interface, not the mandatory Recorda usage pattern.
 
 ## Activation mode 3 — MOLI-managed recording
 
-Inside MOLI, users should not normally need to manually start Scribe for every operation.
+Inside MOLI, users should not normally need to manually start Recorda for every operation.
 
 Opening/executing a MOLI project/run may activate and configure the RecordingSession automatically.
 
@@ -310,10 +310,10 @@ The scientific component APIs remain the same ones used standalone.
 Thus:
 
     standalone:
-        researcher explicitly activates Scribe
+        researcher explicitly activates Recorda
 
     MOLI:
-        platform activates/configures Scribe
+        platform activates/configures Recorda
 
 The recording substrate remains shared.
 
@@ -321,15 +321,15 @@ The recording substrate remains shared.
 
 Standalone recording may eventually support:
 
-    scribe.pause()
+    recorda.pause()
     ...
-    scribe.resume()
+    recorda.resume()
 
 This can be useful during exploratory notebook work when a researcher deliberately does not want selected activity included in the active scientific recording.
 
 However, pause/resume must never create invisible gaps.
 
-Scribe should record explicit lifecycle events such as:
+Recorda should record explicit lifecycle events such as:
 
     RecordingPaused
     RecordingResumed
@@ -348,7 +348,7 @@ A completed standalone RecordingSession should expose a durable **ScientificReco
 
 The exact class/API name is not frozen.
 
-Its purpose is to make Scribe useful for reproducibility even when no MOLI project exists.
+Its purpose is to make Recorda useful for reproducibility even when no MOLI project exists.
 
 Conceptually, a standalone record should support capabilities such as:
 
@@ -397,7 +397,7 @@ Answer computational provenance questions such as:
     What failed or was retried?
     What outputs were produced?
 
-Standalone Scribe audit does not reconstruct scientific rationale that was never recorded by an owning semantic component.
+Standalone Recorda audit does not reconstruct scientific rationale that was never recorded by an owning semantic component.
 
 ### Verify
 
@@ -411,7 +411,7 @@ Large/external Artifacts may remain referenced according to the record/store mod
 
 ### Computational replay
 
-Where the recorded operations, inputs, implementations, environments, and resources permit, Scribe may support replay of recorded computational operations.
+Where the recorded operations, inputs, implementations, environments, and resources permit, Recorda may support replay of recorded computational operations.
 
 Conceptually, future APIs might resemble:
 
@@ -425,11 +425,11 @@ Conceptually, future APIs might resemble:
 
 These names are illustrative only.
 
-## Scribe replay versus MOLI replay
+## Recorda replay versus MOLI replay
 
 The word `replay` has different scope depending on available context.
 
-### Scribe standalone replay
+### Recorda standalone replay
 
 Reproduces **recorded computation**.
 
@@ -441,7 +441,7 @@ For example:
         ↓
     TopoMT.characterize
 
-Scribe can know what operations were executed, their dependencies, inputs, parameters, environment, outputs, and failures.
+Recorda can know what operations were executed, their dependencies, inputs, parameters, environment, outputs, and failures.
 
 It does not inherently know why a scientist chose that computational path unless the relevant semantic owner explicitly recorded that information.
 
@@ -459,16 +459,16 @@ Reproduces a **recorded scientific project trajectory** using the richer Project
         ↓
     recorded project progression
 
-MOLI replay can therefore use Scribe computational provenance as part of a larger trajectory containing Nextia Discovery semantics, Praxis methodology, Sabueso Knowledge dependencies, approvals, and project context.
+MOLI replay can therefore use Recorda computational provenance as part of a larger trajectory containing Nextia Discovery semantics, Praxis methodology, Sabueso Knowledge dependencies, approvals, and project context.
 
 Thus:
 
-    Scribe standalone
+    Recorda standalone
         computational provenance
         +
         computational reproducibility
 
-    MOLI + Scribe
+    MOLI + Recorda
         computational provenance
         +
         scientific provenance
@@ -477,18 +477,18 @@ Thus:
         +
         project-level replay
 
-> **Scribe replay reproduces recorded computation; MOLI replay reproduces a recorded scientific project trajectory.**
+> **Recorda replay reproduces recorded computation; MOLI replay reproduces a recorded scientific project trajectory.**
 
 The two should share underlying execution/provenance machinery rather than becoming incompatible replay systems.
 
 
 ## Standalone record import into MOLI
 
-A standalone Scribe record may later become useful inside a MOLI project.
+A standalone Recorda record may later become useful inside a MOLI project.
 
 Conceptually:
 
-    standalone Scribe record
+    standalone Recorda record
             |
             | import / attach / reference
             v
@@ -497,7 +497,7 @@ Conceptually:
             v
     Nextia ProjectGraph interpretation
 
-For example, computational Results generated earlier with MolSysMT + TopoMT + Scribe may already have robust execution provenance.
+For example, computational Results generated earlier with MolSysMT + TopoMT + Recorda may already have robust execution provenance.
 
 A later MOLI project may reference/import that record, after which Nextia can create project-specific Observations, Evidence, Decisions, or other Discovery semantics without rewriting the original execution history.
 
@@ -507,11 +507,11 @@ The exact import/reference mechanism and trust/integrity validation remain open.
 
 ## One recording substrate, different context richness
 
-Standalone Scribe and MOLI-integrated Scribe must not become two incompatible provenance systems.
+Standalone Recorda and MOLI-integrated Recorda must not become two incompatible provenance systems.
 
 Conceptually:
 
-    Scribe standalone
+    Recorda standalone
         operation
         inputs
         parameters
@@ -520,7 +520,7 @@ Conceptually:
         dependencies
         lifecycle
 
-    Scribe inside MOLI
+    Recorda inside MOLI
         all of the above
             +
         Project
@@ -538,13 +538,13 @@ MOLI enriches the context; it does not replace the underlying recording model.
 
 ## Instrumentation mechanisms
 
-Scribe should support more than one instrumentation mechanism because not all scientific work has the same shape.
+Recorda should support more than one instrumentation mechanism because not all scientific work has the same shape.
 
 ### Decorators
 
 A natural Python mechanism for stable semantic API boundaries:
 
-    @scribe.record(profile="scientific_analysis")
+    @recorda.record(profile="scientific_analysis")
     def detect_pockets(...):
         ...
 
@@ -554,7 +554,7 @@ The decorator may capture invocation metadata before/after execution.
 
 Useful for establishing inherited project/execution scope:
 
-    with scribe.context(...):
+    with recorda.context(...):
         ...
 
 or conceptually:
@@ -572,7 +572,7 @@ The final syntax is open. Decorators are an important convenience mechanism, not
 
 ## Instrument semantic boundaries, not every function
 
-Scribe should not decorate every private helper.
+Recorda should not decorate every private helper.
 
 Avoid producing provenance noise for implementation details such as internal string normalization or trivial utility calls.
 
@@ -597,7 +597,7 @@ The exact catalog should remain small enough to preserve meaning.
 
 ## Recording profiles
 
-Scribe should use **semantic recording profiles**.
+Recorda should use **semantic recording profiles**.
 
 A profile answers:
 
@@ -671,11 +671,11 @@ May expect:
 - actor;
 - rationale/approval where semantically required.
 
-The profile does not transfer semantic ownership to Scribe.
+The profile does not transfer semantic ownership to Recorda.
 
 ## Component detection and explicit ownership metadata
 
-Scribe may automatically detect implementation metadata such as:
+Recorda may automatically detect implementation metadata such as:
 
     package
     module
@@ -720,7 +720,7 @@ may record:
     threshold:
         value
 
-Scribe must not blindly serialize arbitrary Python arguments.
+Recorda must not blindly serialize arbitrary Python arguments.
 
 Inputs may include:
 
@@ -733,7 +733,7 @@ Inputs may include:
 - database/service clients;
 - objects with sensitive fields.
 
-Scribe therefore requires pluggable **serializers/reference adapters** and **redaction policies**.
+Recorda therefore requires pluggable **serializers/reference adapters** and **redaction policies**.
 
 Large/persistent scientific objects should normally be represented by stable reference/version/hash rather than bulk serialization.
 
@@ -753,11 +753,11 @@ A recorded operation may capture/reference:
 - status;
 - exceptions/failures.
 
-The component remains responsible for creating the authoritative domain object. Scribe records its provenance and routing relationships.
+The component remains responsible for creating the authoritative domain object. Recorda records its provenance and routing relationships.
 
 ## Project context propagation
 
-Scribe should understand the currently active MOLI project scope without requiring every scientific API to add project-specific arguments.
+Recorda should understand the currently active MOLI project scope without requiring every scientific API to add project-specific arguments.
 
 A propagated context may include:
 
@@ -772,7 +772,7 @@ A propagated context may include:
     authorization scope
     record/event destinations
 
-The exact vocabulary must align with final Nextia/project semantics; for example, an `Experiment` object should not be introduced solely by Scribe if Nextia does not define it.
+The exact vocabulary must align with final Nextia/project semantics; for example, an `Experiment` object should not be introduced solely by Recorda if Nextia does not define it.
 
 Python `contextvars` or equivalent mechanisms may be appropriate for local propagation, but implementation is open.
 
@@ -805,7 +805,7 @@ Correlation identity is particularly important for partial failure and distribut
 
 ## Semantic routing
 
-Scribe should know **where different parts of a record belong**, based on active context, semantic profile, component ownership, and routing policy.
+Recorda should know **where different parts of a record belong**, based on active context, semantic profile, component ownership, and routing policy.
 
 Routing is distinct from capture.
 
@@ -862,7 +862,7 @@ Consider a TopoMT analysis whose Result is later interpreted inside Nextia.
 
     TopoMT.detect_pockets(...)
             |
-            | Scribe: scientific_analysis
+            | Recorda: scientific_analysis
             v
         Result R71
             |
@@ -876,7 +876,7 @@ Consider a TopoMT analysis whose Result is later interpreted inside Nextia.
             v
     Nextia.add_observation(...)
             |
-            | Scribe: project_graph_mutation
+            | Recorda: project_graph_mutation
             v
         Observation O17
         ProjectGraph v17 -> v18
@@ -886,7 +886,7 @@ Consider a TopoMT analysis whose Result is later interpreted inside Nextia.
             v
     Nextia.add_evidence(...)
             |
-            | Scribe: project_graph_mutation
+            | Recorda: project_graph_mutation
             v
         Evidence E21
         E21 --supports--> H3
@@ -894,13 +894,13 @@ Consider a TopoMT analysis whose Result is later interpreted inside Nextia.
         EventLedger: EvidenceCreated / EvidenceLinked
         ProjectRecord: GraphMutation provenance
 
-The first Scribe record does not infer that R71 supports H3.
+The first Recorda record does not infer that R71 supports H3.
 
-The later Scribe records state that **Nextia authoritatively created** O17, E21, and the `supports` relationship. Scribe records those semantic changes because they occurred; Nextia defines and owns their Discovery meaning.
+The later Recorda records state that **Nextia authoritatively created** O17, E21, and the `supports` relationship. Recorda records those semantic changes because they occurred; Nextia defines and owns their Discovery meaning.
 
 ### ProjectGraph mutation provenance
 
-For a consequential Nextia mutation, Scribe should be able to capture/reference, as applicable:
+For a consequential Nextia mutation, Recorda should be able to capture/reference, as applicable:
 
     actor
     Nextia operation
@@ -915,12 +915,12 @@ For a consequential Nextia mutation, Scribe should be able to capture/reference,
     correlation identity
     referenced upstream objects
 
-For example, Scribe may record that Nextia created:
+For example, Recorda may record that Nextia created:
 
     Evidence E21
         --supports--> Hypothesis H3
 
-but Scribe does not independently define what `supports` means, decide that the relation should exist, or infer it from R71. Those semantics and validation rules belong to Nextia.
+but Recorda does not independently define what `supports` means, decide that the relation should exist, or infer it from R71. Those semantics and validation rules belong to Nextia.
 
 The same principle applies to other ProjectGraph changes:
 
@@ -932,11 +932,11 @@ The same principle applies to other ProjectGraph changes:
     Conclusion challenged / superseded
     new Question opened
 
-Scribe should make the evolution of Discovery meaning auditable without becoming the owner or interpreter of that meaning.
+Recorda should make the evolution of Discovery meaning auditable without becoming the owner or interpreter of that meaning.
 
 ## Routing policy must preserve ownership
 
-Scribe is not permission to write arbitrary objects into every destination.
+Recorda is not permission to write arbitrary objects into every destination.
 
 Routing must respect the architecture:
 
@@ -946,11 +946,11 @@ Routing must respect the architecture:
     MolSysSuite components own modeling/execution-specific domain outputs
     MOLI owns cross-platform provenance composition
 
-Scribe may coordinate/event-record these actions but must not silently cross semantic ownership boundaries.
+Recorda may coordinate/event-record these actions but must not silently cross semantic ownership boundaries.
 
 ## Structured records before human language
 
-Scribe should emit structured records/events, not final human-facing prose.
+Recorda should emit structured records/events, not final human-facing prose.
 
 Avoid making provenance depend on phrases such as:
 
@@ -988,7 +988,7 @@ Retries remain separate Runs/operations linked through correlation/provenance.
 
 ## ExecutionPlan and Run integration
 
-Scribe should integrate naturally with the Architecture 1.0 boundary:
+Recorda should integrate naturally with the Architecture 1.0 boundary:
 
     Decision
         ↓
@@ -1000,15 +1000,15 @@ Scribe should integrate naturally with the Architecture 1.0 boundary:
         ↓
     Observation / Evidence
 
-Within a Run, Scribe can capture the actual API/CLI operations that implement the ExecutionPlan.
+Within a Run, Recorda can capture the actual API/CLI operations that implement the ExecutionPlan.
 
 This makes replay independent of re-running agent reasoning.
 
-Scribe does not itself decide the scientific Decision or interpret the resulting Evidence.
+Recorda does not itself decide the scientific Decision or interpret the resulting Evidence.
 
 ## Event emission
 
-Scribe may provide the common mechanism through which participating components emit consequential events such as:
+Recorda may provide the common mechanism through which participating components emit consequential events such as:
 
     RetrievalStarted
     RetrievalCompleted
@@ -1061,7 +1061,7 @@ versus:
 
 Not all scientific work is a decorated Python call.
 
-Scribe should support explicit recording of:
+Recorda should support explicit recording of:
 
 - manual inspection;
 - manual curation;
@@ -1074,15 +1074,15 @@ Manual records must preserve actor, timestamp, referenced objects, rationale/con
 
 ## Notebooks
 
-Phase 1 notebooks are a primary environment in which Scribe should prove useful.
+Phase 1 notebooks are a primary environment in which Recorda should prove useful.
 
-A notebook should be able to call normal Sabueso/Praxis/Nextia/MolSysSuite APIs while Scribe captures the underlying scientifically meaningful operations.
+A notebook should be able to call normal Sabueso/Praxis/Nextia/MolSysSuite APIs while Recorda captures the underlying scientifically meaningful operations.
 
-The notebook remains a human-readable orchestration document; Scribe helps ensure it is not the only provenance record.
+The notebook remains a human-readable orchestration document; Recorda helps ensure it is not the only provenance record.
 
 ## Profiles and routing are configuration, not prose
 
-Scribe may maintain centrally governed profile definitions and routing rules.
+Recorda may maintain centrally governed profile definitions and routing rules.
 
 These definitions should specify:
 
@@ -1095,7 +1095,7 @@ These definitions should specify:
 - ownership constraints;
 - lifecycle behavior.
 
-Human-facing phrases belong to Scientific Communication templates/renderers, not Scribe recording profiles.
+Human-facing phrases belong to Scientific Communication templates/renderers, not Recorda recording profiles.
 
 ## Extensibility
 
@@ -1111,13 +1111,13 @@ MOLI should not need intimate knowledge of the component's internal storage impl
 
 ## Minimal first experiment
 
-Do not implement all Scribe capabilities before testing the design.
+Do not implement all Recorda capabilities before testing the design.
 
 Sabueso is a good first proving ground.
 
 For example, instrument one real knowledge-retrieval boundary and one entity-resolution boundary.
 
-The experiment should test whether Scribe can capture:
+The experiment should test whether Recorda can capture:
 
 - component/function/version;
 - active project context;
@@ -1151,7 +1151,7 @@ Conceptually, MOLI should be able to derive views such as:
     ProjectRecord for ExecutionPlan
     ProjectRecord for an active scientific work scope
 
-If Nextia eventually defines an `Experiment` or equivalent semantic object, the same mechanism may provide an experiment-scoped record. Scribe must not invent that Discovery concept solely for reporting convenience.
+If Nextia eventually defines an `Experiment` or equivalent semantic object, the same mechanism may provide an experiment-scoped record. Recorda must not invent that Discovery concept solely for reporting convenience.
 
 A scoped record may cross component boundaries:
 
@@ -1183,11 +1183,11 @@ The exact API is not frozen.
 
 ### Scoped record is not a report
 
-Scribe does not generate a human-facing report merely because it can reconstruct a scoped record.
+Recorda does not generate a human-facing report merely because it can reconstruct a scoped record.
 
 The separation is:
 
-    Scribe + ProjectContext
+    Recorda + ProjectContext
             ↓
     scope/correlation-aware records
             ↓
@@ -1199,9 +1199,9 @@ The separation is:
 
 Possible future renderings might include a Campaign report, Run report, experiment/work-scope report, Protocol-execution report, or audit view.
 
-Those are communication/view concerns, not new Scribe semantic ownership.
+Those are communication/view concerns, not new Recorda semantic ownership.
 
-> **Scribe should preserve enough scope and correlation metadata that MOLI can reconstruct the complete cross-component record of a meaningful scientific work unit after the fact.**
+> **Recorda should preserve enough scope and correlation metadata that MOLI can reconstruct the complete cross-component record of a meaningful scientific work unit after the fact.**
 
 
 ## Routing is resolved from context, not hard-coded destinations
@@ -1217,11 +1217,11 @@ Prefer the separation:
         says WHERE in the current project scope it belongs
 
     ownership / routing policy
-        says WHAT Scribe may record, reference, or route
+        says WHAT Recorda may record, reference, or route
 
 For example, avoid coupling a reusable TopoMT function to a specific project path such as:
 
-    @scribe.record(destination="TcTIM/C3/E7")
+    @recorda.record(destination="TcTIM/C3/E7")
 
 The same instrumented function should be reusable in another project without modification.
 
@@ -1284,13 +1284,13 @@ This is especially important for reconstructing ContextAssembly:
 
 Consumption references should preserve stable object/version/snapshot identity where appropriate.
 
-> **Scribe records meaningful scientific dependencies, not incidental implementation-level reads.**
+> **Recorda records meaningful scientific dependencies, not incidental implementation-level reads.**
 
 ## Recording reliability policy
 
 Not every provenance event has the same tolerance for recording failure.
 
-Scribe should support a governed reliability policy, conceptually including at least:
+Recorda should support a governed reliability policy, conceptually including at least:
 
 ### Strict recording
 
@@ -1307,7 +1307,7 @@ The exact catalog is policy-driven and not frozen here.
 
 ### Best-effort / buffered recording
 
-The scientific operation may proceed when immediate provenance persistence is temporarily unavailable, provided Scribe can safely buffer and later reconcile the record.
+The scientific operation may proceed when immediate provenance persistence is temporarily unavailable, provided Recorda can safely buffer and later reconcile the record.
 
 Potential examples include selected local/HPC execution telemetry where blocking the scientific calculation would be disproportionate.
 
@@ -1329,9 +1329,9 @@ The decorator should not independently decide whether an operation is strict.
 > **A provenance failure must never be silently indistinguishable from successful complete recording.**
 
 
-## What Scribe should not become
+## What Recorda should not become
 
-Scribe should not become:
+Recorda should not become:
 
 - a scientific reasoning agent;
 - a replacement for Nextia;
@@ -1347,7 +1347,7 @@ Scribe should not become:
 
 Before freezing an API/package, Phase 1 pilots should help determine:
 
-- package/repository boundary: lightweight independent `scribe`, MOLI-embedded infrastructure, `moli-scribe`, or another distribution;
+- package/repository boundary: lightweight independent `recorda`, MOLI-embedded infrastructure, `moli-recorda`, or another distribution;
 - standalone recording schema and persistence backend;
 - RecordingSession lifecycle and crash/interruption recovery;
 - inactive/no-recorder overhead;
@@ -1372,9 +1372,9 @@ Before freezing an API/package, Phase 1 pilots should help determine:
 
 ## Guiding principles
 
-> **Components own meaning; Scribe records consequential operations and semantic changes.**
+> **Components own meaning; Recorda records consequential operations and semantic changes.**
 
-> **Nextia owns Discovery meaning; Scribe records the provenance and evolution of that meaning in the ProjectGraph.**
+> **Nextia owns Discovery meaning; Recorda records the provenance and evolution of that meaning in the ProjectGraph.**
 
 > **Capture and routing are distinct: profiles describe semantic operation types; routing decides where records/events belong under current project context and ownership rules.**
 
@@ -1382,13 +1382,13 @@ Before freezing an API/package, Phase 1 pilots should help determine:
 
 > **Instrumentation should be low-friction but never silently violate semantic ownership, authorization, or confidentiality.**
 
-> **Scribe should make provenance easier to do correctly than to omit, while keeping component APIs independently usable outside MOLI.**
+> **Recorda should make provenance easier to do correctly than to omit, while keeping component APIs independently usable outside MOLI.**
 
-> **Scribe is useful standalone for reproducible scientific computation; MOLI enriches the same recording substrate with project and Discovery context.**
+> **Recorda is useful standalone for reproducible scientific computation; MOLI enriches the same recording substrate with project and Discovery context.**
 
 > **A standalone ScientificRecord should be independently inspectable, auditable, verifiable, exportable, and computationally replayable where the recorded environment permits.**
 
-> **Scribe replay reproduces recorded computation; MOLI replay reproduces a recorded scientific project trajectory.**
+> **Recorda replay reproduces recorded computation; MOLI replay reproduces a recorded scientific project trajectory.**
 
 > **Instrumented component APIs remain normal standalone APIs when no recording context is active.**
 
