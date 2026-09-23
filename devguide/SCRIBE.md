@@ -68,7 +68,11 @@ The second category belongs to Nextia Discovery semantics and must not be inferr
 
 For example, TopoMT may produce Result R71 and Scribe may record the complete operation. Only an explicit Nextia operation should create an Observation or Evidence relationship saying what R71 means for a Hypothesis.
 
-> **Scribe records scientific operations; it does not manufacture scientific interpretation.**
+> **Components own scientific meaning; Scribe records consequential operations and semantic changes.**
+
+> **Nextia owns Discovery meaning; Scribe records the provenance and evolution of that meaning in the ProjectGraph.**
+
+Scribe therefore remains active when work enters Nextia. It can instrument the explicit operation that creates an Observation, links Evidence to a Hypothesis, records a Decision, rejects/supersedes a Hypothesis, or otherwise mutates the ProjectGraph. What Scribe must not do is invent that Discovery meaning merely because it observed an upstream computation.
 
 ## Instrumentation mechanisms
 
@@ -390,6 +394,84 @@ may result in:
 
 A later Nextia operation may explicitly connect a Sabueso SourceAssertion to project Evidence.
 
+## End-to-end example: execution to Discovery meaning
+
+Consider a TopoMT analysis whose Result is later interpreted inside Nextia.
+
+    TopoMT.detect_pockets(...)
+            |
+            | Scribe: scientific_analysis
+            v
+        Result R71
+            |
+            +--> TopoMT authoritative Result/provenance
+            +--> EventLedger: ResultCreated
+            +--> ProjectRecord: execution provenance
+            |
+            v
+    human / MOLI Agent interprets R71
+            |
+            v
+    Nextia.add_observation(...)
+            |
+            | Scribe: project_graph_mutation
+            v
+        Observation O17
+        ProjectGraph v17 -> v18
+        EventLedger: ObservationCreated
+        ProjectRecord: GraphMutation provenance
+            |
+            v
+    Nextia.add_evidence(...)
+            |
+            | Scribe: project_graph_mutation
+            v
+        Evidence E21
+        E21 --supports--> H3
+        ProjectGraph v18 -> v19
+        EventLedger: EvidenceCreated / EvidenceLinked
+        ProjectRecord: GraphMutation provenance
+
+The first Scribe record does not infer that R71 supports H3.
+
+The later Scribe records state that **Nextia authoritatively created** O17, E21, and the `supports` relationship. Scribe records those semantic changes because they occurred; Nextia defines and owns their Discovery meaning.
+
+### ProjectGraph mutation provenance
+
+For a consequential Nextia mutation, Scribe should be able to capture/reference, as applicable:
+
+    actor
+    Nextia operation
+    Project / Campaign / active work scope
+    graph version/snapshot before mutation
+    created / modified semantic objects
+    created / modified typed relationships
+    graph version/snapshot after mutation
+    explicit rationale where supplied/required
+    approval where required
+    timestamp
+    correlation identity
+    referenced upstream objects
+
+For example, Scribe may record that Nextia created:
+
+    Evidence E21
+        --supports--> Hypothesis H3
+
+but Scribe does not independently define what `supports` means, decide that the relation should exist, or infer it from R71. Those semantics and validation rules belong to Nextia.
+
+The same principle applies to other ProjectGraph changes:
+
+    Hypothesis rejected
+    Hypothesis superseded
+    Decision created / approved
+    Campaign stopped
+    Conclusion created
+    Conclusion challenged / superseded
+    new Question opened
+
+Scribe should make the evolution of Discovery meaning auditable without becoming the owner or interpreter of that meaning.
+
 ## Routing policy must preserve ownership
 
 Scribe is not permission to write arbitrary objects into every destination.
@@ -628,7 +710,9 @@ Before freezing an API/package, Phase 1 pilots should help determine:
 
 ## Guiding principles
 
-> **Scribe records what happened; Nextia records what it means for Discovery.**
+> **Components own meaning; Scribe records consequential operations and semantic changes.**
+
+> **Nextia owns Discovery meaning; Scribe records the provenance and evolution of that meaning in the ProjectGraph.**
 
 > **Capture and routing are distinct: profiles describe semantic operation types; routing decides where records/events belong under current project context and ownership rules.**
 
