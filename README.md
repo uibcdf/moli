@@ -6,6 +6,8 @@ Molecular Intelligence emerges from combining **structured scientific context**,
 
 Scientific reasoning may be performed by human scientists alone or augmented by **MOLI Agent**. The scientific platform is therefore not dependent on an LLM or any particular AI technology.
 
+MOLI is designed to be **local-first and remote-ready**: its scientific semantics are independent of deployment topology, allowing the same architecture to evolve from local scientific workflows to shared, distributed, or hybrid infrastructure.
+
 ## Architecture
 
 ```text
@@ -60,6 +62,8 @@ These views describe organization, scientific responsibility, and learning over 
 ## Architecture 1.0
 
 The frozen conceptual baseline, including design principles, component boundaries, schemas, examples, diagrams, scientific stress tests, and operational/epistemic stress tests, is documented in [`architecture_1.0/`](architecture_1.0/README.md).
+
+Architecture 1.0 also defines Scientific Context Assembly, the learning loop, agent specialization, stable object identity and portability, and a deployment-independent path from local workflows to remote and distributed infrastructure.
 
 ## Ecosystem
 
