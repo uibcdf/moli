@@ -675,6 +675,73 @@ A similar later experiment in TopoMT should test scientific-analysis capture, ne
 
 
 
+
+
+## Scoped ProjectRecord views
+
+Project context and correlation metadata should make it possible to reconstruct the complete record associated with a meaningful scientific scope without requiring each component to know how that record will later be presented.
+
+Conceptually, MOLI should be able to derive views such as:
+
+    ProjectRecord for Project
+    ProjectRecord for Campaign
+    ProjectRecord for Run
+    ProjectRecord for ExecutionPlan
+    ProjectRecord for an active scientific work scope
+
+If Nextia eventually defines an `Experiment` or equivalent semantic object, the same mechanism may provide an experiment-scoped record. Scribe must not invent that Discovery concept solely for reporting convenience.
+
+A scoped record may cross component boundaries:
+
+    work scope E7
+        |
+        +-- MolSysMT
+        |     prepare(...)
+        |
+        +-- TopoMT
+        |     detect_pockets(...)
+        |     characterize(...)
+        |
+        +-- MolSysViewer
+        |     create_scene(...)
+        |
+        +-- Nextia
+              Observation O17
+              Evidence E21
+
+This is possible because the relevant operations/objects carry sufficient project scope, parent/correlation identity, and stable references.
+
+Conceptually, future APIs might resemble:
+
+    project.record.for_campaign(C1)
+    project.record.for_run(R2)
+    project.record.for_scope(E7)
+
+The exact API is not frozen.
+
+### Scoped record is not a report
+
+Scribe does not generate a human-facing report merely because it can reconstruct a scoped record.
+
+The separation is:
+
+    Scribe + ProjectContext
+            ↓
+    scope/correlation-aware records
+            ↓
+    Scoped ProjectRecord view
+            ↓
+    Scientific Communication / Audit / Trace
+            ↓
+    optional human-facing view
+
+Possible future renderings might include a Campaign report, Run report, experiment/work-scope report, Protocol-execution report, or audit view.
+
+Those are communication/view concerns, not new Scribe semantic ownership.
+
+> **Scribe should preserve enough scope and correlation metadata that MOLI can reconstruct the complete cross-component record of a meaningful scientific work unit after the fact.**
+
+
 ## Routing is resolved from context, not hard-coded destinations
 
 Instrumentation should not normally encode project-specific destinations inside decorators.
@@ -859,3 +926,5 @@ Before freezing an API/package, Phase 1 pilots should help determine:
 > **Record meaningful scientific consumption/dependencies, not incidental implementation reads.**
 
 > **Recording reliability is policy-driven; provenance failure must never masquerade as a complete successful record.**
+
+> **Scope and correlation metadata must be sufficient to derive complete cross-component ProjectRecord views for meaningful scientific work units without coupling component code to future report formats.**
