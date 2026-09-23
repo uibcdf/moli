@@ -1,0 +1,641 @@
+# Scribe — MOLI Provenance Instrumentation
+
+## Status
+
+**Scribe** is the working name for the low-friction provenance/instrumentation mechanism that may implement important parts of the MOLI Provenance Contract.
+
+Scribe is an **implementation direction**, not a new scientific component alongside Sabueso, Praxis, Nextia, or MolSysSuite, and this document does not yet freeze a package/repository boundary or exact Python API.
+
+The name evokes a scribe whose role is to observe and faithfully record what happens without deciding what the science means.
+
+## Purpose
+
+MOLI requires distributed components to preserve enough structured provenance for ProjectRecord, EventLedger, Audit, Trace, Replay, ProjectRelease, and Scientific Communication.
+
+Requiring every scientific function to hand-write this infrastructure would create duplicated boilerplate and inconsistent records.
+
+Scribe should provide a common, low-friction way to instrument **scientifically meaningful operations** across MOLI components.
+
+Conceptually:
+
+    Sabueso --------┐
+    Praxis ---------|
+    Nextia ---------|
+    MolSysMT -------|
+    TopoMT ---------|
+    DockingMT ------|
+    ...             |
+                    v
+                 Scribe
+       context + instrumentation
+       profiles + safe capture
+       routing + event emission
+                    |
+                    v
+        MOLI Provenance Contract
+                    |
+          +---------+---------+
+          v                   v
+      EventLedger        ProjectRecord
+
+Component-owned scientific objects remain owned by their components.
+
+## Scribe records; it does not interpret
+
+Scribe's central boundary is:
+
+    AUTOMATIC / STRUCTURED RECORDING
+
+    what happened
+    where it happened
+    who/what executed it
+    with what inputs/parameters
+    with what software/environment
+    what it produced
+    whether it failed
+    how it relates operationally to parent work
+
+versus:
+
+    EXPLICIT DISCOVERY SEMANTICS
+
+    what a Result means scientifically
+    which Hypothesis it bears on
+    whether it supports/contradicts
+    what Decision should follow
+
+The second category belongs to Nextia Discovery semantics and must not be inferred merely because Scribe observed a computation.
+
+For example, TopoMT may produce Result R71 and Scribe may record the complete operation. Only an explicit Nextia operation should create an Observation or Evidence relationship saying what R71 means for a Hypothesis.
+
+> **Scribe records scientific operations; it does not manufacture scientific interpretation.**
+
+## Instrumentation mechanisms
+
+Scribe should support more than one instrumentation mechanism because not all scientific work has the same shape.
+
+### Decorators
+
+A natural Python mechanism for stable semantic API boundaries:
+
+    @scribe.record(profile="scientific_analysis")
+    def detect_pockets(...):
+        ...
+
+The decorator may capture invocation metadata before/after execution.
+
+### Context managers
+
+Useful for establishing inherited project/execution scope:
+
+    with scribe.context(...):
+        ...
+
+or conceptually:
+
+    with project.run(execution_plan):
+        ...
+
+Operations executed inside inherit the active context.
+
+### Explicit recording API
+
+Manual scientific actions, external processes, notebooks, or operations that cannot be cleanly decorated need an explicit API.
+
+The final syntax is open. Decorators are an important convenience mechanism, not the only provenance mechanism.
+
+## Instrument semantic boundaries, not every function
+
+Scribe should not decorate every private helper.
+
+Avoid producing provenance noise for implementation details such as internal string normalization or trivial utility calls.
+
+Prefer instrumentation at semantic boundaries such as:
+
+- knowledge retrieval;
+- entity resolution;
+- knowledge derivation;
+- molecular-system transformation;
+- model construction;
+- scientific analysis;
+- comparison;
+- simulation;
+- Capability execution;
+- Protocol execution;
+- Result/Artifact production;
+- ProjectGraph mutation;
+- manual scientific action;
+- communication generation where relevant.
+
+The exact catalog should remain small enough to preserve meaning.
+
+## Recording profiles
+
+Scribe should use **semantic recording profiles**.
+
+A profile answers:
+
+> What kind of operation is this, and what provenance fields/behaviors are expected?
+
+Candidate profiles include:
+
+    knowledge_retrieval
+    entity_resolution
+    knowledge_derivation
+
+    transformation
+    scientific_analysis
+    comparison
+    simulation
+
+    capability_execution
+    protocol_execution
+
+    project_graph_mutation
+    decision
+    manual_action
+
+    communication
+
+These names are provisional.
+
+Profiles should not be one-per-function. They should describe reusable semantic categories.
+
+### Example: knowledge retrieval
+
+May expect:
+
+- external source;
+- query/request;
+- source/service version when available;
+- retrieval timestamp;
+- response/snapshot/hash;
+- produced SourceAssertions/objects;
+- licensing/retention constraints.
+
+### Example: scientific analysis
+
+May expect:
+
+- scientific inputs/references;
+- parameters;
+- implementation/version;
+- environment;
+- random seeds where relevant;
+- Results/Artifacts;
+- timing/status/failure.
+
+### Example: transformation
+
+May expect:
+
+- input object references;
+- transformation identity;
+- parameters;
+- output object references;
+- lineage.
+
+### Example: ProjectGraph mutation
+
+May expect:
+
+- Nextia semantic object type;
+- previous graph state/version where relevant;
+- created/updated node/relationship;
+- actor;
+- rationale/approval where semantically required.
+
+The profile does not transfer semantic ownership to Scribe.
+
+## Component detection and explicit ownership metadata
+
+Scribe may automatically detect implementation metadata such as:
+
+    package
+    module
+    function
+    package version
+    Git commit
+
+For example, instrumentation inside TopoMT may normally infer that the executing implementation belongs to TopoMT.
+
+However, automatic detection must not be the final authority for semantic ownership.
+
+Prefer the precedence:
+
+    explicit metadata
+        ↓
+    registered package/component metadata
+        ↓
+    automatic detection fallback
+
+This allows instrumentation to remain convenient while preserving correctness in wrappers, plugins, delegated execution, tests, or unusual packaging.
+
+## Safe automatic capture of function inputs
+
+Decorators can use Python signatures to bind arguments and capture scientifically relevant invocation state.
+
+For example:
+
+    detect_pockets(
+        molecular_system,
+        probe_radius=...,
+        threshold=...
+    )
+
+may record:
+
+    molecular_system:
+        stable reference / content identity
+
+    probe_radius:
+        value + unit where available
+
+    threshold:
+        value
+
+Scribe must not blindly serialize arbitrary Python arguments.
+
+Inputs may include:
+
+- secrets/API keys;
+- huge NumPy arrays;
+- trajectories;
+- file handles;
+- GPU/runtime objects;
+- callbacks;
+- database/service clients;
+- objects with sensitive fields.
+
+Scribe therefore requires pluggable **serializers/reference adapters** and **redaction policies**.
+
+Large/persistent scientific objects should normally be represented by stable reference/version/hash rather than bulk serialization.
+
+Secrets must never be persisted merely because they were function arguments.
+
+## Output capture
+
+Instrumentation may observe return values and created objects.
+
+A recorded operation may capture/reference:
+
+- Result objects;
+- Artifact objects;
+- transformed scientific objects;
+- stable references;
+- content hashes;
+- status;
+- exceptions/failures.
+
+The component remains responsible for creating the authoritative domain object. Scribe records its provenance and routing relationships.
+
+## Project context propagation
+
+Scribe should understand the currently active MOLI project scope without requiring every scientific API to add project-specific arguments.
+
+A propagated context may include:
+
+    Project
+    Workspace
+    Campaign
+    Experiment / scientific work unit
+    ExecutionPlan
+    Run
+    actor
+    correlation identity
+    authorization scope
+    record/event destinations
+
+The exact vocabulary must align with final Nextia/project semantics; for example, an `Experiment` object should not be introduced solely by Scribe if Nextia does not define it.
+
+Python `contextvars` or equivalent mechanisms may be appropriate for local propagation, but implementation is open.
+
+## Nested execution and correlation
+
+Scientific operations are frequently nested:
+
+    Campaign
+        ↓
+    ExecutionPlan
+        ↓
+    Run
+        ├── MolSysMT prepare
+        ├── TopoMT detect
+        ├── TopoMT characterize
+        └── MolSysViewer scene
+
+Nested instrumented operations should inherit project/run/correlation context while preserving their own:
+
+- component;
+- operation identity;
+- parent operation;
+- inputs;
+- outputs;
+- status.
+
+This can produce a reproducible execution DAG without forcing one component to own all nested operations.
+
+Correlation identity is particularly important for partial failure and distributed execution.
+
+## Semantic routing
+
+Scribe should know **where different parts of a record belong**, based on active context, semantic profile, component ownership, and routing policy.
+
+Routing is distinct from capture.
+
+### TopoMT scientific analysis
+
+Conceptually:
+
+    component = TopoMT
+    profile = scientific_analysis
+    project = TcTIM
+    campaign = C3
+    work scope = E7
+
+may route to:
+
+    TopoMT local provenance / authoritative Result
+    MOLI EventLedger
+    MOLI ProjectRecord
+    current Run / correlation scope
+
+It does **not** automatically create Nextia Observation/Evidence.
+
+### Nextia ProjectGraph mutation
+
+Conceptually:
+
+    component = Nextia
+    profile = project_graph_mutation
+
+may result in:
+
+    authoritative Nextia ProjectGraph mutation
+    EventLedger event
+    ProjectRecord provenance
+
+### Sabueso knowledge retrieval
+
+Conceptually:
+
+    component = Sabueso
+    profile = knowledge_retrieval
+
+may result in:
+
+    authoritative Sabueso retrieval/SourceAssertions
+    EventLedger event
+    ProjectRecord provenance
+
+A later Nextia operation may explicitly connect a Sabueso SourceAssertion to project Evidence.
+
+## Routing policy must preserve ownership
+
+Scribe is not permission to write arbitrary objects into every destination.
+
+Routing must respect the architecture:
+
+    Sabueso owns Knowledge semantics
+    Praxis owns Know-how semantics
+    Nextia owns Discovery semantics
+    MolSysSuite components own modeling/execution-specific domain outputs
+    MOLI owns cross-platform provenance composition
+
+Scribe may coordinate/event-record these actions but must not silently cross semantic ownership boundaries.
+
+## Structured records before human language
+
+Scribe should emit structured records/events, not final human-facing prose.
+
+Avoid making provenance depend on phrases such as:
+
+    "TopoMT identified a pocket..."
+
+Instead record structured facts and references.
+
+Scientific Communication may later transform the same ProjectGraph/ProjectRecord into:
+
+- scientist-facing explanation;
+- technical report;
+- ProgressBrief;
+- audit view;
+- slides;
+- narrated video.
+
+> **Recording and communication are separate concerns.**
+
+## Operation lifecycle
+
+Instrumentation should preserve lifecycle states and failures, including:
+
+    requested
+    accepted
+    started
+    partial
+    completed
+    failed
+    cancelled
+    superseded / abandoned
+
+A decorator/context should record exceptions and failed attempts rather than emitting only successful completion.
+
+Retries remain separate Runs/operations linked through correlation/provenance.
+
+## ExecutionPlan and Run integration
+
+Scribe should integrate naturally with the Architecture 1.0 boundary:
+
+    Decision
+        ↓
+    ExecutionPlan
+        ↓
+    Run
+        ↓
+    Result / Artifact
+        ↓
+    Observation / Evidence
+
+Within a Run, Scribe can capture the actual API/CLI operations that implement the ExecutionPlan.
+
+This makes replay independent of re-running agent reasoning.
+
+Scribe does not itself decide the scientific Decision or interpret the resulting Evidence.
+
+## Event emission
+
+Scribe may provide the common mechanism through which participating components emit consequential events such as:
+
+    RetrievalStarted
+    RetrievalCompleted
+    SourceAssertionCreated
+
+    RunStarted
+    RunCompleted
+    RunFailed
+
+    ResultCreated
+    ArtifactCreated
+
+    ObservationCreated
+    EvidenceLinked
+    DecisionApproved
+
+Event names/schema remain open and should be governed centrally enough to avoid incompatible vocabularies.
+
+Events should reference authoritative objects rather than duplicate their complete content.
+
+## Operation outside a MOLI project
+
+MOLI must not become a mandatory gateway to component APIs.
+
+For example:
+
+    topomt.detect_pockets(system)
+
+should remain scientifically usable outside an active MOLI Workspace.
+
+Possible behavior:
+
+    no active MOLI project
+        ↓
+    function executes normally
+        ↓
+    optional local provenance / no project routing
+
+versus:
+
+    active MOLI project context
+        ↓
+    same function executes
+        +
+    project provenance/events automatically captured
+
+> **Instrumentation must not make MOLI a mandatory gateway to component APIs.**
+
+## Manual actions
+
+Not all scientific work is a decorated Python call.
+
+Scribe should support explicit recording of:
+
+- manual inspection;
+- manual curation;
+- manual selection/exclusion;
+- human approval;
+- external GUI/CLI work;
+- imported experimental results.
+
+Manual records must preserve actor, timestamp, referenced objects, rationale/context, and relevant outputs/relationships.
+
+## Notebooks
+
+Phase 1 notebooks are a primary environment in which Scribe should prove useful.
+
+A notebook should be able to call normal Sabueso/Praxis/Nextia/MolSysSuite APIs while Scribe captures the underlying scientifically meaningful operations.
+
+The notebook remains a human-readable orchestration document; Scribe helps ensure it is not the only provenance record.
+
+## Profiles and routing are configuration, not prose
+
+Scribe may maintain centrally governed profile definitions and routing rules.
+
+These definitions should specify:
+
+- expected semantic fields;
+- capture behavior;
+- serializer/reference behavior;
+- redaction;
+- event type(s);
+- allowed/required destinations;
+- ownership constraints;
+- lifecycle behavior.
+
+Human-facing phrases belong to Scientific Communication templates/renderers, not Scribe recording profiles.
+
+## Extensibility
+
+A future component such as a quantum-chemistry package should be able to participate by:
+
+1. registering component identity/ownership metadata;
+2. satisfying the MOLI Provenance Contract;
+3. instrumenting its semantic boundaries;
+4. using common profiles or defining governed extensions;
+5. emitting references/events into active project context.
+
+MOLI should not need intimate knowledge of the component's internal storage implementation.
+
+## Minimal first experiment
+
+Do not implement all Scribe capabilities before testing the design.
+
+Sabueso is a good first proving ground.
+
+For example, instrument one real knowledge-retrieval boundary and one entity-resolution boundary.
+
+The experiment should test whether Scribe can capture:
+
+- component/function/version;
+- active project context;
+- input references/parameters;
+- external source/query;
+- retrieval time;
+- response hash/snapshot reference;
+- produced authoritative Sabueso objects;
+- status/failure;
+- EventLedger routing;
+- ProjectRecord linkage;
+- secret redaction.
+
+Then use the TcTIM Phase 1 notebook to expose missing semantics.
+
+A similar later experiment in TopoMT should test scientific-analysis capture, nested MolSysSuite execution, Results/Artifacts, and Run correlation.
+
+## What Scribe should not become
+
+Scribe should not become:
+
+- a scientific reasoning agent;
+- a replacement for Nextia;
+- a generic logging framework with no scientific semantics;
+- a shared mutable scientific megastore;
+- the owner of Sabueso/Praxis/Nextia/MolSysSuite objects;
+- a report-writing system;
+- a requirement that all component APIs be invoked through MOLI;
+- a mechanism that serializes every argument indiscriminately;
+- instrumentation on every internal helper function.
+
+## Open implementation questions
+
+Before freezing an API/package, Phase 1 pilots should help determine:
+
+- package/repository boundary: embedded MOLI infrastructure, `scribe`, `moli-scribe`, or another distribution;
+- decorator/context-manager/explicit API balance;
+- exact profile catalog;
+- component registration/discovery;
+- context propagation across processes/jobs/remote execution;
+- event schema/versioning;
+- serializer/reference adapter protocol;
+- secret/sensitive-data redaction;
+- routing configuration and authorization;
+- integration with ExecutionPlan/Run;
+- integration with notebooks;
+- async/distributed/nested execution;
+- performance/overhead;
+- failure behavior when provenance storage is temporarily unavailable;
+- whether recording can buffer/reconcile offline;
+- testing strategy for provenance completeness.
+
+## Guiding principles
+
+> **Scribe records what happened; Nextia records what it means for Discovery.**
+
+> **Capture and routing are distinct: profiles describe semantic operation types; routing decides where records/events belong under current project context and ownership rules.**
+
+> **Prefer stable references over bulk serialization of scientific objects.**
+
+> **Instrumentation should be low-friction but never silently violate semantic ownership, authorization, or confidentiality.**
+
+> **Scribe should make provenance easier to do correctly than to omit, while keeping component APIs independently usable outside MOLI.**
+
+> **Structured records come before human-readable reporting.**
