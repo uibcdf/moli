@@ -1,0 +1,7 @@
+flowchart LR
+SRC[Source] --> SA[SourceAssertion - Sabueso]
+SA --> RK[Resolved Knowledge]
+SA -. may contribute to .-> E[Evidence - Nextia]
+R[Result or Observation] --> E
+PV[Provenance] -. traces .-> SA
+PV -. traces .-> E
