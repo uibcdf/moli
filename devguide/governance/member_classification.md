@@ -1,24 +1,30 @@
 # Governance Classification
 
-MOLI currently distinguishes **directly governed components** from **delegated governance domains**.
+MOLI components may differ in how their internal governance is organized.
 
-## Direct
+## Direct components without delegated internal ecosystem governance
 
 - Sabueso — Knowledge context.
 - Praxis — Methodological / Know-how context.
 - Nextia — Discovery context.
 - MOLI Agent — scientific reasoning/agency.
 
-These repositories receive the canonical `MOLI_GUIDE.md` and follow MOLI shared governance for cross-component/platform contracts.
+Their cross-component/platform contracts are governed directly by MOLI; their local implementation remains locally owned.
 
-## Delegated
+## Component with delegated internal governance
 
-- MolSysSuite — molecular modeling ecosystem.
+- **MolSysSuite** — molecular modeling ecosystem.
 
-MolSysSuite retains its own mature governance for members, policies, tooling, and releases. MOLI governs only the platform boundary with MolSysSuite.
+MolSysSuite is a first-class MOLI component. MOLI governs its platform-level relationship with Sabueso, Praxis, Nextia, MOLI Agent, and other future MOLI components.
+
+MolSysSuite delegates governance of its internal members and shared modeling-ecosystem policies to `uibcdf/molsyssuite`.
+
+This is hierarchical governance, not exclusion from MOLI membership.
+
+## Conceptual groupings
+
+Scientific Context groups Sabueso, Praxis, and Nextia conceptually. It is not currently a separate repository or governance layer.
 
 ## Future changes
 
-Admission of another directly governed component or delegated domain is a MOLI governance decision and must be reflected in `moli.toml`.
-
-Scientific Context remains a conceptual grouping, not a separate governance repository.
+Admission of another MOLI component or a change in internal-governance delegation is a MOLI governance decision and must be reflected in `moli.toml`.
