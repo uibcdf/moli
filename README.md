@@ -98,6 +98,12 @@ Molecular Intelligence is a property of the integrated scientific system, not th
 
 Reasoning may be human, agent-assisted, or a combination of both.
 
+## Scientific communication
+
+MOLI may eventually compose the scientific state held across Sabueso, Praxis, Nextia, and MolSysSuite into traceable **ProjectBriefings**, **ProgressBriefs**, and **ProjectReports**. These structured communication artifacts may then be rendered as written dossiers, interactive reports, slides, or narrated video while preserving provenance, uncertainty, confidentiality, and the ownership of the underlying scientific objects.
+
+See [`devguide/SCIENTIFIC_COMMUNICATION.md`](devguide/SCIENTIFIC_COMMUNICATION.md).
+
 ## Architecture 1.0
 
 The frozen conceptual baseline is documented in [`architecture_1.0/`](architecture_1.0/README.md).
