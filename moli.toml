@@ -9,6 +9,7 @@ governance_model = "component-governance-with-internal-delegation"
 [governance]
 repository = "uibcdf/moli"
 guide = "MOLI_GUIDE.md"
+infrastructure_census = "devguide/INFRASTRUCTURE_CENSUS.md"
 reporting_protocol = "devguide/governance/reporting_protocol.md"
 policy_inheritance = "transitive-by-capability"
 policy_inheritance_contract = "devguide/governance/policy_inheritance.md"

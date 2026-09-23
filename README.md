@@ -119,6 +119,7 @@ MOLI also acts as the governance and coordination repository for platform-level 
 - [`moli.toml`](moli.toml) is the machine-readable registry of MOLI components and governance relationships.
 - [`MOLI_GUIDE.md`](MOLI_GUIDE.md) is the concise component-facing governance guide.
 - [`devguide/`](devguide/README.md) contains durable governance and development knowledge.
+- [`devguide/INFRASTRUCTURE_CENSUS.md`](devguide/INFRASTRUCTURE_CENSUS.md) records observed implementation maturity and pending platform infrastructure.
 - [`devguide/governance/policy_inheritance.md`](devguide/governance/policy_inheritance.md) defines how delegated ecosystems inherit MOLI engineering policy.
 
 The governing rule is:

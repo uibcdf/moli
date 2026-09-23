@@ -121,6 +121,9 @@ def validate_registry(root: Path) -> list[str]:
     governance = data.get("governance", {})
     if governance.get("policy_inheritance") != "transitive-by-capability":
         errors.append("moli.toml: policy inheritance must be transitive by capability")
+    census = governance.get("infrastructure_census")
+    if not isinstance(census, str) or not (root / census).is_file():
+        errors.append("moli.toml: infrastructure census is missing")
     inheritance_contract = governance.get("policy_inheritance_contract")
     if not isinstance(inheritance_contract, str) or not (root / inheritance_contract).is_file():
         errors.append("moli.toml: policy inheritance contract is missing")
