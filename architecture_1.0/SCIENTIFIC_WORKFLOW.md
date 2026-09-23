@@ -1,15 +1,22 @@
 # Canonical Workflow — TcTIM
 
-1. MOLI Agent interprets intent.
+1. MOLI Agent interprets scientific intent.
 2. Nextia frames Focus/Goal and project roles.
-3. Sabueso supplies resolved knowledge backed by SourceAssertions.
-4. Questions/Hypotheses/Strategies are formed.
+3. MOLI assembles Scientific Context from Sabueso, Praxis, and Nextia.
+4. Questions/Hypotheses/Strategies are formed or refined.
 5. DiscoveryEngine requests Praxis Capabilities.
 6. Praxis executes reproducible Protocols through MolSysSuite and/or external engines.
-7. Runs produce Artifacts and Results.
-8. Results generate Observations and project Evidence.
-9. Decisions update Nextia.
-10. Validated methodological learning may be promoted to Praxis.
-11. Consolidated knowledge may be explicitly curated into Sabueso.
+7. MolSysSuite-specific operations may be delegated to MolSys-AI or invoked directly through APIs.
+8. Runs produce Artifacts and Results.
+9. Results generate Observations and project Evidence.
+10. Decisions update Nextia.
+11. **LEARN:** experience remains in Nextia; validated methodological learning may be promoted to Praxis; consolidated knowledge may be explicitly curated into Sabueso.
+12. Future iterations begin with richer Scientific Context.
 
-This closes the Molecular Intelligence learning loop.
+```text
+KNOW → MODEL → DO → DISCOVER → LEARN
+ ▲                              │
+ └──────────────────────────────┘
+```
+
+Promotion to Sabueso or Praxis is explicit and gated; it is never an automatic consequence of a successful Run.

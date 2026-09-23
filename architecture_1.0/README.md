@@ -18,3 +18,11 @@ Three complementary views define the architecture:
 `Scientific Context + Molecular Modeling + Scientific Reasoning → Molecular Intelligence`.
 
 Conceptual interoperability does not imply circular package dependencies.
+
+## Additional Architecture 1.0 documents
+
+- `CONTEXT_ASSEMBLY.md` — structured Scientific Context Assembly for MOLI and its distinction from document RAG.
+- `LEARNING_LOOP.md` — meaning of LEARN and controlled promotion of experience into reusable Knowledge/Know-how.
+- `MOLSYS_AI.md` — MolSys-AI as the MolSysSuite specialist agent and its boundary with MOLI Agent.
+
+These documents refine consequences of the frozen architecture; they do not introduce a new top-level structural boundary.

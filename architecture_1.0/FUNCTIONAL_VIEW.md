@@ -14,3 +14,13 @@ KNOWLEDGE        MODELING        CAPABILITIES        DISCOVERY
 ```
 
 This describes scientific functions, not package containment.
+
+## Dynamic closure
+
+```text
+KNOW → MODEL → DO → DISCOVER → LEARN
+ ▲                              │
+ └──────────────────────────────┘
+```
+
+`LEARN` closes Discovery back into future Knowledge and Know-how while Nextia retains project experience. Promotion into Sabueso or Praxis requires explicit curation/validation.

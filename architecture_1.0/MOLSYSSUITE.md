@@ -4,6 +4,12 @@ MolSysSuite is the molecular modeling ecosystem of the MOLI Platform.
 
 It includes MolSysMT, MolSysViewer, TopoMT, ElastNetMT, PharmacophoreMT, DockingMT, and future simulation, free-energy, QM, property, generative/design, and analysis components.
 
-MolSysSuite should interoperate with strong external scientific engines rather than unnecessarily reimplementing them.
+MolSysSuite may consume Scientific Context and produces Artifacts/Results that can feed Nextia and scientific reasoning.
 
-MolSysSuite provides the computational machinery used to represent and interrogate the molecular world, while consuming Scientific Context where appropriate and producing artifacts/results that can feed it.
+## MolSys-AI
+
+MolSys-AI is the specialist agent for MolSysSuite. It may use RAG over documentation, APIs, tutorials, examples, devguides, tool schemas, and source context to answer usage questions and, when authorized, plan/execute multi-step MolSysSuite operations.
+
+MolSys-AI is independent from MOLI Agent: MolSys-AI specializes in how to operate MolSysSuite; MOLI Agent reasons across the scientific investigation.
+
+MOLI may delegate to MolSys-AI, but MolSys-AI is not a mandatory gateway to MolSysSuite APIs.

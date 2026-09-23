@@ -2,24 +2,24 @@
 
 MOLI Agent is the optional scientist-facing reasoning and agency component of the MOLI Platform.
 
-It operates across:
+It operates across Scientific Context, MolSysSuite, optional MolSys-AI specialist delegation, and authorized external scientific engines.
 
-- **Scientific Context:** Sabueso, Praxis, and Nextia;
-- **MolSysSuite:** molecular modeling components;
-- authorized external scientific engines exposed through platform interfaces.
+## Scientific Context Assembly
 
-MOLI Agent may interpret scientific intent, query Sabueso, inspect DiscoveryProjects, propose Questions/Hypotheses/Strategies, identify uncertainty or conflict, invoke DiscoveryEngine, use Praxis Capabilities/Protocols, call modeling APIs, and interpret Results, Observations, and Evidence.
+MOLI does not need to rely only on document RAG. It can assemble structured context from Sabueso knowledge/SourceAssertions/conflicts/provenance, Praxis Capabilities/Protocols/validation/limitations, and Nextia project state/history/Results/Observations/Evidence/Decisions.
+
+See `CONTEXT_ASSEMBLY.md`.
 
 ## Multi-level access
 
-`Discovery operation ↔ Capability ↔ Protocol ↔ Modeling API`
+`Discovery operation ↔ Capability ↔ Protocol ↔ specialist agent ↔ Modeling API`
 
-Semantic abstractions must not prevent expert-level access to underlying scientific APIs.
+MOLI may use semantic Praxis Capabilities, delegate MolSysSuite-specific operations to MolSys-AI, or access expert APIs directly.
 
-## Authority
+## Scientific role and authority
 
-MOLI Agent does not own scientific truth, certify methodology, or silently mutate project state beyond configured authority. Execution and mutation rights are governed by explicit policy and approval gates.
+MOLI may interpret intent, inspect DiscoveryProjects, propose Questions/Hypotheses/Strategies, identify uncertainty/conflict, invoke DiscoveryEngine, interpret Results/Observations/Evidence, and help plan next actions.
 
-A human scientist can operate the same Scientific Context and MolSysSuite infrastructure without MOLI Agent.
+MOLI does not own scientific truth, certify methodology, or silently mutate project state beyond configured authority. A human scientist can operate the same infrastructure without MOLI Agent.
 
 > **MOLI proposal ≠ scientific certification.**
