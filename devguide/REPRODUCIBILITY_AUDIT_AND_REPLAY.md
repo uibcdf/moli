@@ -403,6 +403,282 @@ These are verification categories, not platform scores.
 
 For stochastic simulations, meaningful distributional equivalence may matter more than an identical trajectory.
 
+
+
+## Execution lifecycle, failures, cancellations, and retries
+
+An ExecutionPlan and a Run must not imply successful completion.
+
+The scientific record should distinguish states such as:
+
+    ExecutionPlan
+        ├── planned / frozen
+        ├── never started
+        └── attempted
+              ├── failed
+              ├── cancelled
+              ├── partial
+              └── completed
+
+Retries must remain separate historical executions rather than overwriting failed attempts:
+
+    EP17
+      ├── Run17a — failed
+      ├── Run17b — failed
+      └── Run17c — completed
+
+Failure, cancellation, partial output, and retry history may themselves be scientifically or operationally informative.
+
+## Immutable amendments
+
+Frozen executable intent must not be silently edited after approval or execution begins.
+
+When a scientifically meaningful change is required, preserve the previous plan and create explicit amendment provenance or a new version/plan:
+
+    EP17 — frozen
+       ↓
+    Amendment A1
+       rationale / actor / approval
+       ↓
+    EP18
+       ↓
+    Run
+
+> **Frozen execution intent is immutable; changes create new provenance.**
+
+The exact amendment/versioning mechanism remains open.
+
+## Manual scientific actions, observations, and curation
+
+Not all consequential scientific work occurs through an API.
+
+Human inspection, manual curation, exclusion, annotation, or interpretation must be representable when it affects project state.
+
+Examples include:
+
+- a scientist rejecting a pocket as likely crystal-packing artifact after visual inspection;
+- manual reconciliation of an ambiguous molecular identity;
+- human curation of a literature statement;
+- manual annotation of a structure or experimental condition.
+
+The record should preserve actor, timestamp, inspected/referenced objects, statement/action, rationale, and resulting project relationship as appropriate.
+
+Manual work must not become invisible merely because it is not computationally replayable.
+
+## Selection and exclusion provenance
+
+Selection of data is itself a scientific decision.
+
+If 17 structures are available and 4 are used, the record should preserve the candidate set, selected set, excluded set, criteria, rationale, actor/process, and relevant state.
+
+The same applies to:
+
+- structures;
+- ligands;
+- papers;
+- trajectories;
+- replicates;
+- outliers;
+- Candidates;
+- training/reference subsets;
+- any other scientifically consequential filtering.
+
+A final input set without its selection history is incomplete provenance.
+
+## General data lineage
+
+Transformation lineage applies to all scientific data, not only molecular structures.
+
+Derived datasets, Decks/cohorts, rankings, clusters, vulnerability families, statistical summaries, and other aggregate objects should preserve their dependency graph:
+
+    A + B + C
+        ↓
+      filter
+        ↓
+     normalize
+        ↓
+     aggregate
+        ↓
+     Result X
+
+Where derived knowledge is produced, lineage should connect the derivation to its inputs, operation, parameters, software/version, and underlying SourceAssertions/Results as appropriate.
+
+## Predeclared acceptance and decision criteria
+
+When scientific criteria can be specified before observing an outcome, their identity and temporal ordering should be preserved.
+
+Examples may include convergence requirements, replicate counts, statistical tolerances, pocket-population criteria, selectivity gates, or stopping rules.
+
+The record should make it possible to distinguish:
+
+    criterion defined before result
+
+from:
+
+    criterion introduced after inspecting result
+
+Not every exploratory analysis requires predeclared thresholds. The requirement is to preserve predeclaration when it exists and avoid retrospective ambiguity.
+
+## External services and mutable sources
+
+External scientific services and databases may change or disappear.
+
+For an external retrieval or computation, preserve as applicable:
+
+- service/source identity;
+- endpoint/tool identity;
+- version/release when available;
+- query/request identity;
+- retrieval/execution timestamp;
+- returned content or materialized snapshot when legally/technically allowed;
+- content hash;
+- licensing/retention constraint when the response cannot be preserved.
+
+A reference such as “ChEMBL record X” is weaker than preserving the actual content state used by the project.
+
+When content cannot be retained, the manifest should say so explicitly rather than implying full replayability.
+
+## Artifact availability and retention
+
+Integrity and availability are different.
+
+A content hash can prove identity but cannot replay a project if the referenced data no longer exist.
+
+Artifacts and inputs should therefore be able to expose, where relevant:
+
+- content identity/hash;
+- current storage location/reference;
+- availability state;
+- archival state;
+- retention policy;
+- reconstructability;
+- reason for non-retention.
+
+For example:
+
+    Artifact A17
+    hash: ...
+    storage: cold archive
+    retention: ...
+    reconstructable: yes
+
+or:
+
+    raw trajectory
+    retained: no
+    reconstructable_from:
+        ExecutionPlan + inputs + environment + seeds
+
+Large scientific data may require explicit retention tradeoffs. The project record must make those tradeoffs visible.
+
+## ReplayPreflight
+
+Before replay, MOLI should be able to assess whether the recorded trajectory is currently executable.
+
+Conceptually:
+
+    ReplayPreflight
+
+    inputs available                 ✓
+    environment reconstructable      ✓
+    Protocol available               ✓
+    external engine available        ✗
+    required license available       ✗
+    archived Artifact available      ✓
+
+Preflight does not change the historical record. It reports present-day replay feasibility and blockers.
+
+## Historical replay and migrated replay
+
+Exact historical software stacks may eventually become unavailable or impractical.
+
+Distinguish:
+
+### Historical replay
+
+Attempts to reconstruct the original implementation/environment as faithfully as possible.
+
+### Migrated replay
+
+Executes the same scientific intent using an explicitly substituted compatible implementation/environment.
+
+A migrated replay must record the substitution, rationale, compatibility claim, and verification criteria. It must never be presented as an exact historical replay.
+
+## ReplayComparisonRecord
+
+A replay should itself produce provenance.
+
+Conceptually:
+
+    ReplayComparison
+
+    original_run:
+        R17
+
+    replay_run:
+        RR17
+
+    comparison:
+        exact
+        numerical tolerance
+        statistical equivalence
+        scientifically equivalent
+        divergent
+
+    criteria:
+        ...
+
+    result / limitations:
+        ...
+
+This makes reproducibility claims auditable rather than anecdotal.
+
+## Project release / frozen scientific record
+
+A live DiscoveryProject evolves. Publications, regulatory-like records, collaborations, or long-term audit may need a frozen project state.
+
+A future `ProjectRelease` or equivalent concept may bind:
+
+- project identity;
+- release/version;
+- ProjectManifest;
+- IntegrityManifest;
+- ProjectStateSnapshot;
+- closure/release timestamp;
+- responsible authority;
+- communication/publication references.
+
+Conceptually:
+
+    live DiscoveryProject
+           ↓
+    ProjectRelease TcTIM-1.0
+           ↓
+    paper / report / archive
+
+A later project release may contain additional knowledge without rewriting what release 1.0 contained.
+
+## Four audit questions
+
+A complete project record should be able to answer:
+
+### WHAT?
+
+What happened?
+
+### WHY?
+
+Why was this path chosen and how were Results interpreted?
+
+### WITH WHAT?
+
+With exactly what knowledge, data, code, software, environment, parameters, seeds, and resources did it happen?
+
+### WHO OR WHAT AUTHORIZED IT?
+
+Who/what proposed, approved, executed, reviewed, or changed each consequential step?
+
+
 ## Scientific Communication consumes the record
 
 ProjectBriefings, ProgressBriefs, ProjectReports, slides, web reports, and videos should derive from the structured Scientific Record.
@@ -533,7 +809,19 @@ This document identifies several concepts whose exact representation still requi
 - EventLedger;
 - ProjectManifest;
 - IntegrityManifest;
-- replay verification criteria.
+- replay verification criteria;
+- execution lifecycle and retry semantics;
+- immutable amendment/versioning semantics;
+- manual scientific action/curation provenance;
+- selection/exclusion provenance;
+- general data-lineage representation;
+- predeclared acceptance-criteria representation;
+- external-service snapshot/retention semantics;
+- Artifact availability/retention policy;
+- ReplayPreflight;
+- historical versus migrated replay;
+- ReplayComparisonRecord;
+- ProjectRelease / frozen-record semantics.
 
 Not every concept must become an independent Python class. Some may be manifests, events, views, or cross-component references.
 
