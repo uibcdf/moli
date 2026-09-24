@@ -120,3 +120,18 @@ ProjectRecord/project-wide views may be virtual/materialized/cached/computed. MO
 Portability distinguishes reference export from self-contained archival export.
 
 Nextia provides scientific continuity because Discovery gives project-specific meaning to Knowledge, Results, Evidence, and subsequent Decisions; this does not make Nextia the hierarchical owner of other components.
+
+
+## Portable execution and rented resources
+
+MOLI is local-first but execution-location agnostic.
+
+ExecutionPlan expresses scientific intent, EnvironmentSpec, and provider-independent ResourceRequirements. Infrastructure selects an eligible ExecutionBackend among local workers/schedulers, institutional or partner HPC, cloud, or rented specialized compute according to explicit compatibility, confidentiality, authorization, locality, availability, and cost/budget policy.
+
+Provider-specific APIs remain behind replaceable backend adapters and must not leak into scientific Protocol semantics.
+
+Remote/rented instances are normally ephemeral compute. Required inputs are staged minimally; required Results/Artifacts and provenance are durably committed to an approved ProjectStore/ProjectRecord before ephemeral resources disappear.
+
+Recorda records the actual backend, hardware, environment, software, lifecycle, inputs, and outputs used by the Run.
+
+Local hardware capacity is not the architectural ceiling of MOLI.
