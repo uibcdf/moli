@@ -188,6 +188,250 @@ according to scientific requirements, availability, confidentiality, cost, and r
 
 This allows computational capacity to grow without making infrastructure topology part of scientific methodology.
 
+
+
+## Execution portability as an architectural goal
+
+MOLI should be **local-first but execution-location agnostic**.
+
+Scientific intent must be expressible independently of the machine or provider that eventually executes it.
+
+Conceptually:
+
+    Decision
+        ↓
+    ExecutionPlan
+        ├── scientific inputs
+        ├── Capability / Protocol
+        ├── parameters
+        ├── EnvironmentSpec
+        └── ResourceRequirements
+                ↓
+        execution policy / broker
+          ┌─────┼───────────┐
+          ▼     ▼           ▼
+        local  HPC      rented/cloud
+          └─────┼───────────┘
+                ↓
+               Run
+
+Changing the execution backend must not silently change the scientific meaning of the ExecutionPlan.
+
+> **Execution is portable. Scientific intent is expressed independently of execution location; MOLI may satisfy an ExecutionPlan using local, institutional, partner, cloud, or rented resources without changing its scientific meaning or provenance requirements.**
+
+## ResourceRequirements
+
+An ExecutionPlan should be able to express resource requirements without naming a provider.
+
+Examples may include:
+
+    CPU count / architecture constraints
+    RAM
+    GPU required
+    minimum GPU VRAM
+    accelerator capabilities
+    precision requirements
+    scratch/storage
+    expected wall time
+    network/data-locality constraints
+    specialized software/license requirements
+
+The exact schema is implementation-open.
+
+A requirement such as:
+
+    gpu = required
+    min_vram = 40 GB
+
+should allow MOLI to determine that no local worker is compatible and consider an eligible remote/rented backend without rewriting the scientific plan.
+
+## Execution backends and resource brokering
+
+MOLI should expose a provider-independent execution contract.
+
+Conceptually:
+
+    ExecutionBackend
+        ├── local process / workstation
+        ├── local scheduler / Slurm
+        ├── SSH / partner infrastructure
+        ├── institutional HPC
+        ├── cloud VM / batch
+        └── rented specialized GPU
+
+Provider-specific APIs belong behind adapters rather than inside scientific components or Protocols.
+
+A future Resource Broker may match:
+
+    ResourceRequirements
+          +
+    EnvironmentSpec
+          +
+    execution policy
+          ↓
+    eligible ExecutionBackend
+
+The broker is infrastructure/orchestration, not a scientific reasoning component.
+
+## Execution policy and cost
+
+When several compatible resources exist, infrastructure policy may consider:
+
+    prefer local resources
+    queue/wait time
+    expected runtime
+    monetary cost
+    project budget
+    deadline / priority
+    confidentiality
+    data locality
+    energy/operational policy
+    provider trust
+
+MOLI Agent may request scientific work, but provider selection and spending limits should be governed by explicit execution policy/authorization rather than improvised model reasoning.
+
+The exact scheduling/optimization algorithm is not part of Architecture 1.0.
+
+## Environment portability
+
+Portable execution requires more than portable inputs.
+
+ExecutionPlans/Runs should be able to reference an environment specification sufficient to identify or reconstruct the required software environment.
+
+Where appropriate this may include:
+
+    container image
+    immutable image digest
+    Python/environment lock
+    CUDA/runtime requirements
+    scientific engine versions
+    driver/hardware compatibility constraints
+
+Containers are a strong implementation direction for remote/rented execution but are not mandated for every Capability.
+
+The invariant is reproducible environment identity, not one container technology.
+
+## Ephemeral remote compute and persistent ProjectStore
+
+A rented/cloud compute instance should normally be treated as **ephemeral compute**, not as the authoritative ProjectStore.
+
+Conceptually:
+
+    ProjectStore
+        |
+        | stage required inputs
+        v
+    ephemeral ExecutionBackend
+        |
+        | execute Run
+        v
+    Results / Artifacts
+        |
+        | retrieve / verify
+        v
+    ProjectStore
+        |
+        v
+    backend may be destroyed
+
+The Run is not complete from a durability perspective merely because remote computation finished. Required outputs/provenance must be retrieved or durably committed according to policy.
+
+Large Artifacts may remain in an approved remote store when policy permits, but their stable identity, location, integrity, retention, and authorization state must remain represented in the ProjectRecord.
+
+## Minimal execution bundles
+
+Remote execution should not require copying an entire ProjectWorkspace.
+
+MOLI should be able to derive a minimal execution bundle or equivalent staged dependency set from the ExecutionPlan and provenance graph.
+
+Conceptually:
+
+    RunBundle
+        ├── execution manifest
+        ├── required inputs
+        ├── parameters
+        ├── environment specification
+        ├── required Protocol/Capability references
+        └── scoped ephemeral credentials when unavoidable
+
+Only the information required and authorized for that Run should leave the trusted project environment.
+
+Secrets must not be persisted in Recorda/ProjectRecord or embedded permanently in execution bundles.
+
+## Confidentiality and remote execution
+
+Eligibility for remote/rented execution depends on more than hardware compatibility.
+
+Execution policy must consider:
+
+    project visibility
+    proprietary inputs
+    unpublished structures
+    patient/sensitive data where applicable
+    provider trust
+    geographic/organizational constraints
+    license restrictions
+    credential scope
+
+A scientifically compatible provider may therefore be operationally ineligible.
+
+Context/data availability never implies permission to transmit it to an external compute backend.
+
+## Recorda and actual execution provenance
+
+The ExecutionPlan records intended requirements; the Run/Recorda record must capture what was actually used.
+
+For remote or local execution, provenance should be able to identify as applicable:
+
+    backend class
+    provider / infrastructure identity
+    instance / worker identity
+    hardware model
+    GPU VRAM / relevant accelerator properties
+    CPU / RAM
+    driver
+    CUDA/runtime
+    container/environment identity
+    scientific software versions
+    input identities
+    output identities
+    seeds / precision
+    lifecycle timestamps
+    provisioning / execution / retrieval status
+
+This allows the same ExecutionPlan to be compared across different eligible backends.
+
+## Failure and lifecycle of ephemeral resources
+
+Remote execution introduces lifecycle states beyond scientific success/failure.
+
+A Run may need to distinguish:
+
+    backend requested
+    resource provisioned
+    inputs staged
+    execution started
+    execution completed
+    outputs retrieved
+    integrity verified
+    record committed
+    resource destroyed
+
+Failures at any stage must remain auditable.
+
+Destroying an ephemeral instance must not erase the evidence required to explain a failed or partial Run.
+
+## Local capacity is not the platform ceiling
+
+MOLI should not be designed around the largest resource physically owned by the laboratory.
+
+Local infrastructure is the preferred everyday capacity when appropriate; external resources extend the execution envelope.
+
+Therefore a Capability requiring, for example, substantially more single-GPU VRAM than the local cluster provides should be representable and schedulable rather than architecturally unsupported.
+
+This lets local hardware optimize routine throughput while exceptional workloads use institutional or rented resources.
+
+
 ## Remote Scientific Context
 
 Sabueso, Praxis, and Nextia are natural candidates for shared or remote deployment because they contain persistent scientific context.
