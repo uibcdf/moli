@@ -1,5 +1,5 @@
 ---
-summary: Define how consumers reference versioned Sabueso knowledge (Cards, SourceAssertions, snapshots).
+summary: Agree on consumer-facing guarantees for versioned Sabueso knowledge references.
 issue: uibcdf/moli#3
 status: open
 opened: 2026-09-23
@@ -14,12 +14,21 @@ supersedes: []
 
 ## What
 
-This record defines the shared contract by which Nextia, and other consumers such as
+This record coordinates the shared contract by which Nextia, and other consumers such as
 MOLI Agent Context Assembly or MolSysSuite components, reference Sabueso knowledge:
 
-- the reference syntax for Sabueso Cards and SourceAssertions;
-- how a reference pins a specific version or snapshot;
-- the guarantees a consumer gets when it resolves a pinned reference.
+- which public reference fields identify a Card or SourceAssertion and pin the
+  historical state being cited;
+- what a consumer receives when it resolves a pinned reference, and how unavailable
+  or unauthorized references are reported;
+- how the cited state remains interpretable as source data and Sabueso evolve.
+
+Sabueso owns the Card and SourceAssertion model, local identifier generation,
+snapshot serialization and storage, hash/revision strategy, APIs, tests and migrations
+under [sabueso#7](https://github.com/uibcdf/sabueso/issues/7). Its developers should
+propose the public reference shape from that implementation. MOLI #3 reviews only
+the guarantees and fields that another component must rely on; it does not block
+Sabueso's local snapshot work or require MOLI to choose its storage mechanism.
 
 Architecture 1.0 freezes the requirement and leaves the contract open:
 
@@ -92,7 +101,7 @@ The observations below were checked against Sabueso `8bdb80d`.
 - Nextia is still at the architecture/documentation stage and has no consumer
   implementation that would force a provisional syntax into production.
 
-## Contract candidate for review
+## Consumer-facing candidate for review
 
 Separate the stable object identity from its historical state. A cross-component
 reference should carry the owning component, object kind, opaque object id and,
@@ -104,19 +113,30 @@ a candidate contract, not an accepted reference grammar.
 
 For the first Sabueso implementation, a SourceAssertion citation could be scoped
 to the pinned card snapshot that contains it: card id, snapshot id and assertion
-id. The assertion id plus `source.version` remains useful as an additional
-source-release locator, but cannot by itself reconstruct the card's selected
-value and conflicts. An independent assertion snapshot may be defined later if a
-consumer needs to cite assertions without a containing card.
+id. An independent assertion citation may also be valid if Sabueso can preserve
+the asserted statement and its observation context. The assertion id plus
+`source.version` is useful as a source-release locator but cannot by itself
+reconstruct the card's selected value and conflicts. Sabueso should propose which
+forms it can support; MOLI should confirm what consumers may infer from each form.
 
-The snapshot must preserve the card payload and its interpretation context:
-schema version, SourceAssertionStore, relationships, selected values, selection
-rules or profile version, quality and curation outcomes, source versions and
-retrieval metadata. A portable snapshot id cannot be the local SQLite row number.
-If the public id is content-addressed, canonicalization and digest versioning must
-be specified first; an opaque immutable id may instead carry a separate integrity
-digest. Retention, resolution and error states need explicit guarantees before
+For a resolved-card citation, the snapshot must preserve enough of the card and
+its interpretation context to recover selected values, conflicts, provenance,
+curation outcomes and the applicable rules. Sabueso defines its exact serialized
+payload. A portable public reference cannot rely solely on a local SQLite row
+number. Content addressing, revision numbering, canonicalization and any integrity
+digest remain Sabueso design choices unless exposed in the public contract.
+Retention, resolution and error states need explicit consumer guarantees before
 this candidate becomes a platform contract.
+
+## Work split and sequencing
+
+The minimal workflow requested by MOLI #3 now exists. Sabueso #7 can implement and
+test local snapshots, pinned reads and provisional references immediately. Sabueso
+should bring a concrete external-reference proposal, with examples of both a
+SourceAssertion citation and a resolved-card citation, to MOLI #3. MOLI then checks
+the cross-component guarantees with prospective consumers before calling that
+external form stable. Nextia or another consumer must not persist a provisional
+form as a stable platform contract in the meantime.
 
 ## Why
 
@@ -124,10 +144,11 @@ this candidate becomes a platform contract.
   knowledge it used, even after the sources evolve (stress test 12).
 - Context Assembly must preserve references to the authoritative objects
   (`CONTEXT_ASSEMBLY.md`).
-- The reference format is shared by two or more components, so under the `MOLI_GUIDE.md`
-  ownership rule it belongs to `uibcdf/moli`, not to Sabueso alone.
+- The consumer-facing guarantee is shared by two or more components, so under the
+  `MOLI_GUIDE.md` ownership rule MOLI coordinates its acceptance. Sabueso remains
+  authoritative for its implementation and proposes its public reference form.
 
-## Alternatives
+## Sabueso design options to bring to review
 
 Nothing is decided yet. These are the options to evaluate:
 
@@ -137,14 +158,14 @@ Nothing is decided yet. These are the options to evaluate:
      records remain provenance rather than the card's identity.
    - Decide how to represent aliases and entity merges without changing what an
      existing reference means.
-2. **Pinning**
+2. **Pinning implementation**
    - Content-addressed snapshots, which are immutable and reproducible by construction.
    - Monotonic revisions or timestamps, which are simpler to read but need a registry
      to resolve.
    - Both at once: revision for humans, hash for integrity.
 3. **What a snapshot captures:** the card state and interpretation context listed in
    the contract candidate, including curation outcomes and source versions.
-4. **SourceAssertion ids across source releases**
+4. **SourceAssertion identity across source releases**
    - Keep them stable while the asserted content is unchanged, with the source versions
      recorded as observations, as today.
    - Or include `source.version` in the identity.
@@ -153,12 +174,13 @@ Nothing is decided yet. These are the options to evaluate:
 
 ## Acceptance criteria
 
-- A documented reference grammar for Sabueso Cards and SourceAssertions, with the
-  pinning syntax and semantics, in the MOLI devguide or as a MOLI policy.
-- Explicit guarantees for resolving pinned references (immutability, retention
-  expectations).
-- Sabueso's provisional forms are either confirmed or scheduled for migration in
-  uibcdf/sabueso#7.
+- Sabueso proposes documented public Card and SourceAssertion reference forms,
+  including how a historical citation is pinned.
+- MOLI records the consumer-facing meaning of those forms and the guarantees for
+  resolving pinned references, including immutability, retention expectations and
+  explicit unavailable/unauthorized outcomes.
+- Sabueso's provisional forms are either confirmed or have a migration plan in
+  uibcdf/sabueso#7; local snapshot implementation is not blocked on this decision.
 - The architecture examples are consistent with the chosen grammar, or the difference is
   explained.
 
