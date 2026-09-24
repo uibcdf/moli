@@ -45,16 +45,33 @@ that a PyPI distribution exists. The equivalent short option is `-e`; pip has no
 for a non-editable local installation. A component with an entirely PyPI-available
 development dependency closure may document a virtual-environment alternative.
 
-Keep committed environment specifications under `devtools/conda-envs/` for the
-development and required-test routes. Add build and documentation environments when
-those jobs exist; do not create unused environments for symmetry. A component that
-requires packages available only through Conda runs its required Python CI matrix
-against a resolvable Conda test environment. Its workflow may use micromamba or an
-equivalent solver, then install the local component without re-resolving dependencies
-through pip. A component with a verified all-PyPI dependency closure may use a pip
-test lane, but a public Conda release still needs installed-artifact evidence.
+Keep committed environment specifications under `devtools/conda-envs/`. Use
+`development_env.yaml` for the development route and `test_env.yaml` for required
+tests; add `build_env.yaml` and `docs_env.yaml` when those jobs exist. Additional
+files may describe platform-specific or reduced-dependency lanes. These environment
+files declare tool and test dependencies as well as the runtime packages needed by
+their jobs. A required CI lane that needs Conda-only third-party dependencies must
+acquire them through a resolvable Conda environment, using micromamba or an
+equivalent solver;
+install the local component with `--no-deps` only after its required dependencies
+are present. If a required sibling version cannot be resolved from the configured
+Conda channels, a tracked temporary CI route may install that sibling from a
+reviewed full commit SHA and verify its installed import. That source route is
+development/test evidence, not evidence for a public user-installation claim.
+A component with a verified all-PyPI dependency closure may use a pip test lane,
+but a public Conda release still needs installed-artifact evidence.
 MOLI's [Python CI policy](python_ci_policy.md) governs events, supported minors and
 passing evidence; this policy does not prescribe identical workflow YAML.
+
+Declare required runtime dependencies and supported Python bounds in
+`pyproject.toml` (`project.dependencies` and `requires-python`); keep optional
+features in `project.optional-dependencies` when they are truly optional. The Conda
+recipe's `requirements: run` must express the same required runtime closure and
+compatible version floors/ceilings. Conda and Python distribution names can differ;
+record intentional mappings, such as `mmcif` to `py-mmcif`, and verify both resolved
+installations. Environment files may add development tools and optional-feature
+packages, but must not silently substitute for missing runtime metadata. Recheck
+recipe and CI environments whenever a required dependency or Python bound changes.
 
 For normal Conda environments, list `uibcdf` before `conda-forge` and record the
 channel-priority mode. Strict priority is the normal starting point, not a universal
@@ -66,7 +83,11 @@ publication or provenance evidence.
 ## Recipe and publication
 
 Before a component's first public Conda release, maintain a recipe under
-`devtools/conda-build/`, including its build script if needed. Build the package from
+`devtools/conda-build/` (`meta.yaml` and a build script if needed) and a
+`.github/workflows/build_and_upload_conda_packages.yaml` workflow invoking a
+reviewed release of `uibcdf/action-build-and-upload-conda-packages`. A repository
+may use a different workflow name with a documented reason and equivalent gates.
+Build the package from
 the exact release candidate and derive its public version from the `X.Y.Z` Git tag
 required by [MOLI release-version policy](release_version_policy.md); Conda build
 numbers are separate. Test the built artifact's installation, import/version and
