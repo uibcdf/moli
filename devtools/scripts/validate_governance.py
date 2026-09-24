@@ -109,6 +109,44 @@ def validate_python_ecosystem_reviews(
     return errors
 
 
+def validate_python_distribution_reviews(
+    components: dict[str, dict], policies: dict[str, dict]
+) -> list[str]:
+    """Keep distribution decisions visible for every direct Python component."""
+    errors: list[str] = []
+    policy = policies.get("python_distribution", {})
+    expected = {
+        "status": "accepted",
+        "applies_to": ["capability:python-package"],
+        "primary_public_channel": "uibcdf",
+        "third_party_channel": "conda-forge",
+        "pypi_route": "optional-verified",
+        "review_field": "python_distribution_review",
+        "normative": "devguide/policies/python_distribution_policy.md",
+    }
+    for key, value in expected.items():
+        if policy.get(key) != value:
+            errors.append(f"moli.toml: Python distribution policy has invalid {key}")
+    for name, component in components.items():
+        if "python-package" not in component.get("capabilities", []):
+            continue
+        if component.get("internal_governance") == "delegated":
+            continue
+        review = component.get("python_distribution_review")
+        if not isinstance(review, dict):
+            errors.append(f"moli.toml: component {name} needs a Python distribution review")
+            continue
+        repository = component.get("repository", "")
+        issue = review.get("issue", "")
+        if not isinstance(issue, str) or not ISSUE.fullmatch(issue) or not issue.startswith(
+            f"{repository}#"
+        ):
+            errors.append(f"moli.toml: component {name} has an invalid distribution review issue")
+        if review.get("state") not in PYTHON_ECOSYSTEM_STATES:
+            errors.append(f"moli.toml: component {name} has an invalid distribution review state")
+    return errors
+
+
 def validate_registry(root: Path) -> list[str]:
     errors: list[str] = []
     path = root / "moli.toml"
@@ -143,6 +181,7 @@ def validate_registry(root: Path) -> list[str]:
             errors.append(f"moli.toml: component {name} has no internal governance repository")
     policies = data.get("policies", {})
     errors.extend(validate_python_ecosystem_reviews(registered, policies))
+    errors.extend(validate_python_distribution_reviews(registered, policies))
     for name in (
         "reporting_lifecycle",
         "cross_component_feedback",

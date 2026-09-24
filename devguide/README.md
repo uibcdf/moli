@@ -25,7 +25,7 @@ component capabilities have verified implementation, which repositories are stil
 incubating, and which project-level infrastructure remains specified only in the
 architecture. It does not replace the component registry or delegated inventories.
 
-Shared engineering policies (Python support and CI, Ruff/pytest quality tooling, applicable support libraries, developer receptors, release versions, repository badges, and Zenodo/DOI archival) are documented in `policies/`; `moli.toml` records which repositories or capabilities each one applies to. MolSysSuite-specific extensions for its internally governed members remain in MolSysSuite.
+Shared engineering policies (Python support and CI, Ruff/pytest quality tooling, applicable support libraries, developer receptors, distribution, release versions, repository badges, and Zenodo/DOI archival) are documented in `policies/`; `moli.toml` records which repositories or capabilities each one applies to. MolSysSuite-specific extensions for its internally governed members remain in MolSysSuite.
 
 The scheduled component-guide audit checks byte-identical copies and Python-package classification in directly governed repositories. Guide updates are synchronized to those repositories when the canonical guide changes.
 

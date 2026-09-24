@@ -2,7 +2,7 @@
 
 MOLI owns the shared engineering baseline required for coherent repositories across the platform, alongside its platform and scientific governance.
 
-Current engineering policies cover Python support, Python CI, Ruff/pytest quality tooling, public release-version semantics, repository badge evidence, and Zenodo/DOI archival claims.
+Current engineering policies cover Python support, Python CI, Ruff/pytest quality tooling, applicable support libraries, developer receptors, distribution, public release-version semantics, repository badge evidence, and Zenodo/DOI archival claims.
 
 Applicability is recorded in `moli.toml`. A policy applies only to the repositories or capabilities named by that registry.
 
