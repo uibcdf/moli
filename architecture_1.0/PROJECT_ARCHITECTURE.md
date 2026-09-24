@@ -229,6 +229,8 @@ It may be:
 
 The Workspace and scientific object identities must not depend on one particular storage topology.
 
+Likewise, ProjectStore topology is independent from compute topology: a Run may execute on local, institutional, partner, cloud, or rented ephemeral resources while durable project state remains in approved ProjectStore backends. See [`DEPLOYMENT_MODEL.md`](DEPLOYMENT_MODEL.md) for the portable-execution contract.
+
 Large Artifacts may live outside the visible Workspace directory while being referenced through stable identity, hash, availability, retention, and storage metadata.
 
 Therefore:
