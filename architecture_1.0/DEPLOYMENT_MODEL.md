@@ -8,6 +8,31 @@ The scientific architecture defines responsibilities, semantics, ownership, prov
 
 The same scientific concepts should remain valid whether the platform runs on a single workstation, a laboratory cluster, institutional HPC infrastructure, commercial cloud infrastructure, specialized GPU providers, or a hybrid combination of these resources.
 
+## No owned-compute requirement
+
+A valid MOLI deployment must be able to operate **without founder-owned, laboratory-owned, or institution-owned compute infrastructure**.
+
+Persistent platform services, storage, reasoning backends, and scientific compute may all be hosted on contracted infrastructure when necessary.
+
+Conceptually:
+
+    researchers / clients
+            |
+            v
+    contracted persistent infrastructure
+        MOLI / Scientific Context / databases
+        ProjectRecord / ProjectStore
+            |
+            v
+    contracted elastic compute
+        CPU / GPU / HPC / specialized resources
+
+Owned/local resources, when available, are an optimization for cost, latency, privacy, resilience, or throughput. They are not an operational prerequisite for the platform.
+
+This supports startup and small-team deployments in which scientists work remotely or from home while persistent services and computational resources run in datacenters or other contracted infrastructure.
+
+> **MOLI must be capable of operating entirely on contracted infrastructure; owned compute is an optional optimization, not an architectural dependency.**
+
 ## Local-first, remote-ready
 
 Architecture 1.0 does not require remote services or microservices.
