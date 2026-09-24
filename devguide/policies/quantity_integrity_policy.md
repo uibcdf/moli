@@ -18,7 +18,9 @@ owns its scientific meaning, input vocabulary, persisted schema, and migration.
    no implicit default unit, silent reinterpretation, or fallback after verification
    fails. The codec and its format are owned by PyUnitWizard; components must not
    create private competing codecs. See the [design record](https://github.com/uibcdf/pyunitwizard/issues/83)
-   and [implementation](https://github.com/uibcdf/pyunitwizard/issues/82).
+   and [implementation](https://github.com/uibcdf/pyunitwizard/issues/82), and
+   use the [published guide](https://github.com/uibcdf/pyunitwizard/blob/main/standards/PYUNITWIZARD_GUIDE.md#storing-and-exchanging-quantities-provisional)
+   for the currently supported provisional API.
 3. An in-process API that promises a physical quantity returns a quantity, unless
    the caller explicitly requests a numeric value in a named unit. Conversion at
    an external boundary names the target unit explicitly; it must not depend on

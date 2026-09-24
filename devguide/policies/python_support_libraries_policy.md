@@ -20,7 +20,8 @@ that boundary exists:
   dimensional validation. A component owns its persisted schema and migration, and
   follows the [platform quantity integrity policy](quantity_integrity_policy.md)
   whenever quantities cross a boundary. PyUnitWizard owns the shared serialization
-  design and codec; read its [design record](https://github.com/uibcdf/pyunitwizard/issues/83)
+  design and codec; follow its [canonical guide](https://github.com/uibcdf/pyunitwizard/blob/main/standards/PYUNITWIZARD_GUIDE.md#storing-and-exchanging-quantities-provisional)
+  and read the [design record](https://github.com/uibcdf/pyunitwizard/issues/83)
   before proposing a format or alternative. Runtime use alone does not silently
   establish that a persisted schema conforms.
 
