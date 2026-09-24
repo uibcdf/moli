@@ -34,7 +34,8 @@ change it.
 
 ## How / evidence
 
-State of Sabueso, inspected on `main` on 2026-09-23:
+Historical state of Sabueso, inspected on `main` on 2026-09-23. The next section
+supersedes observations that have since changed:
 
 - **Card identity:** `meta.card_id = sabueso:<entity_type>:<subject_ref>`, for example
   `sabueso:protein:uniprot:P52789`, together with `meta.schema_version = 0.2.0`. It was
@@ -58,6 +59,65 @@ State of Sabueso, inspected on `main` on 2026-09-23:
 - **Nextia:** no implementation exists yet, so this is the moment to fix the contract
   before any consumer hard-codes the provisional forms.
 
+## New evidence: minimal Sabueso workflow (2026-09-24)
+
+Sabueso now has the live
+[`knowledge_baseline.ipynb`](https://github.com/uibcdf/sabueso/blob/main/docs/content/showcase/knowledge_baseline.ipynb)
+and a corresponding frozen-response
+[`test_knowledge_baseline_offline.py`](https://github.com/uibcdf/sabueso/blob/main/tests/core/test_knowledge_baseline_offline.py).
+The workflow resolves two proteins, creates cards and SourceAssertions, adds a curated
+literature assertion, and stores and reloads cards. This satisfies the scheduling
+condition recorded in [MOLI #3](https://github.com/uibcdf/moli/issues/3); the
+cross-component reference decision can now be reviewed against an actual workflow.
+The observations below were checked against Sabueso `8bdb80d`.
+
+- `meta.card_id` is now an entity-level anchor: UniProt accession for a protein and
+  standard InChIKey for a small molecule. The string form remains explicitly
+  provisional. Neither a card revision nor a snapshot id exists.
+- A SourceAssertion id hashes source, record, field path and asserted value, but
+  omits `source.version`. Several mappings now record source releases. Therefore the
+  id identifies a stated claim across releases, while an exact historical
+  observation also needs its source version or a containing snapshot. Sources
+  without a stated release require another observation locator. The current
+  16-hex-character suffix and string representation have not been reviewed as a
+  platform-wide external identifier format; consumers must treat the id as opaque.
+- Curated assertions survive card rebuilds with stable ids, while their comparison
+  outcome can change as database statements change. A snapshot of a resolved card
+  must therefore preserve its selected values, conflicts and curation outcomes,
+  not only the assertion ids.
+- The stored card includes its SourceAssertionStore, relationships, selection rules,
+  quality and source metadata. The quantity seal verifies quantity fields on read;
+  it is not a whole-card snapshot id or digest. SQLite appends rows but its public
+  read path selects the latest row for a `card_id`. No pinned resolver exists.
+- Nextia is still at the architecture/documentation stage and has no consumer
+  implementation that would force a provisional syntax into production.
+
+## Contract candidate for review
+
+Separate the stable object identity from its historical state. A cross-component
+reference should carry the owning component, object kind, opaque object id and,
+when historical reproducibility is required, an immutable snapshot id. A consumer
+may request the current card without a pin for live exploration; Nextia Evidence,
+Decisions and recorded Runs must pin the state they used. Resolution of a missing
+pin must fail explicitly rather than silently returning the latest card. This is
+a candidate contract, not an accepted reference grammar.
+
+For the first Sabueso implementation, a SourceAssertion citation could be scoped
+to the pinned card snapshot that contains it: card id, snapshot id and assertion
+id. The assertion id plus `source.version` remains useful as an additional
+source-release locator, but cannot by itself reconstruct the card's selected
+value and conflicts. An independent assertion snapshot may be defined later if a
+consumer needs to cite assertions without a containing card.
+
+The snapshot must preserve the card payload and its interpretation context:
+schema version, SourceAssertionStore, relationships, selected values, selection
+rules or profile version, quality and curation outcomes, source versions and
+retrieval metadata. A portable snapshot id cannot be the local SQLite row number.
+If the public id is content-addressed, canonicalization and digest versioning must
+be specified first; an opaque immutable id may instead carry a separate integrity
+digest. Retention, resolution and error states need explicit guarantees before
+this candidate becomes a platform contract.
+
 ## Why
 
 - A Nextia Evidence or Decision must stay interpretable against the exact external
@@ -72,16 +132,18 @@ State of Sabueso, inspected on `main` on 2026-09-23:
 Nothing is decided yet. These are the options to evaluate:
 
 1. **Card identity**
-   - Entity-level references (`sabueso:<type>:<entity-id>`). They require the
-     EntityResolver from uibcdf/sabueso#6.
-   - Source-record-level references, as today, with the entity as a separate object.
+   - Keep the current entity-level anchor and define its public namespace and
+     resolution guarantees. Sabueso's EntityResolver is now implemented; source
+     records remain provenance rather than the card's identity.
+   - Decide how to represent aliases and entity merges without changing what an
+     existing reference means.
 2. **Pinning**
    - Content-addressed snapshots, which are immutable and reproducible by construction.
    - Monotonic revisions or timestamps, which are simpler to read but need a registry
      to resolve.
    - Both at once: revision for humans, hash for integrity.
-3. **What a snapshot captures:** at minimum the card state, its SourceAssertionStore, the
-   selection-rules version and the source versions.
+3. **What a snapshot captures:** the card state and interpretation context listed in
+   the contract candidate, including curation outcomes and source versions.
 4. **SourceAssertion ids across source releases**
    - Keep them stable while the asserted content is unchanged, with the source versions
      recorded as observations, as today.
@@ -96,7 +158,7 @@ Nothing is decided yet. These are the options to evaluate:
 - Explicit guarantees for resolving pinned references (immutability, retention
   expectations).
 - Sabueso's provisional forms are either confirmed or scheduled for migration in
-  uibcdf/sabueso#7 and uibcdf/sabueso#6.
+  uibcdf/sabueso#7.
 - The architecture examples are consistent with the chosen grammar, or the difference is
   explained.
 
