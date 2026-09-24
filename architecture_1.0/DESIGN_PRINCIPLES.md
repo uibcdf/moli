@@ -61,3 +61,12 @@
 56. ProjectRecord/project-wide graph views may be virtual, materialized, cached, or computed; architecture does not require a duplicated persistent global graph.
 57. Project portability distinguishes reference export from self-contained archival export, with unavailable/non-embeddable dependencies remaining explicit.
 58. Nextia provides scientific continuity through Discovery semantics, not hierarchical control over Sabueso, Praxis, or MolSysSuite.
+
+59. Execution is portable: scientific intent and ResourceRequirements are expressed independently of execution location/provider.
+60. Local hardware is preferred capacity, not the architectural ceiling; eligible institutional, partner, cloud, or rented resources may satisfy an ExecutionPlan without changing its scientific meaning.
+61. Provider-specific execution APIs belong behind replaceable ExecutionBackend adapters; scientific components and Protocols must not be coupled to a commercial compute provider.
+62. Remote/rented compute is normally ephemeral; ProjectStore/ProjectRecord remain durable authorities and required outputs/provenance must be committed before ephemeral resource loss.
+63. Remote execution stages the minimum required and authorized dependency set rather than the entire ProjectWorkspace.
+64. Environment identity/portability is part of reproducibility; containers are a strong direction but no single container technology is architecturally required.
+65. Resource selection is governed by explicit policy including compatibility, availability, confidentiality, cost/budget, data locality, and authorization; MOLI Agent does not improvise spending/provider policy.
+66. Recorda/Run provenance records actual execution resources and environment, not only planned ResourceRequirements.
