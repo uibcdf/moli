@@ -679,6 +679,27 @@ With exactly what knowledge, data, code, software, environment, parameters, seed
 Who/what proposed, approved, executed, reviewed, or changed each consequential step?
 
 
+
+
+## Execution location portability
+
+Replayability and provenance must survive changes in execution location.
+
+An ExecutionPlan may be satisfied by local, scheduled, institutional, cloud, partner, or rented resources when they meet the recorded scientific/environment requirements and execution policy.
+
+The historical record must distinguish:
+
+    intended ResourceRequirements
+            from
+    actual Run resources/environment
+
+For a remote/rented Run, reproducibility provenance should preserve the actual backend/hardware/environment identities and the staged input/output identities needed to understand or reproduce the computation.
+
+A replay may use a different eligible backend while remaining a replay of the recorded scientific plan; if implementation/environment substitutions are required, the historical-versus-migrated replay rules still apply.
+
+Remote ephemeral compute must not become a hidden dependency of the ProjectRecord. Required provenance and durable Results/Artifacts must survive resource destruction.
+
+
 ## Scientific Communication consumes the record
 
 ProjectBriefings, ProgressBriefs, ProjectReports, slides, web reports, and videos should derive from the structured Scientific Record.
