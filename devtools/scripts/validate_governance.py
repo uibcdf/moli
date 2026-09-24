@@ -229,6 +229,7 @@ def validate_registry(root: Path) -> list[str]:
         "reporting_lifecycle",
         "issue_feedback",
         "support_infrastructure",
+        "quantity_integrity",
         "cross_component_feedback",
         "component_guide",
         "python",

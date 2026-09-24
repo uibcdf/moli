@@ -90,6 +90,13 @@ libraries = ["argdigest", "depdigest", "smonitor", "pyunitwizard"]
 review_field = "python_ecosystem_review"
 normative = "devguide/policies/python_support_libraries_policy.md"
 
+[policies.quantity_integrity]
+status = "accepted"
+applies_to = ["repository", "support-infrastructure"]
+boundary_condition = "produces-transforms-stores-or-communicates-physical-quantities"
+normative = "devguide/policies/quantity_integrity_policy.md"
+issue = "uibcdf/moli#12"
+
 [policies.python_developer_tools]
 status = "accepted"
 applies_to = ["capability:python-package"]

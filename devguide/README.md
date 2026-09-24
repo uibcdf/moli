@@ -27,6 +27,11 @@ architecture. It does not replace the component registry or delegated inventorie
 
 Shared engineering policies (Python support and CI, Ruff/pytest quality tooling, applicable support libraries, developer receptors, distribution, release versions, repository badges, and Zenodo/DOI archival) are documented in `policies/`; `moli.toml` records which repositories or capabilities each one applies to. MolSysSuite-specific extensions for its internally governed members remain in MolSysSuite.
 
+The [quantity integrity policy](policies/quantity_integrity_policy.md) applies wherever
+physical quantities cross an API, storage, process or component boundary. PyUnitWizard
+owns the shared serialization design and codec; the component owns its scientific
+meaning, source vocabulary, schema migration and adoption evidence.
+
 The scheduled component-guide audit checks byte-identical copies and Python-package classification in directly governed repositories. Guide updates are synchronized to those repositories when the canonical guide changes.
 
 The [UIBCDF support-infrastructure catalog](governance/support_infrastructure.md)

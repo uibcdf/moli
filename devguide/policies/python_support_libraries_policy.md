@@ -17,9 +17,12 @@ that boundary exists:
   incomplete operations. Scientific outcomes and provenance remain component data;
   SMonitor does not replace them.
 - **PyUnitWizard:** physical quantities that require unit parsing, conversion, or
-  dimensional validation. A component owns its persisted schema: using PyUnitWizard at
-  runtime does not require serializing its Python objects or changing existing card
-  values. A shared schema change follows the normal MOLI contract process.
+  dimensional validation. A component owns its persisted schema and migration, and
+  follows the [platform quantity integrity policy](quantity_integrity_policy.md)
+  whenever quantities cross a boundary. PyUnitWizard owns the shared serialization
+  design and codec; read its [design record](https://github.com/uibcdf/pyunitwizard/issues/83)
+  before proposing a format or alternative. Runtime use alone does not silently
+  establish that a persisted schema conforms.
 
 Do not add an unused library solely to satisfy this policy. A component's review issue
 records each applicable use, non-applicability with a reason, and any replacement of
