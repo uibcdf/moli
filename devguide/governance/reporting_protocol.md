@@ -1,10 +1,36 @@
 # Reporting Protocol
 
-This document is normative for repositories directly governed by MOLI.
+The issue-feedback commitment below applies to everyone using, developing,
+maintaining or operating a MOLI component or UIBCDF support tool, including
+MolSysSuite members, pytest-receptor, gh-run-receptor, the Conda build/upload
+action and the Sphinx-to-Pages action. The
+devguide queue and archive mechanics in this document are normative for repositories
+directly governed by MOLI; MolSysSuite maintains its compatible member lifecycle.
+
+## Universal issue-feedback commitment
+
+When you find a bug, a missing or limiting capability, an improvement opportunity,
+or a proposed new feature, communicate it through the GitHub issue in the repository
+that owns the behavior or shared contract. Open an issue or add the concrete finding
+to an existing one. This applies to users, collaborators, developers, maintainers and
+agents, whether the finding concerns their own repository or another component.
+If you cannot open an issue, ask the responsible maintainer to record it and provide
+the evidence needed for triage.
+
+Do not leave an actionable finding only in a private chat, a local workaround, a code
+comment or a downstream repository. Describe what was observed or needed, why it
+matters, and a reproduction or concrete use case when available. Cross-link consumer
+and provider issues where both have work to do. Reporting creates a durable feedback
+record; maintainers decide priority and scope, so an issue is not a promise of
+immediate implementation.
+
+Keep confidential data out of public issues. Report exploitable security findings
+through the repository's private security channel first; create or link a public
+issue only when disclosure is safe.
 
 ## Universal lifecycle
 
-For bugs and proposals that require durable analysis:
+For bugs and proposals that require durable devguide analysis:
 
 ```text
 GitHub issue
@@ -19,6 +45,7 @@ archive
 ```
 
 **Every queued report must have an issue in the repository that owns the work.**
+Small findings may need only an issue or an update to an existing issue.
 
 GitHub issue references are the stable cross-repository identity. Do not use a path into a sibling repository's `devguide/` as an external identifier.
 

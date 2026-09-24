@@ -4,6 +4,10 @@ Normative for MOLI components carrying the `python-package` capability. These to
 support development and CI inspection; they are not runtime dependencies of the
 component.
 
+Pytest Receptor and GH Run Receptor are also listed in MOLI's
+[UIBCDF support-infrastructure catalog](../governance/support_infrastructure.md).
+Report tool defects and improvements to their provider issue boards.
+
 ## Pytest Receptor
 
 When an agent runs pytest, use the published pytest-receptor release and its

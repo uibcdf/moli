@@ -6,11 +6,15 @@ its normative document. A component with delegated internal governance passes
 applicable MOLI policies to its registered descendants according to their
 capabilities. Delegation changes who coordinates adoption, not who owns a rule.
 
+UIBCDF-owned development tools and publication actions are cataloged separately
+as [support infrastructure](support_infrastructure.md). Cataloging them does not
+make them new scientific MOLI components or remove existing MolSysSuite membership.
+
 MolSysSuite therefore references MOLI policies for its members. Its registry
 may record member classification, adoption state, evidence, bounded exceptions,
 and explicit modeling-domain extensions. It must not independently redefine
-MOLI-wide Python support, CI, quality tooling, release-version, badge, or DOI
-rules. A stricter suite requirement identifies the inherited rule and states
+MOLI-wide issue feedback, Python support, CI, quality tooling, release-version,
+badge, or DOI rules. A stricter suite requirement identifies the inherited rule and states
 only the additional requirement and its applicability.
 
 ## Policy snapshots and verification

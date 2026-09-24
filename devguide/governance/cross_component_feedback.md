@@ -2,6 +2,10 @@
 
 MOLI components share responsibility for improving the platform while preserving provider ownership.
 
+The [universal issue-feedback commitment](reporting_protocol.md#universal-issue-feedback-commitment)
+also covers defects and improvements within the component someone is using. This
+document adds the provider/consumer handoff for findings that cross repositories.
+
 When one component reveals a limitation in another:
 
 1. identify the provider that owns the missing capability;

@@ -29,6 +29,11 @@ Shared engineering policies (Python support and CI, Ruff/pytest quality tooling,
 
 The scheduled component-guide audit checks byte-identical copies and Python-package classification in directly governed repositories. Guide updates are synchronized to those repositories when the canonical guide changes.
 
+The [UIBCDF support-infrastructure catalog](governance/support_infrastructure.md)
+records the developer receptors and publication actions used by MOLI repositories.
+These resources have their own provider repositories and issue boards; they are not
+new scientific MOLI components.
+
 ## Structure
 
 - `governance/` — ownership, reporting, cross-component coordination, and membership/delegation rules.

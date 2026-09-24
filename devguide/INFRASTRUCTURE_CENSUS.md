@@ -1,11 +1,13 @@
 # MOLI infrastructure census
 
-**Snapshot:** 2026-09-23. This census records implementation evidence visible in the
+**Snapshot:** 2026-09-24. This census records implementation evidence visible in the
 published UIBCDF repositories and distinguishes a repository's existence from a usable
 implementation. It is an implementation-status record, not a change to the frozen
 [Architecture 1.0](../architecture_1.0/README.md) or a second membership registry.
 The authoritative direct-component registry is [`moli.toml`](../moli.toml);
-MolSysSuite and MolSys-AI maintain their own member/subsystem registries.
+MolSysSuite and MolSys-AI maintain their own member/subsystem registries. The
+separate `support_infrastructure` catalog in `moli.toml` identifies UIBCDF-owned
+development tools that support MOLI without making them scientific components.
 
 ## Status vocabulary
 
@@ -34,6 +36,21 @@ verified.
 | Nextia — DiscoveryProject, ProjectGraph and DiscoveryEngine | [`uibcdf/nextia`](https://github.com/uibcdf/nextia/tree/c9568128d80274aae3176c687e37507a355814b9) | **Incubating:** repository and Discovery design exist; its [README](https://github.com/uibcdf/nextia/blob/c9568128d80274aae3176c687e37507a355814b9/README.md) establishes the implementation home, with no Nextia runtime package yet. | Build a minimal persistent project graph and deterministic operation against it. |
 | MolSysSuite — modeling ecosystem | [`uibcdf/molsyssuite`](https://github.com/uibcdf/molsyssuite/tree/4012f75e16298d7e04a72d21a97e898cf8c4c7bc) | **Implemented (bounded):** delegated member registry, policies and validation exist; modeling code lives in member repositories. This row makes no claim that every member has the same maturity. | Use [`suite.toml`](https://github.com/uibcdf/molsyssuite/blob/4012f75e16298d7e04a72d21a97e898cf8c4c7bc/suite.toml) and the suite's adoption records for member-level status. |
 | MOLI Agent — optional cross-domain scientific agency | [`uibcdf/moli-agent`](https://github.com/uibcdf/moli-agent/tree/d784745462ec2b18a8be9a34321900e487d9fc61) | **Incubating:** the repository **does exist**; its [README](https://github.com/uibcdf/moli-agent/blob/d784745462ec2b18a8be9a34321900e487d9fc61/README.md) and development guide define the boundary, but no agent runtime code was found. | Specify the contracts needed for a first controlled scientific-context action, then implement and test it. |
+
+## UIBCDF development infrastructure supporting MOLI
+
+These repositories are UIBCDF-owned support resources, not additional MOLI scientific
+components. Their provider repositories own implementation and releases. The two
+receptors also retain their MolSysSuite auxiliary-member status. The [support
+contract](governance/support_infrastructure.md) defines use and issue ownership.
+This section was checked against repository `main` on 2026-09-24.
+
+| Resource | Repository | State and observed evidence | Next verifiable step |
+| --- | --- | --- | --- |
+| Pytest Receptor — concise pytest evidence | [`uibcdf/pytest-receptor`](https://github.com/uibcdf/pytest-receptor/tree/569ddb1abc9da78710ccc88ff1033225ad44cd39) | **Implemented (bounded):** published pytest plugin, consumer guide and CI integration are present; it is an auxiliary MolSysSuite member. | Keep consumer pins and reporting behavior verified across supported Python versions. |
+| GH Run Receptor — GitHub Actions evidence | [`uibcdf/gh-run-receptor`](https://github.com/uibcdf/gh-run-receptor/tree/c1e2557c11c3ab1483920c37938ff624d4817abf) | **Implemented (bounded):** CLI, Action/reusable workflow and consumer guide are present; it is an auxiliary MolSysSuite member. | Verify inspection remains aligned with GitHub's authoritative run conclusions. |
+| Conda build/upload action — package publication | [`uibcdf/action-build-and-upload-conda-packages`](https://github.com/uibcdf/action-build-and-upload-conda-packages/tree/a938b6fa6e29d76b5a359efb210a6a5253eb70fe) | **Implemented (bounded):** action, promotion helper and tests exist; ArgDigest used a released action in a successful hosted publication run. This does not verify Sabueso secret access. | Apply the shared release contract to each publishing component and resolve credential communication in [MOLI #8](https://github.com/uibcdf/moli/issues/8). |
+| Sphinx-to-Pages action — documentation publication | [`uibcdf/action-sphinx-docs-to-gh-pages`](https://github.com/uibcdf/action-sphinx-docs-to-gh-pages/tree/dc3020b423e451c0edbe05ca4ff85b8ae507819f) | **Implemented (bounded):** action and documented Sphinx/gh-pages workflow exist; MolSysMT references it in its documentation workflow. A live site deployment was not verified for this census. | Record which components use this route and verify hosted publication evidence when assessing adoption. |
 
 ## Delegated MolSys-AI subsystem
 

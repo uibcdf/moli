@@ -103,6 +103,12 @@ platform-wide here; MolSysSuite's [coordinated release proposal](https://github.
 owns that domain-specific decision. Direct components choose a suitable route with
 their own release evidence.
 
+The build/upload action is UIBCDF-owned
+[support infrastructure](../governance/support_infrastructure.md). Report action
+defects to its provider repository; report platform-wide usage changes to MOLI.
+Credential access and communication are tracked separately in
+[MOLI #8](https://github.com/uibcdf/moli/issues/8).
+
 ## Onboarding and adoption
 
 Direct Python components register a `python_distribution_review` issue and state in

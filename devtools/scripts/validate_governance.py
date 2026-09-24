@@ -162,6 +162,49 @@ def validate_registry(root: Path) -> list[str]:
     census = governance.get("infrastructure_census")
     if not isinstance(census, str) or not (root / census).is_file():
         errors.append("moli.toml: infrastructure census is missing")
+    support = data.get("support_infrastructure", {})
+    if support.get("scope") != "uibcdf-shared-development":
+        errors.append("moli.toml: support infrastructure scope is invalid")
+    if support.get("normative") != "devguide/governance/support_infrastructure.md":
+        errors.append("moli.toml: support infrastructure has no normative contract")
+    resources = support.get("resources", [])
+    if not isinstance(resources, list):
+        errors.append("moli.toml: support infrastructure resources must be a list")
+        resources = []
+    resource_names = [
+        resource.get("name")
+        for resource in resources
+        if isinstance(resource, dict) and isinstance(resource.get("name"), str)
+    ]
+    required_resources = {
+        "pytest-receptor",
+        "gh-run-receptor",
+        "action-build-and-upload-conda-packages",
+        "action-sphinx-docs-to-gh-pages",
+    }
+    if not required_resources <= set(resource_names):
+        errors.append("moli.toml: support infrastructure is missing a required resource")
+    if len(resource_names) != len(set(resource_names)):
+        errors.append("moli.toml: support infrastructure repeats a resource")
+    for resource in resources:
+        if not isinstance(resource, dict):
+            errors.append("moli.toml: support infrastructure resource is invalid")
+            continue
+        name = resource.get("name")
+        if not isinstance(name, str):
+            errors.append("moli.toml: support infrastructure resource has no name")
+            continue
+        if resource.get("repository") != f"uibcdf/{name}":
+            errors.append(f"moli.toml: support infrastructure {name} has invalid repository")
+        if resource.get("kind") not in {"developer-receptor", "github-action"}:
+            errors.append(f"moli.toml: support infrastructure {name} has invalid kind")
+        guidance = resource.get("guidance")
+        if not isinstance(guidance, str) or not (root / guidance).is_file():
+            errors.append(f"moli.toml: support infrastructure {name} has no guidance")
+        if resource.get("kind") == "developer-receptor" and resource.get(
+            "delegated_member_of"
+        ) != "uibcdf/molsyssuite":
+            errors.append(f"moli.toml: support infrastructure {name} loses suite membership")
     inheritance_contract = governance.get("policy_inheritance_contract")
     if not isinstance(inheritance_contract, str) or not (root / inheritance_contract).is_file():
         errors.append("moli.toml: policy inheritance contract is missing")
@@ -184,6 +227,8 @@ def validate_registry(root: Path) -> list[str]:
     errors.extend(validate_python_distribution_reviews(registered, policies))
     for name in (
         "reporting_lifecycle",
+        "issue_feedback",
+        "support_infrastructure",
         "cross_component_feedback",
         "component_guide",
         "python",
@@ -199,6 +244,8 @@ def validate_registry(root: Path) -> list[str]:
         normative = policy.get("normative")
         if normative is not None and (not isinstance(normative, str) or not (root / normative).is_file()):
             errors.append(f"moli.toml: policy {name} has no existing normative document")
+    if policies.get("issue_feedback", {}).get("applies_to") != ["repository", "support-infrastructure"]:
+        errors.append("moli.toml: issue feedback must cover repositories and support infrastructure")
     guide = policies.get("component_guide", {})
     if guide.get("applies_to") != ["guide-delivery:vendored"]:
         errors.append("moli.toml: component guide must select vendored delivery")

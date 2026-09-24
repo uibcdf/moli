@@ -23,6 +23,18 @@ closed_statuses = ["resolved", "withdrawn", "superseded"]
 issue_identity = true
 archive_mode = "repository-local"
 
+[policies.issue_feedback]
+status = "accepted"
+applies_to = ["repository", "support-infrastructure"]
+normative = "devguide/governance/reporting_protocol.md"
+issue = "uibcdf/moli#9"
+
+[policies.support_infrastructure]
+status = "accepted"
+applies_to = ["repository"]
+normative = "devguide/governance/support_infrastructure.md"
+issue = "uibcdf/moli#10"
+
 [policies.cross_component_feedback]
 status = "accepted"
 applies_to = ["direct-component"]
@@ -163,3 +175,33 @@ role = "scientific-agent"
 governance = "direct"
 guide_delivery = "vendored"
 capabilities = []
+
+[support_infrastructure]
+scope = "uibcdf-shared-development"
+normative = "devguide/governance/support_infrastructure.md"
+
+[[support_infrastructure.resources]]
+name = "pytest-receptor"
+repository = "uibcdf/pytest-receptor"
+kind = "developer-receptor"
+guidance = "devguide/policies/python_developer_tools_policy.md"
+delegated_member_of = "uibcdf/molsyssuite"
+
+[[support_infrastructure.resources]]
+name = "gh-run-receptor"
+repository = "uibcdf/gh-run-receptor"
+kind = "developer-receptor"
+guidance = "devguide/policies/python_developer_tools_policy.md"
+delegated_member_of = "uibcdf/molsyssuite"
+
+[[support_infrastructure.resources]]
+name = "action-build-and-upload-conda-packages"
+repository = "uibcdf/action-build-and-upload-conda-packages"
+kind = "github-action"
+guidance = "devguide/policies/python_distribution_policy.md"
+
+[[support_infrastructure.resources]]
+name = "action-sphinx-docs-to-gh-pages"
+repository = "uibcdf/action-sphinx-docs-to-gh-pages"
+kind = "github-action"
+guidance = "devguide/governance/support_infrastructure.md"
