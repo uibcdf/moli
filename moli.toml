@@ -147,7 +147,7 @@ governance = "direct"
 guide_delivery = "vendored"
 capabilities = ["python-package"]
 python_ecosystem_review = { issue = "uibcdf/sabueso#31", state = "pending" }
-python_distribution_review = { issue = "uibcdf/sabueso#34", state = "pending" }
+python_distribution_review = { issue = "uibcdf/sabueso#34", state = "adopted" }
 
 [components.praxis]
 repository = "uibcdf/praxis"
