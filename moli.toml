@@ -146,7 +146,7 @@ role = "knowledge"
 governance = "direct"
 guide_delivery = "vendored"
 capabilities = ["python-package"]
-python_ecosystem_review = { issue = "uibcdf/sabueso#31", state = "pending" }
+python_ecosystem_review = { issue = "uibcdf/sabueso#31", state = "adopted" }
 python_distribution_review = { issue = "uibcdf/sabueso#34", state = "adopted" }
 
 [components.praxis]
