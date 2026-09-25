@@ -147,6 +147,68 @@ def validate_python_distribution_reviews(
     return errors
 
 
+def validate_os_support(components: dict[str, dict], policies: dict[str, dict]) -> list[str]:
+    """Require explicit, owned operating-system claims for direct Python components."""
+    errors: list[str] = []
+    policy = policies.get("python_ci", {})
+    if policy.get("baseline_os") != ["linux", "macos"]:
+        errors.append("moli.toml: Python platform baseline must be Linux and macOS")
+    if policy.get("optional_os") != ["windows"]:
+        errors.append("moli.toml: Windows must be the optional platform")
+    if policy.get("claimed_non_linux_frequency") != "weekly":
+        errors.append("moli.toml: claimed non-Linux platforms need weekly evidence")
+    if policy.get("release_installed_matrix") != "all-claimed-os-and-python-minors":
+        errors.append("moli.toml: release checks must cover every claimed OS and Python minor")
+    for name, component in components.items():
+        if "python-package" not in component.get("capabilities", []):
+            continue
+        if component.get("internal_governance") == "delegated":
+            continue
+        supported = component.get("supported_os")
+        if (
+            not isinstance(supported, list)
+            or any(
+                not isinstance(os, str) or os not in {"linux", "macos", "windows"}
+                for os in supported
+            )
+            or len(supported) != len(set(supported))
+        ):
+            errors.append(f"moli.toml: component {name} needs a valid supported_os list")
+            continue
+        repository = component.get("repository", "")
+        review = component.get("os_support_review")
+        if not isinstance(review, dict):
+            errors.append(f"moli.toml: component {name} needs an owner-local os_support_review issue")
+            continue
+        issue = review.get("issue")
+        if not isinstance(issue, str) or not ISSUE.fullmatch(issue) or not issue.startswith(
+            f"{repository}#"
+        ):
+            errors.append(f"moli.toml: component {name} needs an owner-local os_support_review issue")
+        state = review.get("state")
+        if not isinstance(state, str) or state not in PYTHON_ECOSYSTEM_STATES:
+            errors.append(f"moli.toml: component {name} has an invalid os_support_review state")
+            continue
+        if state == "pending" and supported:
+            errors.append(f"moli.toml: component {name} cannot claim OS support with a pending review")
+        if state in {"adopted", "excepted"} and "linux" not in supported:
+            errors.append(f"moli.toml: component {name} needs Linux support evidence")
+        exception = component.get("macos_exception_issue")
+        if state == "adopted" and "macos" not in supported:
+            errors.append(f"moli.toml: component {name} needs macOS support evidence")
+        if state == "excepted" and "macos" in supported:
+            errors.append(f"moli.toml: component {name} cannot except a claimed macOS platform")
+        if state == "excepted" and (
+            not isinstance(exception, str)
+            or not ISSUE.fullmatch(exception)
+            or not exception.startswith(f"{repository}#")
+        ):
+            errors.append(f"moli.toml: component {name} needs macOS or an owner-local exception issue")
+        if state != "excepted" and exception is not None:
+            errors.append(f"moli.toml: component {name} has an unnecessary macOS exception")
+    return errors
+
+
 def validate_registry(root: Path) -> list[str]:
     errors: list[str] = []
     path = root / "moli.toml"
@@ -225,6 +287,7 @@ def validate_registry(root: Path) -> list[str]:
     policies = data.get("policies", {})
     errors.extend(validate_python_ecosystem_reviews(registered, policies))
     errors.extend(validate_python_distribution_reviews(registered, policies))
+    errors.extend(validate_os_support(registered, policies))
     for name in (
         "reporting_lifecycle",
         "issue_feedback",

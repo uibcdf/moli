@@ -15,7 +15,10 @@ the package exists in the public channel and a clean installation has been verif
 Before the first publication, document source installation as a development route;
 do not claim the Conda package already exists. A `noarch: python` recipe is appropriate
 for a genuinely pure-Python package; packages with compiled artifacts use their
-applicable platform/build profile.
+applicable platform/build profile. `noarch` describes one build artifact, not an
+operating-system support claim. Declare supported systems and verify the installed
+artifact on them as required by [MOLI's Python CI policy](python_ci_policy.md):
+Linux and macOS are the baseline; Windows is optional and claimed only with evidence.
 
 PyPI is an optional *additional* public route, adopted for a documented component
 need rather than by default. Claim or recommend `pip install <package>` for users
