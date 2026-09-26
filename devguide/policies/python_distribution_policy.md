@@ -76,6 +76,46 @@ installations. Environment files may add development tools and optional-feature
 packages, but must not silently substitute for missing runtime metadata. Recheck
 recipe and CI environments whenever a required dependency or Python bound changes.
 
+## Early dependency-contract preflight
+
+Before an expensive candidate build, each applicable Python component runs a cheap,
+read-only dependency-contract preflight. `pyproject.toml` remains authoritative for
+required runtime names, version constraints, and `requires-python`; an audit
+inventory identifies secondary routes, not a second dependency list. Inventory
+every maintained Conda recipe, runtime-bearing development or CI environment,
+and exact sibling-source route used by a required lane. Classify a route that does
+not install the component runtime with a reason. A newly added or unclassified
+runtime route fails the preflight until it is reviewed.
+
+The check compares each applicable recipe and environment with the public runtime
+closure and Python bounds. It must detect a missing required Conda dependency, a
+weaker or stale version floor or ceiling, and a missing or incompatible Python
+constraint. Record intentional Conda/Python name translations and justified
+route-specific constraints explicitly; they must not hide a public requirement.
+For a `--no-deps` lane that supplies a sibling from source, verify a reviewed full
+commit SHA, the route that installs it, and the installed distribution version
+against the public requirement. A source checkout below the declared floor fails
+even when its Git commit is exact.
+
+Run this preflight early in CI when dependency metadata, recipes, environments,
+or source-install routes change, and again for the exact release candidate before
+costly builds where practical. Keep a negative fixture or equivalent conformance
+test that rejects at least a missing recipe runtime dependency, an environment
+with a stale floor, and a source candidate below its public floor. Report the
+offending route and constraint; do not silently rewrite hand-maintained recipes
+or weaken package metadata to make the audit pass. Repositories may choose their
+own parser, inventory format, exclusions, and CI layout. A static audit proves
+contract consistency, not that the minimum version provides the required API:
+clean installed compatibility tests and built-artifact checks remain release
+gates.
+
+Direct components record their preflight route, negative evidence, and any
+bounded exception in their `python_distribution_review` issue or an issue linked
+from it. MolSysSuite tracks member adoption and exceptions in its own distribution
+inventory. A policy pin, an earlier adopted review, or another member's passing
+audit does not by itself prove adoption of this requirement. The platform change
+is tracked in [MOLI #21](https://github.com/uibcdf/moli/issues/21).
+
 For normal Conda environments, list `uibcdf` before `conda-forge` and record the
 channel-priority mode. Strict priority is the normal starting point, not a universal
 proof of package origin: a staging label or overlapping names may require a different

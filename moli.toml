@@ -151,7 +151,7 @@ governance = "direct"
 guide_delivery = "vendored"
 capabilities = ["python-package"]
 python_ecosystem_review = { issue = "uibcdf/sabueso#31", state = "adopted" }
-python_distribution_review = { issue = "uibcdf/sabueso#34", state = "adopted" }
+python_distribution_review = { issue = "uibcdf/sabueso#76", state = "partial" }
 supported_os = ["linux", "macos", "windows"]
 os_support_review = { issue = "uibcdf/sabueso#34", state = "adopted" }
 
