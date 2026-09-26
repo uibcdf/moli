@@ -27,6 +27,25 @@ that boundary exists:
   before proposing a format or alternative. Runtime use alone does not silently
   establish that a persisted schema conforms.
 
+### Bootstrap providers and dependency cycles
+
+The applicability review is about behavior at a boundary, not about adding a
+dependency mechanically. A support library must not acquire a required runtime
+dependency on another support library that already requires it at runtime.
+Such a cycle makes bootstrap and package resolution fragile. When this precise
+reverse edge exists, the lower-level provider may implement the affected
+boundary locally while the reverse edge remains. This is structural
+non-applicability of the higher-level provider at that boundary, not a waiver
+for an ordinary consumer or for unrelated boundaries.
+
+The component review must name both package edges from published metadata,
+identify each boundary kept local, and test the public behavior, failure
+diagnostics, clean installation, and import order. It must also retain its own
+support-library responsibilities; a diagnostic provider, for example, may not
+drop diagnostic semantics to claim this rule. Reassess applicability when a
+provider removes the reverse runtime edge. Optional extras and lazy imports
+do not make a declared required dependency cycle acceptable.
+
 ## PyUnitWizard configuration authority
 
 PyUnitWizard has one active unit policy per Python process. A component must not
