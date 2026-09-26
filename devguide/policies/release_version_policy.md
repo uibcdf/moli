@@ -34,6 +34,10 @@ A receipt names every component and artifact consumed by a combined gate. The
 identity can be recorded in a machine-readable manifest or an inspectable release
 record; this policy does not prescribe a file format or workflow layout. Missing or
 ambiguous input identity cannot establish that old evidence still applies.
+For a Python distribution route carrying generated or vendored runtime resources,
+the receipt includes that route's archive inspection and installed-runtime result
+under the [distribution policy](python_distribution_policy.md#generated-resources-in-release-artifacts).
+Evidence from a different route does not certify the resource bytes in this one.
 
 If a source commit, dependency contract or resolved closure, recipe/build input,
 generated resource, candidate artifact, or tested scope changes, mark each gate

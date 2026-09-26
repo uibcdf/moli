@@ -123,6 +123,42 @@ solver setting. Such a route must select exact package coordinates and verify th
 installed source channel and artifact identity. A solver success alone is not
 publication or provenance evidence.
 
+## Generated resources in release artifacts
+
+For each claimed public distribution route, inventory package-critical generated
+or vendored runtime resources and version-bearing payloads delivered to users.
+Examples include compiled extensions, generated schemas, embedded data and
+browser bundles. Record the expected path or identity in that route's archive,
+the applicable release-version check, and a representative installed runtime
+path. A repository with no such resources records non-applicability and its
+reason in its distribution review; it does not need a JavaScript or npm build.
+
+Run cheap checks of committed sources and generated files before expensive
+packaging. Then build **each claimed route from the exact release candidate**,
+inspect that route's resulting archive for every required resource, and check
+embedded version identities against the intended `X.Y.Z` tag where applicable.
+Install that artifact in a clean environment and exercise a representative path
+that loads or uses the resource. Record the artifact coordinate and content digest
+with the route-specific result in the candidate evidence described by
+[MOLI release-version policy](release_version_policy.md). A missing resource,
+stale version, failed installed path or uninspected claimed artifact blocks the
+claim for that route. A source checkout, or a Conda/npm build that regenerates a
+resource, cannot certify an ordinary wheel carrying committed bytes; evidence
+from one route does not certify another route's delivered content.
+
+Keep a negative fixture or equivalent conformance test that rejects a stale
+embedded version and a missing required resource in one claimed artifact even
+when another route passes. Repositories choose their own build and archive
+inspection mechanisms, including any extraction required for Conda artifacts.
+The [reference archive checker](../../devtools/scripts/distribution_artifact_evidence.py)
+and its [fixtures](../../tests/test_distribution_artifact_evidence.py) illustrate
+the per-route boundary for ZIP and TAR archives; they do not replace a
+repository's exact-candidate build or installed-runtime test. Direct components
+record route/resource inventory, verification evidence and bounded exceptions
+in their `python_distribution_review` issue or a linked issue. MolSysSuite owns
+member adoption and exceptions. [MOLI #26](https://github.com/uibcdf/moli/issues/26)
+tracks this platform rule.
+
 ## Recipe and publication
 
 Before a component's first public Conda release, maintain a recipe under
