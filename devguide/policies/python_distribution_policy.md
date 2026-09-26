@@ -170,8 +170,61 @@ Build the package from
 the exact release candidate and derive its public version from the `X.Y.Z` Git tag
 required by [MOLI release-version policy](release_version_policy.md); Conda build
 numbers are separate. Test the built artifact's installation, import/version and
-required runtime behavior before publication. Verify the public channel state after
-upload before claiming the version is available.
+required runtime behavior before publication. Follow the immutable-coordinate and
+public-registry verification rule below before claiming the version is available.
+
+### Immutable Conda coordinates and public poststate
+
+Treat the owner/package/version/subdir/filename tuple as one immutable Conda file
+coordinate across all labels. Record that coordinate and the SHA-256 of the exact
+candidate file after building and testing it. Before a direct upload, query the
+registry for that exact coordinate under **any** label. If occupied, do not upload,
+replace or use `--force`, even when the existing digest matches. A changed build
+needs a new build number or public version, producing a new filename. An identical
+existing file may be verified or, when it is the tested staged file, promoted;
+its bytes are never replaced. A label changes visibility of the same registry
+file, not its identity.
+
+Distinguish four steps in release evidence: build the candidate file, upload a
+previously unoccupied coordinate if needed, promote a tested staged file by adding
+the public label to that **same digest** if staging is used, and independently
+verify the public registry poststate. Promotion checks the exact source coordinate,
+source label and digest before adding the target label; it does not rebuild or
+upload a second file at the same coordinate. A direct single-package publisher
+does not need staging. MolSysSuite owns eligibility for staging, paired-package
+promotion order and member rollout.
+
+After upload or promotion, use a read-only registry query that can run again
+without repeating the mutation. Match the public label, exact coordinate and
+SHA-256 against the tested candidate. Record the query result and artifact identity
+in the release receipt; an action's success status or mutation receipt alone is
+insufficient. Use bounded retries for registry/index propagation, then leave the
+gate unresolved if the exact public record cannot be observed. Check a clean
+solver/install route separately before advertising user availability where the
+distribution and CI policies require it. A red poststate verifier is diagnosed
+with read-only queries, not another upload or promotion just to obtain a green run.
+
+If an upload or label operation returns an uncertain response, inspect the
+registry first. The expected public coordinate and digest may be accepted only
+after read-only verification. A matching staged file without the public label may
+be promoted again only after its source identity is rechecked; a direct upload may
+be retried only after bounded observation still finds the coordinate unoccupied
+and a fresh preflight confirms that state. A conflicting digest, occupied
+coordinate, missing source identity, or unresolved registry state fails closed.
+An HTTP 409 never authorizes `--force` or a rebuild at the same filename.
+
+Keep a negative conformance check that rejects an occupied coordinate even under
+another label and rejects changed bytes at the expected public coordinate. The
+[reference evaluator](../../devtools/scripts/conda_publication_evidence.py) and
+[fixtures](../../tests/test_conda_publication_evidence.py) illustrate those
+decisions using registry snapshots; they do not perform registry I/O. Direct
+components record their publishing route, evidence and bounded exceptions in
+their `python_distribution_review` issue or a linked issue. This platform rule is
+tracked by [MOLI #25](https://github.com/uibcdf/moli/issues/25); the provider's
+[exact-file promotion primitive](https://github.com/uibcdf/action-build-and-upload-conda-packages/issues/43)
+and MolSysSuite's [coordinated release](https://github.com/uibcdf/molsyssuite/issues/27)
+and [poststate-verifier](https://github.com/uibcdf/molsyssuite/issues/48)
+issues retain their own implementation ownership.
 
 Use `uibcdf/action-build-and-upload-conda-packages` as the shared publication
 mechanism unless a tracked exception explains an equivalent route. Keep channel
