@@ -63,6 +63,41 @@ The [reference evaluator](../../devtools/scripts/release_evidence.py) and
 input-bound evidence and selective reuse. Their data format is illustrative;
 the rules above are the contract.
 
+## Bounded release-gate exceptions
+
+A required gate keeps its observed status and evidence: `failed`, `skipped`,
+`cancelled` or tolerated failure is never reported as `passed`. If the repository's
+release authority permits publication with an unmet gate, record a separate
+**release decision with exception** before tagging or publishing. The minimum
+reviewable record identifies:
+
+- the exact repository, source commit, intended release version and candidate
+  artifact identity where the gate consumed an artifact;
+- the gate, affected capability, platform and other tested scope, its authoritative
+  result, observed failure or reason for no result, and run/evidence link;
+- compensating evidence and its limits, the decision owner and dated decision link;
+- the owner-local remediation issue, the limitation communicated with the release,
+  and an expiry or explicit re-decision condition.
+
+The exception authorizes only the named release candidate and gate scope. It does
+not change the gate result, certify an untested platform or capability, or satisfy
+a later candidate, later public version, or 1.0 readiness gate. Before any such
+later decision, rerun or re-evaluate the gate under the candidate evidence
+lifecycle and explicitly accept a new bounded exception or remove the old one.
+An expired exception blocks the claim until a new decision is recorded. Preserve
+the unresolved remediation issue and truthful release/status wording while the
+gate remains unmet; do not weaken, skip or relabel the test to make a green result.
+
+Each repository defines its specialized release gates, decision authority and
+which gates, if any, may receive an exception. The decision cannot override a
+non-waivable gate or a separate platform support requirement. Scientific
+correctness or safety gates may be declared non-waivable. MolSysSuite may impose
+member-specific approval and admission requirements; this platform rule governs
+the meaning and traceability of the evidence. The [reference evaluator](../../devtools/scripts/release_evidence.py)
+and [negative fixtures](../../tests/test_release_evidence_policy.py) illustrate
+result fidelity and per-candidate decisions. [MOLI #27](https://github.com/uibcdf/moli/issues/27)
+tracks this rule.
+
 ## Exceptions and history
 
 Historical nonconforming tags are not rewritten. New deviations require a MOLI issue, rationale, and exit condition.

@@ -22,6 +22,62 @@ class GateReceipt:
     participants: Mapping[str, Mapping[str, str]]
 
 
+@dataclass(frozen=True)
+class GateException:
+    release_version: str
+    observed_gate: GateReceipt
+    evidence_ref: str
+    observed_failure: str
+    compensating_evidence: str
+    decision_owner: str
+    decided_at: str
+    decision_ref: str
+    remediation_issue: str
+    release_limitation: str
+    expiry_condition: str
+
+
+def release_decision_reasons(
+    observed: GateReceipt,
+    *,
+    reported_result: str,
+    release_version: str,
+    exception_allowed: bool,
+    exception: GateException | None,
+) -> list[str]:
+    """Keep a gate's result separate from a candidate-specific release decision."""
+    reasons: list[str] = []
+    if reported_result != observed.result:
+        reasons.append("reported gate result differs from observed result")
+    if observed.result == "passed":
+        if exception is not None:
+            reasons.append("passing gate does not need an exception")
+        return reasons
+    if not exception_allowed:
+        reasons.append("gate is not exception-eligible")
+    if exception is None:
+        reasons.append("unmet gate has no release exception")
+        return reasons
+    if exception.release_version != release_version:
+        reasons.append("exception belongs to another release version")
+    if exception.observed_gate != observed:
+        reasons.append("exception belongs to another gate or candidate")
+    for field in (
+        "evidence_ref",
+        "observed_failure",
+        "compensating_evidence",
+        "decision_owner",
+        "decided_at",
+        "decision_ref",
+        "remediation_issue",
+        "release_limitation",
+        "expiry_condition",
+    ):
+        if not getattr(exception, field).strip():
+            reasons.append(f"exception lacks {field}")
+    return reasons
+
+
 def capture_candidate(
     *, commit: str, facts: Mapping[str, str], files: Mapping[str, Path]
 ) -> dict[str, str]:

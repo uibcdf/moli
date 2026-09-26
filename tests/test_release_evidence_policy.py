@@ -4,11 +4,14 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+from dataclasses import replace
 from pathlib import Path
 
 from devtools.scripts.release_evidence import (
+    GateException,
     GateReceipt,
     capture_candidate,
+    release_decision_reasons,
     stale_reasons,
 )
 
@@ -154,6 +157,112 @@ class ReleaseEvidencePolicyTests(unittest.TestCase):
             required_inputs={"molsysmt": INPUTS, "molsysviewer": INPUTS},
         )
         self.assertIn("molsysviewer: absent from receipt", reasons)
+
+
+class ReleaseGateExceptionTests(unittest.TestCase):
+    def setUp(self):
+        self.observed = GateReceipt(
+            "hosted-e2e",
+            "skipped",
+            {"capability": "portable-e2e", "os": "linux"},
+            {
+                "viewer": {
+                    "source_commit": "a" * 40,
+                    "release_version": "0.23.4",
+                    "artifact": "b" * 64,
+                }
+            },
+        )
+        self.exception = GateException(
+            release_version="0.23.4",
+            observed_gate=self.observed,
+            evidence_ref="https://example.test/runs/1",
+            observed_failure="hosted browser did not start",
+            compensating_evidence="local portable E2E passed, hosted remains unknown",
+            decision_owner="release maintainer",
+            decided_at="2026-09-26",
+            decision_ref="https://example.test/decisions/1",
+            remediation_issue="https://example.test/issues/100",
+            release_limitation="hosted E2E remains uncertified",
+            expiry_condition="re-decide before next candidate",
+        )
+
+    def reasons(
+        self,
+        *,
+        observed: GateReceipt | None = None,
+        reported_result: str = "skipped",
+        release_version: str = "0.23.4",
+        exception_allowed: bool = True,
+        exception: GateException | None = None,
+    ) -> list[str]:
+        return release_decision_reasons(
+            self.observed if observed is None else observed,
+            reported_result=reported_result,
+            release_version=release_version,
+            exception_allowed=exception_allowed,
+            exception=self.exception if exception is None else exception,
+        )
+
+    def test_unmet_gate_can_have_bounded_decision_without_changing_its_result(self):
+        self.assertEqual(self.reasons(), [])
+
+    def test_skipped_or_failed_gate_cannot_be_reported_as_passed(self):
+        for result in ("skipped", "failed"):
+            with self.subTest(result=result):
+                observed = replace(self.observed, result=result)
+                exception = replace(self.exception, observed_gate=observed)
+                self.assertIn(
+                    "reported gate result differs from observed result",
+                    self.reasons(
+                        observed=observed,
+                        reported_result="passed",
+                        exception=exception,
+                    ),
+                )
+
+    def test_unmet_gate_needs_explicit_decision(self):
+        self.assertIn(
+            "unmet gate has no release exception",
+            release_decision_reasons(
+                self.observed,
+                reported_result="skipped",
+                release_version="0.23.4",
+                exception_allowed=True,
+                exception=None,
+            ),
+        )
+
+    def test_prior_release_exception_cannot_certify_next_release(self):
+        next_gate = replace(
+            self.observed,
+            participants={
+                "viewer": {
+                    "source_commit": "c" * 40,
+                    "release_version": "0.23.5",
+                    "artifact": "d" * 64,
+                }
+            },
+        )
+
+        self.assertEqual(
+            self.reasons(observed=next_gate, release_version="0.23.5"),
+            [
+                "exception belongs to another release version",
+                "exception belongs to another gate or candidate",
+            ],
+        )
+
+    def test_non_waivable_gate_rejects_exception(self):
+        self.assertIn(
+            "gate is not exception-eligible", self.reasons(exception_allowed=False)
+        )
+
+    def test_missing_decision_owner_rejects_exception(self):
+        self.assertIn(
+            "exception lacks decision_owner",
+            self.reasons(exception=replace(self.exception, decision_owner="")),
+        )
 
 
 if __name__ == "__main__":

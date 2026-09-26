@@ -49,6 +49,13 @@ A skipped, cancelled, tolerated-failure, or merely configured lane is not passin
 Before release, apply the [candidate evidence lifecycle](release_version_policy.md#candidate-evidence-lifecycle)
 to each required installed-package lane. An earlier green matrix does not certify a
 changed candidate or dependency closure.
+If a repository permits a release with an unmet, specialized gate, record the separate
+[bounded release-gate exception](release_version_policy.md#bounded-release-gate-exceptions)
+while keeping that lane's actual status visible. The decision applies only to its
+named candidate and scope; it does not waive an installed-package lane required
+for a claimed operating system, add a support claim, or turn the lane into passing
+evidence. The macOS support exception above remains a tracked limitation of the
+component's supported-OS claim, with its own exit condition.
 
 ## Local freedom
 
