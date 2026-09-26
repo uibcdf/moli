@@ -25,6 +25,38 @@ that boundary exists:
   before proposing a format or alternative. Runtime use alone does not silently
   establish that a persisted schema conforms.
 
+## PyUnitWizard configuration authority
+
+PyUnitWizard has one active unit policy per Python process. A component must not
+replace its process-wide standard units, default quantity form, or default string
+parser on import or first use. In particular, importing components in a different
+order must not override a policy already chosen by the application or user.
+
+Configuration authority follows this order, strongest first:
+
+1. An explicit target unit, form, or parser supplied to the API call.
+2. An explicitly activated local context, within PyUnitWizard's documented
+   context and concurrency limits.
+3. The application or interactive session's selected policy.
+4. PyUnitWizard's factory defaults.
+
+When no policy is active, a governed ecosystem may initialize its *shared*
+baseline once. Its governance owns the baseline's content and adoption; this
+bootstrap must not replace an active application policy or introduce a different
+implicit default for each member. [MolSysSuite #18](https://github.com/uibcdf/molsyssuite/issues/18)
+tracks that ecosystem's baseline and migration. Components outside such an
+explicitly governed baseline consume the active policy without setting global
+defaults themselves.
+
+A component's scientific API and persisted schema still own their documented
+unit contracts. Request a required unit explicitly at the operation boundary;
+do not let an ambient display or standard-unit preference change a persisted
+unit or a fixed-unit scientific result. An API intended to follow the session
+policy must say so. Adoption evidence should cover application configuration
+before component import, import and first-use order, and fixed-unit behavior
+under a non-default policy. The [platform issue](https://github.com/uibcdf/moli/issues/11)
+tracks this cross-component authority rule.
+
 Do not add an unused library solely to satisfy this policy. A component's review issue
 records each applicable use, non-applicability with a reason, and any replacement of
 hand-built code. A temporary exception records its reason, owner, tracking issue, and
