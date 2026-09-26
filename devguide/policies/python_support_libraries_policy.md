@@ -19,8 +19,10 @@ that boundary exists:
 - **PyUnitWizard:** physical quantities that require unit parsing, conversion, or
   dimensional validation. A component owns its persisted schema and migration, and
   follows the [platform quantity integrity policy](quantity_integrity_policy.md)
-  whenever quantities cross a boundary. PyUnitWizard owns the shared serialization
-  design and codec; follow its [canonical guide](https://github.com/uibcdf/pyunitwizard/blob/main/standards/PYUNITWIZARD_GUIDE.md#storing-and-exchanging-quantities-provisional)
+  whenever quantities cross a boundary. Obtain exchanged quantities through
+  PyUnitWizard; a separate Pint `UnitRegistry` can produce quantities that cannot
+  be combined with those of other components. PyUnitWizard owns the shared
+  serialization design and codec; follow its [canonical guide](https://github.com/uibcdf/pyunitwizard/blob/main/standards/PYUNITWIZARD_GUIDE.md#storing-and-exchanging-quantities-provisional)
   and read the [design record](https://github.com/uibcdf/pyunitwizard/issues/83)
   before proposing a format or alternative. Runtime use alone does not silently
   establish that a persisted schema conforms.
@@ -40,10 +42,12 @@ Configuration authority follows this order, strongest first:
 3. The application or interactive session's selected policy.
 4. PyUnitWizard's factory defaults.
 
-When no policy is active, a governed ecosystem may initialize its *shared*
-baseline once. Its governance owns the baseline's content and adoption; this
-bootstrap must not replace an active application policy or introduce a different
-implicit default for each member. [MolSysSuite #18](https://github.com/uibcdf/molsyssuite/issues/18)
+When no policy is active, a member that relies on session standard units may
+initialize its governed ecosystem's *shared* baseline once. Members that do not
+rely on session standard units leave the kernel policy unconfigured. Ecosystem
+governance owns the baseline's content and adoption; this bootstrap must not
+replace an active application policy or introduce a different implicit default
+for each member. [MolSysSuite #18](https://github.com/uibcdf/molsyssuite/issues/18)
 tracks that ecosystem's baseline and migration. Components outside such an
 explicitly governed baseline consume the active policy without setting global
 defaults themselves.
@@ -51,10 +55,11 @@ defaults themselves.
 A component's scientific API and persisted schema still own their documented
 unit contracts. Request a required unit explicitly at the operation boundary;
 do not let an ambient display or standard-unit preference change a persisted
-unit or a fixed-unit scientific result. An API intended to follow the session
-policy must say so. Adoption evidence should cover application configuration
-before component import, import and first-use order, and fixed-unit behavior
-under a non-default policy. The [platform issue](https://github.com/uibcdf/moli/issues/11)
+unit or a fixed-unit scientific result. Do not strip a standardized quantity's
+unit and assume that its numeric value has a fixed unit. An API intended to
+follow the session policy must say so. Adoption evidence should cover application
+configuration before component import, import and first-use order, and fixed-unit
+behavior under a non-default policy. The [platform issue](https://github.com/uibcdf/moli/issues/11)
 tracks this cross-component authority rule.
 
 Do not add an unused library solely to satisfy this policy. A component's review issue
