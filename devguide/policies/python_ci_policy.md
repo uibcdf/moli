@@ -46,6 +46,9 @@ exercised where the component provides them. The component may choose its workfl
 shape, and a single noarch artifact may be installed on several platforms.
 
 A skipped, cancelled, tolerated-failure, or merely configured lane is not passing evidence.
+Before release, apply the [candidate evidence lifecycle](release_version_policy.md#candidate-evidence-lifecycle)
+to each required installed-package lane. An earlier green matrix does not certify a
+changed candidate or dependency closure.
 
 ## Local freedom
 
