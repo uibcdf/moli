@@ -55,8 +55,8 @@ its snapshot code, KnowledgeStore and offline tests. This supersedes the
   from that hash because it is derived; the quantity values and units in the
   Card remain in the hashed content. Full Card reads verify the snapshot and
   quantity seal.
-- Sabueso issues a pinned Card reference, for example
-  sabueso:protein:uniprot:P52270@sha256: followed by 64 hexadecimal digits.
+- Sabueso issues a pinned Card reference: a Card id followed by
+  `@sha256:` and 64 hexadecimal digits.
   KnowledgeStore returns that exact historical state or raises StorageError.
   An absent, malformed or foreign pin never falls back to the latest Card.
   Offline tests cover a later Card whose curation outcome changed.
@@ -113,6 +113,40 @@ Resolution of a pin must yield the named state or an explicit non-resolution
 outcome; returning the latest state under that pin is forbidden. The
 ProjectGraph/ProjectRecord keeps the reference even when resolution fails.
 This is the proposed invariant, not yet an accepted cross-component API.
+
+## Small acceptance exercise
+
+Use fictional objects in public records: one protein Card `C`, one
+SourceAssertion `A`, two stored Card states `S1` and `S2`, and a project
+Hypothesis `H`. The provider issues all references; the consumer stores the
+issued text unchanged. `C@S1#A` below is symbolic notation, not a proposed
+serialized grammar. No scientific project or real protein is needed to
+exercise the boundary.
+
+1. **Historical citation.** Save `S1` with `A` and its source observation
+   context. Save `S2` after changing the Card's resolved state or observing
+   the same assertion in another source release. `C@S1` and `C@S1#A` still
+   return exactly the state and observation first cited. `C@S2` may differ;
+   it never changes what the `S1` references mean. A malformed, missing or
+   foreign pin fails explicitly and never selects the latest Card.
+2. **Item integrity.** Change an item row outside Sabueso without changing
+   the issued pin. Both a full-Card read and a direct `#A` read reject the
+   altered state. The direct item check is pending Sabueso #79.
+3. **Project interpretation.** A conceptual Nextia Evidence object cites
+   `C@S1#A` and records why `A` informs `H`. Its interpretation and status
+   belong to Nextia; the Sabueso assertion remains unchanged. The same
+   assertion may inform another project differently. This case becomes an
+   integration test when Nextia has the minimum persistent Evidence slice;
+   a citation alone does not create Evidence.
+4. **Unavailable target.** Resolve the citation through a store that lacks
+   `S1`. Resolution reports failure without using `S2`, while the project
+   retains the original reference and its own Evidence history. A
+   reference-only export makes no claim that `S1` is available offline.
+
+These cases test consumer meaning, not a frozen parser or Nextia schema.
+Whether a self-contained export also guarantees independent digest
+verification needs a separate test vector and an explicit decision about
+canonicalization and archival responsibility.
 
 ## Decisions before acceptance
 
