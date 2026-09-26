@@ -3,8 +3,8 @@
 `moli.toml` lists UIBCDF-owned tools used to develop, verify and publish MOLI
 components. This is a support-infrastructure category, not another architectural
 MOLI component layer. The tool repositories own implementation, releases and their
-own defects. MOLI owns platform-wide usage guidance; MolSysSuite governs adoption
-by its members. Pytest Receptor and GH Run Receptor keep their existing MolSysSuite
+own defects. MOLI owns usage guidance for direct components and platform-facing
+contracts; MolSysSuite owns member usage policy and adoption. Pytest Receptor and GH Run Receptor keep their existing MolSysSuite
 auxiliary membership while also appearing in this cross-platform catalog.
 
 | Resource | Use when applicable | Provider issue board |

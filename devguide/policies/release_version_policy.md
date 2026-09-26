@@ -55,8 +55,8 @@ The pre-publication decision records which gates were reused, which became stale
 and the new evidence that replaced each stale result. A passing status applies
 only to the identity and scope actually observed. Repositories keep their own
 gate implementations and may impose stricter invalidation rules. [MOLI #24](https://github.com/uibcdf/moli/issues/24)
-tracks this platform rule; MolSysSuite owns member adoption and its coordinated
-release refinements.
+tracks this direct-component rule; MolSysSuite owns its own member release policy
+and coordinated release refinements.
 
 The [reference evaluator](../../devtools/scripts/release_evidence.py) and
 [mutation fixtures](../../tests/test_release_evidence_policy.py) illustrate
@@ -91,9 +91,9 @@ gate remains unmet; do not weaken, skip or relabel the test to make a green resu
 Each repository defines its specialized release gates, decision authority and
 which gates, if any, may receive an exception. The decision cannot override a
 non-waivable gate or a separate platform support requirement. Scientific
-correctness or safety gates may be declared non-waivable. MolSysSuite may impose
-member-specific approval and admission requirements; this platform rule governs
-the meaning and traceability of the evidence. The [reference evaluator](../../devtools/scripts/release_evidence.py)
+correctness or safety gates may be declared non-waivable. MolSysSuite sets its
+own member release decisions while remaining accountable for any platform
+contract at the suite boundary. The [reference evaluator](../../devtools/scripts/release_evidence.py)
 and [negative fixtures](../../tests/test_release_evidence_policy.py) illustrate
 result fidelity and per-candidate decisions. [MOLI #27](https://github.com/uibcdf/moli/issues/27)
 tracks this rule.

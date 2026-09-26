@@ -1,8 +1,9 @@
 # MOLI Zenodo and DOI policy
 
 This policy governs archival and citation claims for MOLI repositories when Zenodo
-archival applies. A component owns its publication decision and exact-release evidence;
-delegated governance may track member applicability and rollout separately.
+archival applies to directly governed components. A component owns its publication
+decision and exact-release evidence; MolSysSuite owns the policy and rollout for
+its members.
 
 ## Metadata authority
 

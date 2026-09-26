@@ -30,5 +30,5 @@ unreleased capabilities; report limitations to the provider with sanitized run e
 ## Adoption
 
 Direct Python components track adoption or a bounded exception through their
-`python_ecosystem_review` issue and state in `moli.toml`. MolSysSuite coordinates
-member-level rollout under its delegated governance while inheriting this MOLI rule.
+`python_ecosystem_review` issue and state in `moli.toml`. MolSysSuite owns its
+member developer-tool rule and rollout under delegated governance.

@@ -18,4 +18,4 @@ A component may carry a documented, time-bounded exception with reason, tracking
 
 Transitions to new Python minors should be evidence-driven and phased. Component-specific feasibility may precede platform-wide baseline changes.
 
-MolSysSuite may maintain additional rollout machinery for its internally governed members, but its stable engineering baseline inherits this MOLI policy.
+MolSysSuite sets and versions the Python range for its members. It may choose the same range, but this MOLI policy does not automatically change the suite's rule.

@@ -25,7 +25,7 @@ component capabilities have verified implementation, which repositories are stil
 incubating, and which project-level infrastructure remains specified only in the
 architecture. It does not replace the component registry or delegated inventories.
 
-Shared engineering policies (Python support and CI, Ruff/pytest quality tooling, applicable support libraries, developer receptors, distribution, release versions, repository badges, and Zenodo/DOI archival) are documented in `policies/`; `moli.toml` records which repositories or capabilities each one applies to. MolSysSuite-specific extensions for its internally governed members remain in MolSysSuite.
+Engineering policies for directly governed components (Python support and CI, Ruff/pytest quality tooling, applicable support libraries, developer receptors, distribution, release versions, repository badges, and Zenodo/DOI archival) are documented in `policies/`; `moli.toml` records their applicability. MolSysSuite defines and versions the engineering policies for its own members. MOLI governs the suite's platform boundary and shared scientific contracts.
 
 The [quantity integrity policy](policies/quantity_integrity_policy.md) applies wherever
 physical quantities cross an API, storage, process or component boundary. PyUnitWizard
@@ -42,7 +42,7 @@ new scientific MOLI components.
 ## Structure
 
 - `governance/` — ownership, reporting, cross-component coordination, and membership/delegation rules.
-- `governance/policy_inheritance.md` — single-source MOLI engineering policy and delegated adoption.
+- `governance/policy_inheritance.md` — direct-component policy scope and delegated member-governance boundary.
 - `policies/` — shared policies accepted for directly governed MOLI repositories.
 - `pending_bugs/` — durable analyses of active platform bugs when needed.
 - `pending_proposals/` — durable analyses of active platform proposals when needed.

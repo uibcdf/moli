@@ -1,8 +1,8 @@
 # MOLI Python support libraries policy
 
-Normative for MOLI components carrying the `python-package` capability. MOLI owns the
-cross-component applicability rule. MolSysSuite governs its member libraries and its own
-adoption inventory; its members inherit this baseline through the suite.
+Normative for directly governed MOLI components carrying the `python-package`
+capability. MolSysSuite owns its member support-library rule and adoption inventory.
+The platform quantity-integrity contract still applies to MolSysSuite as a unit.
 
 ## Applicability
 

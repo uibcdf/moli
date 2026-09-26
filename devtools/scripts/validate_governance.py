@@ -219,8 +219,8 @@ def validate_registry(root: Path) -> list[str]:
     if data.get("schema_version") != "0.3":
         errors.append("moli.toml: unsupported schema_version")
     governance = data.get("governance", {})
-    if governance.get("policy_inheritance") != "transitive-by-capability":
-        errors.append("moli.toml: policy inheritance must be transitive by capability")
+    if governance.get("policy_inheritance") != "direct-components-with-delegated-boundaries":
+        errors.append("moli.toml: policy inheritance must respect delegated boundaries")
     census = governance.get("infrastructure_census")
     if not isinstance(census, str) or not (root / census).is_file():
         errors.append("moli.toml: infrastructure census is missing")
@@ -284,6 +284,10 @@ def validate_registry(root: Path) -> list[str]:
             errors.append(f"moli.toml: component {name} needs delegated governance to reference the guide")
         if component.get("internal_governance") == "delegated" and not component.get("internal_governance_repository"):
             errors.append(f"moli.toml: component {name} has no internal governance repository")
+        if component.get("internal_governance") == "delegated" and component.get("member_policy_owner") != component.get("internal_governance_repository"):
+            errors.append(f"moli.toml: component {name} must own its member policy")
+        if component.get("internal_governance") != "delegated" and "member_policy_owner" in component:
+            errors.append(f"moli.toml: direct component {name} cannot own a delegated member policy")
     policies = data.get("policies", {})
     errors.extend(validate_python_ecosystem_reviews(registered, policies))
     errors.extend(validate_python_distribution_reviews(registered, policies))

@@ -1,8 +1,8 @@
 # Physical quantity integrity across MOLI
 
 This policy applies to every MOLI component and UIBCDF support tool that produces,
-transforms, stores, or communicates physical quantities. MolSysSuite inherits the
-platform contract and records adoption and exceptions for its members. A component
+transforms, stores, or communicates physical quantities. MolSysSuite is bound as a
+platform component and governs adoption and exceptions for its members. A component
 owns its scientific meaning, input vocabulary, persisted schema, and migration.
 
 ## Required guarantees

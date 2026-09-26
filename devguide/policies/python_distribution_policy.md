@@ -1,9 +1,9 @@
 # MOLI Python distribution policy
 
-Normative for MOLI components with the `python-package` capability. MOLI owns the
-shared user-installation and distribution contract. MolSysSuite inherits this baseline
-and owns member-specific release routes, coupled-package staging, promotion and
-rollout evidence. A repository owns its package recipe, environments, CI, release
+Normative for directly governed MOLI components with the `python-package`
+capability. MolSysSuite owns distribution rules for its members, including
+member-specific release routes, coupled-package staging, promotion and rollout
+evidence. A repository owns its package recipe, environments, CI, release
 workflow and publication decision.
 
 ## Public installation and truthful claims
@@ -111,8 +111,8 @@ gates.
 
 Direct components record their preflight route, negative evidence, and any
 bounded exception in their `python_distribution_review` issue or an issue linked
-from it. MolSysSuite tracks member adoption and exceptions in its own distribution
-inventory. A policy pin, an earlier adopted review, or another member's passing
+from it. MolSysSuite independently governs member distribution and tracks
+adoption and exceptions in its own inventory. A policy pin, an earlier adopted review, or another member's passing
 audit does not by itself prove adoption of this requirement. The platform change
 is tracked in [MOLI #21](https://github.com/uibcdf/moli/issues/21).
 
@@ -156,7 +156,7 @@ the per-route boundary for ZIP and TAR archives; they do not replace a
 repository's exact-candidate build or installed-runtime test. Direct components
 record route/resource inventory, verification evidence and bounded exceptions
 in their `python_distribution_review` issue or a linked issue. MolSysSuite owns
-member adoption and exceptions. [MOLI #26](https://github.com/uibcdf/moli/issues/26)
+its member policy, adoption and exceptions. [MOLI #26](https://github.com/uibcdf/moli/issues/26)
 tracks this platform rule.
 
 ## Recipe and publication

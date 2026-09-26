@@ -17,7 +17,7 @@ Their cross-component/platform contracts are governed directly by MOLI; their lo
 
 MolSysSuite is a first-class MOLI component. MOLI governs its platform-level relationship with Sabueso, Praxis, Nextia, MOLI Agent, and other future MOLI components. Because its internal governance is delegated, MolSysSuite is **not** a consumer of the vendored `MOLI_GUIDE.md`; its root governance documents reference MOLI directly and it distributes `MOLSYSSUITE_GUIDE.md` to its own members.
 
-MolSysSuite delegates governance of its internal members and shared modeling-ecosystem policies to `uibcdf/molsyssuite`.
+MolSysSuite delegates governance of its internal members to `uibcdf/molsyssuite`, including their engineering and modeling-ecosystem policies. MOLI policies for directly governed components do not automatically pass to members.
 
 This is hierarchical governance, not exclusion from MOLI membership.
 

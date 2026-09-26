@@ -1,46 +1,49 @@
-# MOLI policy inheritance
+# MOLI policy boundary and delegated governance
 
-MOLI is the sole normative owner of engineering rules that apply across its
-components. `moli.toml` identifies each accepted policy, its applicability, and
-its normative document. A component with delegated internal governance passes
-applicable MOLI policies to its registered descendants according to their
-capabilities. Delegation changes who coordinates adoption, not who owns a rule.
+MOLI governs the components directly registered in `moli.toml`. Its engineering
+policies apply to those components according to their declared capabilities.
+They do **not** pass automatically through a component with delegated internal
+governance to that component's members.
 
-UIBCDF-owned development tools and publication actions are cataloged separately
-as [support infrastructure](support_infrastructure.md). Cataloging them does not
-make them new scientific MOLI components or remove existing MolSysSuite membership.
+MolSysSuite is a directly registered MOLI component and remains accountable to
+MOLI for platform contracts: cross-component interfaces, scientific quantity
+integrity, issue feedback, and applicable support-infrastructure cooperation.
+`uibcdf/molsyssuite` is the normative owner of policies for its registered
+members, including Python support, CI, Ruff, runtime support libraries,
+developer tools, distribution, release versions, badges, and archival rules.
+Its `suite.toml`, policy documents, release tags and conformance machinery
+define the effective member rules and their rollout. MOLI neither registers
+member adoption state nor directly validates those member policies.
 
-MolSysSuite therefore references MOLI policies for its members. Its registry
-may record member classification, adoption state, evidence, bounded exceptions,
-and explicit modeling-domain extensions. It must not independently redefine
-MOLI-wide issue feedback, Python support, CI, quality tooling, release-version,
-badge, or DOI rules. A stricter suite requirement identifies the inherited rule and states
-only the additional requirement and its applicability.
+MolSysSuite may choose a rule compatible with a MOLI policy, refer to a MOLI
+document for context, or deliberately revise its own member rule. Such a choice
+is a MolSysSuite governance decision; a new MOLI revision does not silently
+change member obligations. A change that affects MolSysSuite's obligations as a
+MOLI component or an interface with another MOLI component requires a MOLI
+decision as well. A suite policy cannot waive a platform contract by changing
+its member wording.
 
-## Policy snapshots and verification
+UIBCDF-owned developer tools and publication actions are separately cataloged
+as [support infrastructure](support_infrastructure.md). Their provider
+repositories own implementation and defects. MolSysSuite decides how its
+members use them while observing any platform-facing contract that applies to
+the suite itself.
 
-Automated conformance uses an immutable MOLI Git commit or policy release as its
-source of general policy values. The chosen reference is recorded alongside the
-consumer's policy caller so a past result can be reproduced. A moving branch
-is suitable for discovery, not for a required conformance gate.
+## Reproducible sources
 
-Conformance checks evaluate the inherited baseline from that MOLI snapshot.
-Delegated governance may run those checks, add checks for its own contracts,
-and track adoption across its members.
-An adoption inventory distinguishes the policy version a member has adopted
-from the current MOLI baseline; publication of a new baseline does not imply
-that every member has already adopted it.
+Direct components use the MOLI registry and canonical guide. MolSysSuite
+records any MOLI revision it uses to verify its own platform obligations, but
+that reference is not a source of member engineering values. Member conformance
+uses a versioned MolSysSuite policy release. Historical results name the exact
+suite release; moving branch links are for discovery.
 
 ## Guide delivery
 
 `components.<name>.guide_delivery` records how a directly registered component
-receives MOLI guidance. `vendored` means it keeps a byte-identical root
-`MOLI_GUIDE.md`. `reference` means a delegated governance repository routes
-readers to MOLI without copying that guide. This delivery choice does not
-change policy inheritance or platform membership.
+receives MOLI guidance. `vendored` means a byte-identical root `MOLI_GUIDE.md`.
+`reference` means a delegated governance repository routes readers to MOLI
+without copying that guide. This choice does not give MOLI authority over the
+delegated members.
 
-Direct components with `vendored` delivery keep a root `AGENTS.md` that points
-to the copied guide. MOLI's
-`devtools/scripts/check_component_guides.py` checks byte equality and that
-route against the component repositories. The scheduled guide audit catches
-drift between the canonical source and published copies.
+Direct components with `vendored` delivery keep a root `AGENTS.md` pointing to
+the guide. `devtools/scripts/check_component_guides.py` checks those copies.

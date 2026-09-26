@@ -11,7 +11,7 @@ repository = "uibcdf/moli"
 guide = "MOLI_GUIDE.md"
 infrastructure_census = "devguide/INFRASTRUCTURE_CENSUS.md"
 reporting_protocol = "devguide/governance/reporting_protocol.md"
-policy_inheritance = "transitive-by-capability"
+policy_inheritance = "direct-components-with-delegated-boundaries"
 policy_inheritance_contract = "devguide/governance/policy_inheritance.md"
 
 [policies.reporting_lifecycle]
@@ -180,6 +180,7 @@ guide_delivery = "reference"
 capabilities = ["governed-ecosystem"]
 internal_governance = "delegated"
 internal_governance_repository = "uibcdf/molsyssuite"
+member_policy_owner = "uibcdf/molsyssuite"
 
 [components.moli-agent]
 repository = "uibcdf/moli-agent"
