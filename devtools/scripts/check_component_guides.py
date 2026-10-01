@@ -8,7 +8,10 @@ from pathlib import Path
 
 import tomllib
 
-from check_repository import check as check_repository
+if __package__:
+    from .check_repository import check as check_repository
+else:
+    from check_repository import check as check_repository
 
 ROOT = Path(__file__).resolve().parents[2]
 

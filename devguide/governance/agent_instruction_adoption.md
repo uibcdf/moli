@@ -8,11 +8,11 @@ exception. MolSysSuite owns instructions for its member repositories.
 
 | Repository | Root and `devguide/` instructions | Evidence or next step |
 | --- | --- | --- |
-| `uibcdf/moli` | In progress | Pilot: root `AGENTS.md`, `devguide/AGENTS.md`, governance validator. |
-| `uibcdf/sabueso` | Pending | Adapt the root lesson rule and add `devguide/AGENTS.md` without losing Sabueso-specific guidance. |
-| `uibcdf/praxis` | Pending | Add root lesson rule and `devguide/AGENTS.md`. |
-| `uibcdf/nextia` | Pending | Add root lesson rule and `devguide/AGENTS.md`. |
-| `uibcdf/moli-agent` | Pending | Add root lesson rule and `devguide/AGENTS.md`. |
+| `uibcdf/moli` | Adopted | [012fca3](https://github.com/uibcdf/moli/commit/012fca3): root and nested instructions, governance validator and onboarding guide. |
+| `uibcdf/sabueso` | Adopted | [7d59ae2](https://github.com/uibcdf/sabueso/commit/7d59ae2): preserved Sabueso-specific root guidance, added scoped `devguide/AGENTS.md` and local gate. |
+| `uibcdf/praxis` | Adopted | [69196b0](https://github.com/uibcdf/praxis/commit/69196b0): root and scoped developer-guide instructions with local gate. |
+| `uibcdf/nextia` | Adopted | [57ea1a1](https://github.com/uibcdf/nextia/commit/57ea1a1): root and scoped developer-guide instructions with local gate. |
+| `uibcdf/moli-agent` | Adopted | [a1d43bc](https://github.com/uibcdf/moli-agent/commit/a1d43bc): root and scoped developer-guide instructions with local gate. |
 | `uibcdf/molsyssuite` | Delegated | MOLI platform-boundary feedback applies; [MolSysSuite #66](https://github.com/uibcdf/molsyssuite/issues/66) owns member adoption and the new-member starter kit. |
 
 Acceptance requires an owner-local root rule, a scoped developer-guide rule,
