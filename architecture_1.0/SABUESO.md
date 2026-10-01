@@ -10,6 +10,14 @@ Its responsibility is to transform heterogeneous external and curated informatio
 
 A `SourceAssertion` records what a source asserts about an entity or property. It preserves source identity, source record/version, asserted value, normalized value where appropriate, retrieval information, and provenance.
 
+Its acquisition provenance records how Sabueso obtained the assertion
+(database import, human curation, rule extraction, or model extraction),
+separately from the source's identity and any upstream origin the source
+reports. A human-validated extraction remains identifiable as an extraction.
+Historical assertions without this provenance are `not_recorded`; their
+acquisition route must not be inferred. The [conceptual schema](schemas/sabueso_source_assertion_conceptual_schema.md)
+defines this shared meaning, while Sabueso owns its concrete representation.
+
 The former Sabueso term `Evidence` is deprecated for this role. Conceptually:
 
 - `Evidence` → `SourceAssertion`
