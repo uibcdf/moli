@@ -8,6 +8,8 @@ from pathlib import Path
 
 import tomllib
 
+from check_repository import check as check_repository
+
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -26,18 +28,13 @@ def check(workspace: Path, registry: dict[str, object]) -> list[str]:
     source = workspace / "moli" / guide
     if not source.is_file():
         return [f"{source}: canonical guide is missing"]
-    expected = source.read_bytes()
     findings: list[str] = []
     for repository in vendored_components(registry):
         root = workspace / repository.rsplit("/", 1)[-1]
-        target = root / guide
-        if not target.is_file():
-            findings.append(f"{target}: guide is missing")
-        elif target.read_bytes() != expected:
-            findings.append(f"{target}: guide differs from MOLI")
-        agents = root / "AGENTS.md"
-        if not agents.is_file() or guide not in agents.read_text(encoding="utf-8"):
-            findings.append(f"{agents}: must reference {guide}")
+        findings.extend(
+            f"{repository}: {error}"
+            for error in check_repository(root, source, require_direct_guide=True)
+        )
         pyproject = root / "pyproject.toml"
         if pyproject.is_file():
             try:

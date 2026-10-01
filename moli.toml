@@ -29,6 +29,12 @@ applies_to = ["repository", "support-infrastructure"]
 normative = "devguide/governance/reporting_protocol.md"
 issue = "uibcdf/moli#9"
 
+[policies.agent_instruction_lifecycle]
+status = "accepted"
+applies_to = ["direct-component"]
+normative = "devguide/governance/agent_instruction_lifecycle.md"
+issue = "uibcdf/moli#20"
+
 [policies.support_infrastructure]
 status = "accepted"
 applies_to = ["repository"]

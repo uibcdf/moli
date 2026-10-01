@@ -314,6 +314,13 @@ def validate_registry(root: Path) -> list[str]:
             errors.append(f"moli.toml: policy {name} has no existing normative document")
     if policies.get("issue_feedback", {}).get("applies_to") != ["repository", "support-infrastructure"]:
         errors.append("moli.toml: issue feedback must cover repositories and support infrastructure")
+    agent_lifecycle = policies.get("agent_instruction_lifecycle", {})
+    if agent_lifecycle.get("status") != "accepted" or agent_lifecycle.get("applies_to") != ["direct-component"]:
+        errors.append("moli.toml: agent-instruction lifecycle must apply to direct components")
+    if agent_lifecycle.get("normative") != "devguide/governance/agent_instruction_lifecycle.md":
+        errors.append("moli.toml: agent-instruction lifecycle has no normative document")
+    if agent_lifecycle.get("issue") != "uibcdf/moli#20":
+        errors.append("moli.toml: agent-instruction lifecycle has no owning issue")
     guide = policies.get("component_guide", {})
     if guide.get("applies_to") != ["guide-delivery:vendored"]:
         errors.append("moli.toml: component guide must select vendored delivery")
@@ -348,6 +355,12 @@ def validate_registry(root: Path) -> list[str]:
 
 def main() -> int:
     errors = validate_registry(ROOT) + validate_reports(ROOT)
+    root_agents = ROOT / "AGENTS.md"
+    devguide_agents = ROOT / "devguide/AGENTS.md"
+    if not root_agents.is_file() or "devguide/governance/agent_instruction_lifecycle.md" not in root_agents.read_text(encoding="utf-8"):
+        errors.append("AGENTS.md: must reference the agent-instruction lifecycle")
+    if not devguide_agents.is_file() or "../AGENTS.md" not in devguide_agents.read_text(encoding="utf-8") or "governance/reporting_protocol.md" not in devguide_agents.read_text(encoding="utf-8"):
+        errors.append("devguide/AGENTS.md: must reference root instructions and reporting protocol")
     if errors:
         for error in errors:
             print(error, file=sys.stderr)

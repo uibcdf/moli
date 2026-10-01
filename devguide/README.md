@@ -34,6 +34,11 @@ meaning, source vocabulary, schema migration and adoption evidence.
 
 The scheduled component-guide audit checks byte-identical copies and Python-package classification in directly governed repositories. Guide updates are synchronized to those repositories when the canonical guide changes.
 
+The [agent-instruction lifecycle](governance/agent_instruction_lifecycle.md)
+defines when an accepted development lesson becomes a root or nested
+`AGENTS.md` rule. Its [adoption inventory](governance/agent_instruction_adoption.md)
+tracks directly governed repositories without taking over MolSysSuite members.
+
 The [UIBCDF support-infrastructure catalog](governance/support_infrastructure.md)
 records the developer receptors and publication actions used by MOLI repositories.
 These resources have their own provider repositories and issue boards; they are not
