@@ -5,12 +5,14 @@ components. Use `moli.toml` to find accepted policies and their normative docume
 read the relevant decisions in `architecture_1.0/` for architectural work. Route
 bugs and proposals to the owning GitHub issue as the guide requires.
 
-When a development incident yields a reusable behavior rule, assess its scope
-and record an accepted rule in the appropriate root or nested `AGENTS.md` in
-the same change, or leave an owned issue for adoption. Follow
-`devguide/governance/agent_instruction_lifecycle.md`; report a rule useful to
-other components at the owning governance level. For work under `devguide/`,
-also read `devguide/AGENTS.md`.
+Report and fix defects through their owning issues, code, tests and technical
+documentation. Do not turn a source-specific fact, edge case or workaround
+into an `AGENTS.md` rule. Only a lasting instruction about how agents or
+contributors work across future tasks belongs in the correctly scoped root
+or nested `AGENTS.md`, after normal owner review. Follow
+`devguide/governance/agent_instruction_lifecycle.md`; propose cross-component
+adoption only for an accepted working instruction with shared evidence. For
+work under `devguide/`, also read `devguide/AGENTS.md`.
 
 Validate this governance repository with
 `python devtools/scripts/validate_governance.py`.

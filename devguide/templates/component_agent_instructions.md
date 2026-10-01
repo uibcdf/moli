@@ -7,12 +7,16 @@ local rules. The canonical meaning lives in `MOLI_GUIDE.md` and
 ## Root `AGENTS.md` block
 
 ```markdown
-When an incident reveals a reusable development rule, assess its scope. Put
-an accepted repository-wide rule here and a directory-specific rule in the
-appropriate nested `AGENTS.md` in the same change; otherwise track adoption
-in an owned issue. Follow `MOLI_GUIDE.md#durable-instructions-for-development-agents`.
-Report a potentially shared lesson to the owning governance issue.
-For work in the developer guide, also read `devguide/AGENTS.md`.
+Report defects in their owning issues and fix them with code, tests and
+technical documentation. Do not store source-specific facts, edge cases or
+workarounds in `AGENTS.md`. Only after normal owner review, put a lasting
+instruction about how contributors or agents work across future tasks in the
+appropriate root or nested `AGENTS.md`; use an adoption issue only if an
+accepted instruction cannot be placed with the fix or decision. Follow
+`MOLI_GUIDE.md#durable-instructions-for-development-agents`. Propose a shared
+working instruction to the owning governance issue only with evidence that it
+applies beyond this repository. For developer-guide work, read
+`devguide/AGENTS.md`.
 ```
 
 ## `devguide/AGENTS.md` starting text
@@ -27,8 +31,9 @@ analyses are in `pending_bugs/` and `pending_proposals/`; `archive/` preserves
 resolved or superseded history. Read an archived report when tracing a
 decision, and check the current replacement before treating it as policy.
 Follow the repository's reporting protocol when filing or resolving reports.
-Put rules specific to this directory here; put repository-wide rules in the
-root `AGENTS.md`.
+Keep technical facts and defect details in maintained documents, tests and
+owning issues. Put lasting working instructions specific to this directory
+here; put repository-wide working instructions in the root `AGENTS.md`.
 ```
 
 The owner should replace generic document names with its current indexes or

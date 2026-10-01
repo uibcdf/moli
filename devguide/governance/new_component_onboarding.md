@@ -10,8 +10,9 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    evidence.
 2. Create a root `AGENTS.md` at repository inception. Link the vendored
    `MOLI_GUIDE.md`, state the issue-feedback duty and the
-   [durable-instruction lifecycle](agent_instruction_lifecycle.md), and route
-   developer-guide work to `devguide/AGENTS.md`. Adapt the
+   [durable-instruction lifecycle](agent_instruction_lifecycle.md), including
+   its distinction between technical findings and agent working instructions.
+   Route developer-guide work to `devguide/AGENTS.md`. Adapt the
    [starter snippets](../templates/component_agent_instructions.md) to the
    component's actual ownership and local work.
 3. Start `devguide/AGENTS.md` with the root-instruction link, current guidance,
@@ -31,5 +32,6 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    and `moli.toml` identify those rules.
 
 The component still owns its implementation, tests, local API, release
-decisions, and additional scoped instructions. A shared contract or reusable
-cross-component lesson is reported to `uibcdf/moli` through the owning issue.
+decisions, and additional scoped instructions. Report a shared contract to
+`uibcdf/moli` through its owning issue; propose an agent working instruction
+there only after local acceptance and evidence of cross-component need.

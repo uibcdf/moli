@@ -8,6 +8,8 @@ when tracing a decision or migration, not as the current rule without checking
 its replacement.
 
 Before filing or closing an issue-backed report, follow
-`governance/reporting_protocol.md`. Record a reusable lesson in the correctly
-scoped `AGENTS.md` under `governance/agent_instruction_lifecycle.md`; changes
-to platform-wide behavior belong in the root file and its normative policy.
+`governance/reporting_protocol.md`. Keep bug facts and technical decisions in
+their issue, tests and maintained documents. Only accepted, lasting agent
+working instructions go in the correctly scoped `AGENTS.md` under
+`governance/agent_instruction_lifecycle.md`; platform-wide instructions belong
+in the root file and its normative policy.
