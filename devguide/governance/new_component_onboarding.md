@@ -29,7 +29,9 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
 5. For a Python package, complete the extra registry reviews, CI, developer
    receptors, support-library applicability, distribution and OS-support
    evidence required by the applicable policies. The [component guide](../../MOLI_GUIDE.md)
-   and `moli.toml` identify those rules. If macOS is claimed, register only
+   and `moli.toml` identify those rules. Start local development and routine
+   push/PR tests on Python 3.14; retain full tests on every supported minor.
+   If macOS is claimed, register only
    `supported_macos_architectures = ["arm64"]`, verify the runner architecture
    and installed candidate, and use the required Apple Silicon wording in the
    README. Do not claim macOS from a noarch recipe or a successful solve alone.

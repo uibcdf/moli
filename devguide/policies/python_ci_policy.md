@@ -4,7 +4,10 @@ Normative for MOLI components carrying the `python-package` capability.
 
 ## Routine gate
 
-Every push and pull request has a gating Linux test lane on the routine development Python version (currently 3.13).
+Every push and pull request has a gating Linux test lane on the routine
+development Python version (currently 3.14). A previously 3.13-only routine
+lane moves to 3.14; do not silently remove required full-suite evidence for
+older supported minors.
 
 ## Operating-system support
 
@@ -41,7 +44,7 @@ prove that its package or dependency closure works on every operating system.
 ## Required evidence
 
 At least weekly, the complete required test suite runs on Linux for every supported
-Python minor (currently 3.11, 3.12, 3.13). On macOS, at least the routine Python
+Python minor (currently 3.11, 3.12, 3.13, 3.14). On macOS, at least the routine Python
 minor runs the required tests weekly; the same applies to Windows if claimed.
 The macOS lane must demonstrate arm64 at runtime. A moving runner label alone
 is insufficient; pin a documented arm64 runner or verify its architecture in

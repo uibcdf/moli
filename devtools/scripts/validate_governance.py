@@ -148,6 +148,23 @@ def validate_python_distribution_reviews(
     return errors
 
 
+def validate_python_versions(policies: dict[str, dict]) -> list[str]:
+    """Keep the direct-component development and CI baseline on Python 3.14."""
+    errors: list[str] = []
+    python = policies.get("python", {})
+    expected = {
+        "requires_python": ">=3.11,<3.15",
+        "development_version": "3.14",
+        "ci_versions": ["3.11", "3.12", "3.13", "3.14"],
+    }
+    for key, value in expected.items():
+        if python.get(key) != value:
+            errors.append(f"moli.toml: Python policy has invalid {key}")
+    if policies.get("python_ci", {}).get("routine_python") != "3.14":
+        errors.append("moli.toml: routine Python CI must use 3.14")
+    return errors
+
+
 def validate_os_support(components: dict[str, dict], policies: dict[str, dict]) -> list[str]:
     """Require explicit, owned operating-system claims for direct Python components."""
     errors: list[str] = []
@@ -329,6 +346,7 @@ def validate_registry(root: Path) -> list[str]:
     policies = data.get("policies", {})
     errors.extend(validate_python_ecosystem_reviews(registered, policies))
     errors.extend(validate_python_distribution_reviews(registered, policies))
+    errors.extend(validate_python_versions(policies))
     errors.extend(validate_os_support(registered, policies))
     errors.extend(validate_coverage_reviews(registered, policies))
     for name in (

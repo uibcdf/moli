@@ -51,13 +51,13 @@ consumer_cross_link_required = true
 [policies.python]
 status = "accepted"
 applies_to = ["capability:python-package"]
-requires_python = ">=3.11,<3.14"
-development_version = "3.13"
-ci_versions = ["3.11", "3.12", "3.13"]
+requires_python = ">=3.11,<3.15"
+development_version = "3.14"
+ci_versions = ["3.11", "3.12", "3.13", "3.14"]
 normative = "devguide/policies/python_policy.md"
 
 [policies.python.transition]
-status = "active"
+status = "completed"
 target_requires_python = ">=3.11,<3.15"
 target_ci_versions = ["3.11", "3.12", "3.13", "3.14"]
 
@@ -70,7 +70,7 @@ note = "Python 3.14 support predates MOLI engineering-governance adoption and is
 [policies.python_ci]
 status = "accepted"
 applies_to = ["capability:python-package"]
-routine_python = "3.13"
+routine_python = "3.14"
 routine_events = ["push", "pull_request"]
 routine_os = "linux"
 full_matrix_frequency = "weekly"
