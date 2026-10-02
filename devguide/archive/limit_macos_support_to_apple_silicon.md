@@ -1,9 +1,9 @@
 ---
 summary: Restrict macOS support claims for MOLI direct components to Apple Silicon.
 issue: uibcdf/moli#31
-status: open
+status: resolved
 opened: 2026-09-27
-closed:
+closed: 2026-10-02
 verification: inspected
 area: [governance, compatibility]
 blocked_by: []
@@ -68,4 +68,15 @@ authorized by this policy change.
 
 ## Resolution
 
-Pending rollout across MOLI direct components.
+Adopted the arm64-only policy and architecture-aware registry in MOLI
+[`3a81276`](https://github.com/uibcdf/moli/commit/3a81276). Sabueso changed
+the routine and staged CI matrices, installed-package guide, README and user
+documentation in [`ef40ba8`](https://github.com/uibcdf/sabueso/commit/ef40ba8)
+and [`3bef1bc`](https://github.com/uibcdf/sabueso/commit/3bef1bc).
+The new macOS job checks `uname -m` and passed in
+[Sabueso CI run 36985309790](https://github.com/uibcdf/sabueso/actions/runs/36985309790).
+The earlier staged 0.5.0 gate provides installed-package arm64 evidence in the
+owner comment on the [MOLI issue](https://github.com/uibcdf/moli/issues/31).
+Praxis, Nextia and MOLI Agent have no Python package or macOS support claim;
+their vendored guides are synchronized. MolSysSuite completed its own rollout
+under [#59](https://github.com/uibcdf/molsyssuite/issues/59).
