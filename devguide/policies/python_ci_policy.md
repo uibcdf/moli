@@ -15,9 +15,18 @@ condition, and states the limitation in its README. Windows is optional: its abs
 does not block a release or count as a policy exception. A component may add Windows
 when it can maintain the evidence below.
 
+macOS support is currently limited to Apple Silicon (arm64). Intel-based macOS
+(x86_64) is not part of the supported platform matrix. Support may be
+reconsidered if there is demonstrated user demand. This is a prospective support
+choice, not a claim that existing Intel installations have stopped working. Do
+not remove historical artifacts or evidence. A component without verified arm64
+evidence must state its actual limitation rather than implying arm64 support.
+
 The `supported_os` list in `moli.toml` records the operating systems a directly
 governed Python component currently claims. Its `os_support_review` points to a
 component-owned issue and has a `pending`, `partial`, `adopted` or `excepted` state.
+When `macos` is claimed, `supported_macos_architectures = ["arm64"]` records its
+only eligible architecture. Omit that field when macOS is not claimed.
 An incubating component may register with an empty supported list and a pending
 review. The policy target remains Linux and macOS; an empty list makes no support
 claim. `adopted` requires evidence for Linux
@@ -34,6 +43,9 @@ prove that its package or dependency closure works on every operating system.
 At least weekly, the complete required test suite runs on Linux for every supported
 Python minor (currently 3.11, 3.12, 3.13). On macOS, at least the routine Python
 minor runs the required tests weekly; the same applies to Windows if claimed.
+The macOS lane must demonstrate arm64 at runtime. A moving runner label alone
+is insufficient; pin a documented arm64 runner or verify its architecture in
+the job. No Intel-only job or `osx-64` publication target is a required gate.
 Manual dispatch is available for candidate verification.
 
 Before a public release, the exact candidate's installed package and required

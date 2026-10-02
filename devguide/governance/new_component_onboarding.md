@@ -29,7 +29,14 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
 5. For a Python package, complete the extra registry reviews, CI, developer
    receptors, support-library applicability, distribution and OS-support
    evidence required by the applicable policies. The [component guide](../../MOLI_GUIDE.md)
-   and `moli.toml` identify those rules.
+   and `moli.toml` identify those rules. If macOS is claimed, register only
+   `supported_macos_architectures = ["arm64"]`, verify the runner architecture
+   and installed candidate, and use the required Apple Silicon wording in the
+   README. Do not claim macOS from a noarch recipe or a successful solve alone.
+   Also register an owner-local `coverage_review` issue. Once meaningful code
+   and tests exist, measure coverage in CI and add a live Codecov percentage
+   only after Codecov accepts a recent report for this repository and branch;
+   otherwise record a scoped, reviewable non-applicability or pending state.
 
 The component still owns its implementation, tests, local API, release
 decisions, and additional scoped instructions. Report a shared contract to

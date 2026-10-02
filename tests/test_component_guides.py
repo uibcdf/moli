@@ -6,7 +6,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from devtools.scripts.check_component_guides import check, vendored_components
+from devtools.scripts.check_component_guides import (
+    check,
+    check_public_claims,
+    vendored_components,
+)
 
 REGISTRY = {
     "policies": {"component_guide": {"filename": "MOLI_GUIDE.md"}},
@@ -27,6 +31,7 @@ class ComponentGuideTests(unittest.TestCase):
         source.write_text("canonical\n", encoding="utf-8")
         component = workspace / "sabueso"
         component.mkdir()
+        (component / "README.md").write_text("# Sabueso\n", encoding="utf-8")
         (component / "MOLI_GUIDE.md").write_bytes(source.read_bytes())
         (component / "AGENTS.md").write_text(
             "Read MOLI_GUIDE.md#durable-instructions-for-development-agents "
@@ -67,7 +72,9 @@ class ComponentGuideTests(unittest.TestCase):
             (component / "MOLI_GUIDE.md").write_text("changed\n", encoding="utf-8")
             (component / "AGENTS.md").write_text("No guide route\n", encoding="utf-8")
             findings = check(workspace, REGISTRY)
-            self.assertTrue(any("differs from canonical guide" in item for item in findings))
+            self.assertTrue(
+                any("differs from canonical guide" in item for item in findings)
+            )
             self.assertTrue(any("must reference" in item for item in findings))
 
     def test_missing_nested_instructions_are_reported(self):
@@ -76,7 +83,9 @@ class ComponentGuideTests(unittest.TestCase):
             component = self.make_component(workspace)
             (component / "devguide/AGENTS.md").unlink()
             findings = check(workspace, REGISTRY)
-            self.assertTrue(any("devguide/AGENTS.md: missing" in item for item in findings))
+            self.assertTrue(
+                any("devguide/AGENTS.md: missing" in item for item in findings)
+            )
 
     def test_python_project_requires_registered_capability(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -86,13 +95,37 @@ class ComponentGuideTests(unittest.TestCase):
                 '[project]\nname = "sabueso"\n', encoding="utf-8"
             )
             findings = check(workspace, REGISTRY)
-            self.assertTrue(any("needs python-package capability" in item for item in findings))
+            self.assertTrue(
+                any("needs python-package capability" in item for item in findings)
+            )
 
             REGISTRY["components"]["sabueso"]["capabilities"] = ["python-package"]
             try:
                 self.assertEqual(check(workspace, REGISTRY), [])
             finally:
                 del REGISTRY["components"]["sabueso"]["capabilities"]
+
+    def test_public_claims_require_arm64_wording_and_own_codecov_badge(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            workspace = Path(temporary)
+            component = self.make_component(workspace)
+            declaration = {
+                "supported_os": ["linux", "macos"],
+                "coverage_review": {"state": "adopted"},
+            }
+            errors = check_public_claims(component, "uibcdf/sabueso", declaration)
+            self.assertTrue(any("Apple Silicon" in item for item in errors))
+            self.assertTrue(any("Codecov" in item for item in errors))
+            (component / "README.md").write_text(
+                "macOS support is currently limited to Apple Silicon (arm64). "
+                "Intel-based macOS (x86_64) is not part of the supported platform matrix. "
+                "Support may be reconsidered if there is demonstrated user demand.\n"
+                "[![Coverage](https://codecov.io/gh/uibcdf/other/branch/main/graph/badge.svg)]"
+                "(https://codecov.io/gh/uibcdf/other)\n",
+                encoding="utf-8",
+            )
+            errors = check_public_claims(component, "uibcdf/sabueso", declaration)
+            self.assertTrue(any("this repository" in item for item in errors))
 
 
 if __name__ == "__main__":

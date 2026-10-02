@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import re
 import sys
-import tomllib
 from pathlib import Path
+
+import tomllib
 
 ROOT = Path(__file__).resolve().parents[2]
 OPEN = {"open", "active", "blocked", "partial"}
@@ -153,6 +154,8 @@ def validate_os_support(components: dict[str, dict], policies: dict[str, dict]) 
     policy = policies.get("python_ci", {})
     if policy.get("baseline_os") != ["linux", "macos"]:
         errors.append("moli.toml: Python platform baseline must be Linux and macOS")
+    if policy.get("macos_architectures") != ["arm64"]:
+        errors.append("moli.toml: macOS support must be limited to Apple Silicon arm64")
     if policy.get("optional_os") != ["windows"]:
         errors.append("moli.toml: Windows must be the optional platform")
     if policy.get("claimed_non_linux_frequency") != "weekly":
@@ -198,6 +201,13 @@ def validate_os_support(components: dict[str, dict], policies: dict[str, dict]) 
             errors.append(f"moli.toml: component {name} needs macOS support evidence")
         if state == "excepted" and "macos" in supported:
             errors.append(f"moli.toml: component {name} cannot except a claimed macOS platform")
+        macos_architectures = component.get("supported_macos_architectures", [])
+        if "macos" in supported and macos_architectures != ["arm64"]:
+            errors.append(f"moli.toml: component {name} must claim only macOS arm64")
+        if "macos" not in supported and macos_architectures:
+            errors.append(
+                f"moli.toml: component {name} cannot list macOS architectures without macOS support"
+            )
         if state == "excepted" and (
             not isinstance(exception, str)
             or not ISSUE.fullmatch(exception)
@@ -206,6 +216,34 @@ def validate_os_support(components: dict[str, dict], policies: dict[str, dict]) 
             errors.append(f"moli.toml: component {name} needs macOS or an owner-local exception issue")
         if state != "excepted" and exception is not None:
             errors.append(f"moli.toml: component {name} has an unnecessary macOS exception")
+    return errors
+
+
+def validate_coverage_reviews(components: dict[str, dict], policies: dict[str, dict]) -> list[str]:
+    """Keep coverage applicability and adoption owned for direct Python packages."""
+    errors: list[str] = []
+    policy = policies.get("repository_badges", {})
+    if policy.get("coverage_review_field") != "coverage_review":
+        errors.append("moli.toml: badge policy must require a coverage review")
+    if policy.get("coverage_image") != "codecov-live-percentage":
+        errors.append("moli.toml: coverage badge must display a live Codecov percentage")
+    for name, component in components.items():
+        if "python-package" not in component.get("capabilities", []):
+            continue
+        if component.get("internal_governance") == "delegated":
+            continue
+        review = component.get("coverage_review")
+        if not isinstance(review, dict):
+            errors.append(f"moli.toml: component {name} needs an owner-local coverage review")
+            continue
+        repository = component.get("repository", "")
+        issue = review.get("issue", "")
+        if not isinstance(issue, str) or not ISSUE.fullmatch(issue) or not issue.startswith(
+            f"{repository}#"
+        ):
+            errors.append(f"moli.toml: component {name} has an invalid coverage review issue")
+        if review.get("state") not in PYTHON_ECOSYSTEM_STATES:
+            errors.append(f"moli.toml: component {name} has an invalid coverage review state")
     return errors
 
 
@@ -292,6 +330,7 @@ def validate_registry(root: Path) -> list[str]:
     errors.extend(validate_python_ecosystem_reviews(registered, policies))
     errors.extend(validate_python_distribution_reviews(registered, policies))
     errors.extend(validate_os_support(registered, policies))
+    errors.extend(validate_coverage_reviews(registered, policies))
     for name in (
         "reporting_lifecycle",
         "issue_feedback",

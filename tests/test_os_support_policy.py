@@ -9,6 +9,7 @@ from devtools.scripts.validate_governance import validate_os_support
 POLICIES = {
     "python_ci": {
         "baseline_os": ["linux", "macos"],
+        "macos_architectures": ["arm64"],
         "optional_os": ["windows"],
         "claimed_non_linux_frequency": "weekly",
         "release_installed_matrix": "all-claimed-os-and-python-minors",
@@ -23,12 +24,24 @@ class OsSupportPolicyTests(unittest.TestCase):
         self.assertTrue(any("supported_os" in error for error in errors))
 
         component["supported_os"] = []
-        component["os_support_review"] = {"issue": "uibcdf/future#2", "state": "pending"}
+        component["os_support_review"] = {
+            "issue": "uibcdf/future#2",
+            "state": "pending",
+        }
         self.assertEqual(validate_os_support({"future": component}, POLICIES), [])
 
         component["supported_os"] = ["linux", "macos"]
+        component["supported_macos_architectures"] = ["arm64"]
         component["os_support_review"]["state"] = "adopted"
         self.assertEqual(validate_os_support({"future": component}, POLICIES), [])
+
+        component["supported_macos_architectures"] = ["x86_64"]
+        self.assertTrue(
+            any(
+                "arm64" in error
+                for error in validate_os_support({"future": component}, POLICIES)
+            )
+        )
 
     def test_windows_is_optional_and_macos_needs_a_tracked_exception(self):
         component = {
@@ -45,6 +58,7 @@ class OsSupportPolicyTests(unittest.TestCase):
         self.assertEqual(validate_os_support({"future": component}, POLICIES), [])
 
         component["supported_os"] = ["linux", "macos", "windows"]
+        component["supported_macos_architectures"] = ["arm64"]
         del component["macos_exception_issue"]
         component["os_support_review"]["state"] = "adopted"
         self.assertEqual(validate_os_support({"future": component}, POLICIES), [])

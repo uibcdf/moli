@@ -31,6 +31,17 @@ test matrices, publication paths, and developer guidance. Remove prospective
 Intel macOS targets and add accurate user-facing wording only where a macOS
 support claim exists. Preserve dated release artifacts and historical evidence.
 
+The direct-component inventory on 2026-10-02 found one public Python package
+with a macOS claim: Sabueso. Its prior 0.5.0 installed-package matrix ran on
+arm64 according to the owner evidence in this issue. The prospective routine
+and staged matrices now use the documented arm64 `macos-26` runner and check
+`uname -m`; the noarch Conda build already has `platform_osx-64: false`.
+Sabueso's README and two user installation pages carry the support boundary.
+Praxis, Nextia and MOLI Agent are architectural scaffolds with no public
+Python-package or OS support claim. MOLI itself is a governance repository,
+not a public Python package. MolSysSuite completed its member-owned rollout
+under `uibcdf/molsyssuite#59` without transferring member rows into MOLI.
+
 This is an explicit maintainer support-scope decision on 2026-09-27, not a
 finding that Intel binaries can no longer be built or used.
 
