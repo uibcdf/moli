@@ -1,10 +1,10 @@
 ---
 summary: Restore verified live Codecov percentages in applicable MOLI READMEs.
 issue: uibcdf/moli#35
-status: active
+status: resolved
 opened: 2026-10-01
-closed:
-verification: inspected
+closed: 2026-10-02
+verification: measured
 area: [governance, ci]
 blocked_by: []
 supersedes: []
@@ -71,4 +71,23 @@ architectural scaffolds would imply runtime code that does not exist.
 
 ## Resolution
 
-Pending Codecov producer verification and README adoption.
+MOLI adopted the coverage policy, owner-local registry review and future-repo
+check in [`3a81276`](https://github.com/uibcdf/moli/commit/3a81276).
+Its administrative tests publish coverage on each `main` push, and the README
+shows a live Codecov badge. [Run 36986025418](https://github.com/uibcdf/moli/actions/runs/36986025418)
+published the `43060e5` report; Codecov returned `state=complete`, 55.38%
+and `updatestamp=2026-10-02T08:47:43Z`, while the public SVG showed 55%.
+
+Sabueso adopted the measured Linux/Python 3.13 offline pytest producer in
+[`ef40ba8`](https://github.com/uibcdf/sabueso/commit/ef40ba8) and the
+README badge in [`28485b2`](https://github.com/uibcdf/sabueso/commit/28485b2).
+[Run 36985932505](https://github.com/uibcdf/sabueso/actions/runs/36985932505)
+passed all nine cells, retained `coverage.xml` and published the `3bef1bc`
+report. Codecov returned `state=complete`, 85.86% and
+`updatestamp=2026-10-02T08:52:34Z`; its public SVG showed 86%.
+The badges themselves remain dynamic; these figures are dated verification
+evidence, not README values or coverage thresholds.
+
+The direct scaffolds have no meaningful tested runtime yet and will be
+reassessed at package admission. MolSysSuite retains its own suite/member
+adoption in [#69](https://github.com/uibcdf/molsyssuite/issues/69).
