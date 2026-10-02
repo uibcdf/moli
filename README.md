@@ -1,6 +1,13 @@
 # MOLI
 
+[![Governance tests](https://github.com/uibcdf/moli/actions/workflows/validate_governance.yml/badge.svg?branch=main)](https://github.com/uibcdf/moli/actions/workflows/validate_governance.yml)
+[![Codecov](https://codecov.io/gh/uibcdf/moli/branch/main/graph/badge.svg)](https://app.codecov.io/gh/uibcdf/moli)
+
 **MOLI is a platform for Molecular Intelligence.**
+
+The coverage badge measures `devtools/scripts` with MOLI's governance tests on
+pushes to `main`. It describes that administrative test selection, not scientific
+coverage across the platform.
 
 Molecular Intelligence emerges from combining **scientific context**, **molecular modeling**, and **scientific reasoning** to understand, investigate, learn about, and create molecular systems.
 
