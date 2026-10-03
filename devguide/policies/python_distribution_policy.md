@@ -48,6 +48,31 @@ that a PyPI distribution exists. The equivalent short option is `-e`; pip has no
 for a non-editable local installation. A component with an entirely PyPI-available
 development dependency closure may document a virtual-environment alternative.
 
+For a co-development workspace spanning components, first solve a compatible
+Conda environment for their runtime, test and build requirements. Install each
+participating **installable Python package** from its local checkout into that
+environment with `python -m pip install --no-deps --editable .` (run once per
+checkout), then verify the installed distribution and import path resolve to
+the intended checkout. Run local pytest under Python 3.14 in that environment;
+the routine CI lane also uses Python 3.14 under the
+[Python CI policy](python_ci_policy.md). Editable source changes are then visible
+to other packages using that environment. Dependency metadata changes or native
+builds may still require reinstalling or rebuilding; an editable installation
+alone does not prove cross-component compatibility. Track an unavailable or
+incompatible package as a concrete adoption gap rather than claiming a complete
+workspace. Repositories without a Python package are outside this installation
+step.
+
+MolSysSuite owns the named `molsyssuite@uibcdf_3.14` development environment,
+its eligible member inventory and expansion to the full suite. Follow its
+[Conda environment instructions](https://github.com/uibcdf/molsyssuite/blob/main/devtools/conda-envs/README.md)
+for the actual recipe and any build options required by its members. A shared
+workspace that also includes directly governed MOLI packages must verify their
+dependency compatibility and install them from their own checkouts; the suite
+environment name alone does not certify that wider workspace. The suite rollout
+is tracked in [MolSysSuite #82](https://github.com/uibcdf/molsyssuite/issues/82)
+and the platform target in [MOLI #40](https://github.com/uibcdf/moli/issues/40).
+
 Keep committed environment specifications under `devtools/conda-envs/`. Use
 `development_env.yaml` for the development route and `test_env.yaml` for required
 tests; add `build_env.yaml` and `docs_env.yaml` when those jobs exist. Additional

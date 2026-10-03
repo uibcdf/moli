@@ -18,6 +18,13 @@ MolSysSuite, or both according to the affected consumers. Follow
 `devguide/governance/cross_component_feedback.md` before publishing the provider
 change or starting consumer rollout when the impact is known in advance.
 
+For a needed fix in another repository, use its issue when there is no ready
+fix, or propose a ready fix through a pull request for owner review. If urgent
+work is being done by or directly with Diego or Liliana, ask them whether to
+use a direct push, pull request or issue; direct push needs explicit permission.
+Follow `devguide/governance/cross_component_feedback.md` and keep shared-provider
+impact notices separate from the provider review route.
+
 Report and fix defects through their owning issues, code, tests and technical
 documentation. Do not turn a source-specific fact, edge case or workaround
 into an `AGENTS.md` rule. Only a lasting instruction about how agents or

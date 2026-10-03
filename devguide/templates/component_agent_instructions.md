@@ -21,6 +21,19 @@ applies beyond this repository. For developer-guide work, read
 When changing a shared auxiliary library or UIBCDF development action, notify
 MOLI and/or MolSysSuite through a linked impact issue if other packages may be
 affected. Follow `MOLI_GUIDE.md#cross-component-feedback`.
+
+For a needed fix in another repository, open or update its issue if no fix is
+ready; send a concrete fix as a pull request for owner review. If urgent work
+is done by or directly with Diego or Liliana, ask whether the route is direct
+push, pull request or issue; direct push needs explicit permission. Follow
+`MOLI_GUIDE.md#cross-component-feedback`.
+
+For Python development, use the declared Conda environment with Python 3.14,
+run local pytest there, and install this checkout with
+`python -m pip install --no-deps --editable .`. Install other participating
+Python components editable in the same compatible environment and verify
+their import paths; track packages that cannot yet join. Follow
+`MOLI_GUIDE.md#moli-engineering-baseline`.
 ```
 
 ## `devguide/AGENTS.md` starting text

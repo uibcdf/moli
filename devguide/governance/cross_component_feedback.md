@@ -18,6 +18,28 @@ A local workaround is temporary evidence, not a replacement for provider feedbac
 
 For private discovery programs, sanitize the report so the provider can reproduce the platform need without exposing confidential project content.
 
+## Contributing a fix across repositories
+
+When work on one component requires a change in another repository, route the
+change through the repository that owns the behavior:
+
+1. If the need is not urgent and there is no ready fix, open or update a provider
+   issue with the evidence and required outcome so its developers can prioritize it.
+2. If a concrete fix is ready, propose it as a pull request to the provider for
+   owner review. Link the owning issue (or open one for an otherwise unreported
+   actionable finding) and any consumer work it unblocks.
+3. If the change is urgent **and** Diego or Liliana are doing or directly
+   supervising that development, ask them whether to use a direct commit and
+   push, a pull request, or an issue. Direct push needs their explicit permission
+   for that change. Urgency alone does not grant write authority.
+
+These routes concern contributions **to another repository**. They do not
+replace the owning team's normal local commit and review practice. A pull
+request or approved direct push does not remove the issue-feedback duty for
+the underlying bug or improvement. A change to a shared auxiliary provider
+also follows the consumer-impact notice below; provider approval does not
+substitute for coordination with affected consumers.
+
 ## Changes to shared auxiliary providers
 
 When a developer or agent changes a UIBCDF auxiliary library or development

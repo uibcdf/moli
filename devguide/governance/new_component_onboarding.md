@@ -10,7 +10,7 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    evidence.
 2. Create a root `AGENTS.md` at repository inception. Link the vendored
    `MOLI_GUIDE.md`, state the issue-feedback duty and the
-   shared-provider impact-notice route, and follow the
+   shared-provider impact-notice and cross-repository contribution routes, and follow the
    [durable-instruction lifecycle](agent_instruction_lifecycle.md), including
    its distinction between technical findings and agent working instructions.
    Route developer-guide work to `devguide/AGENTS.md`. Adapt the
@@ -32,6 +32,13 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    evidence required by the applicable policies. The [component guide](../../MOLI_GUIDE.md)
    and `moli.toml` identify those rules. Start local development and routine
    push/PR tests on Python 3.14; retain full tests on every supported minor.
+   Create the declared Conda development environment; run local pytest under
+   Python 3.14 and install the checkout with
+   `python -m pip install --no-deps --editable .`. For integrated work, install
+   each participating installable component checkout into a compatible Conda
+   environment, verify its import path and track any compatibility or packaging
+   gap. Coordinate suite members through MolSysSuite rather than declaring its
+   environment complete from this checklist.
    If macOS is claimed, register only
    `supported_macos_architectures = ["arm64"]`, verify the runner architecture
    and installed candidate, and use the required Apple Silicon wording in the
