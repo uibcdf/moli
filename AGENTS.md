@@ -5,6 +5,13 @@ components. Use `moli.toml` to find accepted policies and their normative docume
 read the relevant decisions in `architecture_1.0/` for architectural work. Route
 bugs and proposals to the owning GitHub issue as the guide requires.
 
+When MOLI changes a platform rule that may affect MolSysSuite or its members,
+record the required adoption and evidence in an existing or new
+`uibcdf/molsyssuite` issue, linked to the MOLI decision. Leave changes to the
+MolSysSuite repository and its member repositories to the MolSysSuite
+development team. Keep cross-platform contracts and MOLI's own implementation
+in `uibcdf/moli`; follow the ownership boundary in `MOLI_GUIDE.md`.
+
 Report and fix defects through their owning issues, code, tests and technical
 documentation. Do not turn a source-specific fact, edge case or workaround
 into an `AGENTS.md` rule. Only a lasting instruction about how agents or
