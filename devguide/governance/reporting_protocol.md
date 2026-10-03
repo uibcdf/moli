@@ -24,6 +24,14 @@ and provider issues where both have work to do. Reporting creates a durable feed
 record; maintainers decide priority and scope, so an issue is not a promise of
 immediate implementation.
 
+When a change to a shared auxiliary library or UIBCDF development action may
+affect other packages, the provider issue alone is insufficient: notify the
+affected governance domain through a linked impact issue in MOLI, MolSysSuite,
+or both. The trigger, timing and minimum impact information are specified in
+[cross-component feedback](cross_component_feedback.md#changes-to-shared-auxiliary-providers).
+An existing issue may carry the notice; do not create duplicate issues solely
+for formality.
+
 Keep confidential data out of public issues. Report exploitable security findings
 through the repository's private security channel first; create or link a public
 issue only when disclosure is safe.
@@ -56,6 +64,8 @@ GitHub issue references are the stable cross-repository identity. Do not use a p
 - shared contract between MOLI components → `uibcdf/moli` issue;
 - MolSysSuite-internal work → MolSysSuite governance;
 - cross-boundary MolSysSuite ↔ other MOLI component contract → `uibcdf/moli`.
+- shared auxiliary-provider change → provider issue plus MOLI and/or
+  MolSysSuite impact issue according to the affected consumers.
 
 A platform issue may link local implementation issues; it does not absorb their local code/test analysis.
 

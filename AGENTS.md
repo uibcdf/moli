@@ -12,6 +12,12 @@ MolSysSuite repository and its member repositories to the MolSysSuite
 development team. Keep cross-platform contracts and MOLI's own implementation
 in `uibcdf/moli`; follow the ownership boundary in `MOLI_GUIDE.md`.
 
+When a change to a shared auxiliary library or UIBCDF development action may
+affect other packages, link its provider issue from an impact issue in MOLI,
+MolSysSuite, or both according to the affected consumers. Follow
+`devguide/governance/cross_component_feedback.md` before publishing the provider
+change or starting consumer rollout when the impact is known in advance.
+
 Report and fix defects through their owning issues, code, tests and technical
 documentation. Do not turn a source-specific fact, edge case or workaround
 into an `AGENTS.md` rule. Only a lasting instruction about how agents or

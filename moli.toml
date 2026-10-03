@@ -43,10 +43,12 @@ issue = "uibcdf/moli#10"
 
 [policies.cross_component_feedback]
 status = "accepted"
-applies_to = ["direct-component"]
+applies_to = ["direct-component", "support-infrastructure"]
 normative = "devguide/governance/cross_component_feedback.md"
+issue = "uibcdf/moli#39"
 provider_report_required = true
 consumer_cross_link_required = true
+shared_provider_change_notice_required = true
 
 [policies.python]
 status = "accepted"

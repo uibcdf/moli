@@ -29,3 +29,9 @@ issue. Link any consumer-side blocker or workaround. Use a MOLI issue for a shar
 platform usage contract and a MolSysSuite issue for a suite-specific adoption or
 integration decision. Do not hide provider feedback in a consumer repository.
 Private security reporting takes precedence for exploitable findings.
+
+If a proposed change to one of these shared actions or receptors may affect
+other packages, also give [cross-component impact notice](cross_component_feedback.md#changes-to-shared-auxiliary-providers)
+to MOLI and/or MolSysSuite according to the consumers affected. This includes
+workflow interfaces, outputs, release tags and requirements, even when the
+provider change is correct and no bug has been found.
