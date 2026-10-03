@@ -1,9 +1,9 @@
 ---
 summary: Make Python 3.14 the routine development and CI interpreter across MOLI and MolSysSuite.
 issue: uibcdf/moli#37
-status: active
+status: resolved
 opened: 2026-10-02
-closed:
+closed: 2026-10-03
 verification: inspected
 area: [governance, ci]
 blocked_by: []
@@ -52,4 +52,19 @@ protects users on older supported minors.
 
 ## Resolution
 
-Pending hosted and component rollout evidence.
+MOLI adopted the direct-component Python 3.14 baseline in `df28f1d`, and
+Sabueso adopted it in `1ddebb3`. MOLI governance passed in hosted run
+`37077539011`; Sabueso's 3.14 routine and compatibility CI passed in run
+`37104338896`, with its governance run `37104338847` also green. The direct
+component guides are synchronized.
+
+MolSysSuite's central policy and development environment changed in `5a90853`;
+central governance and the 3.14 development-environment checks passed in
+hosted runs `37104986453` and `37104986458`. The suite development team owns
+release tagging, member-guide synchronization, member CI and environment
+adoption, and tracked exceptions under `uibcdf/molsyssuite#39` and `#51`.
+Those tasks are not MOLI implementation work. Public Ackredit delivery and
+consumer release remain separate gates under `uibcdf/ackredit#22`, `#75`, and
+`uibcdf/moli#36`; no public 3.14 support claim follows from this resolution.
+
+The handoff instruction is recorded in MOLI's root `AGENTS.md` at `f26ef84`.
