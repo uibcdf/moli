@@ -17,6 +17,10 @@ accepted instruction cannot be placed with the fix or decision. Follow
 working instruction to the owning governance issue only with evidence that it
 applies beyond this repository. For developer-guide work, read
 `devguide/AGENTS.md`.
+
+When changing a shared auxiliary library or UIBCDF development action, notify
+MOLI and/or MolSysSuite through a linked impact issue if other packages may be
+affected. Follow `MOLI_GUIDE.md#cross-component-feedback`.
 ```
 
 ## `devguide/AGENTS.md` starting text

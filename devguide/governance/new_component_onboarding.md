@@ -10,6 +10,7 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    evidence.
 2. Create a root `AGENTS.md` at repository inception. Link the vendored
    `MOLI_GUIDE.md`, state the issue-feedback duty and the
+   shared-provider impact-notice route, and follow the
    [durable-instruction lifecycle](agent_instruction_lifecycle.md), including
    its distinction between technical findings and agent working instructions.
    Route developer-guide work to `devguide/AGENTS.md`. Adapt the
