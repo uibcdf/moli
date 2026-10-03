@@ -19,10 +19,10 @@ not an accepted wire schema or a revision to frozen Architecture 1.0. It follows
 the [architecture decisions](../../architecture_1.0/DECISIONS.md),
 [project architecture](../../architecture_1.0/PROJECT_ARCHITECTURE.md), and
 [object identity rules](../../architecture_1.0/OBJECT_IDENTITY_AND_PORTABILITY.md).
-Sabueso owns its knowledge and packet implementation; Ackredit and its clients
-are governed within MolSysSuite; Nextia owns project interpretation; MOLI/Recorda
-owns cross-platform execution history. A release claim requires owner-local
-installed-package evidence, separately from this semantic review.
+Sabueso owns its knowledge and packet implementation; MolSysSuite governs
+Ackredit and its own member clients; Nextia owns project interpretation;
+MOLI/Recorda owns cross-platform execution history. A release claim requires
+owner-local installed-package evidence, separately from this semantic review.
 
 ## Distinct records and authorities
 
@@ -107,8 +107,9 @@ repositories.
   with [MOLI #3](https://github.com/uibcdf/moli/issues/3), and execution
   correlation/telemetry with [MOLI #18](https://github.com/uibcdf/moli/issues/18).
   Packet details remain in [MOLI #22](https://github.com/uibcdf/moli/issues/22).
-- Ask MolSysSuite to review how Ackredit and its member clients expose detached
-  result/workflow records, gaps, original versions, and saved-reader behavior.
+- Ask [MolSysSuite #76](https://github.com/uibcdf/molsyssuite/issues/76) to review
+  how Ackredit and its member clients expose detached result/workflow records,
+  gaps, original versions, and saved-reader behavior.
   Ackredit's API, bibliographic registry, delivery, and member adoption stay
   with their owning issues.
 - Exercise a public, synthetic two-result workflow that includes a reused
