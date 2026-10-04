@@ -18,6 +18,13 @@ MolSysSuite, or both according to the affected consumers. Follow
 `devguide/governance/cross_component_feedback.md` before publishing the provider
 change or starting consumer rollout when the impact is known in advance.
 
+For authorized direct-push development, group short local commits when possible
+and choose local checks and remote CI according to the change. Consider
+`[skip ci]` only for a locally checked push permitted by the repository's CI
+policy, with any deferred code tests recovered before claiming completion or
+release. A skipped run is not passing evidence. Follow
+`devguide/policies/python_ci_policy.md#validation-during-direct-push-development`.
+
 For a needed fix in another repository, use its issue when there is no ready
 fix, or propose a ready fix through a pull request for owner review. If urgent
 work is being done by or directly with Diego or Liliana, ask them whether to

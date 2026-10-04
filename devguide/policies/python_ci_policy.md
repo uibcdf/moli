@@ -4,10 +4,47 @@ Normative for MOLI components carrying the `python-package` capability.
 
 ## Routine gate
 
-Every push and pull request has a gating Linux test lane on the routine
+Every ordinary push and pull request has a gating Linux test lane on the routine
 development Python version (currently 3.14). A previously 3.13-only routine
 lane moves to 3.14; do not silently remove required full-suite evidence for
-older supported minors.
+older supported minors. The bounded direct-push deferral below does not turn a
+skipped run into passing evidence or weaken a required pull-request gate.
+
+## Validation during direct-push development
+
+Match validation to the actual change and the repository's local instructions.
+Before pushing, decide whether remote CI adds evidence at this point. Keep
+short exploratory commits local and push a meaningful checkpoint when remote
+visibility or backup is not needed for each increment. A commit or push alone
+is not a validation checkpoint. For documentation, research notes or recorded
+evidence that cannot change executable behavior, run the applicable local
+document, governance and data checks. For changed numerical/public behavior,
+run targeted regressions; broaden to affected platforms, dependencies,
+packaging and integration boundaries when their risk warrants it. Reuse a
+completed result only while the tested scope remains unchanged, and state the
+scope of local tests, scientific comparisons and remote CI separately.
+
+An authorized **direct push** may carry `[skip ci]` only when the repository's
+owner permits it and the change does not need an immediate remote signal. This
+can be a locally checked, non-executable documentation/evidence update with no
+applicable required remote check, or an intermediate tested code checkpoint
+under a documented recovery route that will run the required suite on the
+resulting head. A repository that cannot reliably recover skipped code pushes
+should batch commits locally and use an ordinary push. Prefer ending a code
+development session with an unskipped checkpoint; inspect its required checks
+on the actual head. If work stops on a skipped code head, record the validation
+debt with an owner and trigger the repository's recovery or manual test route
+before release, merge claims or closing the work. An older green run does not
+certify subsequent skipped changes.
+
+Do not use `[skip ci]` on a pull-request head with required checks, a release
+candidate, publication, or a change needing immediate security, dependency,
+packaging, migration or integration evidence. GitHub's
+[skip behavior](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/skip-workflow-runs)
+suppresses workflows triggered by `push` and `pull_request`, not only an
+expensive test job; required PR checks can remain pending. The marker is not a
+substitute for a reviewed selective workflow. Follow stricter owner-local
+gates until the repository owner changes them through its normal review route.
 
 ## Operating-system support
 

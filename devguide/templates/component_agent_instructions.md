@@ -34,6 +34,13 @@ run local pytest there, and install this checkout with
 Python components editable in the same compatible environment and verify
 their import paths; track packages that cannot yet join. Follow
 `MOLI_GUIDE.md#moli-engineering-baseline`.
+
+During authorized direct-push development, batch short local commits when
+possible. Match local checks and remote CI to the actual change; consider
+`[skip ci]` only when this repository permits it and has a clear recovery
+route for any deferred code tests. Inspect an unskipped validation checkpoint
+on the final code head before completion. Follow
+`MOLI_GUIDE.md#moli-engineering-baseline` and the local CI policy.
 ```
 
 ## `devguide/AGENTS.md` starting text

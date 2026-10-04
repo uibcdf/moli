@@ -10,7 +10,8 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    evidence.
 2. Create a root `AGENTS.md` at repository inception. Link the vendored
    `MOLI_GUIDE.md`, state the issue-feedback duty and the
-   shared-provider impact-notice and cross-repository contribution routes, and follow the
+   shared-provider impact-notice, cross-repository contribution and direct-push
+   validation routes, and follow the
    [durable-instruction lifecycle](agent_instruction_lifecycle.md), including
    its distinction between technical findings and agent working instructions.
    Route developer-guide work to `devguide/AGENTS.md`. Adapt the
@@ -39,6 +40,11 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    environment, verify its import path and track any compatibility or packaging
    gap. Coordinate suite members through MolSysSuite rather than declaring its
    environment complete from this checklist.
+   State which local checks apply to documentation, scientific exploration and
+   code changes. If authorized direct pushes may use `[skip ci]`, document how
+   deferred code tests are recovered and how a final unskipped checkpoint is
+   verified; do not leave an unconditional full-pytest-before-every-commit rule
+   alongside a proportional validation rule.
    If macOS is claimed, register only
    `supported_macos_architectures = ["arm64"]`, verify the runner architecture
    and installed candidate, and use the required Apple Silicon wording in the
