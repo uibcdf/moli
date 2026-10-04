@@ -51,6 +51,16 @@ A combined installed-package gate must be rerun if any participant or dependency
 closure it observed changes; another participant's unchanged artifact does not
 need to be rebuilt for that reason alone.
 
+A `[skip ci]` marker on the original producer commit neither proves nor
+disqualifies a candidate. An authorized manual route may qualify it only when
+every mandatory gate actually executes and passes for that exact source commit,
+resolved closure and, where applicable, the recorded artifact bytes and digest.
+Keep the original producer identity and file; a later workflow repair does not
+permit rebuilding it or presenting a different file as the recorded candidate.
+Manual dispatch alone is not a passing result. The
+[Python CI policy](python_ci_policy.md#validation-during-direct-push-development)
+also governs ordinary direct-push checkpoints.
+
 The pre-publication decision records which gates were reused, which became stale,
 and the new evidence that replaced each stale result. A passing status applies
 only to the identity and scope actually observed. Repositories keep their own

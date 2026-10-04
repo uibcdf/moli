@@ -42,8 +42,9 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    environment complete from this checklist.
    State which local checks apply to documentation, scientific exploration and
    code changes. If authorized direct pushes may use `[skip ci]`, document how
-   deferred code tests are recovered and how a final unskipped checkpoint is
-   verified; do not leave an unconditional full-pytest-before-every-commit rule
+   deferred code tests are recovered and how an unskipped or explicitly
+   authorized manual exact-head checkpoint is verified; do not leave an
+   unconditional full-pytest-before-every-commit rule
    alongside a proportional validation rule.
    If macOS is claimed, register only
    `supported_macos_architectures = ["arm64"]`, verify the runner architecture

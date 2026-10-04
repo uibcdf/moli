@@ -21,8 +21,11 @@ evidence that cannot change executable behavior, run the applicable local
 document, governance and data checks. For changed numerical/public behavior,
 run targeted regressions; broaden to affected platforms, dependencies,
 packaging and integration boundaries when their risk warrants it. Reuse a
-completed result only while the tested scope remains unchanged, and state the
-scope of local tests, scientific comparisons and remote CI separately.
+completed local result only while its tested code, inputs, environment and
+scope remain applicable. Repeat or broaden it when a change, failure or
+unresolved question makes it insufficient; it cannot certify a changed remote
+head, dependency closure or installed file. State the scope of local tests,
+scientific comparisons and remote CI separately.
 
 An authorized **direct push** may carry `[skip ci]` only when the repository's
 owner permits it and the change does not need an immediate remote signal. This
@@ -30,21 +33,37 @@ can be a locally checked, non-executable documentation/evidence update with no
 applicable required remote check, or an intermediate tested code checkpoint
 under a documented recovery route that will run the required suite on the
 resulting head. A repository that cannot reliably recover skipped code pushes
-should batch commits locally and use an ordinary push. Prefer ending a code
-development session with an unskipped checkpoint; inspect its required checks
-on the actual head. If work stops on a skipped code head, record the validation
-debt with an owner and trigger the repository's recovery or manual test route
-before release, merge claims or closing the work. An older green run does not
-certify subsequent skipped changes.
+should batch commits locally and use an ordinary push. Normally finish a code
+development session with an unskipped checkpoint and inspect its applicable
+gates on the actual head. An explicitly authorized manual execution and
+verification of those same gates on that exact head is also a valid checkpoint.
+If work stops without the required evidence, record the head, untested scope,
+owner issue and recovery route before release, merge claims or closing the work.
+An older green run does not certify subsequent skipped changes.
 
-Do not use `[skip ci]` on a pull-request head with required checks, a release
-candidate, publication, or a change needing immediate security, dependency,
-packaging, migration or integration evidence. GitHub's
+Do not use `[skip ci]` to evade a pull-request head's required checks or an
+immediate security, dependency, packaging, migration or integration gate.
+GitHub's
 [skip behavior](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/skip-workflow-runs)
 suppresses workflows triggered by `push` and `pull_request`, not only an
 expensive test job; required PR checks can remain pending. The marker is not a
 substitute for a reviewed selective workflow. Follow stricter owner-local
 gates until the repository owner changes them through its normal review route.
+
+For admission, release and publication, **every mandatory gate still executes
+and passes** for the exact candidate commit and, where required, the installed
+artifact and dependency closure. A skip marker on the original producer commit
+does not itself disqualify that candidate when an authorized manual route
+executes and verifies all required gates on those exact identities. Record the
+original producer commit, artifact coordinate and digest; preserve the tested
+file through promotion. A later workflow correction is not a new producer or
+permission to rebuild or replace an already recorded file. Manual dispatch,
+an administrative check or a smoke run alone is not passing full-suite or
+installed-package evidence. Apply the
+[candidate evidence lifecycle](release_version_policy.md#candidate-evidence-lifecycle)
+and leave any missing or failed gate visible under its owning issue. The
+exact-head/manual qualification clarification is tracked in
+[MOLI #45](https://github.com/uibcdf/moli/issues/45).
 
 ## Operating-system support
 

@@ -22,7 +22,9 @@ For authorized direct-push development, group short local commits when possible
 and choose local checks and remote CI according to the change. Consider
 `[skip ci]` only for a locally checked push permitted by the repository's CI
 policy, with any deferred code tests recovered before claiming completion or
-release. A skipped run is not passing evidence. Follow
+release. Verify the applicable gates on the exact head through an ordinary
+unskipped run or an explicitly authorized manual run. A skipped run is not
+passing evidence. Follow
 `devguide/policies/python_ci_policy.md#validation-during-direct-push-development`.
 
 For a needed fix in another repository, use its issue when there is no ready
