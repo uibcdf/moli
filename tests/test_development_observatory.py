@@ -68,6 +68,31 @@ class ObservatoryTests(unittest.TestCase):
         self.assertEqual(science["closed"], 1)
         self.assertEqual(sum(item["count"] for item in result["issue_age"]), 1)
 
+    def test_metrics_keep_inactive_repositories_visible(self):
+        dataset = {
+            "generated_at": "2026-10-05T12:00:00Z",
+            "scope": [
+                {"repository": "uibcdf/active", "layer": "MOLI"},
+                {"repository": "uibcdf/quiet", "layer": "Infrastructure"},
+            ],
+            "issues": [
+                {
+                    "repository": "uibcdf/active",
+                    "state": "closed",
+                    "created_at": "2026-10-05T10:00:00Z",
+                    "closed_at": "2026-10-05T11:00:00Z",
+                }
+            ],
+            "excluded_scope": [],
+            "provenance": {"issue_lifecycle_model": "snapshot-v1"},
+        }
+        result = metrics(dataset, days=1, timezone_name="UTC")
+        rows = {item["repository"]: item for item in result["repositories"]}
+        self.assertIn("uibcdf/quiet", rows)
+        self.assertEqual(rows["uibcdf/quiet"]["opened"], 0)
+        self.assertEqual(rows["uibcdf/quiet"]["closed"], 0)
+        self.assertEqual(rows["uibcdf/quiet"]["current_open"], 0)
+
     def test_collection_skips_inaccessible_repositories_but_records_them(self):
         scope = [
             {"repository": "uibcdf/public", "layer": "MOLI", "role": "component", "source": "moli.toml"},
