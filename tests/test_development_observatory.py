@@ -92,6 +92,8 @@ class ObservatoryTests(unittest.TestCase):
         self.assertEqual(rows["uibcdf/quiet"]["opened"], 0)
         self.assertEqual(rows["uibcdf/quiet"]["closed"], 0)
         self.assertEqual(rows["uibcdf/quiet"]["current_open"], 0)
+        self.assertEqual(rows["uibcdf/quiet"]["current_closed"], 0)
+        self.assertEqual(rows["uibcdf/quiet"]["total"], 0)
 
     def test_collection_skips_inaccessible_repositories_but_records_them(self):
         scope = [
@@ -168,11 +170,13 @@ class ObservatoryTests(unittest.TestCase):
         self.assertIn("issues.json", html)
         self.assertIn("Grafana", html)
         self.assertIn("MOLI Development Observatory", html)
-        self.assertIn('data-sort="opened"', html)
-        self.assertIn('data-sort="closed"', html)
-        self.assertIn('data-sort="net_change"', html)
+        self.assertIn('data-sort="total"', html)
         self.assertIn('data-sort="current_open"', html)
-        self.assertIn("Currently open", html)
+        self.assertIn('data-sort="current_closed"', html)
+        self.assertIn('data-sort="net_change"', html)
+        self.assertIn(">Total<", html)
+        self.assertIn(">Open<", html)
+        self.assertIn(">Closed<", html)
 
 
 if __name__ == "__main__":
