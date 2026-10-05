@@ -3,8 +3,15 @@
 from __future__ import annotations
 
 import unittest
+from unittest.mock import patch
 
-from devtools.scripts.development_observatory import dashboard_html, discover_scope, metrics
+from devtools.scripts.development_observatory import (
+    GitHubAPIError,
+    collect,
+    dashboard_html,
+    discover_scope,
+    metrics,
+)
 
 MOLI = {
     "components": {
@@ -60,6 +67,57 @@ class ObservatoryTests(unittest.TestCase):
         self.assertEqual(science["opened"], 2)
         self.assertEqual(science["closed"], 1)
         self.assertEqual(sum(item["count"] for item in result["issue_age"]), 1)
+
+    def test_collection_skips_inaccessible_repositories_but_records_them(self):
+        scope = [
+            {"repository": "uibcdf/public", "layer": "MOLI", "role": "component", "source": "moli.toml"},
+            {"repository": "uibcdf/private", "layer": "Infrastructure", "role": "member", "source": "suite.toml"},
+        ]
+
+        def fake_repository_issues(repository, token):
+            if repository == "uibcdf/private":
+                raise GitHubAPIError(404, "https://api.github.test/private", '{"message":"Not Found"}')
+            return [
+                {
+                    "id": 1,
+                    "number": 1,
+                    "title": "Visible",
+                    "state": "open",
+                    "state_reason": None,
+                    "created_at": "2026-10-05T10:00:00Z",
+                    "updated_at": "2026-10-05T10:00:00Z",
+                    "closed_at": None,
+                    "labels": [],
+                    "html_url": "https://github.com/uibcdf/public/issues/1",
+                }
+            ]
+
+        with patch(
+            "devtools.scripts.development_observatory.repository_issues",
+            side_effect=fake_repository_issues,
+        ):
+            dataset = collect(scope, None)
+
+        self.assertEqual(
+            [item["repository"] for item in dataset["scope"]],
+            ["uibcdf/public"],
+        )
+        self.assertEqual(dataset["excluded_scope"][0]["repository"], "uibcdf/private")
+        self.assertEqual(dataset["excluded_scope"][0]["status"], 404)
+        result = metrics(dataset, days=1, timezone_name="UTC")
+        self.assertEqual(result["summary"]["repositories"], 1)
+        self.assertEqual(result["summary"]["excluded_repositories"], 1)
+
+    def test_collection_keeps_unexpected_api_errors_fatal(self):
+        scope = [
+            {"repository": "uibcdf/broken", "layer": "MOLI", "role": "component", "source": "moli.toml"}
+        ]
+        with patch(
+            "devtools.scripts.development_observatory.repository_issues",
+            side_effect=GitHubAPIError(500, "https://api.github.test/broken", "server error"),
+        ):
+            with self.assertRaises(GitHubAPIError):
+                collect(scope, None)
 
     def test_html_consumes_json_and_documents_portability(self):
         html = dashboard_html()
