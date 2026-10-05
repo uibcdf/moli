@@ -125,6 +125,11 @@ class ObservatoryTests(unittest.TestCase):
         self.assertIn("issues.json", html)
         self.assertIn("Grafana", html)
         self.assertIn("MOLI Development Observatory", html)
+        self.assertIn('data-sort="opened"', html)
+        self.assertIn('data-sort="closed"', html)
+        self.assertIn('data-sort="net_change"', html)
+        self.assertIn('data-sort="current_open"', html)
+        self.assertIn("Currently open", html)
 
 
 if __name__ == "__main__":
