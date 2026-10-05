@@ -49,6 +49,16 @@ def discover_scope(moli: dict[str, Any], suite: dict[str, Any]) -> list[dict[str
     return sorted(scope.values(), key=lambda item: (item["layer"], item["repository"]))
 
 
+class GitHubAPIError(RuntimeError):
+    """GitHub API failure with a status code that callers can classify."""
+
+    def __init__(self, status: int, url: str, body: str) -> None:
+        super().__init__(f"GitHub API request failed ({status}) for {url}: {body}")
+        self.status = status
+        self.url = url
+        self.body = body
+
+
 def api_json(url: str, token: str | None) -> Any:
     headers = {"Accept": "application/vnd.github+json", "User-Agent": "moli-development-observatory", "X-GitHub-Api-Version": "2022-11-28"}
     if token:
@@ -59,7 +69,7 @@ def api_json(url: str, token: str | None) -> Any:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"GitHub API request failed ({exc.code}) for {url}: {body}") from exc
+        raise GitHubAPIError(exc.code, url, body) from exc
 
 
 def repository_issues(repository: str, token: str | None) -> list[dict[str, Any]]:
@@ -92,7 +102,26 @@ def normalize(repository: str, issue: dict[str, Any]) -> dict[str, Any]:
 
 
 def collect(scope: list[dict[str, str]], token: str | None) -> dict[str, Any]:
-    records = [normalize(entry["repository"], issue) for entry in scope for issue in repository_issues(entry["repository"], token)]
+    records: list[dict[str, Any]] = []
+    collected_scope: list[dict[str, str]] = []
+    excluded_scope: list[dict[str, Any]] = []
+    for entry in scope:
+        try:
+            issues = repository_issues(entry["repository"], token)
+        except GitHubAPIError as exc:
+            if exc.status not in {403, 404}:
+                raise
+            excluded_scope.append(
+                {
+                    **entry,
+                    "status": exc.status,
+                    "reason": "inaccessible with the current GitHub credential",
+                }
+            )
+            continue
+        collected_scope.append(entry)
+        records.extend(normalize(entry["repository"], issue) for issue in issues)
+
     records.sort(key=lambda item: (item.get("created_at") or "", item["repository"], item.get("number") or 0))
     return {
         "schema_version": 1,
@@ -102,9 +131,14 @@ def collect(scope: list[dict[str, str]], token: str | None) -> dict[str, Any]:
             "molsyssuite_registry": "uibcdf/molsyssuite:suite.toml",
             "github_api": GITHUB_API,
             "issue_lifecycle_model": "snapshot-v1",
-            "limitations": ["Historical close/reopen cycles are not reconstructed.", "Pull requests are excluded."],
+            "limitations": [
+                "Historical close/reopen cycles are not reconstructed.",
+                "Pull requests are excluded.",
+                "Registry repositories inaccessible to the current credential are recorded in excluded_scope and omitted from metrics.",
+            ],
         },
-        "scope": scope,
+        "scope": collected_scope,
+        "excluded_scope": excluded_scope,
         "issues": records,
     }
 
@@ -168,11 +202,12 @@ def metrics(dataset: dict[str, Any], days: int = 90, timezone_name: str = "UTC")
         "generated_at": dataset["generated_at"],
         "timezone": timezone_name,
         "window": {"start": start.isoformat(), "end": end.isoformat(), "days": days},
-        "summary": {"opened": sum(opened), "closed": sum(closed), "net_change": sum(opened) - sum(closed), "current_open": sum(issue.get("state") == "open" for issue in dataset["issues"]), "repositories": len(dataset["scope"])},
+        "summary": {"opened": sum(opened), "closed": sum(closed), "net_change": sum(opened) - sum(closed), "current_open": sum(issue.get("state") == "open" for issue in dataset["issues"]), "repositories": len(dataset["scope"]), "excluded_repositories": len(dataset.get("excluded_scope", []))},
         "daily": daily,
         "layers": aggregate(layers, "layer"),
         "repositories": aggregate(repos, "repository", True),
         "issue_age": [{"bucket": label, "count": ages[label]} for label, _low, _high in AGE_BUCKETS],
+        "excluded_scope": dataset.get("excluded_scope", []),
         "provenance": dataset["provenance"],
     }
 
@@ -185,7 +220,7 @@ def dashboard_html() -> str:
 <section><h2>Daily issue flow</h2><canvas id="flow"></canvas></section><section><h2>7-day moving average</h2><canvas id="ma"></canvas></section><section><h2>Cumulative net backlog change</h2><canvas id="net"></canvas></section><section><h2>Net change by platform layer</h2><canvas id="layers"></canvas></section><section><h2>Open issue age</h2><canvas id="age"></canvas></section>
 <section><h2>Repositories</h2><table><thead><tr><th>Repository</th><th>Layer</th><th>Opened</th><th>Closed</th><th>Δ backlog</th><th>Open now</th></tr></thead><tbody id="repos"></tbody></table></section>
 <section><h2>Data</h2><p><a href="issues.json">Normalized issue snapshot</a> · <a href="metrics.json">Derived metrics</a></p><p class="muted">V1 does not reconstruct reopen cycles. JSON is independent of this renderer and can feed Grafana or another backend later.</p></section>
-<script>const C=['#38bdf8','#34d399','#f59e0b','#a78bfa'];function line(id,labels,sets){new Chart(document.getElementById(id),{type:'line',data:{labels,datasets:sets},options:{responsive:true,interaction:{mode:'index',intersect:false},scales:{y:{beginAtZero:true}}}})}function bar(id,labels,data){new Chart(document.getElementById(id),{type:'bar',data:{labels,datasets:[{data,backgroundColor:C}]},options:{responsive:true,plugins:{legend:{display:false}}}})}fetch('metrics.json').then(r=>r.json()).then(m=>{meta.textContent=`Generated ${m.generated_at} · ${m.window.start} → ${m.window.end} · ${m.timezone}`;cards.innerHTML=[['Opened',m.summary.opened],['Closed',m.summary.closed],['Net change',m.summary.net_change],['Open now',m.summary.current_open],['Repositories',m.summary.repositories]].map(x=>`<div class="card"><div class="muted">${x[0]}</div><div class="n">${x[1]}</div></div>`).join('');let l=m.daily.map(x=>x.date);line('flow',l,[{label:'Opened',data:m.daily.map(x=>x.opened),borderColor:C[0]},{label:'Closed',data:m.daily.map(x=>x.closed),borderColor:C[1]}]);line('ma',l,[{label:'Opened/day',data:m.daily.map(x=>x.opened_ma7),borderColor:C[0]},{label:'Closed/day',data:m.daily.map(x=>x.closed_ma7),borderColor:C[1]}]);line('net',l,[{label:'Net backlog change',data:m.daily.map(x=>x.cumulative_net_change),borderColor:C[2]}]);bar('layers',m.layers.map(x=>x.layer),m.layers.map(x=>x.net_change));bar('age',m.issue_age.map(x=>x.bucket),m.issue_age.map(x=>x.count));repos.innerHTML=m.repositories.map(x=>`<tr><td>${x.repository}</td><td>${x.layer}</td><td>${x.opened}</td><td>${x.closed}</td><td>${x.net_change}</td><td>${x.current_open}</td></tr>`).join('')})</script></body></html>'''
+<script>const C=['#38bdf8','#34d399','#f59e0b','#a78bfa'];function line(id,labels,sets){new Chart(document.getElementById(id),{type:'line',data:{labels,datasets:sets},options:{responsive:true,interaction:{mode:'index',intersect:false},scales:{y:{beginAtZero:true}}}})}function bar(id,labels,data){new Chart(document.getElementById(id),{type:'bar',data:{labels,datasets:[{data,backgroundColor:C}]},options:{responsive:true,plugins:{legend:{display:false}}}})}fetch('metrics.json').then(r=>r.json()).then(m=>{meta.textContent=`Generated ${m.generated_at} · ${m.window.start} → ${m.window.end} · ${m.timezone} · ${m.summary.excluded_repositories} excluded`;cards.innerHTML=[['Opened',m.summary.opened],['Closed',m.summary.closed],['Net change',m.summary.net_change],['Open now',m.summary.current_open],['Repositories',m.summary.repositories],['Excluded',m.summary.excluded_repositories]].map(x=>`<div class="card"><div class="muted">${x[0]}</div><div class="n">${x[1]}</div></div>`).join('');let l=m.daily.map(x=>x.date);line('flow',l,[{label:'Opened',data:m.daily.map(x=>x.opened),borderColor:C[0]},{label:'Closed',data:m.daily.map(x=>x.closed),borderColor:C[1]}]);line('ma',l,[{label:'Opened/day',data:m.daily.map(x=>x.opened_ma7),borderColor:C[0]},{label:'Closed/day',data:m.daily.map(x=>x.closed_ma7),borderColor:C[1]}]);line('net',l,[{label:'Net backlog change',data:m.daily.map(x=>x.cumulative_net_change),borderColor:C[2]}]);bar('layers',m.layers.map(x=>x.layer),m.layers.map(x=>x.net_change));bar('age',m.issue_age.map(x=>x.bucket),m.issue_age.map(x=>x.count));repos.innerHTML=m.repositories.map(x=>`<tr><td>${x.repository}</td><td>${x.layer}</td><td>${x.opened}</td><td>${x.closed}</td><td>${x.net_change}</td><td>${x.current_open}</td></tr>`).join('')})</script></body></html>'''
 
 
 def write_json(path: Path, value: dict[str, Any]) -> None:
