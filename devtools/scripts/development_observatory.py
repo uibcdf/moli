@@ -271,7 +271,21 @@ def main() -> int:
     args = parser.parse_args()
     if args.days < 1: parser.error("--days must be >= 1")
     moli, suite = load_toml(args.moli_registry), tomllib.loads(fetch_text(args.suite_registry_url))
-    dataset = collect(discover_scope(moli, suite), os.environ.get("MOLI_OBSERVATORY_GITHUB_TOKEN") or None)
+    requested_scope = discover_scope(moli, suite)
+    dataset = collect(
+        requested_scope,
+        os.environ.get("MOLI_OBSERVATORY_GITHUB_TOKEN") or None,
+    )
+    print(
+        "Development Observatory collection: "
+        f"{len(dataset['issues'])} issues from "
+        f"{len(dataset['scope'])}/{len(requested_scope)} repositories."
+    )
+    if dataset["excluded_scope"]:
+        print(
+            "Excluded repositories: "
+            + ", ".join(item["repository"] for item in dataset["excluded_scope"])
+        )
     derived = metrics(dataset, args.days, args.timezone); args.output.mkdir(parents=True, exist_ok=True)
     write_json(args.output / "issues.json", dataset); write_json(args.output / "metrics.json", derived); (args.output / "index.html").write_text(dashboard_html(), encoding="utf-8")
     return 0
