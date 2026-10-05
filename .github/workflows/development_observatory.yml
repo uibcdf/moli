@@ -1,0 +1,57 @@
+name: Development observatory
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out MOLI
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.14
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Build development observatory
+        env:
+          MOLI_OBSERVATORY_GITHUB_TOKEN: ${{ secrets.MOLI_OBSERVATORY_GITHUB_TOKEN }}
+        run: >-
+          python devtools/scripts/development_observatory.py
+          --output build/development-observatory
+          --days 90
+          --timezone UTC
+
+      - name: Upload observatory artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: moli-development-observatory
+          path: build/development-observatory
+          if-no-files-found: error
+
+      - name: Upload Pages artifact
+        if: vars.MOLI_OBSERVATORY_PUBLISH_PAGES == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/development-observatory
+
+  deploy-pages:
+    if: vars.MOLI_OBSERVATORY_PUBLISH_PAGES == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

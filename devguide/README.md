@@ -70,3 +70,8 @@ GitHub issues are the stable identity for reported work. The concise component-f
 ## Recorda provenance instrumentation (formerly Scribe)
 
 [`RECORDA.md`](RECORDA.md) is intentionally retained as MOLI's integration specification for **Recorda** (originally designed under the working name Scribe). It explains how Recorda instrumentation, project-context propagation, safe capture, semantic profiles, event emission, and ownership-aware routing contribute to ProjectRecord/EventLedger and Nextia ProjectGraph evolution. The standalone/general design is maintained in `uibcdf/recorda`.
+
+## Development observability
+
+[`DEVELOPMENT_OBSERVATORY.md`](DEVELOPMENT_OBSERVATORY.md) defines MOLI's first development-observability pipeline: registry-driven GitHub issue collection, portable normalized JSON, derived metrics, a static HTML dashboard, scheduled refresh, publication/privacy boundaries, and a migration path to Grafana or other observability backends.
+
