@@ -8,6 +8,8 @@ MOLI components may differ in how their internal governance is organized.
 - Praxis — Methodological / Know-how context.
 - Nextia — Discovery context.
 - MOLI Agent — scientific reasoning/agency.
+- Recorda — standalone scientific recording/provenance substrate; platform infrastructure,
+  with local implementation and direct MOLI governance.
 
 Their cross-component/platform contracts are governed directly by MOLI; their local implementation remains locally owned.
 

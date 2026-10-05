@@ -1109,11 +1109,20 @@ A future component such as a quantum-chemistry package should be able to partici
 
 MOLI should not need intimate knowledge of the component's internal storage implementation.
 
-## Minimal first experiment
+## Standalone laboratory before platform integration
 
-Do not implement all Recorda capabilities before testing the design.
+Do not implement all Recorda capabilities before testing the design. The initial
+mechanism experiment uses the independent dummy library in `uibcdf/recorda-lab`,
+with explicit consumer-owned boundaries, a separate opt-in example, durable starts,
+visible failures/interruption, safe capture and native-record references. The dummy
+library is not instrumented. PyUnitWizard is not a recording integration target.
+A real external library follows to evaluate scientific utility.
 
-Sabueso is a good first proving ground.
+## First semantic and platform experiments
+
+After standalone laboratory and real-library evidence, Sabueso is the first
+semantic proving ground. Keep standalone retrieval/entity-resolution experiments
+separate from the later project-context and routing experiment below.
 
 For example, instrument one real knowledge-retrieval boundary and one entity-resolution boundary.
 

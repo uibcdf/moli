@@ -232,3 +232,16 @@ name = "action-sphinx-docs-to-gh-pages"
 repository = "uibcdf/action-sphinx-docs-to-gh-pages"
 kind = "github-action"
 guidance = "devguide/governance/support_infrastructure.md"
+
+[components.recorda]
+repository = "uibcdf/recorda"
+domain = "provenance"
+role = "recording-substrate"
+governance = "direct"
+guide_delivery = "vendored"
+capabilities = ["python-package"]
+python_ecosystem_review = { issue = "uibcdf/recorda#2", state = "partial" }
+python_distribution_review = { issue = "uibcdf/recorda#3", state = "partial" }
+coverage_review = { issue = "uibcdf/recorda#6", state = "pending" }
+supported_os = []
+os_support_review = { issue = "uibcdf/recorda#4", state = "pending" }
