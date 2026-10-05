@@ -75,7 +75,15 @@ python -m http.server --directory build/development-observatory 8000
 
 Then open `http://localhost:8000/`.
 
-For a higher GitHub API rate limit, set `MOLI_OBSERVATORY_GITHUB_TOKEN` to a token that can read the repositories in scope. V1 is intended for public development data. Do not grant a broader token merely to make private or confidential repositories visible to the public dashboard.
+Unauthenticated GitHub API access has a low request budget and repeated full-platform runs may exhaust it. Rate-limit exhaustion is a collection failure: the observatory aborts instead of writing a misleading partial dashboard.
+
+For a higher GitHub API rate limit, set `MOLI_OBSERVATORY_GITHUB_TOKEN` to a token that can read the repositories in scope. For an already authenticated GitHub CLI session, a convenient local option is:
+
+```bash
+export MOLI_OBSERVATORY_GITHUB_TOKEN="$(gh auth token)"
+```
+
+The token's permissions define the effective readable scope: a token with access to private registered repositories may include them in local output. Treat that generated output according to its contents. V1 public publication must not gain broader credentials merely to expose private or confidential repositories.
 
 Registry membership and effective collection scope are deliberately distinct. If GitHub returns 403 or 404 for an individual registered repository (for example, a private MolSysSuite member during an unauthenticated public-data run), collection continues for the remaining repositories. The inaccessible entry is omitted from effective `scope`, recorded in `excluded_scope` with its registry metadata and HTTP status, and counted in dashboard metadata. Other API failures remain fatal so collector regressions are not silently hidden.
 

@@ -24,7 +24,7 @@ jobs:
 
       - name: Build development observatory
         env:
-          MOLI_OBSERVATORY_GITHUB_TOKEN: ${{ secrets.MOLI_OBSERVATORY_GITHUB_TOKEN }}
+          MOLI_OBSERVATORY_GITHUB_TOKEN: ${{ secrets.MOLI_OBSERVATORY_GITHUB_TOKEN || github.token }}
         run: >-
           python devtools/scripts/development_observatory.py
           --output build/development-observatory

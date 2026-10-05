@@ -133,6 +133,24 @@ class ObservatoryTests(unittest.TestCase):
         self.assertEqual(result["summary"]["repositories"], 1)
         self.assertEqual(result["summary"]["excluded_repositories"], 1)
 
+    def test_collection_aborts_on_rate_limit_instead_of_excluding(self):
+        scope = [
+            {"repository": "uibcdf/public", "layer": "MOLI", "role": "component", "source": "moli.toml"}
+        ]
+        error = GitHubAPIError(
+            403,
+            "https://api.github.test/public",
+            '{"message":"API rate limit exceeded"}',
+            rate_limit_remaining="0",
+            rate_limit_reset="1791234000",
+        )
+        with patch(
+            "devtools.scripts.development_observatory.repository_issues",
+            side_effect=error,
+        ):
+            with self.assertRaisesRegex(RuntimeError, "rate limit exhausted"):
+                collect(scope, None)
+
     def test_collection_keeps_unexpected_api_errors_fatal(self):
         scope = [
             {"repository": "uibcdf/broken", "layer": "MOLI", "role": "component", "source": "moli.toml"}

@@ -50,13 +50,27 @@ def discover_scope(moli: dict[str, Any], suite: dict[str, Any]) -> list[dict[str
 
 
 class GitHubAPIError(RuntimeError):
-    """GitHub API failure with a status code that callers can classify."""
+    """GitHub API failure with response metadata that callers can classify."""
 
-    def __init__(self, status: int, url: str, body: str) -> None:
+    def __init__(
+        self,
+        status: int,
+        url: str,
+        body: str,
+        *,
+        rate_limit_remaining: str | None = None,
+        rate_limit_reset: str | None = None,
+    ) -> None:
         super().__init__(f"GitHub API request failed ({status}) for {url}: {body}")
         self.status = status
         self.url = url
         self.body = body
+        self.rate_limit_remaining = rate_limit_remaining
+        self.rate_limit_reset = rate_limit_reset
+
+    @property
+    def is_rate_limited(self) -> bool:
+        return self.rate_limit_remaining == "0" or "rate limit" in self.body.lower()
 
 
 def api_json(url: str, token: str | None) -> Any:
@@ -69,7 +83,13 @@ def api_json(url: str, token: str | None) -> Any:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="replace")
-        raise GitHubAPIError(exc.code, url, body) from exc
+        raise GitHubAPIError(
+            exc.code,
+            url,
+            body,
+            rate_limit_remaining=exc.headers.get("X-RateLimit-Remaining"),
+            rate_limit_reset=exc.headers.get("X-RateLimit-Reset"),
+        ) from exc
 
 
 def repository_issues(repository: str, token: str | None) -> list[dict[str, Any]]:
@@ -109,16 +129,30 @@ def collect(scope: list[dict[str, str]], token: str | None) -> dict[str, Any]:
         try:
             issues = repository_issues(entry["repository"], token)
         except GitHubAPIError as exc:
-            if exc.status not in {403, 404}:
-                raise
-            excluded_scope.append(
-                {
-                    **entry,
-                    "status": exc.status,
-                    "reason": "inaccessible with the current GitHub credential",
-                }
-            )
-            continue
+            if exc.status == 404:
+                excluded_scope.append(
+                    {
+                        **entry,
+                        "status": exc.status,
+                        "reason": "inaccessible with the current GitHub credential",
+                    }
+                )
+                continue
+            if exc.status == 403 and exc.is_rate_limited:
+                reset = (
+                    datetime.fromtimestamp(int(exc.rate_limit_reset), UTC)
+                    .replace(microsecond=0)
+                    .isoformat()
+                    if exc.rate_limit_reset
+                    else "unknown"
+                )
+                raise RuntimeError(
+                    "GitHub API rate limit exhausted while collecting "
+                    f"{entry['repository']}. Reset: {reset}. "
+                    "Wait for the anonymous limit to reset or set "
+                    "MOLI_OBSERVATORY_GITHUB_TOKEN for a higher authenticated limit."
+                ) from exc
+            raise
         collected_scope.append(entry)
         records.extend(normalize(entry["repository"], issue) for issue in issues)
 
@@ -237,7 +271,21 @@ def main() -> int:
     args = parser.parse_args()
     if args.days < 1: parser.error("--days must be >= 1")
     moli, suite = load_toml(args.moli_registry), tomllib.loads(fetch_text(args.suite_registry_url))
-    dataset = collect(discover_scope(moli, suite), os.environ.get("MOLI_OBSERVATORY_GITHUB_TOKEN") or None)
+    requested_scope = discover_scope(moli, suite)
+    dataset = collect(
+        requested_scope,
+        os.environ.get("MOLI_OBSERVATORY_GITHUB_TOKEN") or None,
+    )
+    print(
+        "Development Observatory collection: "
+        f"{len(dataset['issues'])} issues from "
+        f"{len(dataset['scope'])}/{len(requested_scope)} repositories."
+    )
+    if dataset["excluded_scope"]:
+        print(
+            "Excluded repositories: "
+            + ", ".join(item["repository"] for item in dataset["excluded_scope"])
+        )
     derived = metrics(dataset, args.days, args.timezone); args.output.mkdir(parents=True, exist_ok=True)
     write_json(args.output / "issues.json", dataset); write_json(args.output / "metrics.json", derived); (args.output / "index.html").write_text(dashboard_html(), encoding="utf-8")
     return 0
