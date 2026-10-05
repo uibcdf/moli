@@ -49,6 +49,16 @@ def discover_scope(moli: dict[str, Any], suite: dict[str, Any]) -> list[dict[str
     return sorted(scope.values(), key=lambda item: (item["layer"], item["repository"]))
 
 
+class GitHubAPIError(RuntimeError):
+    """GitHub API failure with a status code that callers can classify."""
+
+    def __init__(self, status: int, url: str, body: str) -> None:
+        super().__init__(f"GitHub API request failed ({status}) for {url}: {body}")
+        self.status = status
+        self.url = url
+        self.body = body
+
+
 def api_json(url: str, token: str | None) -> Any:
     headers = {"Accept": "application/vnd.github+json", "User-Agent": "moli-development-observatory", "X-GitHub-Api-Version": "2022-11-28"}
     if token:
@@ -59,7 +69,7 @@ def api_json(url: str, token: str | None) -> Any:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"GitHub API request failed ({exc.code}) for {url}: {body}") from exc
+        raise GitHubAPIError(exc.code, url, body) from exc
 
 
 def repository_issues(repository: str, token: str | None) -> list[dict[str, Any]]:
@@ -92,7 +102,26 @@ def normalize(repository: str, issue: dict[str, Any]) -> dict[str, Any]:
 
 
 def collect(scope: list[dict[str, str]], token: str | None) -> dict[str, Any]:
-    records = [normalize(entry["repository"], issue) for entry in scope for issue in repository_issues(entry["repository"], token)]
+    records: list[dict[str, Any]] = []
+    collected_scope: list[dict[str, str]] = []
+    excluded_scope: list[dict[str, Any]] = []
+    for entry in scope:
+        try:
+            issues = repository_issues(entry["repository"], token)
+        except GitHubAPIError as exc:
+            if exc.status not in {403, 404}:
+                raise
+            excluded_scope.append(
+                {
+                    **entry,
+                    "status": exc.status,
+                    "reason": "inaccessible with the current GitHub credential",
+                }
+            )
+            continue
+        collected_scope.append(entry)
+        records.extend(normalize(entry["repository"], issue) for issue in issues)
+
     records.sort(key=lambda item: (item.get("created_at") or "", item["repository"], item.get("number") or 0))
     return {
         "schema_version": 1,
@@ -102,9 +131,14 @@ def collect(scope: list[dict[str, str]], token: str | None) -> dict[str, Any]:
             "molsyssuite_registry": "uibcdf/molsyssuite:suite.toml",
             "github_api": GITHUB_API,
             "issue_lifecycle_model": "snapshot-v1",
-            "limitations": ["Historical close/reopen cycles are not reconstructed.", "Pull requests are excluded."],
+            "limitations": [
+                "Historical close/reopen cycles are not reconstructed.",
+                "Pull requests are excluded.",
+                "Registry repositories inaccessible to the current credential are recorded in excluded_scope and omitted from metrics.",
+            ],
         },
-        "scope": scope,
+        "scope": collected_scope,
+        "excluded_scope": excluded_scope,
         "issues": records,
     }
 
@@ -133,6 +167,9 @@ def metrics(dataset: dict[str, Any], days: int = 90, timezone_name: str = "UTC")
     layer_by_repo = {item["repository"]: item["layer"] for item in dataset["scope"]}
     layers: dict[str, dict[str, int]] = defaultdict(lambda: {"opened": 0, "closed": 0, "current_open": 0})
     repos: dict[str, dict[str, int]] = defaultdict(lambda: {"opened": 0, "closed": 0, "current_open": 0})
+    for item in dataset["scope"]:
+        _ = repos[item["repository"]]
+        _ = layers[item["layer"]]
     ages = {label: 0 for label, _low, _high in AGE_BUCKETS}
     now = generated.astimezone(timezone)
 
@@ -168,11 +205,12 @@ def metrics(dataset: dict[str, Any], days: int = 90, timezone_name: str = "UTC")
         "generated_at": dataset["generated_at"],
         "timezone": timezone_name,
         "window": {"start": start.isoformat(), "end": end.isoformat(), "days": days},
-        "summary": {"opened": sum(opened), "closed": sum(closed), "net_change": sum(opened) - sum(closed), "current_open": sum(issue.get("state") == "open" for issue in dataset["issues"]), "repositories": len(dataset["scope"])},
+        "summary": {"opened": sum(opened), "closed": sum(closed), "net_change": sum(opened) - sum(closed), "current_open": sum(issue.get("state") == "open" for issue in dataset["issues"]), "repositories": len(dataset["scope"]), "excluded_repositories": len(dataset.get("excluded_scope", []))},
         "daily": daily,
         "layers": aggregate(layers, "layer"),
         "repositories": aggregate(repos, "repository", True),
         "issue_age": [{"bucket": label, "count": ages[label]} for label, _low, _high in AGE_BUCKETS],
+        "excluded_scope": dataset.get("excluded_scope", []),
         "provenance": dataset["provenance"],
     }
 
@@ -180,12 +218,12 @@ def metrics(dataset: dict[str, Any], days: int = 90, timezone_name: str = "UTC")
 def dashboard_html() -> str:
     return '''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>MOLI Development Observatory</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<style>body{font:15px system-ui;margin:auto;max-width:1200px;padding:24px;background:#0f172a;color:#e2e8f0}a{color:#7dd3fc}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.card,section{background:#111827;border:1px solid #334155;border-radius:12px;padding:16px;margin:14px 0}.n{font-size:28px;font-weight:700}canvas{max-height:340px}table{width:100%;border-collapse:collapse}td,th{padding:7px;border-bottom:1px solid #334155;text-align:right}td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left}.muted{color:#94a3b8}</style></head><body>
+<style>body{font:15px system-ui;margin:auto;max-width:1200px;padding:24px;background:#0f172a;color:#e2e8f0}a{color:#7dd3fc}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.card,section{background:#111827;border:1px solid #334155;border-radius:12px;padding:16px;margin:14px 0}.n{font-size:28px;font-weight:700}canvas{max-height:340px}table{width:100%;border-collapse:collapse}td,th{padding:7px;border-bottom:1px solid #334155;text-align:right}td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left}.muted{color:#94a3b8}.sort-button{background:none;border:0;color:inherit;font:inherit;font-weight:700;cursor:pointer;padding:0}.sort-button:hover,.sort-button:focus{text-decoration:underline}.sort-indicator{display:inline-block;min-width:1em;margin-left:3px;color:#7dd3fc}</style></head><body>
 <h1>MOLI Development Observatory</h1><p class="muted" id="meta">Loading…</p><div class="grid" id="cards"></div>
 <section><h2>Daily issue flow</h2><canvas id="flow"></canvas></section><section><h2>7-day moving average</h2><canvas id="ma"></canvas></section><section><h2>Cumulative net backlog change</h2><canvas id="net"></canvas></section><section><h2>Net change by platform layer</h2><canvas id="layers"></canvas></section><section><h2>Open issue age</h2><canvas id="age"></canvas></section>
-<section><h2>Repositories</h2><table><thead><tr><th>Repository</th><th>Layer</th><th>Opened</th><th>Closed</th><th>Δ backlog</th><th>Open now</th></tr></thead><tbody id="repos"></tbody></table></section>
+<section><h2>Repositories</h2><p class="muted">Click a numeric column to sort; click again to reverse the order. “Currently open” means issues whose present GitHub state is open, regardless of when they were created.</p><table><thead><tr><th>Repository</th><th>Layer</th><th><button class="sort-button" data-sort="opened">Opened<span class="sort-indicator"></span></button></th><th><button class="sort-button" data-sort="closed">Closed<span class="sort-indicator"></span></button></th><th><button class="sort-button" data-sort="net_change">Δ backlog<span class="sort-indicator">↓</span></button></th><th><button class="sort-button" data-sort="current_open">Currently open<span class="sort-indicator"></span></button></th></tr></thead><tbody id="repos"></tbody></table></section>
 <section><h2>Data</h2><p><a href="issues.json">Normalized issue snapshot</a> · <a href="metrics.json">Derived metrics</a></p><p class="muted">V1 does not reconstruct reopen cycles. JSON is independent of this renderer and can feed Grafana or another backend later.</p></section>
-<script>const C=['#38bdf8','#34d399','#f59e0b','#a78bfa'];function line(id,labels,sets){new Chart(document.getElementById(id),{type:'line',data:{labels,datasets:sets},options:{responsive:true,interaction:{mode:'index',intersect:false},scales:{y:{beginAtZero:true}}}})}function bar(id,labels,data){new Chart(document.getElementById(id),{type:'bar',data:{labels,datasets:[{data,backgroundColor:C}]},options:{responsive:true,plugins:{legend:{display:false}}}})}fetch('metrics.json').then(r=>r.json()).then(m=>{meta.textContent=`Generated ${m.generated_at} · ${m.window.start} → ${m.window.end} · ${m.timezone}`;cards.innerHTML=[['Opened',m.summary.opened],['Closed',m.summary.closed],['Net change',m.summary.net_change],['Open now',m.summary.current_open],['Repositories',m.summary.repositories]].map(x=>`<div class="card"><div class="muted">${x[0]}</div><div class="n">${x[1]}</div></div>`).join('');let l=m.daily.map(x=>x.date);line('flow',l,[{label:'Opened',data:m.daily.map(x=>x.opened),borderColor:C[0]},{label:'Closed',data:m.daily.map(x=>x.closed),borderColor:C[1]}]);line('ma',l,[{label:'Opened/day',data:m.daily.map(x=>x.opened_ma7),borderColor:C[0]},{label:'Closed/day',data:m.daily.map(x=>x.closed_ma7),borderColor:C[1]}]);line('net',l,[{label:'Net backlog change',data:m.daily.map(x=>x.cumulative_net_change),borderColor:C[2]}]);bar('layers',m.layers.map(x=>x.layer),m.layers.map(x=>x.net_change));bar('age',m.issue_age.map(x=>x.bucket),m.issue_age.map(x=>x.count));repos.innerHTML=m.repositories.map(x=>`<tr><td>${x.repository}</td><td>${x.layer}</td><td>${x.opened}</td><td>${x.closed}</td><td>${x.net_change}</td><td>${x.current_open}</td></tr>`).join('')})</script></body></html>'''
+<script>const C=['#38bdf8','#34d399','#f59e0b','#a78bfa'];let repoRows=[];let repoSort={key:'net_change',direction:'desc'};function line(id,labels,sets){new Chart(document.getElementById(id),{type:'line',data:{labels,datasets:sets},options:{responsive:true,interaction:{mode:'index',intersect:false},scales:{y:{beginAtZero:true}}}})}function bar(id,labels,data){new Chart(document.getElementById(id),{type:'bar',data:{labels,datasets:[{data,backgroundColor:C}]},options:{responsive:true,plugins:{legend:{display:false}}}})}function renderRepositories(){const factor=repoSort.direction==='asc'?1:-1;const rows=[...repoRows].sort((a,b)=>{const delta=(a[repoSort.key]-b[repoSort.key])*factor;return delta||a.repository.localeCompare(b.repository)});repos.innerHTML=rows.map(x=>`<tr><td>${x.repository}</td><td>${x.layer}</td><td>${x.opened}</td><td>${x.closed}</td><td>${x.net_change}</td><td>${x.current_open}</td></tr>`).join('');document.querySelectorAll('[data-sort]').forEach(button=>{const active=button.dataset.sort===repoSort.key;button.setAttribute('aria-sort',active?(repoSort.direction==='asc'?'ascending':'descending'):'none');button.querySelector('.sort-indicator').textContent=active?(repoSort.direction==='asc'?'↑':'↓'):''})}function configureRepositorySorting(){document.querySelectorAll('[data-sort]').forEach(button=>button.addEventListener('click',()=>{const key=button.dataset.sort;if(repoSort.key===key){repoSort.direction=repoSort.direction==='desc'?'asc':'desc'}else{repoSort={key,direction:'desc'}}renderRepositories()}))}fetch('metrics.json').then(r=>r.json()).then(m=>{meta.textContent=`Generated ${m.generated_at} · ${m.window.start} → ${m.window.end} · ${m.timezone} · ${m.summary.excluded_repositories} excluded`;cards.innerHTML=[['Opened',m.summary.opened],['Closed',m.summary.closed],['Net change',m.summary.net_change],['Currently open',m.summary.current_open],['Repositories',m.summary.repositories],['Excluded',m.summary.excluded_repositories]].map(x=>`<div class="card"><div class="muted">${x[0]}</div><div class="n">${x[1]}</div></div>`).join('');let l=m.daily.map(x=>x.date);line('flow',l,[{label:'Opened',data:m.daily.map(x=>x.opened),borderColor:C[0]},{label:'Closed',data:m.daily.map(x=>x.closed),borderColor:C[1]}]);line('ma',l,[{label:'Opened/day',data:m.daily.map(x=>x.opened_ma7),borderColor:C[0]},{label:'Closed/day',data:m.daily.map(x=>x.closed_ma7),borderColor:C[1]}]);line('net',l,[{label:'Net backlog change',data:m.daily.map(x=>x.cumulative_net_change),borderColor:C[2]}]);bar('layers',m.layers.map(x=>x.layer),m.layers.map(x=>x.net_change));bar('age',m.issue_age.map(x=>x.bucket),m.issue_age.map(x=>x.count));repoRows=m.repositories;configureRepositorySorting();renderRepositories()})</script></body></html>'''
 
 
 def write_json(path: Path, value: dict[str, Any]) -> None:
