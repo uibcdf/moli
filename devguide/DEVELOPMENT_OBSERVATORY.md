@@ -56,7 +56,8 @@ V1 is a **snapshot model**. GitHub's current `closed_at` field does not preserve
 - issues opened and closed per day;
 - 7-day moving averages;
 - cumulative net backlog change over the selected window;
-- opened/closed/current-open counts by platform layer and repository;
+- opened/closed-in-window counts by platform layer;
+- repository all-time current-state counts (Total, Open, Closed) plus window net backlog change;
 - closure ratio;
 - current open-issue age buckets.
 
