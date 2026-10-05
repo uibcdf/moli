@@ -167,6 +167,9 @@ def metrics(dataset: dict[str, Any], days: int = 90, timezone_name: str = "UTC")
     layer_by_repo = {item["repository"]: item["layer"] for item in dataset["scope"]}
     layers: dict[str, dict[str, int]] = defaultdict(lambda: {"opened": 0, "closed": 0, "current_open": 0})
     repos: dict[str, dict[str, int]] = defaultdict(lambda: {"opened": 0, "closed": 0, "current_open": 0})
+    for item in dataset["scope"]:
+        _ = repos[item["repository"]]
+        _ = layers[item["layer"]]
     ages = {label: 0 for label, _low, _high in AGE_BUCKETS}
     now = generated.astimezone(timezone)
 
