@@ -77,6 +77,8 @@ Then open `http://localhost:8000/`.
 
 For a higher GitHub API rate limit, set `MOLI_OBSERVATORY_GITHUB_TOKEN` to a token that can read the repositories in scope. V1 is intended for public development data. Do not grant a broader token merely to make private or confidential repositories visible to the public dashboard.
 
+Registry membership and effective collection scope are deliberately distinct. If GitHub returns 403 or 404 for an individual registered repository (for example, a private MolSysSuite member during an unauthenticated public-data run), collection continues for the remaining repositories. The inaccessible entry is omitted from effective `scope`, recorded in `excluded_scope` with its registry metadata and HTTP status, and counted in dashboard metadata. Other API failures remain fatal so collector regressions are not silently hidden.
+
 ## GitHub Actions and publication
 
 `.github/workflows/development_observatory.yml` refreshes the observatory daily and on manual dispatch. Every run uploads the generated site and JSON as a workflow artifact.
