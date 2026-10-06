@@ -88,6 +88,40 @@ The token's permissions define the effective readable scope: a token with access
 
 Registry membership and effective collection scope are deliberately distinct. If GitHub returns 403 or 404 for an individual registered repository (for example, a private MolSysSuite member during an unauthenticated public-data run), collection continues for the remaining repositories. The inaccessible entry is omitted from effective `scope`, recorded in `excluded_scope` with its registry metadata and HTTP status, and counted in dashboard metadata. Other API failures remain fatal so collector regressions are not silently hidden.
 
+## Static drill-down navigation
+
+V1.1 generates a static navigation tree from the same canonical issue snapshot:
+
+```text
+Overview
+├── layer
+│   └── repository/component
+└── repository/component
+```
+
+The generated site contains:
+
+```text
+build/development-observatory/
+├── index.html
+├── issues.json
+├── metrics.json
+├── layers/
+│   └── <layer-slug>/
+│       ├── index.html
+│       └── metrics.json
+└── repositories/
+    └── <owner>--<repository>/
+        ├── index.html
+        └── metrics.json
+```
+
+The Overview links to every effective layer and collected repository. A layer page filters the existing canonical snapshot to that layer and provides the same time-series views plus repository comparison and links. A repository page filters the snapshot to one repository and shows its own issue flow, backlog trend, open-issue age, and current Total/Open/Closed state.
+
+These are derived static views, not new data sources. `issues.json` at the site root remains the canonical normalized snapshot for the run. Each drill-down directory stores only its derived `metrics.json`; it links back to the canonical root snapshot.
+
+Pages are generated automatically from the effective collected scope. An inaccessible/excluded repository does not receive a repository page. Newly registered repositories receive a page automatically once they are part of the effective scope.
+
 ## GitHub Actions and publication
 
 `.github/workflows/development_observatory.yml` refreshes the observatory daily and on manual dispatch. Every run uploads the generated site and JSON as a workflow artifact.
