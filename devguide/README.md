@@ -73,5 +73,8 @@ GitHub issues are the stable identity for reported work. The concise component-f
 
 ## Development observability
 
-[`DEVELOPMENT_OBSERVATORY.md`](DEVELOPMENT_OBSERVATORY.md) defines MOLI's first development-observability pipeline: registry-driven GitHub issue collection, portable normalized JSON, derived metrics, a static HTML dashboard, scheduled refresh, publication/privacy boundaries, and a migration path to Grafana or other observability backends.
+The operational [MOLI Development Observatory](https://github.com/uibcdf/moli-dev-observatory)
+is maintained in its dedicated repository. This repository retains only the
+[platform-side migration pointer](DEVELOPMENT_OBSERVATORY.md) and historical
+decision record; `moli.toml` remains an authoritative input to the Observatory.
 
