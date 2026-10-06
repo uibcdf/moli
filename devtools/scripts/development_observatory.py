@@ -297,8 +297,23 @@ def main() -> int:
             "Excluded repositories: "
             + ", ".join(item["repository"] for item in dataset["excluded_scope"])
         )
-    derived = metrics(dataset, args.days, args.timezone); args.output.mkdir(parents=True, exist_ok=True)
-    write_json(args.output / "issues.json", dataset); write_json(args.output / "metrics.json", derived); (args.output / "index.html").write_text(dashboard_html(), encoding="utf-8")
+    derived = metrics(dataset, args.days, args.timezone)
+    args.output.mkdir(parents=True, exist_ok=True)
+    write_json(args.output / "issues.json", dataset)
+    write_json(args.output / "metrics.json", derived)
+
+    try:
+        from .development_observatory_drilldown import generate_drilldowns
+    except ImportError:
+        from development_observatory_drilldown import generate_drilldowns
+
+    generate_drilldowns(
+        args.output,
+        dataset,
+        days=args.days,
+        timezone_name=args.timezone,
+        metrics_fn=metrics,
+    )
     return 0
 
 
