@@ -104,3 +104,22 @@ unverified capability. The owning repository tracks implementation issues; this
 census points to maturity evidence without becoming a duplicate issue backlog.
 Recheck delegated summaries against MolSysSuite and MolSys-AI registries rather than
 copying their complete member inventories into MOLI.
+
+
+## Recorda published implementation and governance refresh — 2026-10-06
+
+The 2026-09-24 rows above remain the original pinned snapshot. Recorda is now
+**in development**, with a published experimental standalone implementation,
+tests and the directly governed contributor surface. Current governance review
+uses Recorda `bb2da676824a68728e8bee1ec160b038832eb8f7` and associated Lab
+`0ca1943baeb2551489eaa821fb414b95892e0952`, retaining owner experimental 0.2.0
+source checkpoint `4e3d422fef1b0927fe63422323dc6d941c061bfb` separately.
+Both have byte-identical MOLI guides and executed shared-core CI guards.
+
+MOLI #50 records admission and published governance; the archived analysis is
+`devguide/archive/recorda_admission.md` and its bounded receipt is
+`devguide/evidence/recorda_governance_50_20261006.json`. The failed full
+platform-guide audit remains MOLI #60. Ecosystem/distribution/OS/coverage work
+stays in Recorda #2/#3/#4/#6; source checkpoints and laboratory experiments
+are not a public distribution, stable API, full project recording or replay
+qualification. Platform composition remains specified as in the original rows.

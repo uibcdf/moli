@@ -1,0 +1,200 @@
+{
+  "issue": "uibcdf/moli#50",
+  "observed_at": "2026-10-06T06:50:47.859792+00:00",
+  "scope": "Direct component registration and current contributor/guide/reporting guard delivery; owner adoption/support/release qualification remains partial or pending.",
+  "moli_baseline": "4316867722f259fdf77f4d7d5e6e2c093ff95d04",
+  "canonical_guide_sha256": "2aeb55766a2a24a47392fd250f4378909f667ce2ed0b7d2a8c913fbe5a76fe9a",
+  "members": {
+    "uibcdf/recorda": {
+      "published_guard_commit": "bb2da676824a68728e8bee1ec160b038832eb8f7",
+      "owning_guard_issue": "uibcdf/recorda#10",
+      "guide_matches": true,
+      "reader": {
+        "subject": {
+          "check_suite_id": 101371305038,
+          "event": "push",
+          "head_ref": "main",
+          "head_sha": "bb2da676824a68728e8bee1ec160b038832eb8f7",
+          "repository": "uibcdf/recorda",
+          "run_attempt": 1,
+          "run_id": 37425033040,
+          "url": "https://github.com/uibcdf/recorda/actions/runs/37425033040",
+          "workflow": ".github/workflows/tests.yml"
+        },
+        "github": {
+          "conclusion": "success",
+          "status": "completed"
+        },
+        "job_counts": {
+          "success": 7
+        },
+        "jobs": [
+          {
+            "name": "quality",
+            "conclusion": "success",
+            "shared_core_steps": [
+              {
+                "name": "Check shared MOLI governance core",
+                "conclusion": "success"
+              }
+            ]
+          },
+          {
+            "name": "tests (macos-latest, 3.13)",
+            "conclusion": "success",
+            "shared_core_steps": []
+          },
+          {
+            "name": "tests (macos-latest, 3.14)",
+            "conclusion": "success",
+            "shared_core_steps": []
+          },
+          {
+            "name": "tests (ubuntu-latest, 3.11)",
+            "conclusion": "success",
+            "shared_core_steps": []
+          },
+          {
+            "name": "tests (ubuntu-latest, 3.12)",
+            "conclusion": "success",
+            "shared_core_steps": []
+          },
+          {
+            "name": "tests (ubuntu-latest, 3.13)",
+            "conclusion": "success",
+            "shared_core_steps": []
+          },
+          {
+            "name": "tests (ubuntu-latest, 3.14)",
+            "conclusion": "success",
+            "shared_core_steps": []
+          }
+        ]
+      },
+      "public_support_claims": "none; source checkpoints remain experimental"
+    },
+    "uibcdf/recorda-lab": {
+      "published_guard_commit": "0ca1943baeb2551489eaa821fb414b95892e0952",
+      "owning_guard_issue": "uibcdf/recorda-lab#7",
+      "guide_matches": true,
+      "reader": {
+        "subject": {
+          "check_suite_id": 101371303179,
+          "event": "push",
+          "head_ref": "main",
+          "head_sha": "0ca1943baeb2551489eaa821fb414b95892e0952",
+          "repository": "uibcdf/recorda-lab",
+          "run_attempt": 1,
+          "run_id": 37425032314,
+          "url": "https://github.com/uibcdf/recorda-lab/actions/runs/37425032314",
+          "workflow": ".github/workflows/tests.yml"
+        },
+        "github": {
+          "conclusion": "success",
+          "status": "completed"
+        },
+        "job_counts": {
+          "skipped": 2,
+          "success": 4
+        },
+        "jobs": [
+          {
+            "name": "dummy (3.11)",
+            "conclusion": "success",
+            "shared_core_steps": [
+              {
+                "name": "Check shared MOLI governance core",
+                "conclusion": "success"
+              }
+            ]
+          },
+          {
+            "name": "dummy (3.12)",
+            "conclusion": "success",
+            "shared_core_steps": [
+              {
+                "name": "Check shared MOLI governance core",
+                "conclusion": "success"
+              }
+            ]
+          },
+          {
+            "name": "dummy (3.13)",
+            "conclusion": "success",
+            "shared_core_steps": [
+              {
+                "name": "Check shared MOLI governance core",
+                "conclusion": "success"
+              }
+            ]
+          },
+          {
+            "name": "dummy (3.14)",
+            "conclusion": "success",
+            "shared_core_steps": [
+              {
+                "name": "Check shared MOLI governance core",
+                "conclusion": "success"
+              }
+            ]
+          },
+          {
+            "name": "integration",
+            "conclusion": "skipped",
+            "shared_core_steps": []
+          },
+          {
+            "name": "scientific",
+            "conclusion": "skipped",
+            "shared_core_steps": []
+          }
+        ]
+      },
+      "public_support_claims": "none; source checkpoints remain experimental"
+    }
+  },
+  "negative_guard_reproduction": [
+    {
+      "repository": "uibcdf/recorda",
+      "fixture": "missing devguide/AGENTS.md in an isolated copy",
+      "existing_local_guard_exit": 0,
+      "shared_guard_exit": 1,
+      "shared_guard_finding": "devguide/AGENTS.md: missing"
+    },
+    {
+      "repository": "uibcdf/recorda-lab",
+      "fixture": "missing devguide/AGENTS.md in an isolated copy",
+      "existing_local_guard_exit": 0,
+      "shared_guard_exit": 1,
+      "shared_guard_finding": "devguide/AGENTS.md: missing"
+    }
+  ],
+  "administrative_checks": {
+    "python": "3.14.7",
+    "environment": "molsyssuite@uibcdf_3.14",
+    "moli_local_guard": "pass",
+    "component_and_lab_local_guards": "pass",
+    "component_and_lab_shared_core_checks": "pass",
+    "moli_unittest_tests": 41,
+    "result": "OK",
+    "runtime_dependency_closure": "not qualified; current unrelated conflicts deferred by maintainer"
+  },
+  "global_guide_audit": {
+    "run_id": 37423854461,
+    "head_sha": "4316867722f259fdf77f4d7d5e6e2c093ff95d04",
+    "conclusion": "failure",
+    "findings": [
+      "uibcdf/moli-agent: MOLI_GUIDE.md: differs from canonical guide",
+      "uibcdf/nextia: MOLI_GUIDE.md: differs from canonical guide",
+      "uibcdf/praxis: MOLI_GUIDE.md: differs from canonical guide"
+    ],
+    "recorda_findings": [],
+    "recovery_owner_issue": "uibcdf/moli#60"
+  },
+  "limits": [
+    "Registration and implemented governance gates do not certify ecosystem adoption, coverage, claimed OS, public artifacts or stable Recorda APIs.",
+    "No scientific runtime change or new scientific dispatch; existing component/lab runs inspected. New guard commits trigger their existing automatic source/dummy jobs.",
+    "Lab manual integration/scientific jobs are intentionally skipped on its new push; historical seven-job manual result 37422250513 remains separate.",
+    "Original shared clones and the shared environment are preserved; isolated review copies used."
+  ]
+}
