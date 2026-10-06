@@ -1,151 +1,24 @@
 # MOLI Development Observatory
 
-The MOLI Development Observatory provides reproducible development-health metrics for the MOLI platform without making a particular dashboard technology part of the platform contract.
+The operational MOLI Development Observatory has moved to:
 
-Tracked by [uibcdf/moli#48](https://github.com/uibcdf/moli/issues/48).
+**[uibcdf/moli-dev-observatory](https://github.com/uibcdf/moli-dev-observatory)**
 
-## Architecture
+That repository is the owner of the collector, metric derivation, tests,
+Overview → Layer → Repository static site, GitHub Actions schedule, and GitHub
+Pages publication.
 
-```text
-moli.toml + MolSysSuite suite.toml + GitHub
-                    ↓
-                 collector
-                    ↓
-          normalized issue snapshot
-               (issues.json)
-                    ↓
-                 analytics
-                    ↓
-             derived metrics
-              (metrics.json)
-                    ↓
-      ┌─────────────┼─────────────┐
-      ↓             ↓             ↓
- static HTML     reports/CLI   future backends
-                               (for example Grafana)
-```
+MOLI continues to own the authoritative platform registry in `moli.toml`.
+MolSysSuite continues to own its member registry in `suite.toml`. The
+Observatory consumes those sources without changing their governance meaning.
 
-The JSON records are the portable interface of the first implementation. The HTML dashboard is a consumer of those records and does not query GitHub directly.
+Historical design and migration evidence are preserved in:
 
-## Scope discovery
+- [MOLI issue #48](https://github.com/uibcdf/moli/issues/48);
+- [archived Observatory proposal](archive/development_observatory.md);
+- [standalone migration issue #1](https://github.com/uibcdf/moli-dev-observatory/issues/1);
+- [standalone future roadmap #3](https://github.com/uibcdf/moli-dev-observatory/issues/3).
 
-Repository scope is derived from governance registries:
-
-- `uibcdf/moli` itself;
-- direct components registered in `moli.toml`;
-- MolSysSuite members registered in `uibcdf/molsyssuite:suite.toml`;
-- MOLI support infrastructure registered in `moli.toml` when it is not already represented as a MolSysSuite member.
-
-The dashboard groups repositories into four presentation layers:
-
-- **MOLI** — the platform repository and directly governed components other than MolSysSuite;
-- **MolSysSuite** — the delegated ecosystem governance repository;
-- **Scientific components** — MolSysSuite members whose role is `scientific-component`;
-- **Infrastructure** — other registered MolSysSuite members and MOLI support infrastructure.
-
-This grouping is observational only. It does not change ownership or delegated governance.
-
-## V1 data model
-
-`issues.json` records normalized issue snapshots and provenance. It intentionally excludes pull requests returned by GitHub's issues endpoint. The first schema contains repository, GitHub issue identity, state, timestamps, labels and URL.
-
-V1 is a **snapshot model**. GitHub's current `closed_at` field does not preserve the complete sequence of close/reopen cycles. A future event model may add explicit lifecycle events without changing the dashboard's role as a derived consumer.
-
-`metrics.json` derives:
-
-- issues opened and closed per day;
-- 7-day moving averages;
-- cumulative net backlog change over the selected window;
-- opened/closed-in-window counts by platform layer;
-- repository all-time current-state counts (Total, Open, Closed) plus window net backlog change;
-- closure ratio;
-- current open-issue age buckets.
-
-The default display window is 90 days and UTC. Both are command-line parameters.
-
-## Local build
-
-```bash
-python devtools/scripts/development_observatory.py \
-  --output build/development-observatory \
-  --days 90 \
-  --timezone UTC
-
-python -m http.server --directory build/development-observatory 8000
-```
-
-Then open `http://localhost:8000/`.
-
-Unauthenticated GitHub API access has a low request budget and repeated full-platform runs may exhaust it. Rate-limit exhaustion is a collection failure: the observatory aborts instead of writing a misleading partial dashboard.
-
-For a higher GitHub API rate limit, set `MOLI_OBSERVATORY_GITHUB_TOKEN` to a token that can read the repositories in scope. For an already authenticated GitHub CLI session, a convenient local option is:
-
-```bash
-export MOLI_OBSERVATORY_GITHUB_TOKEN="$(gh auth token)"
-```
-
-The token's permissions define the effective readable scope: a token with access to private registered repositories may include them in local output. Treat that generated output according to its contents. V1 public publication must not gain broader credentials merely to expose private or confidential repositories.
-
-Registry membership and effective collection scope are deliberately distinct. If GitHub returns 403 or 404 for an individual registered repository (for example, a private MolSysSuite member during an unauthenticated public-data run), collection continues for the remaining repositories. The inaccessible entry is omitted from effective `scope`, recorded in `excluded_scope` with its registry metadata and HTTP status, and counted in dashboard metadata. Other API failures remain fatal so collector regressions are not silently hidden.
-
-## Static drill-down navigation
-
-V1.1 generates a static navigation tree from the same canonical issue snapshot:
-
-```text
-Overview
-├── layer
-│   └── repository/component
-└── repository/component
-```
-
-The generated site contains:
-
-```text
-build/development-observatory/
-├── index.html
-├── issues.json
-├── metrics.json
-├── layers/
-│   └── <layer-slug>/
-│       ├── index.html
-│       └── metrics.json
-└── repositories/
-    └── <owner>--<repository>/
-        ├── index.html
-        └── metrics.json
-```
-
-The Overview links to every effective layer and collected repository. A layer page filters the existing canonical snapshot to that layer and provides the same time-series views plus repository comparison and links. A repository page filters the snapshot to one repository and shows its own issue flow, backlog trend, open-issue age, and current Total/Open/Closed state.
-
-These are derived static views, not new data sources. `issues.json` at the site root remains the canonical normalized snapshot for the run. Each drill-down directory stores only its derived `metrics.json`; it links back to the canonical root snapshot.
-
-Pages are generated automatically from the effective collected scope. An inaccessible/excluded repository does not receive a repository page. Newly registered repositories receive a page automatically once they are part of the effective scope.
-
-## GitHub Actions and publication
-
-`.github/workflows/development_observatory.yml` refreshes the observatory daily and on manual dispatch. Every run uploads the generated site and JSON as a workflow artifact.
-
-GitHub Pages deployment is opt-in. Set the repository variable:
-
-```text
-MOLI_OBSERVATORY_PUBLISH_PAGES=true
-```
-
-and configure Pages to use GitHub Actions before expecting the deployment job to publish the site.
-
-A private repository must not be assumed to imply a private Pages site. If development metrics later include private repositories, internal infrastructure, costs, client work, or other restricted information, use an authenticated publication route.
-
-## Future backends
-
-The collector and analytics model must remain independent of the initial static renderer. Possible future consumers include:
-
-- Grafana backed by PostgreSQL or a time-series database;
-- authenticated static hosting;
-- notebooks and reports;
-- CLI summaries;
-- monitoring/alerting systems.
-
-A move to Grafana should ingest the normalized observatory records (or a versioned compatible schema), not require rewriting repository discovery or GitHub collection semantics.
-
-Likely future metrics include PR lead time and merge throughput, CI success/runtime, release cadence, coverage history, and issue lifecycle events including reopen cycles.
+Do not add new Observatory runtime code or publication workflows to this
+repository. Observatory implementation changes belong to
+`uibcdf/moli-dev-observatory`.

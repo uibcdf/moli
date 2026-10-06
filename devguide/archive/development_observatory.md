@@ -1,10 +1,10 @@
 ---
 summary: Build portable development observability for MOLI and its registered ecosystem.
 issue: uibcdf/moli#48
-status: active
+status: resolved
 opened: 2026-10-05
-closed:
-verification: inspected
+closed: 2026-10-06
+verification: measured
 area: [development, observability]
 blocked_by: []
 supersedes: []
@@ -51,4 +51,22 @@ The separation between normalized data and rendering also keeps a future Grafana
 
 ## Resolution
 
-Pending implementation and verification.
+Implemented V1 and V1.1 in `uibcdf/moli`, then migrated operational ownership on
+2026-10-06 to the dedicated
+[`uibcdf/moli-dev-observatory`](https://github.com/uibcdf/moli-dev-observatory)
+repository.
+
+The standalone repository owns collection, analytics, tests, static
+Overview → Layer → Repository rendering, scheduled publication, and future
+Observatory development. MOLI and MolSysSuite remain authoritative for the
+registries used to discover the observed scope.
+
+Production validation in the new repository collected **1218 issues from 24 of
+25 registered repositories** using public GitHub access; the private
+`uibcdf/opencastp` repository was correctly excluded. The generated site
+artifact was retained successfully. GitHub Pages publication requires the
+one-time repository setting selecting GitHub Actions as the Pages source.
+
+Historical platform work remains traceable through `uibcdf/moli#48`; the
+standalone migration is tracked by `uibcdf/moli-dev-observatory#1`, and the
+future roadmap moved to `uibcdf/moli-dev-observatory#3`.
