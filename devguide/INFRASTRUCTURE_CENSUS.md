@@ -123,3 +123,18 @@ platform-guide audit remains MOLI #60. Ecosystem/distribution/OS/coverage work
 stays in Recorda #2/#3/#4/#6; source checkpoints and laboratory experiments
 are not a public distribution, stable API, full project recording or replay
 qualification. Platform composition remains specified as in the original rows.
+
+## Praxis experimental Python package — 2026-10-08
+
+The 2026-09-24 Praxis row above remains a pinned historical snapshot. Praxis is now
+**in development**: source commit
+[`207ca6e`](https://github.com/uibcdf/praxis/tree/207ca6e51d08e41ade61e7b06c646ab6f8914054)
+contains an experimental `0.1.0` Python implementation of Capability and
+Protocol. Its [owner-local admission record](https://github.com/uibcdf/praxis/issues/9)
+links the exact-candidate [CI run](https://github.com/uibcdf/praxis/actions/runs/37788372502)
+and installed Conda and wheel qualification on the stated platforms. The next
+step is owner acceptance of the ecosystem, distribution, coverage and OS reviews,
+followed by any separately qualified publication. [MOLI #63](https://github.com/uibcdf/moli/issues/63)
+tracks registration of the Python-package capability with those reviews pending
+and no adopted OS support claim. This implementation evidence does not establish
+a stable API, public release, or complete scientific/platform admission.
