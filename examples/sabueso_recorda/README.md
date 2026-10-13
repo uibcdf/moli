@@ -17,12 +17,14 @@ index, not an accepted platform exchange format. The passive
 Use the existing shared Python 3.14 development environment. Install participating
 Sabueso, Recorda and Ackredit checkouts editable and verify their import paths.
 Sabueso's published 0.14.0 artifact predates this example: use development source
-`25f6163b306a1a863e7ceb5b8e660bdbd2cef432` or its documented source-equivalent head.
+`792bd0da45245ad0fca08e4b431e5e49e4d76ae8` or its documented source-equivalent head.
 This is source integration, not qualification of a new distributed artifact.
-CI retains that fully qualified published baseline. Local review also exercises
-the subsequent compact `sabueso.comparative_operation@2` producer, whose own
-publication/source gates stay in Sabueso; the receiver delegates either version
-to the explicitly supplied owner reader.
+CI selects that published compact `sabueso.comparative_operation@2` producer;
+source qualification stays in Sabueso. A receiving regression checks that the
+new format actually crosses this boundary with complete original inputs and
+hash-bound scope references. The receiver delegates both new and historical
+`@1` operation records to the explicitly supplied owner reader. Existing
+historical records are never compacted or rewritten during reception.
 
 From the MOLI checkout, with the Sabueso checkout at `../sabueso`:
 

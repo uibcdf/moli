@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: uibcdf/sabueso
-          ref: 25f6163b306a1a863e7ceb5b8e660bdbd2cef432
+          ref: 792bd0da45245ad0fca08e4b431e5e49e4d76ae8
           path: _sabueso
           fetch-depth: 0
       - uses: mamba-org/setup-micromamba@v3.2.1

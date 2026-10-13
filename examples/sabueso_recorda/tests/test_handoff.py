@@ -77,6 +77,29 @@ def test_consumption_retains_original_results_credit_pins_and_parent_correlation
     }
 
 
+def test_receiving_exercises_compact_credit_with_retained_original_input_scope(
+    bundle, received
+):
+    native = handoff.read_json(bundle / "original.runtime.json")
+    retained = handoff.read_json(received / "bundle/original.runtime.json")
+    assert retained == native
+    assert len(native["operations"]) == 3
+    for operation in retained["operations"]:
+        assert operation["format"] == "sabueso.comparative_operation@2"
+        assert operation["inputs"]
+        uses = operation["provider"]["attribution"]["uses"]
+        assert uses
+        for use in uses:
+            context = use["context"]
+            assert "inputs" not in context
+            reference = context["input_scope"]
+            assert reference["rule"] == "comparative_input_scope_reference@1"
+            assert reference["operation_ref"] == operation["execution_id"]
+            assert reference["field"] == "inputs"
+            assert reference["sha256"].startswith("sha256:")
+    assert handoff.inspect_handoff(received)["artifact_handoff_status"] == "complete"
+
+
 @pytest.mark.parametrize("damage", ["missing", "changed", "export_missing"])
 def test_unavailable_bytes_do_not_rewrite_successful_execution_history(
     received, damage
