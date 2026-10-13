@@ -56,6 +56,11 @@ new scientific MOLI components.
 
 GitHub issues are the stable identity for reported work. The concise component-facing summary is the root `MOLI_GUIDE.md`.
 
+The review-only [Sabueso/Recorda receiving exercise](pending_proposals/sabueso_recorda_handoff.md)
+supplies public acceptance material for #36: original scientific/credit artifacts,
+explicit application consumption, independent read and failed/unavailable delivery.
+Its bounded example is not an accepted ProjectRecord schema or routing runtime.
+
 
 ## Cross-platform scientific communication
 
