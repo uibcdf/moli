@@ -41,7 +41,9 @@ tracks directly governed repositories without taking over MolSysSuite members.
 
 The [temporary-resource lifecycle](governance/temporary_resource_lifecycle.md)
 requires owner-scoped cleanup after the last useful use while preserving active
-work and evidence still needed for verification.
+work and evidence still needed for verification. Its
+[adoption record](governance/temporary_resource_adoption.md) separates direct
+component instructions from shared-provider and MolSysSuite follow-ups.
 
 The [UIBCDF support-infrastructure catalog](governance/support_infrastructure.md)
 records the developer receptors and publication actions used by MOLI repositories.

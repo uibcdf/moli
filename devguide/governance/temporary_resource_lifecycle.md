@@ -58,4 +58,6 @@ inventory entry. Report a reusable
 tool's lifecycle defect to its provider issue and link any shared-consumer
 impact under [cross-component feedback](cross_component_feedback.md).
 
-This rule is tracked in [MOLI #61](https://github.com/uibcdf/moli/issues/61).
+This rule is tracked in [MOLI #61](https://github.com/uibcdf/moli/issues/61);
+the [adoption record](temporary_resource_adoption.md) identifies delivered
+direct-component instructions and provider follow-ups.

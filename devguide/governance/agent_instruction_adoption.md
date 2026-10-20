@@ -39,5 +39,7 @@ Associated Recorda Lab infrastructure is separately verified at
 `0ca1943baeb2551489eaa821fb414b95892e0952`, including its root/nested routes,
 exact guide and four executed shared-core CI steps under Recorda Lab #7.
 It is not an independently admitted scientific component or suite member.
-The full platform-guide audit still fails on three other guide copies under
-MOLI #60; these current source checks do not certify a global pass.
+The older guide-drift finding under MOLI #60 was resolved by later direct
+component deliveries; the [full hosted guide audit](https://github.com/uibcdf/moli/actions/runs/39490330174)
+now passes. This audit checks current guide copies, not component runtime or
+scientific behavior.
