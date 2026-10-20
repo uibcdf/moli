@@ -126,6 +126,7 @@ MOLI also acts as the governance and coordination repository for platform-level 
 - [`moli.toml`](moli.toml) is the machine-readable registry of MOLI components and governance relationships.
 - [`MOLI_GUIDE.md`](MOLI_GUIDE.md) is the concise component-facing governance guide.
 - [`devguide/`](devguide/README.md) contains durable governance and development knowledge.
+- [`devguide/CHECKPOINT.md`](devguide/CHECKPOINT.md) is the dated pause and resumption checkpoint; verify live issues before acting on it.
 - [`devguide/INFRASTRUCTURE_CENSUS.md`](devguide/INFRASTRUCTURE_CENSUS.md) records observed implementation maturity and pending platform infrastructure.
 - [MOLI Development Observatory](https://github.com/uibcdf/moli-dev-observatory) provides the platform's development-health dashboards from the authoritative registries.
 - [`devguide/governance/policy_inheritance.md`](devguide/governance/policy_inheritance.md) defines how delegated ecosystems inherit MOLI engineering policy.

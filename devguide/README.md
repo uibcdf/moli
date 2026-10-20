@@ -2,12 +2,17 @@
 
 This directory contains durable development/governance knowledge for repositories directly governed by MOLI.
 
+**Resume work here:** [`CHECKPOINT.md`](CHECKPOINT.md) records the dated state of
+the current pause, recent completions, live work to recheck, and a short
+resumption procedure. GitHub issues and `moli.toml` remain authoritative; the
+checkpoint is a navigation aid, not a second backlog or policy source.
+
 It is distinct from `architecture_1.0/`:
 
 - `architecture_1.0/` defines **what MOLI is**;
 - `devguide/` defines **how MOLI repositories coordinate and evolve**.
 
-## Governance v0.1
+## Governance
 
 The initial executable governance core provides:
 
@@ -18,7 +23,8 @@ The initial executable governance core provides:
 - a common report template and status vocabulary;
 - a local governance validator for this repository;
 - a reusable component checker;
-- local governance-surface CI gates in Sabueso, Praxis, Nextia, and MOLI Agent.
+- local governance-surface CI gates in Sabueso, Praxis, Nextia, MOLI Agent,
+  and Recorda.
 
 [`INFRASTRUCTURE_CENSUS.md`](INFRASTRUCTURE_CENSUS.md) records which platform and
 component capabilities have verified implementation, which repositories are still
