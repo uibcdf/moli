@@ -12,6 +12,29 @@ The project/package version, Git tag, and GitHub Release tag use the same public
 
 Development checkouts may carry truthful derived/local identities; these are provenance, not public release versions.
 
+## GitHub Release title
+
+For every public component GitHub Release, the visible title (`name`) is exactly
+the canonical `X.Y.Z` version, identical to the release `tag_name` and the
+project/package version. For example, a `0.14.0` release has `name = "0.14.0"`;
+do not prepend the project name or append a subtitle, comment or other text.
+Put descriptive content in the release body or notes instead.
+
+Before creating or editing a public release, verify the intended title and tag.
+Use `gh release create 0.14.0 --title 0.14.0` or set both `name` and
+`tag_name` to `0.14.0` through the GitHub API. Verify the resulting release
+metadata after publication. This title rule applies to component public
+releases; separately governed policy-release namespaces and `archive/` tags
+retain their own meanings. It does not require rewriting historical release
+metadata, moving a tag, rebuilding a package or changing an artifact.
+
+A proposed deviation follows the existing exception route: record the owner,
+owning issue, rationale and review expiry or exit condition, with a MOLI issue
+for a direct-component policy exception. Do not infer an exception from a
+previously published title. [MOLI #68](https://github.com/uibcdf/moli/issues/68)
+tracks adoption of this convention; MolSysSuite owns member adoption in its
+separate governance domain.
+
 ## Candidates
 
 Candidate evaluation belongs in staging and exact commit evidence rather than public prerelease tags.

@@ -34,6 +34,11 @@ use a direct push, pull request or issue; direct push needs explicit permission.
 Follow `devguide/governance/cross_component_feedback.md` and keep shared-provider
 impact notices separate from the provider review route.
 
+Before creating or editing a public component GitHub Release, verify that its
+visible title is exactly the canonical `X.Y.Z` version and matches its tag and
+project/package version; put descriptive text in the release notes. Follow
+`devguide/policies/release_version_policy.md#github-release-title`.
+
 Report and fix defects through their owning issues, code, tests and technical
 documentation. Do not turn a source-specific fact, edge case or workaround
 into an `AGENTS.md` rule. Only a lasting instruction about how agents or

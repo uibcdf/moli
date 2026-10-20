@@ -42,6 +42,11 @@ route for any deferred code tests. Inspect an unskipped validation checkpoint
 or an explicitly authorized manual execution of the applicable gates on the
 exact final code head before completion. Follow
 `MOLI_GUIDE.md#moli-engineering-baseline` and the local CI policy.
+
+Before creating or editing a public component GitHub Release, verify that its
+visible title is exactly the canonical `X.Y.Z` version and matches its tag and
+project/package version. Put descriptive text in the release notes. Follow
+`MOLI_GUIDE.md#moli-engineering-baseline` and the release-version policy.
 ```
 
 ## `devguide/AGENTS.md` starting text

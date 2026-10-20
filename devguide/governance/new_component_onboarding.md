@@ -54,6 +54,12 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    and tests exist, measure coverage in CI and add a live Codecov percentage
    only after Codecov accepts a recent report for this repository and branch;
    otherwise record a scoped, reviewable non-applicability or pending state.
+6. Before a public component GitHub Release is created or edited, check that
+   its visible title is exactly the canonical `X.Y.Z` version and equals the
+   release tag and project/package version. Put descriptions in the release
+   notes. Include this action in the root contributor instructions and the
+   component's release-preparation route from the first public release. Follow
+   the [release-version policy](../policies/release_version_policy.md#github-release-title).
 
 The component still owns its implementation, tests, local API, release
 decisions, and additional scoped instructions. Report a shared contract to
