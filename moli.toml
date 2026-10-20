@@ -35,6 +35,12 @@ applies_to = ["direct-component"]
 normative = "devguide/governance/agent_instruction_lifecycle.md"
 issue = "uibcdf/moli#20"
 
+[policies.temporary_resource_lifecycle]
+status = "accepted"
+applies_to = ["direct-component"]
+normative = "devguide/governance/temporary_resource_lifecycle.md"
+issue = "uibcdf/moli#61"
+
 [policies.support_infrastructure]
 status = "accepted"
 applies_to = ["repository"]

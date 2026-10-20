@@ -39,6 +39,10 @@ defines when an accepted development lesson becomes a root or nested
 `AGENTS.md` rule. Its [adoption inventory](governance/agent_instruction_adoption.md)
 tracks directly governed repositories without taking over MolSysSuite members.
 
+The [temporary-resource lifecycle](governance/temporary_resource_lifecycle.md)
+requires owner-scoped cleanup after the last useful use while preserving active
+work and evidence still needed for verification.
+
 The [UIBCDF support-infrastructure catalog](governance/support_infrastructure.md)
 records the developer receptors and publication actions used by MOLI repositories.
 These resources have their own provider repositories and issue boards; they are not

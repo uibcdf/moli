@@ -10,8 +10,8 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    evidence.
 2. Create a root `AGENTS.md` at repository inception. Link the vendored
    `MOLI_GUIDE.md`, state the issue-feedback duty and the
-   shared-provider impact-notice, cross-repository contribution and direct-push
-   validation routes, and follow the
+   shared-provider impact-notice, cross-repository contribution, direct-push
+   validation and temporary-resource closeout routes, and follow the
    [durable-instruction lifecycle](agent_instruction_lifecycle.md), including
    its distinction between technical findings and agent working instructions.
    Route developer-guide work to `devguide/AGENTS.md`. Adapt the
@@ -46,6 +46,12 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    authorized manual exact-head checkpoint is verified; do not leave an
    unconditional full-pytest-before-every-commit rule
    alongside a proportional validation rule.
+   At task and release closeout, review owned temporary environments, test
+   output, builds and downloaded copies. Remove disposable resources after
+   their last needed use; retain useful evidence with an owner and review
+   trigger. Follow the
+   [temporary-resource lifecycle](temporary_resource_lifecycle.md) from the
+   repository's root AGENTS.md and applicable local build/test routes.
    If macOS is claimed, register only
    `supported_macos_architectures = ["arm64"]`, verify the runner architecture
    and installed candidate, and use the required Apple Silicon wording in the

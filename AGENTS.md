@@ -34,6 +34,12 @@ use a direct push, pull request or issue; direct push needs explicit permission.
 Follow `devguide/governance/cross_component_feedback.md` and keep shared-provider
 impact notices separate from the provider review route.
 
+At task or release closeout, review temporary resources created by the work.
+Remove owned disposable paths after their last needed use; retain useful
+evidence with an owner and review trigger. Protect other sessions, active
+worktrees and caller outputs, and report cleanup failures. Follow
+`devguide/governance/temporary_resource_lifecycle.md`.
+
 Before creating or editing a public component GitHub Release, verify that its
 visible title is exactly the canonical `X.Y.Z` version and matches its tag and
 project/package version; put descriptive text in the release notes. Follow

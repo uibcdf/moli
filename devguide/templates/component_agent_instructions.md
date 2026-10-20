@@ -43,6 +43,12 @@ or an explicitly authorized manual execution of the applicable gates on the
 exact final code head before completion. Follow
 `MOLI_GUIDE.md#moli-engineering-baseline` and the local CI policy.
 
+At task or release closeout, review temporary resources created by the work.
+Remove owned disposable paths after their last needed use; retain useful
+evidence with an owner and review trigger. Protect active work, other sessions
+and caller output. Follow the MOLI temporary-resource lifecycle linked from
+`MOLI_GUIDE.md#temporary-development-resources`.
+
 Before creating or editing a public component GitHub Release, verify that its
 visible title is exactly the canonical `X.Y.Z` version and matches its tag and
 project/package version. Put descriptive text in the release notes. Follow
