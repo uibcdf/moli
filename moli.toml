@@ -14,6 +14,14 @@ reporting_protocol = "devguide/governance/reporting_protocol.md"
 policy_inheritance = "direct-components-with-delegated-boundaries"
 policy_inheritance_contract = "devguide/governance/policy_inheritance.md"
 
+[policies.naming]
+status = "accepted"
+applies_to = ["repository", "direct-component"]
+normative = "devguide/policies/naming_policy.md"
+issue = "uibcdf/moli#73"
+platform_display_name = "MolI"
+agent_display_name = "Moli"
+
 [policies.reporting_lifecycle]
 status = "accepted"
 applies_to = ["direct-component"]

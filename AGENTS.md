@@ -1,4 +1,9 @@
-# MOLI repository instructions
+# MolI repository instructions
+
+When writing or revising human-facing prose, use `MolI` for the platform and
+`Moli` for the agent. Preserve exact technical identifiers and historical
+quotations; follow `devguide/policies/naming_policy.md` for the standard and
+examples.
 
 Read `MOLI_GUIDE.md` before changing platform governance or a contract shared by
 components. Use `moli.toml` to find accepted policies and their normative documents;

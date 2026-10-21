@@ -1,6 +1,6 @@
-# MOLI Development Guide
+# MolI Development Guide
 
-This directory contains durable development/governance knowledge for repositories directly governed by MOLI.
+This directory contains durable development/governance knowledge for repositories directly governed by MolI.
 
 **Resume work here:** [`CHECKPOINT.md`](CHECKPOINT.md) records the dated state of
 the current pause, recent completions, live work to recheck, and a short
@@ -9,8 +9,13 @@ checkpoint is a navigation aid, not a second backlog or policy source.
 
 It is distinct from `architecture_1.0/`:
 
-- `architecture_1.0/` defines **what MOLI is**;
-- `devguide/` defines **how MOLI repositories coordinate and evolve**.
+- `architecture_1.0/` defines **what MolI is**;
+- `devguide/` defines **how MolI repositories coordinate and evolve**.
+
+Use **MolI** for the platform and **Moli** for the optional scientific agent.
+The [naming policy](policies/naming_policy.md) is the standard for future
+documentation and communication; it explains the older spellings and preserves
+exact technical identifiers and historical quotations.
 
 ## Governance
 
@@ -23,7 +28,7 @@ The initial executable governance core provides:
 - a common report template and status vocabulary;
 - a local governance validator for this repository;
 - a reusable component checker;
-- local governance-surface CI gates in Sabueso, Praxis, Nextia, MOLI Agent,
+- local governance-surface CI gates in Sabueso, Praxis, Nextia, Moli,
   and Recorda.
 
 [`INFRASTRUCTURE_CENSUS.md`](INFRASTRUCTURE_CENSUS.md) records which platform and
@@ -31,7 +36,7 @@ component capabilities have verified implementation, which repositories are stil
 incubating, and which project-level infrastructure remains specified only in the
 architecture. It does not replace the component registry or delegated inventories.
 
-Engineering policies for directly governed components (Python support and CI, Ruff/pytest quality tooling, applicable support libraries, developer receptors, distribution, release versions, repository badges, and Zenodo/DOI archival) are documented in `policies/`; `moli.toml` records their applicability. MolSysSuite defines and versions the engineering policies for its own members. MOLI governs the suite's platform boundary and shared scientific contracts.
+Engineering policies for directly governed components (Python support and CI, Ruff/pytest quality tooling, applicable support libraries, developer receptors, distribution, release versions, repository badges, and Zenodo/DOI archival) are documented in `policies/`; `moli.toml` records their applicability. MolSysSuite defines and versions the engineering policies for its own members. MolI governs the suite's platform boundary and shared scientific contracts.
 
 The [Ackredit client policy](policies/ackredit_client_policy.md) records bounded
 public attribution, function-provider and recording-evidence promises for
@@ -60,10 +65,10 @@ bounded contributor instruction separately from the scientist-facing runtime
 pilot and verified-fix notifications in #34.
 
 The [GitHub Discussions policy](governance/github_discussions.md) requires
-Discussions across MOLI repositories with common Announcements, Q&A and Ideas
+Discussions across MolI repositories with common Announcements, Q&A and Ideas
 categories, plus component-specific extensions. It defines triage ownership
 and promotion to owning issues or versioned decisions. The
-[implementation record](pending_proposals/github_discussions.md) tracks MOLI's
+[implementation record](pending_proposals/github_discussions.md) tracks MolI's
 live configuration and owner-local rollout, including delegated suite adoption.
 
 The [temporary-resource lifecycle](governance/temporary_resource_lifecycle.md)
@@ -73,15 +78,15 @@ work and evidence still needed for verification. Its
 component instructions from shared-provider and MolSysSuite follow-ups.
 
 The [UIBCDF support-infrastructure catalog](governance/support_infrastructure.md)
-records the developer receptors and publication actions used by MOLI repositories.
+records the developer receptors and publication actions used by MolI repositories.
 These resources have their own provider repositories and issue boards; they are not
-new scientific MOLI components.
+new scientific MolI components.
 
 ## Structure
 
 - `governance/` — ownership, reporting, cross-component coordination, and membership/delegation rules.
 - `governance/policy_inheritance.md` — direct-component policy scope and delegated member-governance boundary.
-- `policies/` — shared policies accepted for directly governed MOLI repositories.
+- `policies/` — shared policies accepted for directly governed MolI repositories.
 - `pending_bugs/` — durable analyses of active platform bugs when needed.
 - `pending_proposals/` — durable analyses of active platform proposals when needed.
 - `archive/` — permanent historical records.
@@ -97,21 +102,21 @@ Its bounded example is not an accepted ProjectRecord schema or routing runtime.
 
 ## Cross-platform scientific communication
 
-[`SCIENTIFIC_COMMUNICATION.md`](SCIENTIFIC_COMMUNICATION.md) records the long-term MOLI capability for producing traceable ProjectBriefings, ProgressBriefs, and ProjectReports from Scientific Context, modeling, and Discovery state, with multiple renderings such as written dossiers, slides, interactive reports, and future narrated video.
+[`SCIENTIFIC_COMMUNICATION.md`](SCIENTIFIC_COMMUNICATION.md) records the long-term MolI capability for producing traceable ProjectBriefings, ProgressBriefs, and ProjectReports from Scientific Context, modeling, and Discovery state, with multiple renderings such as written dossiers, slides, interactive reports, and future narrated video.
 
 
 ## Reproducibility, audit, trace, and replay
 
-[`REPRODUCIBILITY_AUDIT_AND_REPLAY.md`](REPRODUCIBILITY_AUDIT_AND_REPLAY.md) records the cross-platform requirement that completed MOLI projects remain independently auditable and that their recorded computational trajectories can be replayed without requiring an LLM/agent to reason again. It distinguishes Decision, ExecutionPlan, Run, scientific interpretation, snapshots/manifests, and the separate operations Audit, Trace, Replay, and Rerun.
+[`REPRODUCIBILITY_AUDIT_AND_REPLAY.md`](REPRODUCIBILITY_AUDIT_AND_REPLAY.md) records the cross-platform requirement that completed MolI projects remain independently auditable and that their recorded computational trajectories can be replayed without requiring an LLM/agent to reason again. It distinguishes Decision, ExecutionPlan, Run, scientific interpretation, snapshots/manifests, and the separate operations Audit, Trace, Replay, and Rerun.
 
 
 ## Recorda provenance instrumentation (formerly Scribe)
 
-[`RECORDA.md`](RECORDA.md) is intentionally retained as MOLI's integration specification for **Recorda** (originally designed under the working name Scribe). It explains how Recorda instrumentation, project-context propagation, safe capture, semantic profiles, event emission, and ownership-aware routing contribute to ProjectRecord/EventLedger and Nextia ProjectGraph evolution. The standalone/general design is maintained in `uibcdf/recorda`.
+[`RECORDA.md`](RECORDA.md) is intentionally retained as MolI's integration specification for **Recorda** (originally designed under the working name Scribe). It explains how Recorda instrumentation, project-context propagation, safe capture, semantic profiles, event emission, and ownership-aware routing contribute to ProjectRecord/EventLedger and Nextia ProjectGraph evolution. The standalone/general design is maintained in `uibcdf/recorda`.
 
 ## Development observability
 
-The operational [MOLI Development Observatory](https://github.com/uibcdf/moli-dev-observatory)
+The operational [MolI Development Observatory](https://github.com/uibcdf/moli-dev-observatory)
 is maintained in its dedicated repository. This repository retains only the
 [platform-side migration pointer](DEVELOPMENT_OBSERVATORY.md) and historical
 decision record; `moli.toml` remains an authoritative input to the Observatory.
