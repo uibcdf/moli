@@ -12,10 +12,12 @@ It is distinct from `architecture_1.0/`:
 - `architecture_1.0/` defines **what MolI is**;
 - `devguide/` defines **how MolI repositories coordinate and evolve**.
 
-Use **MolI** for the platform and **Moli** for the optional scientific agent.
-The [naming policy](policies/naming_policy.md) is the standard for future
-documentation and communication; it explains the older spellings and preserves
-exact technical identifiers and historical quotations.
+**MolI** combines **Mol** from Molecular and **I** from Intelligence: it names
+the platform supporting Molecular Intelligence. **Moli** is the proper name of
+its optional scientific agent. The [naming policy](policies/naming_policy.md)
+records the conceptual basis and standard for future documentation and
+communication, including the older spellings and preservation of exact
+technical identifiers and historical quotations.
 
 ## Governance
 

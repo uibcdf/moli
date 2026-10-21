@@ -3,6 +3,35 @@
 Accepted by Diego on 2026-10-21 under
 [#73](https://github.com/uibcdf/moli/issues/73).
 
+## Conceptual basis
+
+The names distinguish three related concepts:
+
+| Term | Meaning |
+| --- | --- |
+| **Molecular Intelligence** | The capability of the complete scientific system, combining Scientific Context, Molecular Modeling and Scientific Reasoning, as defined in [Architecture 1.0](../../architecture_1.0/MOLECULAR_INTELLIGENCE.md). |
+| **MolI** | The platform that brings together the components, shared contracts and infrastructure supporting that capability. The name combines **Mol** from **Molecular** and **I** from **Intelligence**. |
+| **Moli** | The proper name of MolI's scientific agent, its optional reasoning and agency component. It names the agent rather than the platform or the capability as a whole. |
+
+The related names express that Moli belongs to MolI. Their different meanings
+are the reason for the convention; capitalization makes that distinction
+visible. MolI can be used directly by people and other systems. Scientific
+Reasoning may be entirely human or augmented by Moli; Molecular Intelligence
+does not depend on the presence of this agent or an LLM.
+
+Use this concise formulation when introducing the relationship:
+
+> **MolI is the Molecular Intelligence platform. Moli is its scientific agent.**
+
+In Spanish:
+
+> **MolI es la plataforma de Molecular Intelligence. Moli es su agente científico.**
+
+When both names first appear together, write **the MolI platform** and
+**the agent Moli** (Spanish: **la plataforma MolI** and **el agente Moli**) if
+needed for clarity. Moli's proper name does not merge the agent with the
+platform or assign it ownership of other components' scientific objects.
+
 ## Standard spelling
 
 | Name | Meaning | Capitalization |

@@ -28,6 +28,14 @@ MOLI may delegate to MolSys-AI or access MolSysSuite APIs directly.
 
 ## Naming convention
 
+**Editorial clarification, 2026-10-21:** current prose uses **MolI** for the
+platform (Mol from Molecular + I from Intelligence) and **Moli** as the proper
+name of its optional scientific agent. Molecular Intelligence remains the
+capability of the complete scientific system. The
+[naming policy](../devguide/policies/naming_policy.md#conceptual-basis) records
+this distinction and its rationale; the older labels below identify the same
+architectural concepts and unchanged repository destinations.
+
 - **MOLI** — platform/umbrella: `uibcdf/moli`.
 - **MOLI Agent** — scientific agent: `uibcdf/moli-agent`.
 - **MolSys-AI** — MolSysSuite-specialized AI subsystem/umbrella: `uibcdf/molsys-ai`.
