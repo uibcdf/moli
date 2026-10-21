@@ -14,8 +14,9 @@ supersedes: []
 
 The [public application example](../../examples/sabueso_recorda/README.md) retains
 the original observed Sabueso comparative bundle and records actual application
-consumption through Recorda's existing explicit-operation API. This is a ready
-review contribution to #36, not acceptance of a ProjectRecord wire schema or
+consumption through Recorda's existing explicit-operation API. This bounded
+contribution was integrated through [PR #67](https://github.com/uibcdf/moli/pull/67)
+on 2026-10-21; it is not acceptance of a ProjectRecord wire schema or
 implementation of the broad routing/context specification in [RECORDA.md](../RECORDA.md).
 
 The owner-issued manifest, scientific report, runtime credit and closed store are
@@ -61,9 +62,19 @@ in Sabueso, verified from complete receptor captures. The earlier PR source
 [18 hosted receiving cases](https://github.com/uibcdf/moli/actions/runs/38454271829)
 and [applicable governance](https://github.com/uibcdf/moli/actions/runs/38454272358)
 using prior qualified Sabueso `25f6163`. That receipt remains historical and does
-not qualify this updated source pin or new case. Complete exact-head receiving
-and governance checks remain required for this revision. Broader OS/minor and
-installed-artifact acceptance remain separate from local source checks.
+not qualify the updated source pin or new case. PR head
+`9c6f856aac225c24c7a147e0b9e5618011a85b23` subsequently passed
+[19 hosted receiving cases](https://github.com/uibcdf/moli/actions/runs/38460988834)
+and [applicable governance](https://github.com/uibcdf/moli/actions/runs/38460988859).
+Owner review rechecked the mandatory native steps and integrated that unchanged
+head in `06bc5acbe41bb02411e6fbe280a7c8416a733678`. The integrated main then passed
+[receiving](https://github.com/uibcdf/moli/actions/runs/39653601505) and
+[governance/default-branch coverage](https://github.com/uibcdf/moli/actions/runs/39653589638).
+All 60 baseline and receiving cases also passed together locally on Python 3.14.7
+with published pytest-receptor 1.2.0, using the existing editable development
+participants; this local run does not certify the public-provider closure used by
+the separate hosted lane. Broader OS/minor and installed-artifact acceptance
+remain separate.
 
 No private pilot data, results or new aggregates enter this contribution. Existing
 private workflows may be assessed read-only through a separate ignored receiving

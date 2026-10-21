@@ -1,8 +1,10 @@
 # MOLI development checkpoint
 
-**Paused on:** 2026-10-20 (23:07 UTC). **MOLI `main`:**
-[`5584382`](https://github.com/uibcdf/moli/commit/558438240173aff42f24ee585cd1e52f235d8c94)
-was synchronized with `origin/main` and clean when this checkpoint was prepared.
+**Refreshed on:** 2026-10-21 after the authorized review and integration of
+PRs #65, #66 and #67. **Integrated MOLI `main`:**
+[`06bc5ac`](https://github.com/uibcdf/moli/commit/06bc5acbe41bb02411e6fbe280a7c8416a733678).
+The primary checkout was synchronized and clean at that implementation checkpoint;
+this later documentation refresh records its evidence separately.
 This page is a dated navigation aid. Recheck the live [MOLI issue board](https://github.com/uibcdf/moli/issues),
 the relevant owner issues and current repository heads before acting. Do not use a
 historical issue count or this page to infer that an adoption or CI run still has
@@ -26,6 +28,25 @@ the same state.
 
 ## Last completed MOLI work
 
+- [PR #65](https://github.com/uibcdf/moli/pull/65) synchronizes the published
+  Sabueso pinned-item integrity evidence. The maintained report and #3 now record
+  the #79 fix and public 0.5.0 receipt; reference grammar, retention, resolution
+  and Nextia interpretation remain open.
+- [PR #66](https://github.com/uibcdf/moli/pull/66) accepts Praxis's four
+  owner-reviewed engineering states and Linux/macOS arm64 claims in `moli.toml`.
+  Distribution adoption covers its reviewed pre-publication route, not a public
+  package claim. The [exact-head full guide audit](https://github.com/uibcdf/moli/actions/runs/39653313900)
+  passed against fresh component default branches.
+- [PR #67](https://github.com/uibcdf/moli/pull/67) integrates the bounded
+  Sabueso–Recorda receiving example. On `06bc5ac`,
+  [governance and default-branch coverage](https://github.com/uibcdf/moli/actions/runs/39653589638)
+  and the [manually dispatched receiving workflow](https://github.com/uibcdf/moli/actions/runs/39653601505)
+  passed with their mandatory native steps inspected. Local Python 3.14.7
+  verification with published pytest-receptor 1.2.0 passed all 60 baseline and
+  receiving cases; Ruff, formatting, governance and the fresh-copy guide audit
+  also passed. Local source integration and the hosted pinned-public-provider
+  lane are separate evidence. #36/#18 remain open for project context, retention,
+  routing, telemetry and explicit Nextia interpretation.
 - [#68](https://github.com/uibcdf/moli/issues/68): public GitHub Release titles
   use the exact version. The MOLI rule and direct-component guide copies were
   delivered; the [full guide audit](https://github.com/uibcdf/moli/actions/runs/39468857387)
@@ -94,4 +115,9 @@ the same state.
    gates on the delivered head. Refresh this checkpoint when the pause state
    or next resumption path materially changes.
 
-No further MOLI issue implementation is in progress as part of this pause.
+The three-PR review and integration are complete. The proposed next new issue is
+[#47](https://github.com/uibcdf/moli/issues/47), the independent MOLI applicability
+decision for archive tags; no namespace rule or consumer rollout was accepted by
+this review. #34 also has a separable contributor-instruction step, while its
+scientist-facing pilot and notifications remain pending. No further issue
+implementation is in progress as part of this checkpoint.
