@@ -45,6 +45,13 @@ defines when an accepted development lesson becomes a root or nested
 `AGENTS.md` rule. Its [adoption inventory](governance/agent_instruction_adoption.md)
 tracks directly governed repositories without taking over MolSysSuite members.
 
+The [human-facing feedback rule](governance/reporting_protocol.md#human-facing-issue-feedback)
+requires surfacing actionable uncertain or nonblocking findings and offering
+their owning issue under the applicable reporting and disclosure authority.
+Its [adoption record](pending_proposals/human_facing_issue_feedback.md) tracks the
+bounded contributor instruction separately from the scientist-facing runtime
+pilot and verified-fix notifications in #34.
+
 The [temporary-resource lifecycle](governance/temporary_resource_lifecycle.md)
 requires owner-scoped cleanup after the last useful use while preserving active
 work and evidence still needed for verification. Its

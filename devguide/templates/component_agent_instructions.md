@@ -7,6 +7,17 @@ local rules. The canonical meaning lives in `MOLI_GUIDE.md` and
 ## Root `AGENTS.md` block
 
 ```markdown
+During development, testing, scientific exploration and human conversations,
+surface actionable suspected defects, inconsistencies, missing capabilities
+and improvements, even uncertain or nonblocking ones. At a natural pause,
+explicitly offer the owning issue or an update to an existing one; distinguish
+observation from hypothesis. Use reporting authority already granted without
+repeated permission. Respect declined or deferred human disclosure and protect
+confidential material; otherwise authorized technical reporting remains due.
+Deliver an accepted report through an observable issue/update or explain the
+private route or maintainer handoff. Follow
+`MOLI_GUIDE.md#reporting-bugs-and-proposals` and its linked human-facing policy.
+
 Report defects in their owning issues and fix them with code, tests and
 technical documentation. Do not store source-specific facts, edge cases or
 workarounds in `AGENTS.md`. Only after normal owner review, put a lasting

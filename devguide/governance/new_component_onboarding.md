@@ -10,6 +10,10 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    evidence.
 2. Create a root `AGENTS.md` at repository inception. Link the vendored
    `MOLI_GUIDE.md`, state the issue-feedback duty and the
+   human-facing action to offer an owning issue for uncertain or nonblocking
+   findings, preserve existing reporting authority and respect disclosure
+   decisions under the [reporting protocol](reporting_protocol.md#human-facing-issue-feedback).
+   Include the
    shared-provider impact-notice, cross-repository contribution, direct-push
    validation and temporary-resource closeout routes, and follow the
    [durable-instruction lifecycle](agent_instruction_lifecycle.md), including

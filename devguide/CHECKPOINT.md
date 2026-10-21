@@ -1,5 +1,13 @@
 # MOLI development checkpoint
 
+**Current work, 2026-10-21:** the maintainer selected the contributor-instruction
+portion of [#34](https://github.com/uibcdf/moli/issues/34). Central policy,
+root/starter/onboarding routes and owner-reviewed proposals for the five direct
+components are being prepared. See the [bounded adoption record](pending_proposals/human_facing_issue_feedback.md).
+Default-branch component adoption, the scientist-facing pilot and notifications
+must not be inferred from candidate checks. The older completion checkpoint
+below remains the evidence for #47 and the preceding work.
+
 **Refreshed on:** 2026-10-21 after the authorized #47 policy work and the earlier
 review/integration of PRs #65, #66 and #67. **Integrated MOLI `main`:**
 [`54840cd`](https://github.com/uibcdf/moli/commit/54840cdf96aade08a31cec8ffe38e61674e05e52).
@@ -129,4 +137,4 @@ The three-PR review and #47 policy decision are complete. Archive-tag activation
 remains an owner-local future choice, with the separate Action applicability
 notices and independent MolSysSuite rule retained. #34 has a separable contributor
 instruction step, while its scientist-facing pilot and notifications remain
-pending. No further issue implementation is in progress as part of this checkpoint.
+pending. The contributor-instruction step is now active under the update above.

@@ -5,6 +5,17 @@ components. Use `moli.toml` to find accepted policies and their normative docume
 read the relevant decisions in `architecture_1.0/` for architectural work. Route
 bugs and proposals to the owning GitHub issue as the guide requires.
 
+During development, testing, scientific exploration and human conversations,
+surface actionable suspected defects, inconsistencies, missing capabilities
+and improvements, even uncertain or nonblocking ones. At a natural pause,
+explicitly offer the owning issue or an update to an existing one; distinguish
+observation from hypothesis. Use reporting authority already granted without
+repeated permission. Respect declined or deferred human disclosure and protect
+confidential material; otherwise authorized technical reporting remains due.
+Deliver an accepted report through an observable issue/update or explain the
+private route or maintainer handoff. Follow
+`devguide/governance/reporting_protocol.md#human-facing-issue-feedback`.
+
 When MOLI changes a platform rule that may affect MolSysSuite or its members,
 record the required adoption and evidence in an existing or new
 `uibcdf/molsyssuite` issue, linked to the MOLI decision. Leave changes to the

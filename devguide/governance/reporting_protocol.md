@@ -36,6 +36,49 @@ Keep confidential data out of public issues. Report exploitable security finding
 through the repository's private security channel first; create or link a public
 issue only when disclosure is safe.
 
+## Human-facing issue feedback
+
+During development, testing, scientific exploration or an agent-assisted
+conversation, surface actionable suspected defects, inconsistencies, missing
+capabilities and improvements even when uncertain or nonblocking. At a natural
+pause, explicitly offer to open the owning issue or update an existing one;
+closely related findings may be grouped. Explain the useful outcome, distinguish
+observation from hypothesis and show the proposed disclosure for human review
+when that disclosure has not already been authorized. A scientific discrepancy
+is not automatically a software defect or scientific Evidence.
+
+Search for an existing issue and use the ownership rules below. Include the
+observed and expected behavior or missing capability, impact, versions and a
+minimal reproduction or concrete use case when available. Link the project need
+only through a reference safe for the destination; do not copy confidential
+project content into a public tracker. Use the private route for confidential
+or exploitable findings.
+
+Existing authorization to report within the agreed scope remains valid. Surface
+the finding and report under that authority without asking for the same
+permission again. If the proposed audience, content or action exceeds that
+authority, obtain the missing review before disclosure. Respect a person's
+declined or deferred disclosure; retain only an authorized, sanitized disposition
+in the appropriate context and do not silently publish their material elsewhere.
+That choice does not cancel the universal duty to report ordinary technical
+findings whose disclosure is otherwise authorized.
+
+For an accepted report, provide the observable owning issue or update, or explain
+why a private route or maintainer handoff is needed. An offer left in chat is not
+delivery. Filing leaves priority, implementation, review and release with the
+owner. Issue closure alone does not establish that a fix is verified and usable
+in the scientist's environment; subscriptions, opt-in return notifications and
+retry behavior still require the separate runtime work in
+[MOLI #34](https://github.com/uibcdf/moli/issues/34).
+
+Direct repositories carry a short actionable instruction in root `AGENTS.md`
+and link this policy through `MOLI_GUIDE.md`; new repositories start from the
+[component snippets](../templates/component_agent_instructions.md). MolSysSuite
+owns member adoption through
+[its companion issue](https://github.com/uibcdf/molsyssuite/issues/65).
+The [instruction adoption record](../pending_proposals/human_facing_issue_feedback.md) separates
+MOLI delivery, owner-local component review and the remaining runtime pilot.
+
 ## Universal lifecycle
 
 For bugs and proposals that require durable devguide analysis:
