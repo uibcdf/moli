@@ -673,6 +673,54 @@
       "canonical_control": "Unchanged 0.3.0 metadata reaches intercepted archive reader; no build, artifact inspection or publication"
     }
   ],
+  "implementation_commit": "e093b13df7fe2cc1c84b5be676ff008ed55cdd04",
+  "advance_notices": [
+    {
+      "repository": "uibcdf/moli",
+      "issue": 47,
+      "url": "https://github.com/uibcdf/moli/issues/47#issuecomment-6324036981"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "issue": 34,
+      "url": "https://github.com/uibcdf/sabueso/issues/34#issuecomment-6324037910"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "issue": 9,
+      "url": "https://github.com/uibcdf/praxis/issues/9#issuecomment-6324038873"
+    },
+    {
+      "repository": "uibcdf/nextia",
+      "issue": 2,
+      "url": "https://github.com/uibcdf/nextia/pull/2#issuecomment-6324039898"
+    },
+    {
+      "repository": "uibcdf/moli-agent",
+      "issue": 1,
+      "url": "https://github.com/uibcdf/moli-agent/pull/1#issuecomment-6324040839"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "issue": 3,
+      "url": "https://github.com/uibcdf/recorda/issues/3#issuecomment-6324041590"
+    },
+    {
+      "repository": "uibcdf/molsyssuite",
+      "issue": 84,
+      "url": "https://github.com/uibcdf/molsyssuite/issues/84#issuecomment-6324042428"
+    },
+    {
+      "repository": "uibcdf/action-build-and-upload-conda-packages",
+      "issue": 52,
+      "url": "https://github.com/uibcdf/action-build-and-upload-conda-packages/issues/52"
+    },
+    {
+      "repository": "uibcdf/action-sphinx-docs-to-gh-pages",
+      "issue": 11,
+      "url": "https://github.com/uibcdf/action-sphinx-docs-to-gh-pages/issues/11"
+    }
+  ],
   "limits": [
     "Read-only source/configuration/remote-ref inspection and bounded guard probes",
     "No consumer activation, tag push, package build, upload, promotion or release",

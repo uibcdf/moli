@@ -84,6 +84,25 @@ Owner notices must precede provider publication and remain distinct from any
 later adoption. Record those notice URLs and the immutable published MOLI source
 with exact-head CI in the final closeout of #47.
 
+Advance notices for prepared implementation `e093b13df7fe2cc1c84b5be676ff008ed55cdd04`
+were delivered before pushing its branch:
+
+- [MOLI #47](https://github.com/uibcdf/moli/issues/47#issuecomment-6324036981);
+- [Sabueso #34](https://github.com/uibcdf/sabueso/issues/34#issuecomment-6324037910),
+  [Praxis #9](https://github.com/uibcdf/praxis/issues/9#issuecomment-6324038873),
+  [Nextia #2](https://github.com/uibcdf/nextia/pull/2#issuecomment-6324039898),
+  [MOLI Agent #1](https://github.com/uibcdf/moli-agent/pull/1#issuecomment-6324040839)
+  and [Recorda #3](https://github.com/uibcdf/recorda/issues/3#issuecomment-6324041590);
+- [MolSysSuite #84](https://github.com/uibcdf/molsyssuite/issues/84#issuecomment-6324042428)
+  for its independent member boundary and both receptors;
+- [Conda action #52](https://github.com/uibcdf/action-build-and-upload-conda-packages/issues/52)
+  and [Sphinx action #11](https://github.com/uibcdf/action-sphinx-docs-to-gh-pages/issues/11)
+  for separately owned optional applicability reviews.
+
+The notices preserve existing completed issue dispositions and introduce no
+immediate consumer migration or release. The two Action owner reviews remain
+independent follow-ups; no Action implementation is part of this MOLI decision.
+
 The implementation/decision is complete only after its local checks, current
 guide audit and exact-head hosted governance pass and the notices are recorded.
 Future consumer activation is explicitly deferred to its owner and is not an
