@@ -1,0 +1,382 @@
+{
+  "schema": "moli.ackredit-optional-contract-review@1",
+  "date": "2026-10-21",
+  "owner": "uibcdf/moli#46",
+  "review_trigger": "changed provider promises/canonical guide or selection of a new consumer attribution boundary",
+  "decision": {
+    "status": "accepted bounded optional capability promises",
+    "portable_minimum": "0.9.0",
+    "function_provider_minimum": "0.11.0",
+    "recorder_evidence_and_validator_minimum": "0.12.0",
+    "mandatory_dependency_or_upgrade": false,
+    "general_public_1x": "separate qualified delivery",
+    "nextia_implementation": "deferred; not started"
+  },
+  "sources": [
+    {
+      "repository": "uibcdf/ackredit",
+      "source": "315e0da41f0b7ec5f343984a297c98b94be40b53",
+      "path": "standards/ACKREDIT_GUIDE.md",
+      "sha256": "6353892d552eab79973cecec5f8e3c8c31e146416e1cb481786e21cd3fcbf99d",
+      "url": "https://github.com/uibcdf/ackredit/blob/315e0da41f0b7ec5f343984a297c98b94be40b53/standards/ACKREDIT_GUIDE.md"
+    },
+    {
+      "repository": "uibcdf/ackredit",
+      "source": "887b81c525ff9b285150b2d801c557321b4d48fa",
+      "path": "devtools/conda-build/receipts/ackredit_0.12.0_public_2026-10-07.json",
+      "sha256": "9ba73e4e72c522a2af84416673d1454300ad27e4efb227e2d468904a45e4eb5e",
+      "url": "https://github.com/uibcdf/ackredit/blob/887b81c525ff9b285150b2d801c557321b4d48fa/devtools/conda-build/receipts/ackredit_0.12.0_public_2026-10-07.json"
+    },
+    {
+      "repository": "uibcdf/ackredit",
+      "source": "aae9ad98c89d162b946a65fa01603707db02359a",
+      "path": "devtools/conda-build/receipts/ackredit_0.11.0_public_2026-10-06.json",
+      "sha256": "60e2e612c285f0f93b755dd569d87ab161cccb53c4a1d68f0fe15b6fb8671fc1",
+      "url": "https://github.com/uibcdf/ackredit/blob/aae9ad98c89d162b946a65fa01603707db02359a/devtools/conda-build/receipts/ackredit_0.11.0_public_2026-10-06.json"
+    },
+    {
+      "repository": "uibcdf/molsyssuite",
+      "source": "ca96503f1049fcf7b16c8dd364510e8f1468a891",
+      "path": "devguide/ackredit_client_policy.md",
+      "sha256": "ed9496018eecd097a07834dd175a49aa824d22f8b5a2f3d16e55f8bc51342a1a",
+      "url": "https://github.com/uibcdf/molsyssuite/blob/ca96503f1049fcf7b16c8dd364510e8f1468a891/devguide/ackredit_client_policy.md"
+    },
+    {
+      "repository": "uibcdf/molsyssuite",
+      "source": "ca96503f1049fcf7b16c8dd364510e8f1468a891",
+      "path": "devguide/rollouts/ackredit_public_contract_review_97_20261008.json",
+      "sha256": "09bd967e845d448a3acee122508b67e3b290943708b24c7c0b67893c80c81bb9",
+      "url": "https://github.com/uibcdf/molsyssuite/blob/ca96503f1049fcf7b16c8dd364510e8f1468a891/devguide/rollouts/ackredit_public_contract_review_97_20261008.json"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "source": "7d1354753d3486a5e32e0a1fd830ac043c779c1d",
+      "path": "pyproject.toml",
+      "sha256": "3edeaa8ad75deb6d5e6936d17161332307f74e12ee0c20c7ef0f01df114a8f0c",
+      "url": "https://github.com/uibcdf/sabueso/blob/7d1354753d3486a5e32e0a1fd830ac043c779c1d/pyproject.toml"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "source": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
+      "path": "pyproject.toml",
+      "sha256": "a2d5ee06b0f0d79c109b104d44a449080cbe77875fe9d2f5f37dcfb13a9ab2a8",
+      "url": "https://github.com/uibcdf/praxis/blob/55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512/pyproject.toml"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "source": "b455ff5ec6fee206f8c077cbac45712f0b6c704b",
+      "path": "pyproject.toml",
+      "sha256": "7007a8976156ca548af18297615fa5b5d53eb119bd6850cc13736ed06eec98b3",
+      "url": "https://github.com/uibcdf/recorda/blob/b455ff5ec6fee206f8c077cbac45712f0b6c704b/pyproject.toml"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "source": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
+      "path": "src/praxis/_ackredit.py",
+      "sha256": "e527268140687579fe51b0a9a47cf2ec568a433ab1e34f3633c703b714ecd6ae",
+      "url": "https://github.com/uibcdf/praxis/blob/55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512/src/praxis/_ackredit.py"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "source": "7d1354753d3486a5e32e0a1fd830ac043c779c1d",
+      "path": "sabueso/core/attribution.py",
+      "sha256": "41870b977b84746436ccca1e5ca07f1041cba2733f7ab7ff4c649acb9634895b",
+      "url": "https://github.com/uibcdf/sabueso/blob/7d1354753d3486a5e32e0a1fd830ac043c779c1d/sabueso/core/attribution.py"
+    }
+  ],
+  "fresh_public_file_identity_checks": [
+    {
+      "version": "0.11.0",
+      "filename": "ackredit-0.11.0-py_0.tar.bz2",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/ackredit-0.11.0-py_0.tar.bz2",
+      "sha256": "df8963ca2d286f50b19eb778e95c54c5ebb79c12fb55a6504e7c23daf5717d4f",
+      "download_verified": true,
+      "index": {
+        "arch": null,
+        "build": "py_0",
+        "build_number": 0,
+        "depends": [
+          "argdigest >=0.13.0",
+          "depdigest >=0.11.0",
+          "python >=3.11,<3.15",
+          "pyyaml >=6",
+          "smonitor >=0.16.0"
+        ],
+        "license": "MIT",
+        "name": "ackredit",
+        "noarch": "python",
+        "platform": null,
+        "subdir": "noarch",
+        "timestamp": 1791271383369,
+        "version": "0.11.0"
+      },
+      "scope": "read-only original public file identity; not a new installed-consumer qualification"
+    },
+    {
+      "version": "0.12.0",
+      "filename": "ackredit-0.12.0-py_0.tar.bz2",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/ackredit-0.12.0-py_0.tar.bz2",
+      "sha256": "160b452c2b9de3b44bc6c6e2f4bd8c47e44b1d2779b620f63048231708a1d4aa",
+      "download_verified": true,
+      "index": {
+        "arch": null,
+        "build": "py_0",
+        "build_number": 0,
+        "depends": [
+          "argdigest >=0.13.0",
+          "depdigest >=0.11.0",
+          "python >=3.11,<3.15",
+          "pyyaml >=6",
+          "smonitor >=0.16.0"
+        ],
+        "license": "MIT",
+        "name": "ackredit",
+        "noarch": "python",
+        "platform": null,
+        "subdir": "noarch",
+        "timestamp": 1791358365736,
+        "version": "0.12.0"
+      },
+      "scope": "read-only original public file identity; not a new installed-consumer qualification"
+    }
+  ],
+  "provider_delivery_receipts": [
+    {
+      "source_receipt_file": "ackredit-011-receipt.json",
+      "producer_source": "85deae594e65b2fd443d6ca9a7347eb2bda537e1",
+      "version": "0.11.0",
+      "filename": "ackredit-0.11.0-py_0.tar.bz2",
+      "sha256": "df8963ca2d286f50b19eb778e95c54c5ebb79c12fb55a6504e7c23daf5717d4f",
+      "original_tag": "0.11.0",
+      "api_stability": {
+        "prepare_credit": "stable from 0.11.0",
+        "observe_calls": "stable from 0.11.0",
+        "ackredit.provider@1": "accepted interpretation from 0.11.0",
+        "stable_provider_minimum": "0.11.0",
+        "portable_minimum": "0.9.0",
+        "evidence_surfaces": "provisional"
+      },
+      "original_promotion_run": 37430816845,
+      "verification": "inspected immutable owner receipt plus fresh original-public-file bytes; no new installation or release qualification"
+    },
+    {
+      "source_receipt_file": "ackredit-012-receipt.json",
+      "producer_source": "6f4dbf39996a7185b8aaff7c52b9daeb167a100a",
+      "version": "0.12.0",
+      "filename": "ackredit-0.12.0-py_0.tar.bz2",
+      "sha256": "160b452c2b9de3b44bc6c6e2f4bd8c47e44b1d2779b620f63048231708a1d4aa",
+      "original_tag": "0.12.0",
+      "api_stability": {
+        "portable_minimum": ">=0.9.0",
+        "stable_provider_minimum": ">=0.11.0",
+        "bounded_evidence_minimum": ">=0.12.0",
+        "standalone_validator_minimum": ">=0.12.0",
+        "general_1x": "Deferred until a separately authorized and qualified public 1.0.0; source intent and earlier bounded promises remain unchanged."
+      },
+      "original_promotion_run": 37599450602,
+      "verification": "inspected immutable owner receipt plus fresh original-public-file bytes; no new installation or release qualification"
+    }
+  ],
+  "fresh_native_receiving_recheck": {
+    "repository": "uibcdf/ackredit",
+    "url": "https://github.com/uibcdf/ackredit/actions/runs/37588186298",
+    "source": "6f4dbf39996a7185b8aaff7c52b9daeb167a100a",
+    "run_id": 37588186298,
+    "attempt": 1,
+    "event": "workflow_dispatch",
+    "conclusion": "success",
+    "required_jobs_and_steps": [
+      {
+        "name": "Build immutable receiving bundle",
+        "job_id": 112683122483,
+        "required_steps": [
+          "Build each pure Python wheel once"
+        ],
+        "conclusion": "success"
+      },
+      {
+        "name": "Verify eight complete receiving receipts",
+        "job_id": 112704205239,
+        "required_steps": [
+          "Reject partial or skipped receiving evidence"
+        ],
+        "conclusion": "success"
+      },
+      {
+        "name": "Receiving on ubuntu-latest, Python 3.11",
+        "job_id": 112683234421,
+        "required_steps": [
+          "Qualify real pipeline outside both source repositories",
+          "Verify Conda provenance after real science"
+        ],
+        "conclusion": "success"
+      },
+      {
+        "name": "Receiving on ubuntu-latest, Python 3.12",
+        "job_id": 112683234572,
+        "required_steps": [
+          "Qualify real pipeline outside both source repositories",
+          "Verify Conda provenance after real science"
+        ],
+        "conclusion": "success"
+      },
+      {
+        "name": "Receiving on ubuntu-latest, Python 3.13",
+        "job_id": 112683234457,
+        "required_steps": [
+          "Qualify real pipeline outside both source repositories",
+          "Verify Conda provenance after real science"
+        ],
+        "conclusion": "success"
+      },
+      {
+        "name": "Receiving on ubuntu-latest, Python 3.14",
+        "job_id": 112683234444,
+        "required_steps": [
+          "Qualify real pipeline outside both source repositories",
+          "Verify Conda provenance after real science"
+        ],
+        "conclusion": "success"
+      },
+      {
+        "name": "Receiving on macos-15, Python 3.11",
+        "job_id": 112683234797,
+        "required_steps": [
+          "Qualify real pipeline outside both source repositories",
+          "Verify Conda provenance after real science"
+        ],
+        "conclusion": "success"
+      },
+      {
+        "name": "Receiving on macos-15, Python 3.12",
+        "job_id": 112683234431,
+        "required_steps": [
+          "Qualify real pipeline outside both source repositories",
+          "Verify Conda provenance after real science"
+        ],
+        "conclusion": "success"
+      },
+      {
+        "name": "Receiving on macos-15, Python 3.13",
+        "job_id": 112683234487,
+        "required_steps": [
+          "Qualify real pipeline outside both source repositories",
+          "Verify Conda provenance after real science"
+        ],
+        "conclusion": "success"
+      },
+      {
+        "name": "Receiving on macos-15, Python 3.14",
+        "job_id": 112683234445,
+        "required_steps": [
+          "Qualify real pipeline outside both source repositories",
+          "Verify Conda provenance after real science"
+        ],
+        "conclusion": "success"
+      }
+    ],
+    "capture": {
+      "published_receptor": "1.2.0",
+      "complete": true,
+      "all_member_digests_verified": true,
+      "manifest_sha256": "5d6bdffaed4df749b62f7d8de3e2a0e72dfb22837e4f50817720ad5b8e09cc49",
+      "members_sha256": {
+        "run.json": "22535bd69f4a830b4050c8d083567d7892707f30733599124b8a915244c999df",
+        "workflow.json": "fa3b30268e934cd9dcb8c22a07cba2ad30514c14992ee836d724f6da45e83e1b",
+        "jobs.json": "3eca622a993fd3f5a9d7e82b31552b6ca844f82dfea0809eb63a1f668e3727d3",
+        "artifacts.json": "b31addcbbaf5eae91d21567b0731977fdfeed4c5b50199188dfd64664dbceaae",
+        "checks.json": "3a741cd55ccfca3c6c6a14ef793a1c7ade42de9f29bca1c64e340a38ad0bae2c",
+        "logs.zip": "81361718e0ab3c2eea8f7156ac1d4fd99151e02cb38600abc689b986e9010900"
+      }
+    }
+  },
+  "reused_prior_independent_receiving_review": {
+    "repository": "uibcdf/molsyssuite",
+    "source": "ca96503f1049fcf7b16c8dd364510e8f1468a891",
+    "path": "devguide/rollouts/ackredit_public_contract_review_97_20261008.json",
+    "sha256": "09bd967e845d448a3acee122508b67e3b290943708b24c7c0b67893c80c81bb9",
+    "original_source": "6f4dbf39996a7185b8aaff7c52b9daeb167a100a",
+    "summary": {
+      "cells": 8,
+      "mandatory_tests": 72,
+      "skipped": 0,
+      "deselected": 0
+    },
+    "producer": {
+      "package": "pyunitwizard",
+      "source_commit": "0e422d06b0af56e4dd2b43cafd00f059221eb405",
+      "version": "0.28.0+5.g0e422d0",
+      "filename": "pyunitwizard-0.28.0+5.g0e422d0-py3-none-any.whl",
+      "sha256": "0d7982fe2e4b070cf895b1c31d420d064a10d108dd1c1af477ef000daeb64833"
+    },
+    "recorded_original_artifact_digest_count": 10,
+    "artifact_digests_reverified_in_this_review": false,
+    "limits": "Original reconstruction is reused with its pinned PyUnitWizard producer; original ZIPs and tests are not downloaded/reconstructed/rerun here. No current direct-consumer certification."
+  },
+  "direct_consumers": [
+    {
+      "repository": "uibcdf/sabueso",
+      "source": "7d1354753d3486a5e32e0a1fd830ac043c779c1d",
+      "owning_issue": "uibcdf/sabueso#108",
+      "ackredit_required": [
+        "ackredit>=0.9.0"
+      ],
+      "ackredit_optional": {},
+      "review_scope": "source metadata and named attribution adapter only; not a new current-source or installed-consumer test run"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "source": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
+      "owning_issue": "uibcdf/praxis#9",
+      "ackredit_required": [],
+      "ackredit_optional": {
+        "attribution": [
+          "ackredit>=0.12,<0.13"
+        ]
+      },
+      "review_scope": "source metadata and named attribution adapter only; not a new current-source or installed-consumer test run"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "source": "b455ff5ec6fee206f8c077cbac45712f0b6c704b",
+      "owning_issue": null,
+      "ackredit_required": [],
+      "ackredit_optional": {},
+      "review_scope": "source metadata and named attribution adapter only; not a new current-source or installed-consumer test run"
+    },
+    {
+      "repository": "uibcdf/nextia",
+      "source": "32d12e20fae26f00a523d0ed4812e46def8a64e9",
+      "review_scope": "registered design-stage component; no Python-package capability, no new adoption task; Nextia implementation remains deferred"
+    },
+    {
+      "repository": "uibcdf/moli-agent",
+      "source": "08d0e2b809e7e5c46add5ee554ae9528831f7454",
+      "review_scope": "registered design-stage component; no Python-package capability, no new adoption task; Nextia implementation remains deferred"
+    }
+  ],
+  "canonical_moli_guide": {
+    "changed": false,
+    "sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+    "component_rollout_required": false
+  },
+  "receiving_followups": {
+    "sabueso": "Existing #108: owner-selected later capability only when needed; retain required portable route and original result/failure/reader evidence. No mandatory new work.",
+    "praxis": "Existing #9: preserve optional >=0.12,<0.13 profile and current installed scope. New observer/evidence use requires its own real receiving. No mandatory new work.",
+    "recorda": "No Ackredit dependency or extra in inspected metadata; no new integration obligation.",
+    "deferred_components": "No Nextia/MOLI Agent implementation or receiving task opened.",
+    "molsyssuite": "Independent #97 member decision and six guide deliveries reused as owned evidence, not direct-consumer adoption."
+  },
+  "limits": [
+    "No consumer source, dependency, release, tag, canonical guide copy or environment changed.",
+    "No direct-consumer functional tests or scientific project pilot performed.",
+    "MOLI #36 remains open for shared exchange/project semantics; provider availability is no longer a blocker.",
+    "Ordinary exact-head MOLI governance/coverage and cleanup disposition are recorded in #46 closeout after publication."
+  ],
+  "temporary_resources": {
+    "owner": "MOLI #46 review task",
+    "purpose": "read-only originals, pinned source copies and native CI inspection",
+    "retirement_trigger": "after final MOLI native validation and owning issue handoffs",
+    "retained_evidence": "this normalized repository receipt; raw downloads/captures retired after last use"
+  }
+}

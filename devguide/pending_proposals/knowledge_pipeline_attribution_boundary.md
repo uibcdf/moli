@@ -82,18 +82,25 @@ keys, or a common replacement for component-owned records.
 [Sabueso #108](https://github.com/uibcdf/sabueso/issues/108) has an automatic
 packet-composition adapter and an application-owned Ackredit session. Its local
 `sabueso.packet_attribution@1` sidecar remains separate from packet/card/store
-payloads and terms. The public offline two-result pilot retains reused
+payloads and terms. The original public offline two-result pilot retains reused
 references, original versions, and saved-reader behavior. It observes
-composition of stored knowledge; source acquisition, further result types,
-complete bibliography, and public provider delivery remain open. Sabueso's
+composition of stored knowledge. Later source acquisition and result-type
+coverage have their own source/release receipts in #108; the original pilot
+does not qualify them. Complete bibliography and shared consumer/project
+acceptance remain owner-scoped work. Sabueso's
 choice of a required Ackredit dependency is its own product decision; it does
 not change the optional-client policy for MolSysSuite members.
 
 [Ackredit #75](https://github.com/uibcdf/ackredit/issues/75) owns the
-provisional `ackredit.attribution@1` capture/export/import contract, including
+`ackredit.attribution@1` capture/export/import contract, including
 detached bibliography, contextual uses, and workflow capture. Its first stable
-API release and public package remain pending under Ackredit #75 and #22.
-Source-installed Python 3.14 validation does not establish public Conda closure.
+API is publicly delivered from Ackredit 0.9.0. Bounded optional function-provider
+promises begin at 0.11.0; recorder evidence and standalone validation begin at
+0.12.0. [MOLI #46](https://github.com/uibcdf/moli/issues/46) and the
+[client policy](../policies/ackredit_client_policy.md) record exact public-file
+and receiving evidence. This corrects the earlier pending-delivery status;
+it does not qualify a current consumer or settle project exchange.
+Source-installed Python 3.14 validation alone does not establish public closure.
 MolSysSuite coordinates its provider/member review; MOLI does not edit those
 repositories.
 

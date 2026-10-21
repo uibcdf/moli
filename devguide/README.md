@@ -33,6 +33,13 @@ architecture. It does not replace the component registry or delegated inventorie
 
 Engineering policies for directly governed components (Python support and CI, Ruff/pytest quality tooling, applicable support libraries, developer receptors, distribution, release versions, repository badges, and Zenodo/DOI archival) are documented in `policies/`; `moli.toml` records their applicability. MolSysSuite defines and versions the engineering policies for its own members. MOLI governs the suite's platform boundary and shared scientific contracts.
 
+The [Ackredit client policy](policies/ackredit_client_policy.md) records bounded
+public attribution, function-provider and recording-evidence promises for
+owner-selected direct-component use. Capability floors, required/optional host
+profiles and actual receiving evidence remain separate. Its
+[review inventory](archive/review_ackredit_optional_contracts.md) identifies the
+accepted scope and component-owned follow-ups without requiring an upgrade.
+
 The [quantity integrity policy](policies/quantity_integrity_policy.md) applies wherever
 physical quantities cross an API, storage, process or component boundary. PyUnitWizard
 owns the shared serialization design and codec; the component owns its scientific

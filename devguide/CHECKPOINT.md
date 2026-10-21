@@ -1,11 +1,10 @@
 # MOLI development checkpoint
 
-**Refreshed on:** 2026-10-21 after the authorized contributor-instruction step
-of [#34](https://github.com/uibcdf/moli/issues/34), #47 and the earlier
-review/integration of PRs #65, #66 and #67. **Integrated implementation on MOLI `main`:**
-[`80e7e00`](https://github.com/uibcdf/moli/commit/80e7e00396321cd578e2be30e4a68fb2948f3468).
-The primary checkout was synchronized and clean at that implementation checkpoint;
-this later documentation refresh records its evidence separately.
+**Refreshed on:** 2026-10-21 after the bounded optional Ackredit review in
+[#46](https://github.com/uibcdf/moli/issues/46), the contributor-instruction
+step of #34, #47 and the earlier review/integration of PRs #65, #66 and #67.
+Each owning issue records the exact final published source, native gates and
+temporary-resource disposition; receipt links below identify their scoped evidence.
 This page is a dated navigation aid. Recheck the live [MOLI issue board](https://github.com/uibcdf/moli/issues),
 the relevant owner issues and current repository heads before acting. Do not use a
 historical issue count or this page to infer that an adoption or CI run still has
@@ -29,6 +28,21 @@ the same state.
 
 ## Last completed MOLI work
 
+- **[#46](https://github.com/uibcdf/moli/issues/46), bounded optional Ackredit review:**
+  the [direct-consumer policy](policies/ackredit_client_policy.md), registered
+  in `moli.toml`, accepts portable >=0.9.0, function providers/prepared credit
+  >=0.11.0 and bounded recorder evidence/standalone validation >=0.12.0 as
+  provider capability floors. Original public 0.11.0/0.12.0 bytes and metadata
+  verify; all ten native original 0.12.0 receiving jobs/required steps pass.
+  The recorded eight-cell/72-test reconstruction is reused with its original
+  pinned PyUnitWizard scope, not claimed as new direct-consumer qualification.
+  See the [archived review](archive/review_ackredit_optional_contracts.md) and
+  [receipt](evidence/ackredit_optional_contract_review_46_20261021.json).
+  Sabueso #108 and Praxis #9 retain their own required/optional profiles,
+  tested ranges and owner-selected receiving. No dependency, component code,
+  guide-copy rollout or general public 1.x acceptance is required. #36's
+  obsolete pending-provider-delivery paragraph is corrected; its semantic
+  exchange remains open. Nextia implementation remains deferred by the maintainer.
 - **Contributor-instruction portion of [#34](https://github.com/uibcdf/moli/issues/34):**
   central reporting policy, root/starter/onboarding routes and all five direct
   component guide/root deliveries are on main under Diego's explicit direct-push
@@ -108,8 +122,7 @@ the same state.
   [#22](https://github.com/uibcdf/moli/issues/22),
   [#28](https://github.com/uibcdf/moli/issues/28),
   [#33](https://github.com/uibcdf/moli/issues/33),
-  [#36](https://github.com/uibcdf/moli/issues/36), and
-  [#46](https://github.com/uibcdf/moli/issues/46). Several require a real
+  and [#36](https://github.com/uibcdf/moli/issues/36). Several require a real
   consumer, implementation or owner decision; read the issue before treating
   the design as ready for closure.
 - **Operations and governance decisions:** [#8](https://github.com/uibcdf/moli/issues/8)
@@ -144,4 +157,7 @@ The three-PR review and #47 policy decision are complete. Archive-tag activation
 remains an owner-local future choice, with the separate Action applicability
 notices and independent MolSysSuite rule retained. #34's contributor-instruction
 step is complete; its scientist-facing pilot and notifications remain pending.
+The bounded #46 provider-contract review is complete; owner-selected consumer
+adoption is separate. Nextia runtime work remains deferred; #28/Nextia #1 must
+not be taken as selected implementation work from this checkpoint.
 No additional issue implementation has started as part of this checkpoint.
