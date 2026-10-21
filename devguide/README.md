@@ -59,6 +59,11 @@ Its [adoption record](pending_proposals/human_facing_issue_feedback.md) tracks t
 bounded contributor instruction separately from the scientist-facing runtime
 pilot and verified-fix notifications in #34.
 
+The [GitHub Discussions policy](governance/github_discussions.md) defines optional
+conversation channels, triage ownership and promotion to owning issues or
+versioned decisions. The [implementation record](pending_proposals/github_discussions.md)
+tracks MOLI's live configuration and independently owned adoption.
+
 The [temporary-resource lifecycle](governance/temporary_resource_lifecycle.md)
 requires owner-scoped cleanup after the last useful use while preserving active
 work and evidence still needed for verification. Its

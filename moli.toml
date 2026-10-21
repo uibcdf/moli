@@ -35,6 +35,14 @@ applies_to = ["repository", "direct-component"]
 normative = "devguide/governance/reporting_protocol.md"
 issue = "uibcdf/moli#34"
 
+[policies.github_discussions]
+status = "accepted"
+applies_to = ["repository", "direct-component"]
+normative = "devguide/governance/github_discussions.md"
+issue = "uibcdf/moli#23"
+activation = "owner-selected"
+actionable_work_identity = "owning-github-issue"
+
 [policies.agent_instruction_lifecycle]
 status = "accepted"
 applies_to = ["direct-component"]

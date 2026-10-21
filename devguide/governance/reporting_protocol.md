@@ -79,6 +79,15 @@ owns member adoption through
 The [instruction adoption record](../pending_proposals/human_facing_issue_feedback.md) separates
 MOLI delivery, owner-local component review and the remaining runtime pilot.
 
+## GitHub Discussions
+
+Discussions support usage questions, announcements and early conversation under
+the [Discussions policy](github_discussions.md). They do not replace an owning
+issue for actionable work, including uncertain or nonblocking findings. Promote
+conclusions to the owning issue or a named versioned record, preserving the
+discussion URL and a return link. Repository owners decide whether to enable
+Discussions and maintain their categories; MolSysSuite owns member adoption.
+
 ## Universal lifecycle
 
 For bugs and proposals that require durable devguide analysis:

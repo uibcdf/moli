@@ -1,0 +1,301 @@
+{
+  "issue": "uibcdf/moli#23",
+  "observation_date": "2026-10-21",
+  "recorded_at_utc": "2026-10-21T20:45:44.549975+00:00",
+  "owner": "MOLI maintainers under uibcdf/moli#23",
+  "review_trigger": "Before #23 closure, on category/triage ownership change, or before another repository claims adoption.",
+  "status": "partial: policy accepted, enabled; category editor and rendered forms pending",
+  "method": "Authenticated GitHub GraphQL repository observations, all returned threads checked against totalCount; REST PATCH has_discussions=true for MOLI only.",
+  "desired_moli": {
+    "enabled": true,
+    "triage_owner": "dprada",
+    "categories": [
+      {
+        "name": "Announcements",
+        "slug": "announcements",
+        "format": "announcement"
+      },
+      {
+        "name": "Q&A",
+        "slug": "q-a",
+        "format": "question-and-answer",
+        "isAnswerable": true
+      },
+      {
+        "name": "Ideas",
+        "slug": "ideas",
+        "format": "open-ended"
+      }
+    ]
+  },
+  "observed_before": [
+    {
+      "nameWithOwner": "uibcdf/moli",
+      "hasDiscussionsEnabled": false,
+      "discussionCategories": {
+        "nodes": []
+      },
+      "discussions": {
+        "totalCount": 0,
+        "nodes": []
+      }
+    },
+    {
+      "nameWithOwner": "uibcdf/molsyssuite",
+      "hasDiscussionsEnabled": true,
+      "discussionCategories": {
+        "nodes": [
+          {
+            "id": "DIC_kwDOQwPE5c4DFAmf",
+            "name": "Announcements",
+            "slug": "announcements",
+            "description": "Updates from maintainers",
+            "isAnswerable": false
+          },
+          {
+            "id": "DIC_kwDOQwPE5c4DFAmg",
+            "name": "General",
+            "slug": "general",
+            "description": "Chat about anything and everything here",
+            "isAnswerable": false
+          },
+          {
+            "id": "DIC_kwDOQwPE5c4DFAmi",
+            "name": "Ideas",
+            "slug": "ideas",
+            "description": "Share ideas for new features",
+            "isAnswerable": false
+          },
+          {
+            "id": "DIC_kwDOQwPE5c4DFAmk",
+            "name": "Polls",
+            "slug": "polls",
+            "description": "Take a vote from the community",
+            "isAnswerable": false
+          },
+          {
+            "id": "DIC_kwDOQwPE5c4DFAmh",
+            "name": "Q&A",
+            "slug": "q-a",
+            "description": "Ask the community for help",
+            "isAnswerable": true
+          },
+          {
+            "id": "DIC_kwDOQwPE5c4DFAmj",
+            "name": "Show and tell",
+            "slug": "show-and-tell",
+            "description": "Show off something you've made",
+            "isAnswerable": false
+          }
+        ]
+      },
+      "discussions": {
+        "totalCount": 1,
+        "nodes": [
+          {
+            "number": 2,
+            "title": "Welcome to molsyssuite Discussions!",
+            "url": "https://github.com/uibcdf/molsyssuite/discussions/2",
+            "category": {
+              "name": "Announcements"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "nameWithOwner": "uibcdf/sabueso",
+      "hasDiscussionsEnabled": true,
+      "discussionCategories": {
+        "nodes": [
+          {
+            "id": "DIC_kwDORFzcPs4C1vih",
+            "name": "Announcements",
+            "slug": "announcements",
+            "description": "Updates from maintainers",
+            "isAnswerable": false
+          },
+          {
+            "id": "DIC_kwDORFzcPs4DGXNp",
+            "name": "Data sources",
+            "slug": "data-sources",
+            "description": "Propose an online resource for Sabueso (database, API or dataset)",
+            "isAnswerable": false
+          },
+          {
+            "id": "DIC_kwDORFzcPs4C1vii",
+            "name": "General",
+            "slug": "general",
+            "description": "Chat about anything and everything here",
+            "isAnswerable": false
+          },
+          {
+            "id": "DIC_kwDORFzcPs4C1vik",
+            "name": "Ideas",
+            "slug": "ideas",
+            "description": "Share ideas for new features",
+            "isAnswerable": false
+          },
+          {
+            "id": "DIC_kwDORFzcPs4C1vim",
+            "name": "Polls",
+            "slug": "polls",
+            "description": "Take a vote from the community",
+            "isAnswerable": false
+          },
+          {
+            "id": "DIC_kwDORFzcPs4C1vij",
+            "name": "Q&A",
+            "slug": "q-a",
+            "description": "Ask the community for help",
+            "isAnswerable": true
+          },
+          {
+            "id": "DIC_kwDORFzcPs4C1vil",
+            "name": "Show and tell",
+            "slug": "show-and-tell",
+            "description": "Show off something you've made",
+            "isAnswerable": false
+          }
+        ]
+      },
+      "discussions": {
+        "totalCount": 1,
+        "nodes": [
+          {
+            "number": 63,
+            "title": "Welcome to sabueso Discussions!",
+            "url": "https://github.com/uibcdf/sabueso/discussions/63",
+            "category": {
+              "name": "Announcements"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "nameWithOwner": "uibcdf/praxis",
+      "hasDiscussionsEnabled": false,
+      "discussionCategories": {
+        "nodes": []
+      },
+      "discussions": {
+        "totalCount": 0,
+        "nodes": []
+      }
+    },
+    {
+      "nameWithOwner": "uibcdf/nextia",
+      "hasDiscussionsEnabled": false,
+      "discussionCategories": {
+        "nodes": []
+      },
+      "discussions": {
+        "totalCount": 0,
+        "nodes": []
+      }
+    },
+    {
+      "nameWithOwner": "uibcdf/moli-agent",
+      "hasDiscussionsEnabled": false,
+      "discussionCategories": {
+        "nodes": []
+      },
+      "discussions": {
+        "totalCount": 0,
+        "nodes": []
+      }
+    },
+    {
+      "nameWithOwner": "uibcdf/recorda",
+      "hasDiscussionsEnabled": false,
+      "discussionCategories": {
+        "nodes": []
+      },
+      "discussions": {
+        "totalCount": 0,
+        "nodes": []
+      }
+    }
+  ],
+  "observed_moli_after_enable": {
+    "nameWithOwner": "uibcdf/moli",
+    "hasDiscussionsEnabled": true,
+    "discussionCategories": {
+      "nodes": [
+        {
+          "id": "DIC_kwDOUm2Za84DJSMx",
+          "name": "Announcements",
+          "slug": "announcements",
+          "description": "Updates from maintainers",
+          "isAnswerable": false
+        },
+        {
+          "id": "DIC_kwDOUm2Za84DJSMy",
+          "name": "General",
+          "slug": "general",
+          "description": "Chat about anything and everything here",
+          "isAnswerable": false
+        },
+        {
+          "id": "DIC_kwDOUm2Za84DJSM0",
+          "name": "Ideas",
+          "slug": "ideas",
+          "description": "Share ideas for new features",
+          "isAnswerable": false
+        },
+        {
+          "id": "DIC_kwDOUm2Za84DJSM2",
+          "name": "Polls",
+          "slug": "polls",
+          "description": "Take a vote from the community",
+          "isAnswerable": false
+        },
+        {
+          "id": "DIC_kwDOUm2Za84DJSMz",
+          "name": "Q&A",
+          "slug": "q-a",
+          "description": "Ask the community for help",
+          "isAnswerable": true
+        },
+        {
+          "id": "DIC_kwDOUm2Za84DJSM1",
+          "name": "Show and tell",
+          "slug": "show-and-tell",
+          "description": "Show off something you've made",
+          "isAnswerable": false
+        }
+      ]
+    },
+    "discussions": {
+      "totalCount": 0,
+      "nodes": []
+    }
+  },
+  "other_repositories_unchanged_by_task": true,
+  "adoption_issues": {
+    "sabueso": "https://github.com/uibcdf/sabueso/issues/149",
+    "molsyssuite": "https://github.com/uibcdf/molsyssuite/issues/120"
+  },
+  "pending_verification": [
+    "Remove unused MOLI defaults after rechecking live content",
+    "Set final descriptions and verify actual Announcement/Q&A/Ideas formats in UI",
+    "Verify Q&A and Ideas forms render from delivered main without posting test threads",
+    "Refresh API inventory after category edits; retain dated human/UI observation for announcement format/access and rendered forms"
+  ],
+  "capability_limit": {
+    "github_public_graphql": "Mutation schema inspected: no DiscussionCategory create/update/delete mutations. isAnswerable alone does not prove announcement format.",
+    "computer_use": "Inventory returned apps=[] and browsers=[]; createBrowserTab(iab) returned Browser is not available: iab.",
+    "repository_permission": "ADMIN (independent preflight)"
+  },
+  "raw_observation_sha256": {
+    "before.json": "b19f311b5d3011cc69d2ed373531d0c2eaa4c3b018b11df829a12f34797435e7",
+    "after-enable.json": "c19447b297888b24aed6b75d9ee7faf757f8cf9125ca590e3e6a4fed1052a44d"
+  },
+  "sources": [
+    "https://docs.github.com/en/discussions/managing-discussions-for-your-community/managing-categories-for-discussions",
+    "https://docs.github.com/en/discussions/managing-discussions-for-your-community/creating-discussion-category-forms",
+    "https://docs.github.com/en/discussions/managing-discussions-for-your-community/syntax-for-discussion-category-forms"
+  ],
+  "retention": "Keep this normalized receipt in MOLI. Raw task scratch is disposable after CI verification and issue handoff; no caller or other-session outputs are owned."
+}

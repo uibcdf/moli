@@ -1,0 +1,23 @@
+title: "[Design question] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Explore early cross-component questions here. Concrete improvements and suspected
+        defects belong in the [owning issue](https://github.com/uibcdf/moli/blob/main/devguide/governance/reporting_protocol.md), including uncertain findings.
+        Decisions must reach an issue or versioned record, with links both ways.
+        This is public: keep confidential pilot content, unpublished results and credentials out.
+  - type: textarea
+    id: question
+    attributes:
+      label: Open question
+      description: What remains undecided, and why does it matter across components?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context, alternatives and existing records
+      description: Link related public contracts, issues or discussions. Explain the alternatives without assuming a decision has been accepted.
+    validations:
+      required: true

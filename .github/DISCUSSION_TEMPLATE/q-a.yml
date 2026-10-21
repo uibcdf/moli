@@ -1,0 +1,22 @@
+title: "[Question] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask about MOLI policies or component boundaries here. Report actionable bugs,
+        missing capabilities and concrete improvements through the [owning issue](https://github.com/uibcdf/moli/blob/main/devguide/governance/reporting_protocol.md).
+        This is public: use sanitized examples and keep confidential project data and credentials out.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What would you like to understand?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and existing references
+      description: Link the relevant policy, component, issue or discussion and explain what is unclear. Use only public-safe context.
+    validations:
+      required: true
