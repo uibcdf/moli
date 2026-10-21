@@ -43,7 +43,11 @@ guarantees
 ([Project architecture](../../architecture_1.0/PROJECT_ARCHITECTURE.md),
 [audit and replay](../REPRODUCIBILITY_AUDIT_AND_REPLAY.md)).
 
-## Current implementation evidence (2026-09-26)
+## Current implementation evidence
+
+The original structural inspection below is dated 2026-09-26. Integrity evidence
+was refreshed on 2026-10-08 against the implementation and release receipts linked
+below; this update does not accept a shared reference contract.
 
 Inspected Sabueso at commit
 985e1b83f3ad766a7d006b6fa75614c533caa49f, including
@@ -74,12 +78,17 @@ its snapshot code, KnowledgeStore and offline tests. This supersedes the
   unavailable/unauthorized/offline outcome vocabulary. Those facts do not by
   themselves establish indefinite retention or a remote resolver contract.
 
-One implementation gap was reproduced during this review: a modified
-SourceAssertion row is rejected by a pinned full-Card read but returned by a
-direct pinned item read. The common item path also serves relationships. This
-belongs to [Sabueso #79](https://github.com/uibcdf/sabueso/issues/79); the
-cross-component item guarantee should not be declared implemented until that
-path is guarded.
+The original review reproduced an integrity gap in direct pinned item reads.
+[Sabueso #79](https://github.com/uibcdf/sabueso/issues/79) was subsequently closed
+by [80be319](https://github.com/uibcdf/sabueso/commit/80be319): pinned
+SourceAssertion and relationship reads now rebuild and verify the cited snapshot;
+relationship searches also verify every cited state. Negative tests reject rows
+altered outside Sabueso. The
+[implementation receipt](https://github.com/uibcdf/moli/issues/3#issuecomment-5858348699)
+and [clean public 0.5.0 installation receipt](https://github.com/uibcdf/moli/issues/3#issuecomment-5858556430)
+record the implemented and published scope. Item integrity is no longer an
+implementation blocker for this proposal. Grammar, retention, resolution outcomes
+and consumer interpretation remain separate acceptance work.
 
 ## Provisional meaning for consumers
 
@@ -131,7 +140,8 @@ exercise the boundary.
    foreign pin fails explicitly and never selects the latest Card.
 2. **Item integrity.** Change an item row outside Sabueso without changing
    the issued pin. Both a full-Card read and a direct `#A` read reject the
-   altered state. The direct item check is pending Sabueso #79.
+   altered state. Sabueso #79 implements this provider-local check, published
+   since 0.5.0; consumer adoption remains distinct.
 3. **Project interpretation.** A conceptual Nextia Evidence object cites
    `C@S1#A` and records why `A` informs `H`. Its interpretation and status
    belong to Nextia; the Sabueso assertion remains unchanged. The same
@@ -172,10 +182,11 @@ canonicalization and archival responsibility.
    exception class or leaking a private object's existence to an
    unauthorized caller. An undisclosed/unknown outcome may be required at
    that trust boundary.
-4. **Pinned items.** Sabueso #79 must establish that direct #SA and #REL
-   reads verify the cited snapshot or otherwise reject altered content.
-   Until then, full-Card pinned reads provide stronger checked evidence than
-   direct item reads.
+4. **Pinned items.** The provider-local integrity check is implemented and
+   published through Sabueso #79. Consumer acceptance must exercise the issued
+   #SA and #REL references without substituting a newer state or treating a
+   SourceAssertion as project Evidence. This is adoption work, not a pending
+   direct-item integrity fix.
 
 ## Route to resolution
 
