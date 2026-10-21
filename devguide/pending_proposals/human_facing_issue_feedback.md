@@ -46,9 +46,32 @@ local instructions and existing nested routing; no nested rule is needed for
 a repository-wide action. Owner review remains pending until each PR is
 accepted. A passing candidate check is not evidence of default-branch adoption.
 
-The delivery receipt will record immutable bases/heads, guide digests,
-owner-local issues/PRs and applicable checks. Recheck default branches and the
-full guide audit after owner acceptance before declaring rollout complete.
+The [delivery receipt](../evidence/human_facing_feedback_34_20261021.json)
+records immutable local bases/heads, guide and patch digests, owner-local
+issues and applicable checks. The central proposal is
+[MOLI PR #72](https://github.com/uibcdf/moli/pull/72), with canonical source
+`1131e16c42b339b28ef8feb987bca40b9f71e681`. Component source branches have not
+been published: automatic approval review rejected the multi-repository push
+as requiring explicit user authorization. Prepared commits and patches remain
+owned task resources pending that decision. The owner issues are advance
+notices, not evidence that adoption has completed.
+
+| Repository | Owner-local issue | Delivery state |
+| --- | --- | --- |
+| Sabueso | [#147](https://github.com/uibcdf/sabueso/issues/147) | Local candidate checked; publication permission pending. |
+| Praxis | [#11](https://github.com/uibcdf/praxis/issues/11) | Local candidate checked; publication permission pending. |
+| Nextia | [#3](https://github.com/uibcdf/nextia/issues/3) | Local candidate checked; publication permission pending. |
+| MOLI Agent | [#2](https://github.com/uibcdf/moli-agent/issues/2) | Local candidate checked; publication permission pending. |
+| Recorda | [#27](https://github.com/uibcdf/recorda/issues/27) | Local candidate and matching CI pin checked; publication permission pending. |
+
+The source-head [governance run](https://github.com/uibcdf/moli/actions/runs/39661670803)
+passes all 54 administrative tests and its executed governance/archive-tag
+steps. Default-branch coverage publication is inapplicable to that PR event.
+The [hosted guide audit](https://github.com/uibcdf/moli/actions/runs/39661609436)
+fails specifically on the five current default-branch guide copies; the
+combined local candidate audit passes. Keep central integration pending
+coordinated delivery, then recheck default branches and the full guide audit
+after owner acceptance before declaring rollout complete.
 Associated infrastructure is outside this five-component rollout; separately
 assess any linked guide obligation without claiming it adopted here.
 

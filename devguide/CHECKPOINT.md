@@ -3,9 +3,14 @@
 **Current work, 2026-10-21:** the maintainer selected the contributor-instruction
 portion of [#34](https://github.com/uibcdf/moli/issues/34). Central policy,
 root/starter/onboarding routes and owner-reviewed proposals for the five direct
-components are being prepared. See the [bounded adoption record](pending_proposals/human_facing_issue_feedback.md).
+components are prepared in [PR #72](https://github.com/uibcdf/moli/pull/72)
+and five checked local candidates with owner issues. Automatic approval review
+blocked external branch publication pending explicit user authorization;
+component PRs are not yet opened. See the [bounded adoption record](pending_proposals/human_facing_issue_feedback.md).
 Default-branch component adoption, the scientist-facing pilot and notifications
-must not be inferred from candidate checks. The older completion checkpoint
+must not be inferred from candidate checks. Central source governance passes;
+the hosted guide audit still finds all five previous default-branch copies.
+Keep integration pending coordinated owner acceptance. The older completion checkpoint
 below remains the evidence for #47 and the preceding work.
 
 **Refreshed on:** 2026-10-21 after the authorized #47 policy work and the earlier

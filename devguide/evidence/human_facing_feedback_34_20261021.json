@@ -1,0 +1,370 @@
+{
+  "schema": "moli.human-facing-feedback-adoption@1",
+  "date": "2026-10-21",
+  "owner": "uibcdf/moli#34",
+  "review_trigger": "after explicit external branch publication authorization, each owner acceptance, and final default-branch guide audit",
+  "central": {
+    "source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
+    "pull_request": "https://github.com/uibcdf/moli/pull/72",
+    "adoption": "PR open; main unchanged pending coordinated owner review",
+    "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c"
+  },
+  "advance_notices": [
+    "https://github.com/uibcdf/moli/issues/34#issuecomment-6324620641",
+    "https://github.com/uibcdf/molsyssuite/issues/65#issuecomment-6324622184"
+  ],
+  "delegated_suite": {
+    "issue": "https://github.com/uibcdf/molsyssuite/issues/65",
+    "receipt_source": "37401257a501b2ea09cc5482988d2468781a950f",
+    "new_member_changes_requested": false
+  },
+  "components": [
+    {
+      "repository": "uibcdf/sabueso",
+      "base": "5b468fab5ef209980847f2356621ced42cb5e1f5",
+      "original_agents_sha256": "2e5513df446dbdb93962d408e7e80224e7822cfa6607f3310ce0ab8310445f97",
+      "proposed_agents_sha256": "83a84a27e554dbc71518e95a99d97d9ed077aeff1ecdc12f368a8c351d4e7ae9",
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "nested_instructions_unchanged": true,
+      "adoption": "not adopted; owner issue open, PR not published",
+      "head": "5c329b6a265681d1fc0438adc5e8467b56de02e1",
+      "issue": "https://github.com/uibcdf/sabueso/issues/147",
+      "changed_files": [
+        "AGENTS.md",
+        "MOLI_GUIDE.md"
+      ],
+      "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
+      "patch_sha256": "b3808e16e52996936ce37bc3b5216801891edffb95a7aebbdecd3432403600d8",
+      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "local_checks": [
+        "component-native governance surface",
+        "MOLI shared component checker with canonical guide",
+        "git diff --check",
+        "existing instructions preserved by additive insertion; nested instructions unchanged"
+      ]
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "base": "c83e5920a316130836c6bc2d9b0a7bcb4cdf8d49",
+      "original_agents_sha256": "7c4c8b70e8e42bdf6359a2c06f201c4f3c185ff28ec4ec4c519fd075beee533a",
+      "proposed_agents_sha256": "457d3d81a562a97ccd3d065b2bb7b45106d089fc42b4d5bc9e9f9804072cc598",
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "nested_instructions_unchanged": true,
+      "adoption": "not adopted; owner issue open, PR not published",
+      "head": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
+      "issue": "https://github.com/uibcdf/praxis/issues/11",
+      "changed_files": [
+        "AGENTS.md",
+        "MOLI_GUIDE.md"
+      ],
+      "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
+      "patch_sha256": "98f00f68c2f7848f6c6ca5466b56cdc5711e2dd58977a57852ae0ebc15d1f0c9",
+      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "local_checks": [
+        "component-native governance surface",
+        "MOLI shared component checker with canonical guide",
+        "git diff --check",
+        "existing instructions preserved by additive insertion; nested instructions unchanged"
+      ]
+    },
+    {
+      "repository": "uibcdf/nextia",
+      "base": "62618bb6640dc505be8fb6c6ee4cfac0cd3c7782",
+      "original_agents_sha256": "2060ecf64da76c997d3c02103b2724e2aa5941bce32f5b6390cc065fe4374de6",
+      "proposed_agents_sha256": "49180d3b94fcb288d635a155cce052bef04f9ed7ed4ff1dafa564d5a8df87827",
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "nested_instructions_unchanged": true,
+      "adoption": "not adopted; owner issue open, PR not published",
+      "head": "32d12e20fae26f00a523d0ed4812e46def8a64e9",
+      "issue": "https://github.com/uibcdf/nextia/issues/3",
+      "changed_files": [
+        "AGENTS.md",
+        "MOLI_GUIDE.md"
+      ],
+      "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
+      "patch_sha256": "6799d9e91e121fd0a50ba2f9144965dbc10136b0fa17780aab88302bcd006c45",
+      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "local_checks": [
+        "component-native governance surface",
+        "MOLI shared component checker with canonical guide",
+        "git diff --check",
+        "existing instructions preserved by additive insertion; nested instructions unchanged"
+      ]
+    },
+    {
+      "repository": "uibcdf/moli-agent",
+      "base": "ff3fabe32dd85eafa2a8cd244767e1c8dcea9c68",
+      "original_agents_sha256": "2060ecf64da76c997d3c02103b2724e2aa5941bce32f5b6390cc065fe4374de6",
+      "proposed_agents_sha256": "49180d3b94fcb288d635a155cce052bef04f9ed7ed4ff1dafa564d5a8df87827",
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "nested_instructions_unchanged": true,
+      "adoption": "not adopted; owner issue open, PR not published",
+      "head": "08d0e2b809e7e5c46add5ee554ae9528831f7454",
+      "issue": "https://github.com/uibcdf/moli-agent/issues/2",
+      "changed_files": [
+        "AGENTS.md",
+        "MOLI_GUIDE.md"
+      ],
+      "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
+      "patch_sha256": "69b575637ba851ce1ddfa109cb8117c2bb4f19d36838d12ff52fca548e238106",
+      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "local_checks": [
+        "component-native governance surface",
+        "MOLI shared component checker with canonical guide",
+        "git diff --check",
+        "existing instructions preserved by additive insertion; nested instructions unchanged"
+      ]
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "base": "f156a1423d669f27b00703f5ce18fed3d6d2c275",
+      "original_agents_sha256": "6d636f8d821fc72aa3b132737d11e42a9f2884aac586dbc9d11961512dc3ccee",
+      "proposed_agents_sha256": "e7e3eeeb80d2668938b06cdadb3bc0053173bc80f6c83404624ab2cd7e83f14c",
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "nested_instructions_unchanged": true,
+      "adoption": "not adopted; owner issue open, PR not published",
+      "head": "b455ff5ec6fee206f8c077cbac45712f0b6c704b",
+      "issue": "https://github.com/uibcdf/recorda/issues/27",
+      "changed_files": [
+        "AGENTS.md",
+        "MOLI_GUIDE.md",
+        ".github/workflows/tests.yml"
+      ],
+      "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
+      "patch_sha256": "ed725dd3381f831af9a18d6749c1f1bfc52890cbe928dbda18d3a07b3c87784b",
+      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "local_checks": [
+        "component-native governance surface",
+        "MOLI shared component checker with canonical guide",
+        "git diff --check",
+        "existing instructions preserved by additive insertion; nested instructions unchanged"
+      ]
+    }
+  ],
+  "local_candidate_audit": {
+    "result": "pass",
+    "scope": "five isolated component candidates and proposed MOLI canonical guide; not default branches"
+  },
+  "runs": [
+    {
+      "url": "https://github.com/uibcdf/moli/actions/runs/39661670803",
+      "run_id": 39661670803,
+      "attempt": 1,
+      "event": "pull_request",
+      "head": "1131e16c42b339b28ef8feb987bca40b9f71e681",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "governance",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install governance inspection dependencies",
+              "conclusion": "success"
+            },
+            {
+              "name": "Validate MOLI governance",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check reserved archive tags",
+              "conclusion": "success"
+            },
+            {
+              "name": "Test governance contracts",
+              "conclusion": "success"
+            },
+            {
+              "name": "Retain administrative coverage XML",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "name": "Publish default-branch coverage",
+          "conclusion": "skipped",
+          "steps": []
+        }
+      ],
+      "capture": {
+        "receptor_version": "1.2.0",
+        "complete": true,
+        "members": [
+          {
+            "bytes": 13485,
+            "complete": true,
+            "kind": "github.workflow_run",
+            "path": "run.json",
+            "sha256": "9977728416c579bfa29e9c1dd2c2b0dda2630595dbb51467fa41af8649ba318c"
+          },
+          {
+            "bytes": 536,
+            "complete": true,
+            "kind": "github.workflow",
+            "path": "workflow.json",
+            "sha256": "628fbd7d1c483928b4aec4412d5a69eafcc3c68abd53a0fcc8b56daf14c0cbe2"
+          },
+          {
+            "bytes": 5056,
+            "complete": true,
+            "kind": "github.jobs",
+            "path": "jobs.json",
+            "sha256": "dac84768ec54f9d4e3b3feaa79d33162e167cbefdceea7c7387c5d1fb0eacaa7"
+          },
+          {
+            "bytes": 894,
+            "complete": true,
+            "kind": "github.artifacts",
+            "path": "artifacts.json",
+            "sha256": "fb2f380fae5df10033a5825e4a2d920dc944d1190755e748344863457d4a3ca7"
+          },
+          {
+            "bytes": 10112,
+            "complete": true,
+            "kind": "github.check_runs",
+            "path": "checks.json",
+            "sha256": "4327b9a3b0619c89ddf3410b82018daa642f5dc8cdeadb4efbdadddeac6b5505"
+          },
+          {
+            "bytes": 20033,
+            "complete": true,
+            "kind": "github.logs",
+            "path": "logs.zip",
+            "sha256": "645abb03d93b886fab55ad0d2f45f15f58d5b82375df9c6b596da50c02dc7078"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://github.com/uibcdf/moli/actions/runs/39661609436",
+      "run_id": 39661609436,
+      "attempt": 1,
+      "event": "push",
+      "head": "1131e16c42b339b28ef8feb987bca40b9f71e681",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "name": "check",
+          "conclusion": "failure",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out MOLI governance",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out directly governed components",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check canonical guide copies and agent routes",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Post Check out MOLI governance",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "capture": {
+        "receptor_version": "1.2.0",
+        "complete": true,
+        "members": [
+          {
+            "bytes": 13502,
+            "complete": true,
+            "kind": "github.workflow_run",
+            "path": "run.json",
+            "sha256": "ec35f787677dd0540918cbc947ec388775fd8668b8ae9c8d7c6d34b67daecfb7"
+          },
+          {
+            "bytes": 580,
+            "complete": true,
+            "kind": "github.workflow",
+            "path": "workflow.json",
+            "sha256": "0a8d478d0426db44a4d9e879341343074524305983d9906c87e3cd76a3938d9e"
+          },
+          {
+            "bytes": 2703,
+            "complete": true,
+            "kind": "github.jobs",
+            "path": "jobs.json",
+            "sha256": "ef9ee6a54c861ff5f2e35659315add1a2ffaf6d9d424bd079a513ebdf8a3b25d"
+          },
+          {
+            "bytes": 42,
+            "complete": true,
+            "kind": "github.artifacts",
+            "path": "artifacts.json",
+            "sha256": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490"
+          },
+          {
+            "bytes": 5063,
+            "complete": true,
+            "kind": "github.check_runs",
+            "path": "checks.json",
+            "sha256": "00967561ee2bd724d2818e72685e371c7a455c54f7c3286ec094a490ca2a006c"
+          },
+          {
+            "bytes": 8752,
+            "complete": true,
+            "kind": "github.logs",
+            "path": "logs.zip",
+            "sha256": "21193c7616888e679d5c73561455dcb6e01b9515ab05b29a34f4ca5bb736a9c7"
+          }
+        ]
+      }
+    }
+  ],
+  "publication_block": {
+    "action": "push candidate branches to five external component repositories",
+    "status": "rejected by automatic approval review; explicit user authorization requested after concrete preparation",
+    "external_branches_pushed": false,
+    "external_pull_requests_opened": false
+  },
+  "remaining": [
+    "external publication authorization",
+    "owner-local PR review and acceptance",
+    "central PR integration coordinated with component guide delivery",
+    "exact final head applicable CI and current default-branch full guide audit",
+    "scientist-facing pilot, coding-agent handoff and opt-in verified-usable-fix return path"
+  ],
+  "temporary_resources": {
+    "disposable": "published inspection wheel, extraction, cache and full captures removed after normalization and final inspection",
+    "retained": "isolated component clones with local commits and five format-patches",
+    "retained_owner": "MOLI #34 contributor instruction task",
+    "review_trigger": "publication authorization decision; remove disposable clones/patches after delivery or explicit abandonment"
+  }
+}
