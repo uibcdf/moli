@@ -6,8 +6,172 @@
   "central": {
     "source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
     "pull_request": "https://github.com/uibcdf/moli/pull/72",
-    "adoption": "implementation commits integrated on local main by approved fast-forward; direct publication and default-branch verification follow",
-    "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c"
+    "adoption": "published on main; implementation governance, coverage publication and full current-default-branch guide audit pass",
+    "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+    "implementation_head": "80e7e00396321cd578e2be30e4a68fb2948f3468",
+    "pull_request_disposition": "automatically recognized as integrated after authorized direct push",
+    "published_validation": [
+      {
+        "url": "https://github.com/uibcdf/moli/actions/runs/39663979062",
+        "run_id": 39663979062,
+        "attempt": 1,
+        "head": "80e7e00396321cd578e2be30e4a68fb2948f3468",
+        "event": "push",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "name": "governance",
+            "conclusion": "success",
+            "steps": [
+              {
+                "name": "Set up job",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@v4",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/setup-python@v5",
+                "conclusion": "success"
+              },
+              {
+                "name": "Install governance inspection dependencies",
+                "conclusion": "success"
+              },
+              {
+                "name": "Validate MOLI governance",
+                "conclusion": "success"
+              },
+              {
+                "name": "Check reserved archive tags",
+                "conclusion": "success"
+              },
+              {
+                "name": "Test governance contracts",
+                "conclusion": "success"
+              },
+              {
+                "name": "Retain administrative coverage XML",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/setup-python@v5",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/checkout@v4",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "conclusion": "success"
+              }
+            ]
+          },
+          {
+            "name": "Publish default-branch coverage",
+            "conclusion": "success",
+            "steps": [
+              {
+                "name": "Set up job",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/checkout@v4",
+                "conclusion": "success"
+              },
+              {
+                "name": "Run actions/download-artifact@v4",
+                "conclusion": "success"
+              },
+              {
+                "name": "Upload the measured report to Codecov",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Run actions/checkout@v4",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "conclusion": "success"
+              }
+            ]
+          }
+        ],
+        "capture": {
+          "published_receptor": "1.2.0",
+          "complete": true,
+          "all_member_hashes_verified": true,
+          "manifest_sha256": "0b98b38672b111f210148b48ece855d3d80de133965f2f360ba2048acfcba5b3",
+          "members_sha256": {
+            "run.json": "8025a7c10e97f9d59d173560146172ee7e0341c670b315612fdfd2966bcec7c2",
+            "workflow.json": "628fbd7d1c483928b4aec4412d5a69eafcc3c68abd53a0fcc8b56daf14c0cbe2",
+            "jobs.json": "afdc6be9dc0e1ef6bab37510d36c8d22c01572d379bc5e3c6dac877ebae1dfaf",
+            "artifacts.json": "57847f8141d93ff4e87606d820a766f76ff7614dba804da8e2ded5d62690e722",
+            "checks.json": "f845ec9a4da2ef8fac94017f642cb59f1efb660ce0a2bed431268d239fc59adf",
+            "logs.zip": "25491eeaa863dcf6920e06a7f749b60cc53391e11879356dfe59944b1a978f5b"
+          }
+        }
+      },
+      {
+        "url": "https://github.com/uibcdf/moli/actions/runs/39663979006",
+        "run_id": 39663979006,
+        "attempt": 1,
+        "head": "80e7e00396321cd578e2be30e4a68fb2948f3468",
+        "event": "push",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "name": "check",
+            "conclusion": "success",
+            "steps": [
+              {
+                "name": "Set up job",
+                "conclusion": "success"
+              },
+              {
+                "name": "Check out MOLI governance",
+                "conclusion": "success"
+              },
+              {
+                "name": "Check out directly governed components",
+                "conclusion": "success"
+              },
+              {
+                "name": "Check canonical guide copies and agent routes",
+                "conclusion": "success"
+              },
+              {
+                "name": "Post Check out MOLI governance",
+                "conclusion": "success"
+              },
+              {
+                "name": "Complete job",
+                "conclusion": "success"
+              }
+            ]
+          }
+        ],
+        "capture": {
+          "published_receptor": "1.2.0",
+          "complete": true,
+          "all_member_hashes_verified": true,
+          "manifest_sha256": "8bc8aedc63f67b5871afc8c75c0ae40819d5956f8cae9df3d5ff4b3841fa2912",
+          "members_sha256": {
+            "run.json": "092de3b4c35876422e00e5ddd6831173b4759c819fb9ed6e77d299538cb5418f",
+            "workflow.json": "0a8d478d0426db44a4d9e879341343074524305983d9906c87e3cd76a3938d9e",
+            "jobs.json": "0af03af8e45d2f6153798f61a9af7dd45ca48f87d2894c57a97419e148c8c601",
+            "artifacts.json": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490",
+            "checks.json": "c28aab95db47e72aa631d208223eab1d608fff63da55d35085b30ba81e3229d2",
+            "logs.zip": "2050d100a6b479dc621ceb9781eaaee6362346c649e5a8d853a86e39636f4fc1"
+          }
+        }
+      }
+    ],
+    "administrative_tests": 54,
+    "final_documentation_head_validation": "recorded in the owning issue after this receipt is committed; instructions and canonical guide unchanged by the closeout"
   },
   "advance_notices": [
     "https://github.com/uibcdf/moli/issues/34#issuecomment-6324620641",
@@ -26,7 +190,7 @@
       "proposed_agents_sha256": "83a84a27e554dbc71518e95a99d97d9ed077aeff1ecdc12f368a8c351d4e7ae9",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "source delivered; native administrative verification pending",
+      "adoption": "accepted and verified on main; native administrative gate passes",
       "head": "e6c1cff640887c9cf7d3b459a68bb68233292e95",
       "issue": "https://github.com/uibcdf/sabueso/issues/147",
       "changed_files": [
@@ -44,7 +208,36 @@
       ],
       "prepared_base": "5b468fab5ef209980847f2356621ced42cb5e1f5",
       "prepared_head": "5c329b6a265681d1fc0438adc5e8467b56de02e1",
-      "rebase_reason": "Preserve separately published saved-consumer review documentation on current main; governed files unchanged by that advance."
+      "rebase_reason": "Preserve separately published saved-consumer review documentation on current main; governed files unchanged by that advance.",
+      "remote_main_verified": "e6c1cff640887c9cf7d3b459a68bb68233292e95",
+      "native_administrative": {
+        "url": "https://github.com/uibcdf/sabueso/actions/runs/39663832691",
+        "run_id": 39663832691,
+        "attempt": 1,
+        "head": "e6c1cff640887c9cf7d3b459a68bb68233292e95",
+        "event": "push",
+        "run_conclusion": "success",
+        "job": "governance",
+        "job_conclusion": "success",
+        "required_step": "Validate local MOLI governance surface",
+        "required_step_conclusion": "success",
+        "log_result_verified": true,
+        "capture": {
+          "published_receptor": "1.2.0",
+          "complete": true,
+          "all_member_hashes_verified": true,
+          "manifest_sha256": "5e79188f897660bc406c6227809517b7fa4c1b7185056c508fd799a9029148c7",
+          "members_sha256": {
+            "run.json": "42ca418ba23db3bd3066fb7ec4d11ec7b2efa048fbf8362a6c4efad8340e145f",
+            "workflow.json": "1ff0197384483022bec8c1c0767e39ba0281dbcb7282700eb85cf7902a07b8fe",
+            "jobs.json": "5c6513e6573983198e0bdd5aa0f3d5ce7577bc2965138e9153e960faa94e8abd",
+            "artifacts.json": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490",
+            "checks.json": "ab71d1911d05c1ecfc4d851b0bb9bf0b56d0848304e2b13308718434c4a3ed27",
+            "logs.zip": "080ac76d5957824f1d0bef78cd693ac5eff3c0257ec582d1e8b592f4b40cac83"
+          }
+        }
+      },
+      "owner_issue_state": "closed/completed after principal-developer acceptance and native administrative verification"
     },
     {
       "repository": "uibcdf/praxis",
@@ -53,7 +246,7 @@
       "proposed_agents_sha256": "457d3d81a562a97ccd3d065b2bb7b45106d089fc42b4d5bc9e9f9804072cc598",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "source delivered; native administrative verification pending",
+      "adoption": "accepted and verified on main; native administrative gate passes",
       "head": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
       "issue": "https://github.com/uibcdf/praxis/issues/11",
       "changed_files": [
@@ -68,7 +261,36 @@
         "MOLI shared component checker with canonical guide",
         "git diff --check",
         "existing instructions preserved by additive insertion; nested instructions unchanged"
-      ]
+      ],
+      "remote_main_verified": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
+      "native_administrative": {
+        "url": "https://github.com/uibcdf/praxis/actions/runs/39663837727",
+        "run_id": 39663837727,
+        "attempt": 1,
+        "head": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
+        "event": "push",
+        "run_conclusion": "success",
+        "job": "governance",
+        "job_conclusion": "success",
+        "required_step": "Validate local MOLI governance surface",
+        "required_step_conclusion": "success",
+        "log_result_verified": true,
+        "capture": {
+          "published_receptor": "1.2.0",
+          "complete": true,
+          "all_member_hashes_verified": true,
+          "manifest_sha256": "52a71419d8b58b61e1fc4ab119387ce75ce1ab55fe7f9283f652b95b3cd72388",
+          "members_sha256": {
+            "run.json": "50df2d170d67e4d9d1342a55d81680a01232a780f0c1fd5c90d8a7e98ef611b5",
+            "workflow.json": "10df7736242211913ad75d4c09d56993f47dbf40fbab1fadbe5deb0451026964",
+            "jobs.json": "8f61c303988b3e62a4c11c0f2ef0b5a4f2cef3c7363e8ce2ae4b171e62902b3d",
+            "artifacts.json": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490",
+            "checks.json": "77aa07a3f825da7be499a0c6fedaeaea634f197d743d7e9814a168a6e7f2973e",
+            "logs.zip": "73d8a153a595e69a8bb66b82ad257273d0d1dbdddd4283c130e177cfad19be10"
+          }
+        }
+      },
+      "owner_issue_state": "closed/completed after principal-developer acceptance and native administrative verification"
     },
     {
       "repository": "uibcdf/nextia",
@@ -77,7 +299,7 @@
       "proposed_agents_sha256": "49180d3b94fcb288d635a155cce052bef04f9ed7ed4ff1dafa564d5a8df87827",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "source delivered; native administrative verification pending",
+      "adoption": "accepted and verified on main; native administrative gate passes",
       "head": "32d12e20fae26f00a523d0ed4812e46def8a64e9",
       "issue": "https://github.com/uibcdf/nextia/issues/3",
       "changed_files": [
@@ -92,7 +314,36 @@
         "MOLI shared component checker with canonical guide",
         "git diff --check",
         "existing instructions preserved by additive insertion; nested instructions unchanged"
-      ]
+      ],
+      "remote_main_verified": "32d12e20fae26f00a523d0ed4812e46def8a64e9",
+      "native_administrative": {
+        "url": "https://github.com/uibcdf/nextia/actions/runs/39663842957",
+        "run_id": 39663842957,
+        "attempt": 1,
+        "head": "32d12e20fae26f00a523d0ed4812e46def8a64e9",
+        "event": "push",
+        "run_conclusion": "success",
+        "job": "governance",
+        "job_conclusion": "success",
+        "required_step": "Validate local MOLI governance surface",
+        "required_step_conclusion": "success",
+        "log_result_verified": true,
+        "capture": {
+          "published_receptor": "1.2.0",
+          "complete": true,
+          "all_member_hashes_verified": true,
+          "manifest_sha256": "dfc6d6e4bc50bbb8d7d0a785b9b9f72c7a780ab2c0fe32642bda73a828377934",
+          "members_sha256": {
+            "run.json": "6a96cfece29dd2125daf7b8dded6f9cbcb8874ef83558e34fd92171264f2ec9d",
+            "workflow.json": "84096bb49164b3baa40d773a4be772119f6b21252976011386754160e3899eea",
+            "jobs.json": "706b691c3583ccee82368507fb58f094e8f38c8e7d4284df06fbbbd2f716d478",
+            "artifacts.json": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490",
+            "checks.json": "05568425d18ba5589b4f8ea22376f7d8cd9b667c9a1cede2044c61e0094e101e",
+            "logs.zip": "ef6b1aee1fa5fda57919496b318dd13e19755788d96d40255a308dcb120cb175"
+          }
+        }
+      },
+      "owner_issue_state": "closed/completed after principal-developer acceptance and native administrative verification"
     },
     {
       "repository": "uibcdf/moli-agent",
@@ -101,7 +352,7 @@
       "proposed_agents_sha256": "49180d3b94fcb288d635a155cce052bef04f9ed7ed4ff1dafa564d5a8df87827",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "source delivered; native administrative verification pending",
+      "adoption": "accepted and verified on main; native administrative gate passes",
       "head": "08d0e2b809e7e5c46add5ee554ae9528831f7454",
       "issue": "https://github.com/uibcdf/moli-agent/issues/2",
       "changed_files": [
@@ -116,7 +367,36 @@
         "MOLI shared component checker with canonical guide",
         "git diff --check",
         "existing instructions preserved by additive insertion; nested instructions unchanged"
-      ]
+      ],
+      "remote_main_verified": "08d0e2b809e7e5c46add5ee554ae9528831f7454",
+      "native_administrative": {
+        "url": "https://github.com/uibcdf/moli-agent/actions/runs/39663849172",
+        "run_id": 39663849172,
+        "attempt": 1,
+        "head": "08d0e2b809e7e5c46add5ee554ae9528831f7454",
+        "event": "push",
+        "run_conclusion": "success",
+        "job": "governance",
+        "job_conclusion": "success",
+        "required_step": "Validate local MOLI governance surface",
+        "required_step_conclusion": "success",
+        "log_result_verified": true,
+        "capture": {
+          "published_receptor": "1.2.0",
+          "complete": true,
+          "all_member_hashes_verified": true,
+          "manifest_sha256": "f285b911f5160462783f0ac97a972b2848155af3d097cac3207a34da1ac54b98",
+          "members_sha256": {
+            "run.json": "6f4985a9f406481e8c5857600914570c22fad0c2303c1eb0b3ee749b8251d5c2",
+            "workflow.json": "0166f000cf7967dac8aa33c82aeea313a66213470537a7cec50feeddf3a31422",
+            "jobs.json": "757832c5d223dbe042cbbaf8a4057f66e3a145205eb39ded513e7b12c3176e2c",
+            "artifacts.json": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490",
+            "checks.json": "fb4cc6e79055aa8d28d5ec0a5f28daede04011690590071c78a50b66767dfb19",
+            "logs.zip": "de4c8aa0f082153995b0932084045906b1172776fee2ad01364e38a5e1e700e3"
+          }
+        }
+      },
+      "owner_issue_state": "closed/completed after principal-developer acceptance and native administrative verification"
     },
     {
       "repository": "uibcdf/recorda",
@@ -125,7 +405,7 @@
       "proposed_agents_sha256": "e7e3eeeb80d2668938b06cdadb3bc0053173bc80f6c83404624ab2cd7e83f14c",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "source delivered; native administrative verification pending",
+      "adoption": "accepted and verified on main; native administrative quality gate passes",
       "head": "b455ff5ec6fee206f8c077cbac45712f0b6c704b",
       "issue": "https://github.com/uibcdf/recorda/issues/27",
       "changed_files": [
@@ -140,8 +420,50 @@
         "component-native governance surface",
         "MOLI shared component checker with canonical guide",
         "git diff --check",
-        "existing instructions preserved by additive insertion; nested instructions unchanged"
-      ]
+        "existing instructions preserved by additive insertion; nested instructions unchanged",
+        "dependency preflight",
+        "ruff check .",
+        "ruff format --check ."
+      ],
+      "remote_main_verified": "b455ff5ec6fee206f8c077cbac45712f0b6c704b",
+      "native_administrative": {
+        "url": "https://github.com/uibcdf/recorda/actions/runs/39663852969/job/119443576809",
+        "run_id": 39663852969,
+        "job_id": 119443576809,
+        "head": "b455ff5ec6fee206f8c077cbac45712f0b6c704b",
+        "job": "quality",
+        "job_conclusion": "success",
+        "required_steps": [
+          "Run python devtools/check_dependencies.py",
+          "Run python devtools/validate_governance.py",
+          "Run ruff check .",
+          "Run ruff format --check .",
+          "Check out the reviewed MOLI governance core",
+          "Check shared MOLI governance core"
+        ],
+        "required_steps_executed_successfully": true,
+        "scope": "administrative quality job only; whole runtime workflow has separate pending jobs",
+        "receptor_capture": {
+          "published_receptor": "1.2.0",
+          "complete": false,
+          "all_available_member_hashes_verified": true,
+          "manifest_sha256": "353b3fc21268465149de8870b73746b197fd212feec743828d834323245d5a4d",
+          "members_sha256": {
+            "run.json": "188464a68b927a9ee3247e90e5edb85d80b009cac5b7a0c5aa56edb743d5695d",
+            "workflow.json": "91d40764029b78a61ff11aa586c75dc807edeb1a5b0536ee266955268cb6b7a6",
+            "jobs.json": "0804a5f70d59fe3739592485e0350eb01240b6692898cad80043d1ff323fa0b9",
+            "artifacts.json": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490",
+            "checks.json": "d9a074bbcff9c05bb56ff16b52ffa0b058e617f977df35661d3b3f24da3e3822"
+          }
+        },
+        "native_fallback": {
+          "reason": "whole workflow still has pending jobs, so receptor full capture is incomplete",
+          "job_snapshot_sha256": "33f5425d327a6c5e3a8fb7e5da5f282b9ad63b22e63a44713e88354afc581591",
+          "completed_job_log_sha256": "d0ad083b532677fa093935096411fc78a7752edbf4ff9948b449a67b34e84b8c",
+          "canonical_pin_and_required_result_messages_verified": true
+        }
+      },
+      "owner_issue_state": "closed/completed after principal-developer acceptance and native administrative verification"
     }
   ],
   "local_candidate_audit": {
@@ -359,14 +681,14 @@
     "external_push_route": "ordinary fast-forward HEAD:refs/heads/main"
   },
   "remaining": [
-    "exact published-head applicable native administrative checks",
-    "current-default-branch full guide audit and central governance/coverage after main push",
-    "scientist-facing pilot, coding-agent handoff and opt-in verified-usable-fix return path"
+    "scientist-facing pilot with editable privacy-reviewed and deduplicated issue proposals, safe project linkage and coding-agent handoff",
+    "opt-in notification and retry only after verified project-compatible availability"
   ],
   "temporary_resources": {
     "owner": "MOLI #34 contributor instruction task",
-    "status": "active for exact-head verification; retire disposable clones, patches and inspection captures after durable closeout",
-    "review_trigger": "all applicable published-head checks and final handoffs complete"
+    "retirement_trigger": "after final documentation-head CI and final issue handoffs",
+    "disposition_route": "owning MOLI issue records final removal of isolated clones, patches, downloaded tool and inspection captures",
+    "retained_repository_evidence": "this normalized receipt with immutable sources, checked digests and native run/job links; review if the policy or guide changes"
   },
   "direct_push_authorization": {
     "principal_developer": "Diego",

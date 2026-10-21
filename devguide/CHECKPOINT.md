@@ -1,22 +1,9 @@
 # MOLI development checkpoint
 
-**Current work, 2026-10-21:** the maintainer selected the contributor-instruction
-portion of [#34](https://github.com/uibcdf/moli/issues/34). Central policy,
-root/starter/onboarding routes and owner-reviewed proposals for the five direct
-components are prepared in [PR #72](https://github.com/uibcdf/moli/pull/72)
-and five checked direct-component commits with owner issues. Diego explicitly
-authorized direct pushes instead of PRs, resolving the earlier publication
-block; all five commits are now on their main branches. See the [bounded adoption record](pending_proposals/human_facing_issue_feedback.md).
-Default-branch component adoption, the scientist-facing pilot and notifications
-must not be inferred from candidate checks. Central source governance passes;
-the initial hosted guide audit found the previous copies before delivery.
-Published-head administrative checks and the final full audit are in progress.
-The older completion checkpoint
-below remains the evidence for #47 and the preceding work.
-
-**Refreshed on:** 2026-10-21 after the authorized #47 policy work and the earlier
-review/integration of PRs #65, #66 and #67. **Integrated MOLI `main`:**
-[`54840cd`](https://github.com/uibcdf/moli/commit/54840cdf96aade08a31cec8ffe38e61674e05e52).
+**Refreshed on:** 2026-10-21 after the authorized contributor-instruction step
+of [#34](https://github.com/uibcdf/moli/issues/34), #47 and the earlier
+review/integration of PRs #65, #66 and #67. **Integrated implementation on MOLI `main`:**
+[`80e7e00`](https://github.com/uibcdf/moli/commit/80e7e00396321cd578e2be30e4a68fb2948f3468).
 The primary checkout was synchronized and clean at that implementation checkpoint;
 this later documentation refresh records its evidence separately.
 This page is a dated navigation aid. Recheck the live [MOLI issue board](https://github.com/uibcdf/moli/issues),
@@ -42,6 +29,20 @@ the same state.
 
 ## Last completed MOLI work
 
+- **Contributor-instruction portion of [#34](https://github.com/uibcdf/moli/issues/34):**
+  central reporting policy, root/starter/onboarding routes and all five direct
+  component guide/root deliveries are on main under Diego's explicit direct-push
+  authorization. The five bounded owner issues are closed with exact-head
+  administrative evidence. Central [governance/coverage](https://github.com/uibcdf/moli/actions/runs/39663979062)
+  passes all 54 tests and the [full guide audit](https://github.com/uibcdf/moli/actions/runs/39663979006)
+  passes against actual component default branches. See the
+  [partial issue record](pending_proposals/human_facing_issue_feedback.md) and
+  [delivery receipt](evidence/human_facing_feedback_34_20261021.json).
+  GitHub automatically recognized PR #72 as integrated after the direct push;
+  no component PRs were needed. The scientist-facing pilot, project linkage,
+  coding-agent handoff and opt-in verified-fix return remain open in #34 and
+  suite #65. Final documentation-head CI and resource retirement are recorded
+  in #34's closing work comment, not inferred from this implementation checkpoint.
 - [#47](https://github.com/uibcdf/moli/issues/47), delivered through
   [PR #70](https://github.com/uibcdf/moli/pull/70): optional `archive/` refs preserve
   reviewed commits without public-release meaning. The native gate checks both
@@ -141,6 +142,6 @@ the same state.
 
 The three-PR review and #47 policy decision are complete. Archive-tag activation
 remains an owner-local future choice, with the separate Action applicability
-notices and independent MolSysSuite rule retained. #34 has a separable contributor
-instruction step, while its scientist-facing pilot and notifications remain
-pending. The contributor-instruction step is now active under the update above.
+notices and independent MolSysSuite rule retained. #34's contributor-instruction
+step is complete; its scientist-facing pilot and notifications remain pending.
+No additional issue implementation has started as part of this checkpoint.

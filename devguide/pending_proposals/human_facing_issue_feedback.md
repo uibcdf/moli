@@ -54,26 +54,41 @@ records immutable bases/heads, guide and patch digests, owner-local issues and
 applicable checks. [MOLI PR #72](https://github.com/uibcdf/moli/pull/72) was the
 initial review surface, with canonical source
 `1131e16c42b339b28ef8feb987bca40b9f71e681`; its implementation commits are now
-integrated on local main for authorized direct publication. All five component
-commits below were pushed normally to main, with native administrative
-verification pending. Sabueso was rebased onto a separately published
+on MOLI main at `80e7e00396321cd578e2be30e4a68fb2948f3468`, and GitHub
+automatically recognized the PR as integrated. All five component commits
+below were pushed normally to main and pass their native administrative
+gates. The five owner issues are closed/completed. Sabueso was rebased onto a separately published
 documentation advance without changing that work or the prepared guide/rule.
 
 | Repository | Owner-local issue | Delivery state |
 | --- | --- | --- |
-| Sabueso | [#147](https://github.com/uibcdf/sabueso/issues/147) | Main [e6c1cff](https://github.com/uibcdf/sabueso/commit/e6c1cff640887c9cf7d3b459a68bb68233292e95); native checks pending. |
-| Praxis | [#11](https://github.com/uibcdf/praxis/issues/11) | Main [55b7d6d](https://github.com/uibcdf/praxis/commit/55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512); native checks pending. |
-| Nextia | [#3](https://github.com/uibcdf/nextia/issues/3) | Main [32d12e2](https://github.com/uibcdf/nextia/commit/32d12e20fae26f00a523d0ed4812e46def8a64e9); native checks pending. |
-| MOLI Agent | [#2](https://github.com/uibcdf/moli-agent/issues/2) | Main [08d0e2b](https://github.com/uibcdf/moli-agent/commit/08d0e2b809e7e5c46add5ee554ae9528831f7454); native checks pending. |
-| Recorda | [#27](https://github.com/uibcdf/recorda/issues/27) | Main [b455ff5](https://github.com/uibcdf/recorda/commit/b455ff5ec6fee206f8c077cbac45712f0b6c704b), including matching CI pin; native checks pending. |
+| Sabueso | [#147](https://github.com/uibcdf/sabueso/issues/147) | Main [e6c1cff](https://github.com/uibcdf/sabueso/commit/e6c1cff640887c9cf7d3b459a68bb68233292e95); [native governance passes](https://github.com/uibcdf/sabueso/actions/runs/39663832691). |
+| Praxis | [#11](https://github.com/uibcdf/praxis/issues/11) | Main [55b7d6d](https://github.com/uibcdf/praxis/commit/55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512); [native governance passes](https://github.com/uibcdf/praxis/actions/runs/39663837727). |
+| Nextia | [#3](https://github.com/uibcdf/nextia/issues/3) | Main [32d12e2](https://github.com/uibcdf/nextia/commit/32d12e20fae26f00a523d0ed4812e46def8a64e9); [native governance passes](https://github.com/uibcdf/nextia/actions/runs/39663842957). |
+| MOLI Agent | [#2](https://github.com/uibcdf/moli-agent/issues/2) | Main [08d0e2b](https://github.com/uibcdf/moli-agent/commit/08d0e2b809e7e5c46add5ee554ae9528831f7454); [native governance passes](https://github.com/uibcdf/moli-agent/actions/runs/39663849172). |
+| Recorda | [#27](https://github.com/uibcdf/recorda/issues/27) | Main [b455ff5](https://github.com/uibcdf/recorda/commit/b455ff5ec6fee206f8c077cbac45712f0b6c704b), including matching CI pin; [native quality passes](https://github.com/uibcdf/recorda/actions/runs/39663852969/job/119443576809). |
 
 The source-head [governance run](https://github.com/uibcdf/moli/actions/runs/39661670803)
 passes all 54 administrative tests and its executed governance/archive-tag
 steps. Default-branch coverage publication is inapplicable to that PR event.
 The initial [hosted guide audit](https://github.com/uibcdf/moli/actions/runs/39661609436)
 failed specifically on the five previous default-branch guide copies before
-delivery; the combined local candidate audit passed. Verify the new actual
-default branches and full hosted guide audit before declaring rollout complete.
+delivery; the combined local candidate audit passed. After delivery, freshly
+fetched main branches have the exact canonical guide and preserved original
+root/nested instructions. The implementation-head
+[main governance and coverage](https://github.com/uibcdf/moli/actions/runs/39663979062)
+passes all 54 tests and its mandatory executed steps. The final
+[full hosted guide audit](https://github.com/uibcdf/moli/actions/runs/39663979006)
+passes against all five actual component default branches. All complete
+captures have their member digests checked. Recorda's whole-workflow capture
+is incomplete while separate runtime jobs await execution; its completed
+administrative job and logs were checked through native GitHub APIs, including
+the reviewed-core checkout and exact-guide check. Other component runtime CI
+retains its own scope and conclusions. The instruction rollout is complete;
+no scientific or installed-package qualification is inferred.
+
+The final documentation-head governance and temporary-resource retirement
+are recorded in the owning #34 closeout comment after this receipt is committed.
 Associated infrastructure is outside this five-component rollout; separately
 assess any linked guide obligation without claiming it adopted here.
 
