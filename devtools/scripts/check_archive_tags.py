@@ -46,7 +46,7 @@ def is_archive_tag(name: str) -> bool:
     )
 
 
-def read_workflow(path: Path) -> dict:
+def workflow_from_text(source: str) -> dict:
     """Keep event names as strings and refuse ambiguous duplicate YAML keys."""
     import yaml
 
@@ -64,12 +64,16 @@ def read_workflow(path: Path) -> dict:
 
     WorkflowLoader.add_constructor("tag:yaml.org,2002:map", mapping)
     try:
-        result = yaml.load(path.read_text(encoding="utf-8"), Loader=WorkflowLoader)
+        result = yaml.load(source, Loader=WorkflowLoader)
     except yaml.YAMLError as error:
         raise ValueError("workflow YAML is invalid") from error
     if not isinstance(result, dict):
         raise ValueError("workflow must be a mapping")
     return result
+
+
+def read_workflow(path: Path) -> dict:
+    return workflow_from_text(path.read_text(encoding="utf-8"))
 
 
 def workflow_reasons(
@@ -176,6 +180,22 @@ def preservation_reasons(root: Path) -> list[str]:
         except subprocess.CalledProcessError:
             errors.append(f"{name}: archive tag must preserve a commit")
             continue
+        # The tag-push workflow comes from the historical ref, not today's main.
+        try:
+            target_workflow = workflow_from_text(
+                _git(root, "show", f"{ref}:.github/workflows/validate_governance.yml")
+            )
+            target_errors = workflow_reasons(
+                target_workflow, "governance", command=COMMAND
+            )
+            _git(
+                root, "cat-file", "-e", f"{ref}:devtools/scripts/check_archive_tags.py"
+            )
+        except (subprocess.CalledProcessError, ValueError):
+            target_errors = [
+                "historical target lacks the native archive workflow/implementation"
+            ]
+        errors.extend(f"{name}: target workflow: {reason}" for reason in target_errors)
         record = records.get(name)
         if record is not None:
             if not isinstance(record, dict) or not all(

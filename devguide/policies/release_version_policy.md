@@ -102,7 +102,9 @@ MOLI's own read-only gate is
 `python devtools/scripts/check_archive_tags.py .`. It uses PyYAML 6.0.3, preserves
 the string `on` key, rejects ambiguous YAML and checks the actual all-tag job and
 command. It inspects available archive refs without writing them, requires a
-commit target and rejects archive names in literal project versions. Fetch all
+commit target, inspects that target's historical workflow and native script,
+and rejects archive names in literal project versions. An unqualified old
+workflow is reported even when the current checkout has a capable gate. Fetch all
 tags before using it. Its reusable workflow helper accepts only the exact
 reviewed full-commit caller supplied by the owner; matching a pin does not prove
 that the named implementation is capable.

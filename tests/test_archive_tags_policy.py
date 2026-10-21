@@ -41,7 +41,16 @@ class ArchiveTagPolicyTests(unittest.TestCase):
     def repository(self, root):
         self.git(root, "init", "--initial-branch=main")
         (root / "content").write_text("historical fixture\n")
-        self.git(root, "add", "content")
+        workflow = root / ".github/workflows/validate_governance.yml"
+        workflow.parent.mkdir(parents=True)
+        # JSON is valid YAML and preserves the exact native event/step shapes.
+        workflow.write_text(json.dumps(self.workflow()))
+        script = root / "devtools/scripts/check_archive_tags.py"
+        script.parent.mkdir(parents=True)
+        script.write_bytes(
+            (ROOT / "devtools/scripts/check_archive_tags.py").read_bytes()
+        )
+        self.git(root, "add", ".")
         self.git(
             root,
             "-c",
@@ -52,10 +61,6 @@ class ArchiveTagPolicyTests(unittest.TestCase):
             "-m",
             "Preserved experiment",
         )
-        workflow = root / ".github/workflows/validate_governance.yml"
-        workflow.parent.mkdir(parents=True)
-        # JSON is valid YAML and preserves the exact native event/step shapes.
-        workflow.write_text(json.dumps(self.workflow()))
 
     def annotated_tag(
         self, root, message="Owner: fixture\nPurpose: preserve experiment"
@@ -230,6 +235,44 @@ class ArchiveTagPolicyTests(unittest.TestCase):
                     for reason in preservation_reasons(root)
                 )
             )
+
+    def test_updating_main_cannot_retrofit_an_old_targets_gate(self):
+        for absent_script in (False, True):
+            with (
+                self.subTest(absent_script=absent_script),
+                tempfile.TemporaryDirectory() as temporary,
+            ):
+                root = Path(temporary)
+                self.repository(root)
+                workflow = root / ".github/workflows/validate_governance.yml"
+                script = root / "devtools/scripts/check_archive_tags.py"
+                if absent_script:
+                    script.unlink()
+                else:
+                    old = self.workflow()
+                    old["on"]["push"]["tags"] = ["*"]
+                    workflow.write_text(json.dumps(old))
+                self.git(root, "add", ".")
+                self.git(
+                    root,
+                    "-c",
+                    "user.name=Fixture",
+                    "-c",
+                    "user.email=fixture@example.invalid",
+                    "commit",
+                    "-m",
+                    "Old gate",
+                )
+                self.annotated_tag(root)
+                before = self.git(root, "show-ref", "--tags")
+                workflow.write_text(json.dumps(self.workflow()))
+                script.write_bytes(
+                    (ROOT / "devtools/scripts/check_archive_tags.py").read_bytes()
+                )
+                self.assertTrue(
+                    any("target workflow" in reason for reason in check(root))
+                )
+                self.assertEqual(self.git(root, "show-ref", "--tags"), before)
 
     def test_moli_gate_configuration_is_checked_by_the_real_reader(self):
         self.assertEqual(

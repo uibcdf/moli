@@ -70,6 +70,13 @@ targets, checks optional pinned issue records, and rejects incomplete, filtered,
 conditional, tolerated or mismatched caller routes. A CLI negative rejects an
 archive release candidate before even reading a repository.
 
+Review added an executable historical-target check: the gate reads the workflow
+and native script at the archive ref itself. Fixing the current checkout cannot
+mask a missing or filtered old gate. The dedicated real-Git regression fails
+against the initial `e093b13` implementation and passes with this correction,
+without changing the fixture's archive identity. This guards the historical-ref
+requirement already communicated in the advance notices.
+
 This configured/native branch verification does not manufacture an archive-tag
 event. Historical targets require review of the workflow actually selected at
 that ref; changing current `main` cannot retrofit an older workflow. Keep those

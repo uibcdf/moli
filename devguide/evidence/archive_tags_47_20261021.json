@@ -673,7 +673,7 @@
       "canonical_control": "Unchanged 0.3.0 metadata reaches intercepted archive reader; no build, artifact inspection or publication"
     }
   ],
-  "implementation_commit": "e093b13df7fe2cc1c84b5be676ff008ed55cdd04",
+  "prepared_implementation_commit": "e093b13df7fe2cc1c84b5be676ff008ed55cdd04",
   "advance_notices": [
     {
       "repository": "uibcdf/moli",
