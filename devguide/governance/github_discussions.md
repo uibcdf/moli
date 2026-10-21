@@ -1,9 +1,11 @@
 # GitHub Discussions
 
 This policy is accepted under [MOLI #23](https://github.com/uibcdf/moli/issues/23)
-for MOLI and its directly governed components. MolSysSuite decides its compatible
-policy and member adoption through its own governance. This document does not
-change the platform architecture or establish a scientist-facing agent runtime.
+for MOLI and its directly governed components, including the MolSysSuite
+repository. MolSysSuite's team implements the common baseline for its member
+repositories through its own versioned policy and adoption process. This
+document does not change the platform architecture or establish a scientist-facing
+agent runtime.
 
 ## Purpose and ownership
 
@@ -18,34 +20,49 @@ in an owning issue even when uncertain or nonblocking. Follow the
 [reporting protocol](reporting_protocol.md), including its human-facing review
 and disclosure authority. Ideas is not a holding queue that bypasses that duty.
 
-Enable Discussions only when the repository records:
+Every MOLI repository must have Discussions enabled, including component
+repositories that are still scaffolds or have little activity. The common
+structure below is a platform baseline; an individual component does not opt
+out because it has no discussions yet. New directly governed repositories
+enable it during onboarding; existing repositories track adoption under #23.
+
+Each repository records:
 
 - a useful purpose for each category;
 - a named maintainer or maintained team responsible for triage;
 - the destination for actionable work and durable decisions.
 
-A repository without that need or ownership may keep Discussions disabled.
-Enabling it is an owner decision, not an admission requirement or a promise of
-response times. Recheck ownership and usefulness when changing categories or
-repository maintainers. Before retiring a category, inspect its threads and
-preserve useful content, decisions and links in an appropriate destination.
+The repository maintainers are accountable for triage until they name a
+specific maintainer or maintained team; missing assignment is work to resolve,
+not permission to disable the channel. There is no response-time promise.
+Recheck ownership when repository maintainers change. Before retiring an
+additional category, inspect its threads and preserve useful content, decisions
+and links in an appropriate destination.
 
 ## Categories
 
-Choose a small useful subset; the names alone do not configure GitHub's format.
+All repositories keep the same three baseline categories, names/slugs and
+formats. Adapt descriptions, examples and forms to the repository's subject;
+the names alone do not configure GitHub's format.
 
 | Category | GitHub format | Purpose and triage destination |
 | --- | --- | --- |
-| Announcements | Announcement | Maintainers announce an already recorded release, contract or policy update, linking its authoritative record. GitHub restricts new announcement threads to maintain/admin roles. |
-| Q&A | Question and answer | Usage and interpretation questions. Mark a useful answer; route any actionable finding to its owning issue and any lasting clarification to maintained documentation. |
-| Ideas | Open-ended discussion | Early questions without concrete actionable work. Triage to an owning issue when work becomes concrete; record a decision in that issue or a named versioned record. |
-| Repository-specific intake | Owner-selected format | Require a category form, a triage owner and a named durable registry or issue destination. Document the disposition states and conversion rule locally. |
+| Announcements / `announcements` | Announcement | Maintainers announce an already recorded release, contract or policy update, linking its authoritative record. GitHub restricts new announcement threads to maintain/admin roles. |
+| Q&A / `q-a` | Question and answer | Usage and interpretation questions. Mark a useful answer; route any actionable finding to its owning issue and any lasting clarification to maintained documentation. |
+| Ideas / `ideas` | Open-ended discussion | Early questions without concrete actionable work. Triage to an owning issue when work becomes concrete; record a decision in that issue or a named versioned record. |
+
+Components may add their own categories and discussions on top of that baseline.
+An additional intake category requires a category form, a triage owner and a
+named durable registry or issue destination. Document its disposition states
+and conversion rule locally. Other additional categories also need a purpose,
+owner and destination. They complement the common categories rather than
+renaming, replacing or removing them.
 
 Remove unused default categories such as General, Polls and Show and tell.
-An additional category needs its own purpose, owner and destination; a default
-name or an empty channel is not a reason to retain it. Inspect content before
-moving threads when removing a category. Do not delete discussion history just
-to make the configuration match.
+For these additional categories, a default name or an empty channel is not a
+reason to retain it. The three baseline categories remain even when empty.
+Inspect content before moving threads when removing a category. Do not delete
+discussion history just to make the configuration match.
 
 Sabueso's Data sources is an existing intake case: its owner maintains the form,
 source registry, statuses and generated page. MOLI does not take over those
@@ -110,8 +127,9 @@ is needed for settings not exposed through its public API.
 
 No network-dependent CI check or new manifest schema for remote categories is
 introduced. The written declaration, checked-in forms and explicit readback
-are sufficient for this small configuration. Reconsider an automated read-only
-drift check when multiple enabled repositories or actual drift justify it;
+record the initial configuration without claiming automatic enforcement.
+Reconsider an automated read-only drift check after the multi-repository
+baseline rollout provides operational evidence, or when actual drift warrants it;
 such a check must distinguish desired settings from observed evidence.
 
 See GitHub's documentation for [category formats and management](https://docs.github.com/en/discussions/managing-discussions-for-your-community/managing-categories-for-discussions)

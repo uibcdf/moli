@@ -113,7 +113,7 @@ the same state.
 
 | MOLI issue | Current boundary and next evidence |
 | --- | --- |
-| [#23](https://github.com/uibcdf/moli/issues/23) | [Discussions policy](governance/github_discussions.md) accepted and MOLI enabled; Q&A/Ideas forms prepared. [Implementation record](pending_proposals/github_discussions.md) and [receipt](evidence/github_discussions_23_20261021.json) distinguish desired categories from GitHub's still-present defaults. Category editor and rendered forms need a connected browser or maintainer handoff before closure. Sabueso #149 and suite #120 own independent adoption; disabled direct repositories need no activation. |
+| [#23](https://github.com/uibcdf/moli/issues/23) | [Discussions policy](governance/github_discussions.md) requires enabled Discussions and common Announcements/Q&A/Ideas across MOLI repositories, with local extensions; MOLI is enabled and its forms are published. [Implementation record](pending_proposals/github_discussions.md) and [receipt](evidence/github_discussions_23_20261021.json) distinguish desired categories from GitHub's still-present defaults. Category editor and rendered forms need a connected browser or maintainer handoff before closure. Sabueso #149 and suite #120 own adoption; Praxis, Nextia, MOLI Agent and Recorda were observed disabled and now require tracked adoption. |
 | [#40](https://github.com/uibcdf/moli/issues/40) | Python 3.14 editable co-development is documented; Recorda/Praxis source and development compatibility with recent public providers has been received. The combined workspace remains partial: [suite #82](https://github.com/uibcdf/molsyssuite/issues/82) still has TopoMT authorization and broader integration, and [Recorda #26](https://github.com/uibcdf/recorda/issues/26) owns a future public release for the latest-provider cohort. A fourteen-member suite receipt plus two direct consumers does not establish a sixteen-component qualification. |
 | [#62](https://github.com/uibcdf/moli/issues/62) | Shared diagnostic-provider work has public provider evidence and specific consumer handoffs, but application-owned policy, scoped-capture adoption and receiving decisions remain issue-bound. Check the latest provider and consumer comments before selecting a MOLI action; availability of a provider release does not itself approve adoption. |
 
@@ -162,5 +162,5 @@ step is complete; its scientist-facing pilot and notifications remain pending.
 The bounded #46 provider-contract review is complete; owner-selected consumer
 adoption is separate. Nextia runtime work remains deferred; #28/Nextia #1 must
 not be taken as selected implementation work from this checkpoint.
-The #23 implementation is partial for the explicitly recorded browser-dependent
-configuration. Recheck its issue before starting unrelated work.
+The #23 implementation is partial for the required repository rollout and
+explicitly recorded browser-dependent category configuration. Recheck its issue before starting unrelated work.

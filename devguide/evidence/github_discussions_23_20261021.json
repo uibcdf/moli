@@ -4,7 +4,7 @@
   "recorded_at_utc": "2026-10-21T20:45:44.549975+00:00",
   "owner": "MOLI maintainers under uibcdf/moli#23",
   "review_trigger": "Before #23 closure, on category/triage ownership change, or before another repository claims adoption.",
-  "status": "partial: policy accepted, enabled; category editor and rendered forms pending",
+  "status": "partial: required common baseline accepted; repository adoption/category editor and rendered forms pending",
   "method": "Authenticated GitHub GraphQL repository observations, all returned threads checked against totalCount; REST PATCH has_discussions=true for MOLI only.",
   "desired_moli": {
     "enabled": true,
@@ -281,7 +281,8 @@
     "Remove unused MOLI defaults after rechecking live content",
     "Set final descriptions and verify actual Announcement/Q&A/Ideas formats in UI",
     "Verify Q&A and Ideas forms render from delivered main without posting test threads",
-    "Refresh API inventory after category edits; retain dated human/UI observation for announcement format/access and rendered forms"
+    "Refresh API inventory after category edits; retain dated human/UI observation for announcement format/access and rendered forms",
+    "Track required adoption in initially disabled direct components and common baseline plus component-specific extensions; suite member rollout stays suite-owned."
   ],
   "capability_limit": {
     "github_public_graphql": "Mutation schema inspected: no DiscussionCategory create/update/delete mutations. isAnswerable alone does not prove announcement format.",
@@ -297,5 +298,25 @@
     "https://docs.github.com/en/discussions/managing-discussions-for-your-community/creating-discussion-category-forms",
     "https://docs.github.com/en/discussions/managing-discussions-for-your-community/syntax-for-discussion-category-forms"
   ],
-  "retention": "Keep this normalized receipt in MOLI. Raw task scratch is disposable after CI verification and issue handoff; no caller or other-session outputs are owned."
+  "retention": "Keep this normalized receipt in MOLI. Raw task scratch is disposable after CI verification and issue handoff; no caller or other-session outputs are owned.",
+  "policy_clarification": {
+    "date": "2026-10-21",
+    "authority": "Diego, principal maintainer, in the task conversation",
+    "supersedes": "Optional enablement in d7162f4 and early #23 owner notices; the initial API observations remain historical facts.",
+    "activation": "required for all MOLI repositories",
+    "common_categories": [
+      "announcements",
+      "q-a",
+      "ideas"
+    ],
+    "component_extensions": true,
+    "initially_disabled_direct_repositories": [
+      "uibcdf/praxis",
+      "uibcdf/nextia",
+      "uibcdf/moli-agent",
+      "uibcdf/recorda"
+    ],
+    "disabled_disposition": "pending adoption, not an exemption",
+    "suite_boundary": "MolSysSuite repository participates as a direct component; its team owns the member policy and rollout through suite #120."
+  }
 }

@@ -85,8 +85,10 @@ Discussions support usage questions, announcements and early conversation under
 the [Discussions policy](github_discussions.md). They do not replace an owning
 issue for actionable work, including uncertain or nonblocking findings. Promote
 conclusions to the owning issue or a named versioned record, preserving the
-discussion URL and a return link. Repository owners decide whether to enable
-Discussions and maintain their categories; MolSysSuite owns member adoption.
+discussion URL and a return link. All MOLI repositories enable Discussions
+with the common Announcements, Q&A and Ideas categories; components may add
+purposeful local categories. Repository owners maintain their configuration
+and triage; MolSysSuite's team owns adoption within its members.
 
 ## Universal lifecycle
 

@@ -40,7 +40,9 @@ status = "accepted"
 applies_to = ["repository", "direct-component"]
 normative = "devguide/governance/github_discussions.md"
 issue = "uibcdf/moli#23"
-activation = "owner-selected"
+activation = "required"
+common_categories = ["announcements", "q-a", "ideas"]
+component_extensions = true
 actionable_work_identity = "owning-github-issue"
 
 [policies.agent_instruction_lifecycle]

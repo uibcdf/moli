@@ -8,6 +8,11 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    `moli.toml`. Record capabilities and owner-local review issues as required
    by applicable policies. Do not claim support or publication without
    evidence.
+   Enable GitHub Discussions with the common Announcements, Q&A and Ideas
+   categories and their required formats. Record triage ownership and durable
+   destinations; add component-specific categories where useful. Follow the
+   [Discussions baseline](github_discussions.md) and verify actual settings
+   before declaring this onboarding step complete.
 2. Create a root `AGENTS.md` at repository inception. Link the vendored
    `MOLI_GUIDE.md`, state the issue-feedback duty and the
    human-facing action to offer an owning issue for uncertain or nonblocking

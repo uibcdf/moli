@@ -1,5 +1,5 @@
 ---
-summary: Accept optional Discussions with durable outcomes; finish MOLI category configuration.
+summary: Require Discussions with common categories and local extensions; track repository adoption.
 issue: uibcdf/moli#23
 status: partial
 opened: 2026-09-26
@@ -17,17 +17,24 @@ supersedes: []
 Diego authorized proceeding with #23 on 2026-10-21. The accepted
 [normative policy](../governance/github_discussions.md), registered in
 `moli.toml`, keeps actionable work in owning issues and promotes discussion
-outcomes to an issue or named versioned record with reciprocal links. Optional
-enablement needs purpose, triage owner and destination. Small useful category
-sets include announcements, answerable questions, early ideas and locally owned
-intake. Confidentiality and existing human-facing reporting authority apply.
+outcomes to an issue or named versioned record with reciprocal links.
+
+Diego subsequently clarified that **every MOLI repository must have Discussions
+enabled**, with a common structure and component-specific additions. This
+supersedes the optional-enablement decision in initial source `d7162f4` and its
+early issue comments. Announcements, Q&A and Ideas are now the mandatory common
+categories, with their specified formats/slugs; locally owned intake and other
+purposeful categories extend them. Empty common categories remain. Each
+repository records purpose, triage owner and destination. Confidentiality and
+existing human-facing reporting authority apply. The registry and new-component
+onboarding carry this corrected baseline.
 
 MOLI enables Announcements, Q&A and Ideas for platform-level conversation;
 Diego Prada owns triage through the maintainers. Component-local topics stay
 with their owners. Organization-wide centralization was not selected because
 repository ownership already provides routing. Network-dependent configuration
 CI and a new remote-settings manifest schema were deferred until demonstrated
-drift or scale justifies them. Desired configuration is written explicitly;
+rollout evidence or actual drift justifies them. Desired configuration is written explicitly;
 dated observed configuration remains separate.
 
 This changes collaboration governance, not architecture or Nextia runtime.
@@ -47,10 +54,13 @@ the receipt is a dated observation, not a continuously enforced claim.
 | MOLI | Initially disabled with no threads. Enabled by this task; GitHub created six defaults and no thread. Only the desired three categories and their forms are intended for use; browser configuration and rendered-form verification remain pending. |
 | Sabueso | Enabled; six defaults plus Data sources, one existing welcome announcement (#63). [Sabueso #149](https://github.com/uibcdf/sabueso/issues/149) owns alignment, triage declaration and preservation of its source intake. |
 | MolSysSuite | Enabled; six defaults, one welcome announcement (#2). [Suite #120](https://github.com/uibcdf/molsyssuite/issues/120) owns a compatible policy, settings and member adoption. MOLI changes no suite/member files or settings. |
-| Praxis, Nextia, MOLI Agent, Recorda | Disabled. Retaining that state is compatible; no activation or local migration is required. Revisit only when the owner has a concrete use and triage plan. Nextia implementation remains deferred. |
+| Praxis, Nextia, MOLI Agent, Recorda | Observed disabled in the initial inventory. This is now pending adoption, not compatible non-applicability: enable Discussions and establish the common three categories, local triage and any useful extensions. Nextia runtime implementation remains deferred; repository collaboration setup is separate. |
 
-The two owner issues received advance notice before publication of this policy.
-They are independent adoption work, not evidence that settings already match.
+The two owner issues received advance notice before initial publication and
+are updated with the maintainer's corrected requirement. MolSysSuite's own
+repository participates as a direct component; its team owns the compatible
+member rule and rollout. The original dated inventory is preserved as observed
+history, not evidence of adoption or a continuing opt-out.
 
 ## MOLI configuration handoff
 
@@ -81,10 +91,13 @@ To finish through the repository's Discussions category editor:
 
 Local policy/registry/forms checks and exact-head hosted governance gates must
 pass on delivery. Record their immutable source and native runs in #23.
-Keep #23 open until MOLI's category editor and rendered forms have been checked;
-then update the receipt, move this report to `archive/`, update its links and
-close the issue with evidence. Independent Sabueso and suite adoption retain
-their owning issues. Do not mark GitHub's unused defaults as already removed.
+Keep #23 open until MOLI's category editor and rendered forms have been checked
+and the required direct-component adoption has evidence or an explicit linked
+owner handoff. Update the receipt and track the four initially disabled direct
+repositories as pending until their enabled state and baseline are verified.
+Independent Sabueso and suite adoption retain their owning issues. Archive this
+report and close the platform issue only when its stated rollout scope is
+accounted for. Do not mark GitHub's unused defaults as already removed.
 
 Task-owned raw API responses, downloaded inspection tooling and CI captures are
 disposable after normalized evidence and issue handoff. Retain this receipt
