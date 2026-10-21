@@ -1,0 +1,682 @@
+{
+  "schema": "moli.archive-tags-review@1",
+  "issue": "uibcdf/moli#47",
+  "observed_on": "2026-10-21",
+  "evidence_owner": "MOLI #47",
+  "review_trigger": "Before first consumer activation or a changed publisher/caller route",
+  "repositories": [
+    {
+      "repository": "uibcdf/sabueso",
+      "source_commit": "2d294d8434c9cf74968b42ddd793c9709fee2305",
+      "archive_refs": [],
+      "workflows": [
+        {
+          "path": ".github/workflows/build_and_upload_conda_packages.yaml",
+          "sha256": "0cb32b513b6b78024209b441dea1bee108f611a2fb9897198c75bdc281c1e57b",
+          "events": [
+            "release",
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "sha256": "2aa7538941f821e70939b8010c8eec97b6bbf866f22a95f1dcafd7dd9ac311c8",
+          "events": [
+            "push",
+            "pull_request",
+            "schedule",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/moli-governance.yml",
+          "sha256": "6247e3c5b95b463e7af47a607efbe53fd5bb579dc85769f194591badc352d272",
+          "events": [
+            "pull_request",
+            "push",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/promote_conda_package.yaml",
+          "sha256": "1accac41f0f317a04c26ad0ecfb329b72f8375b7fd038e9d00e3259f78cbcca5",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/test_staged_conda_package.yaml",
+          "sha256": "c7bae933bf387c7b726fdc101b3c75885d3796450a792071407cdc9e2da5156a",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/withdraw_conda_package.yaml",
+          "sha256": "976d53141329789fddd630c76e5e709ffe1d38c39ce8dcc94f64554f7e7a97b8",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        }
+      ],
+      "disposition": "No archive refs observed; owner qualification required before first use"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "source_commit": "c83e5920a316130836c6bc2d9b0a7bcb4cdf8d49",
+      "archive_refs": [],
+      "workflows": [
+        {
+          "path": ".github/workflows/build_and_upload_conda_packages.yaml",
+          "sha256": "7248f5f0831a2cb834cea6c445e663cd19153795adb6626addd4308cc19471f5",
+          "events": [
+            "workflow_call",
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/moli-governance.yml",
+          "sha256": "033bbd7dca433dc8335c39a381f950f98a0d352f3f2857c902a22899474d6b6f",
+          "events": [
+            "pull_request",
+            "push"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/publish_conda.yaml",
+          "sha256": "80de5086e6316f37a7308e6b0abfedac0743438da07cf338ee4c91e398f4dab3",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/tests.yml",
+          "sha256": "0748721adab18e79035152f5918d00749bbddc2acac8befb342f0dadec8e4958",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch",
+            "schedule"
+          ],
+          "push": ""
+        }
+      ],
+      "disposition": "No archive refs observed; owner qualification required before first use"
+    },
+    {
+      "repository": "uibcdf/nextia",
+      "source_commit": "62618bb6640dc505be8fb6c6ee4cfac0cd3c7782",
+      "archive_refs": [],
+      "workflows": [
+        {
+          "path": ".github/workflows/moli-governance.yml",
+          "sha256": "033bbd7dca433dc8335c39a381f950f98a0d352f3f2857c902a22899474d6b6f",
+          "events": [
+            "pull_request",
+            "push"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ]
+          }
+        }
+      ],
+      "disposition": "No archive refs observed; owner qualification required before first use"
+    },
+    {
+      "repository": "uibcdf/moli-agent",
+      "source_commit": "ff3fabe32dd85eafa2a8cd244767e1c8dcea9c68",
+      "archive_refs": [],
+      "workflows": [
+        {
+          "path": ".github/workflows/moli-governance.yml",
+          "sha256": "033bbd7dca433dc8335c39a381f950f98a0d352f3f2857c902a22899474d6b6f",
+          "events": [
+            "pull_request",
+            "push"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ]
+          }
+        }
+      ],
+      "disposition": "No archive refs observed; owner qualification required before first use"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "source_commit": "f156a1423d669f27b00703f5ce18fed3d6d2c275",
+      "archive_refs": [],
+      "workflows": [
+        {
+          "path": ".github/workflows/build_and_upload_conda_packages.yaml",
+          "sha256": "88752dd97841223b75fc70e4a2646b6dd982c8db959a97d42008f2226245e3fa",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/release_candidate.yml",
+          "sha256": "a6ed8ced68bafdcfcb013abfd5d64a47ea4382d03a9c854284221728a691e212",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/tests.yml",
+          "sha256": "8802ac2814d6bda29ab5aff9282dbd6d98015fb06e368ec72220769c5e96519c",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch",
+            "schedule"
+          ],
+          "push": ""
+        }
+      ],
+      "disposition": "No archive refs observed; owner qualification required before first use"
+    },
+    {
+      "repository": "uibcdf/pytest-receptor",
+      "source_commit": "a303ef436037ed6cc08fcb6bb801bdd8645696d1",
+      "archive_refs": [],
+      "workflows": [
+        {
+          "path": ".github/workflows/build_and_upload_conda_packages.yaml",
+          "sha256": "7d43725ddf9091749cdf319712f02b16e691f83f87d4adb9e10b0c3cc9bcd546",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/conda-publication-governance.yaml",
+          "sha256": "a6b40047a9ecae6cc5aad7e928d18bb2a5f377d924560e5a6ae6c2cb2b4abd3e",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ],
+            "tags": [
+              "*"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/docs.yml",
+          "sha256": "b0cc817938941fb843d5d45716a49ec7cf49dd1b0cf24e36194cead0bdbd5c8f",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ],
+            "paths": [
+              "docs/**",
+              "README.md",
+              "pyproject.toml",
+              ".github/workflows/docs.yml"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/full-tests.yml",
+          "sha256": "d44e8b806440d7c95de61489bbb14eae826cb1e4206f16b15424d50f4cf66997",
+          "events": [
+            "schedule",
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/molsyssuite-policy.yml",
+          "sha256": "6cc62208156f765ca0456e3bc5f398934263e03afc7063c69afa692c5dafdffd",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ],
+            "tags": [
+              "*"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/promote_conda_package.yaml",
+          "sha256": "ccefb54799756c0adf90d1fac608c22fb539dc9b62cc14081e2721adbc56de34",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "sha256": "4f7c053aa0cb01e4f0bcda62263b500854223eb466ac3ebad407ee4773670a7f",
+          "events": [
+            "release"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/reporting-governance.yml",
+          "sha256": "2fd20bad0d6dd9dae2e387d0b70c032fff4e56da9d886063e3b6b0649821b817",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/test_installed_conda.yaml",
+          "sha256": "5338ef7e387c6cd1fd3dc42da0e963076b6a9fec7cc645f045a725bfb7ee614c",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/tests.yml",
+          "sha256": "53c7449712466bcccb5ccb23d797e99067599b7a78b602bed82374f6a26a9ad5",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ]
+          }
+        }
+      ],
+      "disposition": "No archive refs observed; owner qualification required before first use"
+    },
+    {
+      "repository": "uibcdf/gh-run-receptor",
+      "source_commit": "c57c7e716428abb80ac8de01752eee41c27b4330",
+      "archive_refs": [],
+      "workflows": [
+        {
+          "path": ".github/workflows/action-distribution-validation.yml",
+          "sha256": "cc3edab729ff3e66e49eea284ce8657eb322b0d04824cfb027f8d41b60b72fd0",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/action-validation.yml",
+          "sha256": "d701e9162af1fddccf28e7e33d501dd2cd9fcd3ae7112756d81064b6df5ee711",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/compatibility.yml",
+          "sha256": "678f2cb13ccbb98da5c8bbec446bbbaad330d5253dc2b9d658515fdc2bed7121",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/conda-policy.yml",
+          "sha256": "0b76e4ba2d2355657e405ac2d37c4fa0d4b49f622508098c6ce02f4817b9829c",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": ""
+        },
+        {
+          "path": ".github/workflows/docs.yml",
+          "sha256": "36cd7354d8427f1332a79bdcb95e2176ba4cc6a8f921c61194a5472ae76a501f",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ],
+            "paths": [
+              "docs/**",
+              "README.md",
+              "pyproject.toml",
+              ".github/workflows/docs.yml"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/gh-run-receptor-report.yml",
+          "sha256": "88fedb5720016cdbdda6e91de1cba6f0501768dfd4257e0c8a9c597b0d275d94",
+          "events": [
+            "workflow_run"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/inline-rules-pr-boundary.yml",
+          "sha256": "16d90983e5284a4a23960c403a23b292bdbe59af8d1ddb07cc2644fd816970ec",
+          "events": [
+            "pull_request"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/minimum-gh-cli-validation.yml",
+          "sha256": "091582c9adedaaef28c97fcc783cf71149e37eb283e2266ebde3d804ca6f02b5",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/molsyssuite-policy.yml",
+          "sha256": "6cc62208156f765ca0456e3bc5f398934263e03afc7063c69afa692c5dafdffd",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ],
+            "tags": [
+              "*"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/permission-boundary-validation.yml",
+          "sha256": "713bdbff23cf8cb4d676a407c112b82533718eabf60ded2aaeecc13176536358",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/promote-conda.yml",
+          "sha256": "89f2c6cc47ddea44d094da37b54f007f848379bdb00ea8d89fb99e747cb8d044",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/publish-release.yml",
+          "sha256": "6b16d14e28ec61ddc56eeae10433a4d69a035e62b13dd630c457ba1bff25f6d3",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/published-report-validation.yml",
+          "sha256": "5c232e1c5c071a3546374eb1661b3ed7baa25c48084170bd79e6dbac0142691e",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/python-routine.yml",
+          "sha256": "0c6251069d3ea30a8b95e874ab04e5cc214e7274aa166c21fbe9a6b2614ab318",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": ""
+        },
+        {
+          "path": ".github/workflows/python-weekly.yml",
+          "sha256": "0388fe9d97f63c0fa5a575d6677143e11b783b8332401792e45f2959ee8ade03",
+          "events": [
+            "schedule",
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/reusable-report.yml",
+          "sha256": "61192b7dc1dd7a7820144ed39390fa3528650afea0246e554195e0135b6b888d",
+          "events": [
+            "workflow_call"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/stage-conda.yml",
+          "sha256": "1c8bf9722582c799efbba8086ba56eda8f34d623378f8e3161c3818b526e9f8c",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/test-staged-conda.yml",
+          "sha256": "20bbdcb4414ed35e11dca878d5416c82b3622bdd38bf9baec2007cf3f05c03e4",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/validate-aggregation.yml",
+          "sha256": "b45c498864649d80d92d9d1d6449d3dd1a6448b2aeb8975daccd861bd5bb3d70",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/validate-capture-policy.yml",
+          "sha256": "8212a51da8a9933e8c70e18777d9171e1747c07ff18a789f7a07036a2d31b165",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/validate-comparison.yml",
+          "sha256": "a0942cd000006f8d093860d6380cf7542359f09ffbaa7a8b45858817581c9404",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/validate-contracts.yml",
+          "sha256": "4a9d328c2d474214953f31fa2f5e2c2fca48071f0734ccd73ec4d9d2af4e0bb8",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/validate-exit-codes.yml",
+          "sha256": "d3eec64ffa2c09a504ff785cf6b3b54ae1e30fd9c9c042c592d43e60a3d9dd67",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/validate-portability.yml",
+          "sha256": "d7412be5f9ecf39bd1b97f1d87dcd2d9c5bcbd2f1549c22fcf0dfad7a43a2c0c",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/validate-reusable-report.yml",
+          "sha256": "87b326efb9e66cf1073daf644390086e1963006d303e4410875a81f0269c54da",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        },
+        {
+          "path": ".github/workflows/verify-zenodo-release.yml",
+          "sha256": "1af1c592f2f25ec56f14fdbc535aad425948a05452d8d67f6a76228b34489104",
+          "events": [
+            "workflow_dispatch"
+          ],
+          "push": null
+        }
+      ],
+      "disposition": "No archive refs observed; owner qualification required before first use"
+    },
+    {
+      "repository": "uibcdf/action-build-and-upload-conda-packages",
+      "source_commit": "87c70b1443d5f22d738ee3ddf812bdbe0152f6c2",
+      "archive_refs": [],
+      "workflows": [
+        {
+          "path": ".github/workflows/test_exact_upload.yaml",
+          "sha256": "87f3be10676eb1b6b85b63a72a95a6c1bcdc9641c434093188ede1a1c5cead8f",
+          "events": [
+            "push",
+            "pull_request"
+          ],
+          "push": {
+            "branches": [
+              "main"
+            ],
+            "paths": [
+              "scripts/upload_conda_package.py",
+              "upload/action.yml",
+              "tests/test_upload_conda_package.py",
+              "tests/test_upload_composite.py",
+              "tests/fixtures/exact-upload/**",
+              ".github/workflows/test_exact_upload.yaml"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/test_label_operations.yaml",
+          "sha256": "67d1ca8e0cd125c974ee11dbcf2962afbcc15f885cf274611927625b66983d6a",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": {
+            "paths": [
+              "scripts/conda_label_utils.py",
+              "scripts/promote_conda_package.py",
+              "scripts/withdraw_conda_package.py",
+              "promote/action.yml",
+              "withdraw/action.yml",
+              "tests/test_promote_conda_package.py",
+              "tests/test_withdraw_conda_package.py",
+              "tests/fixtures/label-operations/**",
+              ".github/workflows/test_label_operations.yaml"
+            ]
+          }
+        },
+        {
+          "path": ".github/workflows/test_multiple_variants.yaml",
+          "sha256": "209b771326fdbcce16d8f9ffc3ef03c973646aba492c4646182ab489d41bd1d1",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": ""
+        },
+        {
+          "path": ".github/workflows/test_named_environment.yaml",
+          "sha256": "9315da9472a8df3daa3c8acb3ad63d5b14976d79a501f7f10da2a8defec9e652",
+          "events": [
+            "push",
+            "pull_request",
+            "workflow_dispatch"
+          ],
+          "push": ""
+        }
+      ],
+      "disposition": "No archive refs observed; owner qualification required before first use"
+    },
+    {
+      "repository": "uibcdf/action-sphinx-docs-to-gh-pages",
+      "source_commit": "eab6e2605bb35738275e4ee5c89941f4bc2f6f99",
+      "archive_refs": [],
+      "workflows": [],
+      "disposition": "No archive refs observed; owner qualification required before first use"
+    }
+  ],
+  "guard_probes": [
+    {
+      "repository": "uibcdf/sabueso",
+      "guard": "check_route",
+      "archive_result": "Rejected before release-gate or registry calls; no receipt written",
+      "canonical_control": "Existing VERSION parser accepts 1.2.3; no publication pipeline executed"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "guard": "identity",
+      "archive_result": "Rejected by source/version identity guard",
+      "canonical_control": "Current canonical source/version passes identity with require_tag=False; no network/publication"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "guard": "inspect_archive",
+      "archive_result": "Temporary archive-valued metadata rejected before archive access",
+      "canonical_control": "Unchanged 0.3.0 metadata reaches intercepted archive reader; no build, artifact inspection or publication"
+    }
+  ],
+  "limits": [
+    "Read-only source/configuration/remote-ref inspection and bounded guard probes",
+    "No consumer activation, tag push, package build, upload, promotion or release",
+    "No scientific tests or distribution qualification",
+    "MOLI's own all-tag workflow is verified separately on its exact published source"
+  ]
+}

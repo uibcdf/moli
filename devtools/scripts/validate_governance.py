@@ -344,6 +344,21 @@ def validate_registry(root: Path) -> list[str]:
         if component.get("internal_governance") != "delegated" and "member_policy_owner" in component:
             errors.append(f"moli.toml: direct component {name} cannot own a delegated member policy")
     policies = data.get("policies", {})
+    archive = policies.get("archive_tags", {})
+    for key, value in {
+        "status": "accepted",
+        "applies_to": ["repository", "direct-component"],
+        "namespace": "archive/",
+        "activation": "owner-reviewed-opt-in",
+        "public_release_identity": False,
+        "normative": "devguide/policies/release_version_policy.md",
+        "issue": "uibcdf/moli#47",
+        "validator": "devtools/scripts/check_archive_tags.py",
+    }.items():
+        if archive.get(key) != value:
+            errors.append(f"moli.toml: archive-tag policy has invalid {key}")
+    if not (root / "devtools/scripts/check_archive_tags.py").is_file():
+        errors.append("moli.toml: archive-tag validator is missing")
     errors.extend(validate_python_ecosystem_reviews(registered, policies))
     errors.extend(validate_python_distribution_reviews(registered, policies))
     errors.extend(validate_python_versions(policies))
