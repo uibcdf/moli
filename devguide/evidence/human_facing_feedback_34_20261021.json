@@ -6,7 +6,7 @@
   "central": {
     "source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
     "pull_request": "https://github.com/uibcdf/moli/pull/72",
-    "adoption": "PR open; main unchanged pending coordinated owner review",
+    "adoption": "implementation commits integrated on local main by approved fast-forward; direct publication and default-branch verification follow",
     "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c"
   },
   "advance_notices": [
@@ -21,27 +21,30 @@
   "components": [
     {
       "repository": "uibcdf/sabueso",
-      "base": "5b468fab5ef209980847f2356621ced42cb5e1f5",
+      "base": "bc4bc5d56d50279d933d84bb4f515b0cccf106b3",
       "original_agents_sha256": "2e5513df446dbdb93962d408e7e80224e7822cfa6607f3310ce0ab8310445f97",
       "proposed_agents_sha256": "83a84a27e554dbc71518e95a99d97d9ed077aeff1ecdc12f368a8c351d4e7ae9",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "not adopted; owner issue open, PR not published",
-      "head": "5c329b6a265681d1fc0438adc5e8467b56de02e1",
+      "adoption": "source delivered; native administrative verification pending",
+      "head": "e6c1cff640887c9cf7d3b459a68bb68233292e95",
       "issue": "https://github.com/uibcdf/sabueso/issues/147",
       "changed_files": [
         "AGENTS.md",
         "MOLI_GUIDE.md"
       ],
       "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
-      "patch_sha256": "b3808e16e52996936ce37bc3b5216801891edffb95a7aebbdecd3432403600d8",
-      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "patch_sha256": "c73e1368fbe8511d27189a5774b751ef16b955d91ae3824ee0e23c03f1ca3d2f",
+      "delivery": "published by explicit principal-developer direct-push authorization",
       "local_checks": [
         "component-native governance surface",
         "MOLI shared component checker with canonical guide",
         "git diff --check",
         "existing instructions preserved by additive insertion; nested instructions unchanged"
-      ]
+      ],
+      "prepared_base": "5b468fab5ef209980847f2356621ced42cb5e1f5",
+      "prepared_head": "5c329b6a265681d1fc0438adc5e8467b56de02e1",
+      "rebase_reason": "Preserve separately published saved-consumer review documentation on current main; governed files unchanged by that advance."
     },
     {
       "repository": "uibcdf/praxis",
@@ -50,7 +53,7 @@
       "proposed_agents_sha256": "457d3d81a562a97ccd3d065b2bb7b45106d089fc42b4d5bc9e9f9804072cc598",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "not adopted; owner issue open, PR not published",
+      "adoption": "source delivered; native administrative verification pending",
       "head": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
       "issue": "https://github.com/uibcdf/praxis/issues/11",
       "changed_files": [
@@ -59,7 +62,7 @@
       ],
       "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
       "patch_sha256": "98f00f68c2f7848f6c6ca5466b56cdc5711e2dd58977a57852ae0ebc15d1f0c9",
-      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "delivery": "published by explicit principal-developer direct-push authorization",
       "local_checks": [
         "component-native governance surface",
         "MOLI shared component checker with canonical guide",
@@ -74,7 +77,7 @@
       "proposed_agents_sha256": "49180d3b94fcb288d635a155cce052bef04f9ed7ed4ff1dafa564d5a8df87827",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "not adopted; owner issue open, PR not published",
+      "adoption": "source delivered; native administrative verification pending",
       "head": "32d12e20fae26f00a523d0ed4812e46def8a64e9",
       "issue": "https://github.com/uibcdf/nextia/issues/3",
       "changed_files": [
@@ -83,7 +86,7 @@
       ],
       "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
       "patch_sha256": "6799d9e91e121fd0a50ba2f9144965dbc10136b0fa17780aab88302bcd006c45",
-      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "delivery": "published by explicit principal-developer direct-push authorization",
       "local_checks": [
         "component-native governance surface",
         "MOLI shared component checker with canonical guide",
@@ -98,7 +101,7 @@
       "proposed_agents_sha256": "49180d3b94fcb288d635a155cce052bef04f9ed7ed4ff1dafa564d5a8df87827",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "not adopted; owner issue open, PR not published",
+      "adoption": "source delivered; native administrative verification pending",
       "head": "08d0e2b809e7e5c46add5ee554ae9528831f7454",
       "issue": "https://github.com/uibcdf/moli-agent/issues/2",
       "changed_files": [
@@ -107,7 +110,7 @@
       ],
       "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
       "patch_sha256": "69b575637ba851ce1ddfa109cb8117c2bb4f19d36838d12ff52fca548e238106",
-      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "delivery": "published by explicit principal-developer direct-push authorization",
       "local_checks": [
         "component-native governance surface",
         "MOLI shared component checker with canonical guide",
@@ -122,7 +125,7 @@
       "proposed_agents_sha256": "e7e3eeeb80d2668938b06cdadb3bc0053173bc80f6c83404624ab2cd7e83f14c",
       "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
       "nested_instructions_unchanged": true,
-      "adoption": "not adopted; owner issue open, PR not published",
+      "adoption": "source delivered; native administrative verification pending",
       "head": "b455ff5ec6fee206f8c077cbac45712f0b6c704b",
       "issue": "https://github.com/uibcdf/recorda/issues/27",
       "changed_files": [
@@ -132,7 +135,7 @@
       ],
       "moli_source": "1131e16c42b339b28ef8feb987bca40b9f71e681",
       "patch_sha256": "ed725dd3381f831af9a18d6749c1f1bfc52890cbe928dbda18d3a07b3c87784b",
-      "delivery": "prepared locally; external branch publication requires explicit authorization after automatic review rejection",
+      "delivery": "published by explicit principal-developer direct-push authorization",
       "local_checks": [
         "component-native governance surface",
         "MOLI shared component checker with canonical guide",
@@ -350,21 +353,25 @@
   ],
   "publication_block": {
     "action": "push candidate branches to five external component repositories",
-    "status": "rejected by automatic approval review; explicit user authorization requested after concrete preparation",
-    "external_branches_pushed": false,
-    "external_pull_requests_opened": false
+    "status": "resolved: principal developer explicitly authorized direct pushes; earlier rejection retained as history",
+    "external_branches_pushed": true,
+    "external_pull_requests_opened": false,
+    "external_push_route": "ordinary fast-forward HEAD:refs/heads/main"
   },
   "remaining": [
-    "external publication authorization",
-    "owner-local PR review and acceptance",
-    "central PR integration coordinated with component guide delivery",
-    "exact final head applicable CI and current default-branch full guide audit",
+    "exact published-head applicable native administrative checks",
+    "current-default-branch full guide audit and central governance/coverage after main push",
     "scientist-facing pilot, coding-agent handoff and opt-in verified-usable-fix return path"
   ],
   "temporary_resources": {
-    "disposable": "published inspection wheel, extraction, cache and full captures removed after normalization and final inspection",
-    "retained": "isolated component clones with local commits and five format-patches",
-    "retained_owner": "MOLI #34 contributor instruction task",
-    "review_trigger": "publication authorization decision; remove disposable clones/patches after delivery or explicit abandonment"
+    "owner": "MOLI #34 contributor instruction task",
+    "status": "active for exact-head verification; retire disposable clones, patches and inspection captures after durable closeout",
+    "review_trigger": "all applicable published-head checks and final handoffs complete"
+  },
+  "direct_push_authorization": {
+    "principal_developer": "Diego",
+    "date": "2026-10-21",
+    "scope": "prepared MOLI and five direct-component commits, ordinary direct pushes to main instead of PRs",
+    "record": "https://github.com/uibcdf/moli/issues/34#issuecomment-6324906858"
   }
 }
