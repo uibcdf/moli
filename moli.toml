@@ -140,6 +140,16 @@ pattern = '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$'
 public_prereleases = false
 normative = "devguide/policies/release_version_policy.md"
 
+[policies.archive_tags]
+status = "accepted"
+applies_to = ["repository", "direct-component"]
+namespace = "archive/"
+activation = "owner-reviewed-opt-in"
+public_release_identity = false
+normative = "devguide/policies/release_version_policy.md"
+issue = "uibcdf/moli#47"
+validator = "devtools/scripts/check_archive_tags.py"
+
 [policies.repository_badges]
 status = "accepted"
 applies_to = ["repository"]

@@ -35,6 +35,107 @@ previously published title. [MOLI #68](https://github.com/uibcdf/moli/issues/68)
 tracks adoption of this convention; MolSysSuite owns member adoption in its
 separate governance domain.
 
+## Archive tags
+
+Accepted through [MOLI #47](https://github.com/uibcdf/moli/issues/47), the reserved
+`archive/<description>` namespace may preserve a historical or experimental
+**commit** without declaring a public release. The suffix is nonempty and the
+whole ref must be a valid Git tag. Record the purpose, owner, preserved commit
+and immutable tag-object identity in an annotation or linked owning issue.
+Keep the reference stable. Do not move, delete or recreate an existing tag to
+satisfy this prospective rule; record historical metadata without changing it.
+
+Archive names cannot be project/package versions, GitHub Release identities,
+or publication candidates. They supply no source, artifact, installation or
+archive/DOI qualification. A later canonical release may use the preserved
+commit only through its separate exact-candidate gates. Public component
+versions remain exactly `X.Y.Z`; other invalid public versions do not acquire
+an exception merely because this namespace exists. Separately governed policy
+tags and Action version/major aliases retain their own meanings.
+
+### Applicability and activation
+
+This is an **owner-reviewed opt-in capability** for MOLI and its directly
+governed components. Before first use, the repository owner records its
+decision and evidence in an owning issue linked to #47:
+
+1. Inspect every maintained publication route, including tag/release events,
+   manual dispatch, reusable workflows and other package indexes. An archive
+   push must not publish. A mistakenly supplied archive release/candidate name
+   must be rejected before release-gate acquisition, credentials or registry
+   mutation; the publishing guard also checks canonical tag/package identity.
+   Prove this with owner-local negative cases and canonical controls, without
+   performing an upload or manufacturing a release.
+2. Provide an unconditional, failure-gating conformance route on **all** tag
+   pushes. Normally use `tags: ["**"]`; `"*"` excludes `/`. Reject tag
+   exclusions and conditional/tolerated/missing gates. GitHub's path filters
+   do not run on tag pushes. See the [GitHub filter reference](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#filter-pattern-cheat-sheet).
+3. Record the capable enforcement source: a reviewed full-commit pin for a
+   central/reusable caller, or the immutable component revision of an equivalent
+   native gate. A mutable branch/tag or a guide copy is not enforcement evidence.
+   Record actual native workflow/job/step evidence separately from static
+   configuration. An older compatible caller need not migrate until the
+   repository chooses this capability.
+   For an older target, inspect the workflow/caller selected at that historical
+   ref: changing `main` does not retrofit its workflow. A missing historical
+   gate needs a separately reviewed owner enforcement route, not a rewritten
+   target or a claim that default-branch configuration proves tag execution.
+4. Record preservation metadata and review any version-from-Git matcher so an
+   archive ref cannot accidentally become package metadata. Preserve current
+   public tags, bytes and original release evidence. A configuration audit or
+   temporary Git fixture is not proof of an actual hosted archive-tag event.
+
+Repositories not using this namespace need no new tag, package, caller migration
+or capability rollout. The existing canonical component guide already links to
+this policy; no byte-copy change is required by #47. A future activation remains
+owner-local and is not inferred from receiving this decision.
+
+MolSysSuite retains its independent rule, enforcement and member rollout under
+[suite #84](https://github.com/uibcdf/molsyssuite/issues/84). MOLI does not change
+those member rules. The separately registered UIBCDF support providers may
+review this capability through their own governance; notice alone does not
+change an Action's release namespace or activate a receptor's suite caller.
+
+### Executable checks and limits
+
+MOLI's own read-only gate is
+`python devtools/scripts/check_archive_tags.py .`. It uses PyYAML 6.0.3, preserves
+the string `on` key, rejects ambiguous YAML and checks the actual all-tag job and
+command. It inspects available archive refs without writing them, requires a
+commit target, inspects that target's historical workflow and native script,
+and rejects archive names in literal project versions. An unqualified old
+workflow is reported even when the current checkout has a capable gate. Fetch all
+tags before using it. Its reusable workflow helper accepts only the exact
+reviewed full-commit caller supplied by the owner; matching a pin does not prove
+that the named implementation is capable.
+
+The reference gate accepts annotated tags with nonempty `Owner:` and `Purpose:`
+lines. For lightweight or historical annotations, retain an owning-issue record
+without changing the original tag. Its optional `devguide/archive_tags.toml`
+adapter is illustrated below; equivalent native gates may use their own record
+format. Reviewers verify the substantive owner/purpose and linked decision.
+
+```toml
+[tags."archive/example"]
+owner = "responsible maintainer"
+purpose = "preserve the reviewed experiment"
+issue = "uibcdf/component#123"
+commit = "<full preserved commit>"
+tag_object = "<full original ref object>"
+```
+
+`--release-version X.Y.Z` provides an early shape check only. It never qualifies
+a publisher, acquires credentials or authorizes a release. The
+[regressions](../../tests/test_archive_tags_policy.py) exercise an unchanged
+annotated temporary Git tag, non-release/public-version separation, pinned
+preservation records, incapable callers and missing/filtered/conditional gates.
+They do not certify another repository's publisher. MOLI has no package publisher;
+its all-tag workflow performs read-only administrative checks and tests.
+
+An activation exception follows the existing owning-issue/MOLI exception route
+with rationale, owner and an exit condition. A deferred or excepted enforcement
+route is not a qualified archive capability and cannot authorize publication.
+
 ## Candidates
 
 Candidate evaluation belongs in staging and exact commit evidence rather than public prerelease tags.
