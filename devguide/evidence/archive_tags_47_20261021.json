@@ -721,6 +721,60 @@
       "url": "https://github.com/uibcdf/action-sphinx-docs-to-gh-pages/issues/11"
     }
   ],
+  "qualification": {
+  "reviewed_enforcement_commit": "b3b7b87d735cc42f135c705614081536340eb883",
+  "pull_request": "https://github.com/uibcdf/moli/pull/70",
+  "pull_request_governance": {
+    "run": 39658142967,
+    "event": "pull_request",
+    "attempt": 1,
+    "source": "b3b7b87d735cc42f135c705614081536340eb883",
+    "tests": 54,
+    "mandatory_steps_verified": true,
+    "full_capture_manifest_sha256": "0656424755905c0dfe03436bfeb9b81a7c4d07778e53324c6b4d20a2b53656c4",
+    "capture_members_verified": 6,
+    "coverage_upload": "inapplicable to PR event"
+  },
+  "merged_source": "54840cdf96aade08a31cec8ffe38e61674e05e52",
+  "merged_gates": [
+    {
+      "run": 39658459426,
+      "source": "54840cdf96aade08a31cec8ffe38e61674e05e52",
+      "workflow": ".github/workflows/validate_governance.yml",
+      "manifest_sha256": "39fc596d9f84fe4466b36106cd78f1c891e0dfcaa6b14642bbdc13bdb4ad7384",
+      "members_verified": 6,
+      "event": "push",
+      "attempt": 1
+    },
+    {
+      "run": 39658459615,
+      "source": "54840cdf96aade08a31cec8ffe38e61674e05e52",
+      "workflow": ".github/workflows/check-component-guides.yml",
+      "manifest_sha256": "422fac0a33ce6db4109b6870ab60cd0b1d5fdb8348f76a55abcd6115d36a51d8",
+      "members_verified": 6,
+      "event": "push",
+      "attempt": 1
+    }
+  ],
+  "local": {
+    "python": "3.14.7",
+    "pytest_receptor": "1.2.0",
+    "administrative_tests": 54,
+    "historical_target_regression": "Both old filtered-workflow and missing-script subcases fail against e093b13 and pass after correction; tag identity unchanged",
+    "ruff": "passed",
+    "formatting": "passed",
+    "governance": "passed",
+    "archive_gate": "passed",
+    "component_guide_audit": "passed"
+  },
+  "inspection": {
+    "gh_run_receptor": "1.2.0",
+    "published_wheel_sha256": "a69b4ce158eb5c74a9b165847279d12f6867ddd41e9fdaa47b3de11463cf210c",
+    "full_capture_hashes_verified": true,
+    "native_jobs_and_required_steps_verified": true
+  },
+  "disposition": "Policy and MOLI enforcement accepted; no consumer activation or actual archive-tag push claimed"
+},
   "limits": [
     "Read-only source/configuration/remote-ref inspection and bounded guard probes",
     "No consumer activation, tag push, package build, upload, promotion or release",

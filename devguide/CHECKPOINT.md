@@ -1,8 +1,8 @@
 # MOLI development checkpoint
 
-**Refreshed on:** 2026-10-21 after the authorized review and integration of
-PRs #65, #66 and #67. **Integrated MOLI `main`:**
-[`06bc5ac`](https://github.com/uibcdf/moli/commit/06bc5acbe41bb02411e6fbe280a7c8416a733678).
+**Refreshed on:** 2026-10-21 after the authorized #47 policy work and the earlier
+review/integration of PRs #65, #66 and #67. **Integrated MOLI `main`:**
+[`54840cd`](https://github.com/uibcdf/moli/commit/54840cdf96aade08a31cec8ffe38e61674e05e52).
 The primary checkout was synchronized and clean at that implementation checkpoint;
 this later documentation refresh records its evidence separately.
 This page is a dated navigation aid. Recheck the live [MOLI issue board](https://github.com/uibcdf/moli/issues),
@@ -22,12 +22,23 @@ the same state.
   its own registry/guide own member policy and rollout. Route owner-local fixes
   and shared-provider changes through their owning issues; link impact issues
   where needed.
-- The open MOLI board had **18 issues** at the snapshot time. The lists below
-  indicate where to resume reading, not a new priority order or acceptance
-  decision. Issue comments and linked evidence are the current work record.
+- Consult the live board for current open work. The lists below indicate where
+  to resume reading, not a new priority order or acceptance decision. Issue
+  comments and linked evidence are the current work record.
 
 ## Last completed MOLI work
 
+- [#47](https://github.com/uibcdf/moli/issues/47), delivered through
+  [PR #70](https://github.com/uibcdf/moli/pull/70): optional `archive/` refs preserve
+  reviewed commits without public-release meaning. The native gate checks both
+  current and historical-target enforcement; the regression fails before its
+  correction and preserves the fixture tag. All 54 administrative tests,
+  [merged-head governance/coverage](https://github.com/uibcdf/moli/actions/runs/39658459426)
+  and [full guide audit](https://github.com/uibcdf/moli/actions/runs/39658459615)
+  pass. The [archived decision](archive/archive_tags.md) and
+  [nine-repository receipt](evidence/archive_tags_47_20261021.json) distinguish
+  advance owner notices from future activation. Canonical guide copies are
+  unchanged; no actual archive-tag push or package qualification is claimed.
 - [PR #65](https://github.com/uibcdf/moli/pull/65) synchronizes the published
   Sabueso pinned-item integrity evidence. The maintained report and #3 now record
   the #79 fix and public 0.5.0 receipt; reference grammar, retention, resolution
@@ -87,9 +98,8 @@ the same state.
   consumer, implementation or owner decision; read the issue before treating
   the design as ready for closure.
 - **Operations and governance decisions:** [#8](https://github.com/uibcdf/moli/issues/8)
-  (Conda upload credential access), [#23](https://github.com/uibcdf/moli/issues/23)
-  (Discussions), and [#47](https://github.com/uibcdf/moli/issues/47)
-  (reserved archive tags).
+  (Conda upload credential access) and [#23](https://github.com/uibcdf/moli/issues/23)
+  (Discussions).
 - **Longer-horizon or explicitly deferred scope:** [#12](https://github.com/uibcdf/moli/issues/12)
   (cross-component quantity canary), [#18](https://github.com/uibcdf/moli/issues/18)
   and [#19](https://github.com/uibcdf/moli/issues/19) (project telemetry and
@@ -115,9 +125,8 @@ the same state.
    gates on the delivered head. Refresh this checkpoint when the pause state
    or next resumption path materially changes.
 
-The three-PR review and integration are complete. The proposed next new issue is
-[#47](https://github.com/uibcdf/moli/issues/47), the independent MOLI applicability
-decision for archive tags; no namespace rule or consumer rollout was accepted by
-this review. #34 also has a separable contributor-instruction step, while its
-scientist-facing pilot and notifications remain pending. No further issue
-implementation is in progress as part of this checkpoint.
+The three-PR review and #47 policy decision are complete. Archive-tag activation
+remains an owner-local future choice, with the separate Action applicability
+notices and independent MolSysSuite rule retained. #34 has a separable contributor
+instruction step, while its scientist-facing pilot and notifications remain
+pending. No further issue implementation is in progress as part of this checkpoint.

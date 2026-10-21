@@ -1,9 +1,9 @@
 ---
 summary: Accept optional archive refs without public-release meaning or automatic consumer rollout.
 issue: uibcdf/moli#47
-status: active
+status: resolved
 opened: 2026-10-21
-closed:
+closed: 2026-10-21
 verification: reproduced
 area: [governance, release, history]
 blocked_by: []
@@ -110,7 +110,29 @@ The notices preserve existing completed issue dispositions and introduce no
 immediate consumer migration or release. The two Action owner reviews remain
 independent follow-ups; no Action implementation is part of this MOLI decision.
 
-The implementation/decision is complete only after its local checks, current
-guide audit and exact-head hosted governance pass and the notices are recorded.
-Future consumer activation is explicitly deferred to its owner and is not an
-uncompleted general rollout promised by this decision.
+## Resolution and verified scope
+
+[PR #70](https://github.com/uibcdf/moli/pull/70) is reviewed and merged. The corrected
+enforcement source `b3b7b87d735cc42f135c705614081536340eb883` passes
+[PR governance](https://github.com/uibcdf/moli/actions/runs/39658142967): the archive
+gate and all 54 administrative cases execute successfully; default-branch coverage
+publication is inapplicable to that PR event.
+
+Merged source `54840cdf96aade08a31cec8ffe38e61674e05e52` passes
+[governance and default-branch coverage](https://github.com/uibcdf/moli/actions/runs/39658459426)
+and the [full five-component guide audit](https://github.com/uibcdf/moli/actions/runs/39658459615).
+Published GH Run Receptor 1.2.0 full captures were inspected, all six members of
+each capture were checked against their recorded digests, and native source,
+event, attempt, mandatory jobs/steps and the 54-test log were independently
+verified. The normalized receipt retains these identities and capture digests.
+Local Python 3.14.7 verification also passes 54 cases with published pytest-receptor
+1.2.0, Ruff, formatting, governance, archive and canonical-guide checks.
+
+This completes #47's MOLI applicability decision, normative registration,
+executable protection, owner inventory and advance notifications. Future consumer
+activation is explicitly deferred to its owner; it is not an uncompleted general
+rollout promised by this decision. No public tag, package or scientific evidence
+was rewritten and no hosted archive-tag event was manufactured. Task-owned scratch
+clones, Git fixtures, downloaded inspection tooling and raw captures are disposable
+after this documentary handoff; keep the normalized receipt under MOLI ownership
+and recheck it before first activation or a changed publisher/caller route.
