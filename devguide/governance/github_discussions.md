@@ -1,7 +1,7 @@
 # GitHub Discussions
 
-This policy is accepted under [MOLI #23](https://github.com/uibcdf/moli/issues/23)
-for MOLI and its directly governed components, including the MolSysSuite
+This policy is accepted under [MolI #23](https://github.com/uibcdf/moli/issues/23)
+for MolI and its directly governed components, including the MolSysSuite
 repository. MolSysSuite's team implements the common baseline for its member
 repositories through its own versioned policy and adoption process. This
 document does not change the platform architecture or establish a scientist-facing
@@ -11,7 +11,7 @@ agent runtime.
 
 Use Discussions for usage questions, announcements and early design conversation
 that has not yet identified actionable work. Use the lowest repository that owns
-the subject. Cross-component MOLI questions belong in MOLI; suite-internal
+the subject. Cross-component MolI questions belong in MolI; suite-internal
 questions belong in MolSysSuite. Link an existing conversation instead of opening
 parallel threads. Organization-wide centralization is not required.
 
@@ -20,11 +20,12 @@ in an owning issue even when uncertain or nonblocking. Follow the
 [reporting protocol](reporting_protocol.md), including its human-facing review
 and disclosure authority. Ideas is not a holding queue that bypasses that duty.
 
-Every MOLI repository must have Discussions enabled, including component
+Every MolI repository must have Discussions enabled, including component
 repositories that are still scaffolds or have little activity. The common
 structure below is a platform baseline; an individual component does not opt
 out because it has no discussions yet. New directly governed repositories
-enable it during onboarding; existing repositories track adoption under #23.
+enable it during onboarding. Initial adoption is recorded under #23; later
+configuration changes use the owning repository issue.
 
 Each repository records:
 
@@ -65,7 +66,7 @@ Inspect content before moving threads when removing a category. Do not delete
 discussion history just to make the configuration match.
 
 Sabueso's Data sources is an existing intake case: its owner maintains the form,
-source registry, statuses and generated page. MOLI does not take over those
+source registry, statuses and generated page. MolI does not take over those
 implementation details. Keep that intake and its useful links when aligning
 the other categories.
 
@@ -100,26 +101,29 @@ or summarizing a thread does not authorize posting, subscriptions, external
 disclosure or implementation. Act within the task's existing authority and the
 reporting protocol; no automatic notifications or runtime integration follows.
 
-## MOLI configuration
+## MolI configuration
 
-MOLI enables Discussions for platform questions, policy interpretation and
+MolI enables Discussions for platform questions, policy interpretation and
 maintainer announcements. Diego Prada (`dprada`) owns triage, with delegation
 through the repository's maintainers. The intended categories are:
 
 | Name / slug | Format | Description |
 | --- | --- | --- |
-| Announcements / `announcements` | Announcement | Maintainer updates on MOLI architecture, policies and cross-component contracts; link the authoritative record. |
-| Q&A / `q-a` | Question and answer | Questions about MOLI policies and component boundaries; actionable findings go to owning issues. |
-| Ideas / `ideas` | Open-ended discussion | Early cross-component design questions; concrete work goes to owning issues and decisions to versioned records. |
+| Announcements / `announcements` | Announcement | Maintainer updates on MolI architecture, policies and shared contracts. |
+| Q&A / `q-a` | Question and answer | Questions about MolI policies and component boundaries; actionable findings go to owning issues. |
+| Ideas / `ideas` | Open-ended discussion | Early cross-component design questions; decisions go to issues or versioned records. |
 
 Q&A and Ideas have forms under `.github/DISCUSSION_TEMPLATE/`, named after
-their category slugs. The MOLI issue board is the destination for platform work;
+their category slugs. The MolI issue board is the destination for platform work;
 accepted rules live in `moli.toml` and their linked normative documents.
 Component-local work is handed to its owning issue. This written table declares
 the desired configuration; it does not claim to enforce the remote settings.
 
 The repository keeps a dated observed inventory and adoption state in the
-[issue-backed implementation record](../pending_proposals/github_discussions.md).
+[archived implementation record](../archive/github_discussions.md).
+The seven platform/root repositories have completed their initial configuration;
+MolSysSuite member policy and rollout remain with its team under
+[MolSysSuite #120](https://github.com/uibcdf/molsyssuite/issues/120).
 Review the live enabled flag, category names/slugs, descriptions, Q&A
 answerability, announcement format/access and form rendering before claiming
 configuration complete. Record the observer and date. GitHub's category editor

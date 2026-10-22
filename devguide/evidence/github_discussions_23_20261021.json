@@ -2,10 +2,10 @@
   "issue": "uibcdf/moli#23",
   "observation_date": "2026-10-21",
   "recorded_at_utc": "2026-10-21T20:45:44.549975+00:00",
-  "owner": "MOLI maintainers under uibcdf/moli#23",
-  "review_trigger": "Before #23 closure, on category/triage ownership change, or before another repository claims adoption.",
-  "status": "partial: required common baseline accepted; repository adoption/category editor and rendered forms pending",
-  "method": "Authenticated GitHub GraphQL repository observations, all returned threads checked against totalCount; REST PATCH has_discussions=true for MOLI only.",
+  "owner": "MolI maintainers under uibcdf/moli#23",
+  "review_trigger": "On category, triage-owner, form or policy change; before claiming another repository or suite-member adoption.",
+  "status": "resolved: common policy and seven platform/root configurations verified; suite member rollout delegated to molsyssuite#120",
+  "method": "Historical initial API observations retained; final authenticated read-only GraphQL verifies seven platform/root repositories. Diego performed manual category editor checks. Only initial enabling in MolI and four direct repositories was done through REST by this task.",
   "desired_moli": {
     "enabled": true,
     "triage_owner": "dprada",
@@ -275,19 +275,11 @@
   "other_repositories_unchanged_by_task": true,
   "adoption_issues": {
     "sabueso": "https://github.com/uibcdf/sabueso/issues/149",
-    "molsyssuite": "https://github.com/uibcdf/molsyssuite/issues/120"
-  },
-  "pending_verification": [
-    "Remove unused MOLI defaults after rechecking live content",
-    "Set final descriptions and verify actual Announcement/Q&A/Ideas formats in UI",
-    "Verify Q&A and Ideas forms render from delivered main without posting test threads",
-    "Refresh API inventory after category edits; retain dated human/UI observation for announcement format/access and rendered forms",
-    "Track required adoption in initially disabled direct components and common baseline plus component-specific extensions; suite member rollout stays suite-owned."
-  ],
-  "capability_limit": {
-    "github_public_graphql": "Mutation schema inspected: no DiscussionCategory create/update/delete mutations. isAnswerable alone does not prove announcement format.",
-    "computer_use": "Inventory returned apps=[] and browsers=[]; createBrowserTab(iab) returned Browser is not available: iab.",
-    "repository_permission": "ADMIN (independent preflight)"
+    "molsyssuite": "https://github.com/uibcdf/molsyssuite/issues/120",
+    "praxis": "https://github.com/uibcdf/praxis/issues/12",
+    "nextia": "https://github.com/uibcdf/nextia/issues/4",
+    "moli-agent": "https://github.com/uibcdf/moli-agent/issues/3",
+    "recorda": "https://github.com/uibcdf/recorda/issues/28"
   },
   "raw_observation_sha256": {
     "before.json": "b19f311b5d3011cc69d2ed373531d0c2eaa4c3b018b11df829a12f34797435e7",
@@ -298,7 +290,7 @@
     "https://docs.github.com/en/discussions/managing-discussions-for-your-community/creating-discussion-category-forms",
     "https://docs.github.com/en/discussions/managing-discussions-for-your-community/syntax-for-discussion-category-forms"
   ],
-  "retention": "Keep this normalized receipt in MOLI. Raw task scratch is disposable after CI verification and issue handoff; no caller or other-session outputs are owned.",
+  "retention": "Keep normalized receipt and archived decision under MolI ownership; review on category/owner/form/policy change. Raw closeout scratch and CI inspection tooling are disposable after immutable delivery and final issue handoff.",
   "policy_clarification": {
     "date": "2026-10-21",
     "authority": "Diego, principal maintainer, in the task conversation",
@@ -316,7 +308,452 @@
       "uibcdf/moli-agent",
       "uibcdf/recorda"
     ],
-    "disabled_disposition": "pending adoption, not an exemption",
-    "suite_boundary": "MolSysSuite repository participates as a direct component; its team owns the member policy and rollout through suite #120."
+    "suite_boundary": "MolSysSuite repository participates as a direct component; its team owns the member policy and rollout through suite #120.",
+    "disabled_disposition_at_clarification": "pending adoption, not an exemption",
+    "current_disposition": "All initially disabled direct repositories are enabled and their baseline verified; see final_verification."
+  },
+  "pending_verification_at_initial_checkpoint": [
+    "MOLI category retirement and formats/form rendering",
+    "Initially disabled direct repository adoption",
+    "Independent suite policy/member rollout"
+  ],
+  "final_verification": {
+    "observed_at_utc": "2026-10-22T00:57:32.445178+00:00",
+    "local_task_date": "2026-10-21 America/Mexico_City",
+    "raw_api_sha256": "070bfefefba8f340996025468adca20e8c85b554e14ad767a2cff384a8e0694b",
+    "normalized_observations": [
+      {
+        "nameWithOwner": "uibcdf/moli",
+        "hasDiscussionsEnabled": true,
+        "defaultBranchRef": {
+          "name": "main",
+          "target": {
+            "oid": "e7a9f84ef685b9ecd11b753489ed9d702cc11924"
+          }
+        },
+        "discussionCategories": {
+          "nodes": [
+            {
+              "id": "DIC_kwDOUm2Za84DJSMx",
+              "name": "Announcements",
+              "slug": "announcements",
+              "description": "Maintainer updates on MolI architecture, policies and shared contracts.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-21T21:38:39Z"
+            },
+            {
+              "id": "DIC_kwDOUm2Za84DJSM0",
+              "name": "Ideas",
+              "slug": "ideas",
+              "description": "Early cross-component design questions; decisions go to issues or versioned records.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-21T21:39:07Z"
+            },
+            {
+              "id": "DIC_kwDOUm2Za84DJSMz",
+              "name": "Q&A",
+              "slug": "q-a",
+              "description": "Questions about MolI policies and component boundaries; actionable findings go to owning issues.",
+              "isAnswerable": true,
+              "updatedAt": "2026-10-21T21:39:32Z"
+            }
+          ]
+        },
+        "discussions": {
+          "totalCount": 0,
+          "nodes": []
+        },
+        "object": {
+          "oid": "c8a90ce322df2e521e79c3f21ebb5d346f3de88e",
+          "entries": [
+            {
+              "name": "ideas.yml",
+              "type": "blob"
+            },
+            {
+              "name": "q-a.yml",
+              "type": "blob"
+            }
+          ]
+        }
+      },
+      {
+        "nameWithOwner": "uibcdf/sabueso",
+        "hasDiscussionsEnabled": true,
+        "defaultBranchRef": {
+          "name": "main",
+          "target": {
+            "oid": "f392844ec48fd8364d83c72a9521808daf1c598a"
+          }
+        },
+        "discussionCategories": {
+          "nodes": [
+            {
+              "id": "DIC_kwDORFzcPs4C1vih",
+              "name": "Announcements",
+              "slug": "announcements",
+              "description": "Maintainer updates on Sabueso releases, data sources and public contracts.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-21T21:43:23Z"
+            },
+            {
+              "id": "DIC_kwDORFzcPs4DGXNp",
+              "name": "Data sources",
+              "slug": "data-sources",
+              "description": "Propose an online resource for Sabueso (database, API or dataset)",
+              "isAnswerable": false,
+              "updatedAt": "2026-09-25T09:58:06Z"
+            },
+            {
+              "id": "DIC_kwDORFzcPs4C1vik",
+              "name": "Ideas",
+              "slug": "ideas",
+              "description": "Early ideas for Sabueso; decisions go to issues or the appropriate versioned record.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-21T21:44:12Z"
+            },
+            {
+              "id": "DIC_kwDORFzcPs4C1vij",
+              "name": "Q&A",
+              "slug": "q-a",
+              "description": "Questions about using Sabueso; actionable findings go to owning issues.",
+              "isAnswerable": true,
+              "updatedAt": "2026-10-21T21:43:46Z"
+            }
+          ]
+        },
+        "discussions": {
+          "totalCount": 1,
+          "nodes": [
+            {
+              "number": 63,
+              "title": "Welcome to sabueso Discussions!",
+              "url": "https://github.com/uibcdf/sabueso/discussions/63",
+              "category": {
+                "name": "Announcements"
+              }
+            }
+          ]
+        },
+        "object": {
+          "oid": "fcde383767342f476c9bad818e23f0829a555aae",
+          "entries": [
+            {
+              "name": "data-sources.yml",
+              "type": "blob"
+            }
+          ]
+        },
+        "adoption": {
+          "number": 149,
+          "state": "CLOSED",
+          "url": "https://github.com/uibcdf/sabueso/issues/149"
+        },
+        "sourceRegistry": {
+          "oid": "63ef225ee7d8367e736f375a5e5fca416852318d"
+        },
+        "sourceForm": {
+          "oid": "2b71abb6ff4f28f0a889e43117e7ca4c0c880060"
+        }
+      },
+      {
+        "nameWithOwner": "uibcdf/praxis",
+        "hasDiscussionsEnabled": true,
+        "defaultBranchRef": {
+          "name": "main",
+          "target": {
+            "oid": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512"
+          }
+        },
+        "discussionCategories": {
+          "nodes": [
+            {
+              "id": "DIC_kwDOUm3M4s4DJSSf",
+              "name": "Announcements",
+              "slug": "announcements",
+              "description": "Maintainer updates on Praxis releases, capabilities and public contracts.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-21T21:46:53Z"
+            },
+            {
+              "id": "DIC_kwDOUm3M4s4DJSSi",
+              "name": "Ideas",
+              "slug": "ideas",
+              "description": "Early ideas for Praxis; decisions go to issues or the appropriate versioned record.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-21T21:47:14Z"
+            },
+            {
+              "id": "DIC_kwDOUm3M4s4DJSSh",
+              "name": "Q&A",
+              "slug": "q-a",
+              "description": "Questions about using Praxis and its methodological resources; actionable findings go to issues.",
+              "isAnswerable": true,
+              "updatedAt": "2026-10-21T21:47:40Z"
+            }
+          ]
+        },
+        "discussions": {
+          "totalCount": 0,
+          "nodes": []
+        },
+        "object": null,
+        "adoption": {
+          "number": 12,
+          "state": "CLOSED",
+          "url": "https://github.com/uibcdf/praxis/issues/12"
+        }
+      },
+      {
+        "nameWithOwner": "uibcdf/nextia",
+        "hasDiscussionsEnabled": true,
+        "defaultBranchRef": {
+          "name": "main",
+          "target": {
+            "oid": "32d12e20fae26f00a523d0ed4812e46def8a64e9"
+          }
+        },
+        "discussionCategories": {
+          "nodes": [
+            {
+              "id": "DIC_kwDOUm3P184DJSSl",
+              "name": "Announcements",
+              "slug": "announcements",
+              "description": "Maintainer updates on Nextia design, development and public contracts.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-21T21:52:54Z"
+            },
+            {
+              "id": "DIC_kwDOUm3P184DJSSo",
+              "name": "Ideas",
+              "slug": "ideas",
+              "description": "Early ideas for Nextia; decisions go to issues or the appropriate versioned record.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-21T21:53:17Z"
+            },
+            {
+              "id": "DIC_kwDOUm3P184DJSSn",
+              "name": "Q&A",
+              "slug": "q-a",
+              "description": "Questions about Nextia concepts and discovery workflows; actionable findings go to issues.",
+              "isAnswerable": true,
+              "updatedAt": "2026-10-21T21:53:38Z"
+            }
+          ]
+        },
+        "discussions": {
+          "totalCount": 0,
+          "nodes": []
+        },
+        "object": null,
+        "adoption": {
+          "number": 4,
+          "state": "CLOSED",
+          "url": "https://github.com/uibcdf/nextia/issues/4"
+        }
+      },
+      {
+        "nameWithOwner": "uibcdf/moli-agent",
+        "hasDiscussionsEnabled": true,
+        "defaultBranchRef": {
+          "name": "main",
+          "target": {
+            "oid": "08d0e2b809e7e5c46add5ee554ae9528831f7454"
+          }
+        },
+        "discussionCategories": {
+          "nodes": [
+            {
+              "id": "DIC_kwDOUnCvUs4DJSSr",
+              "name": "Announcements",
+              "slug": "announcements",
+              "description": "Maintainer updates on Moli design, development and public contracts.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-21T22:03:26Z"
+            },
+            {
+              "id": "DIC_kwDOUnCvUs4DJSSu",
+              "name": "Ideas",
+              "slug": "ideas",
+              "description": "Early ideas for Moli; decisions go to issues or the appropriate versioned record.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-22T00:00:00Z"
+            },
+            {
+              "id": "DIC_kwDOUnCvUs4DJSSt",
+              "name": "Q&A",
+              "slug": "q-a",
+              "description": "Questions about Moli's role and interaction with MolI; actionable findings go to issues.",
+              "isAnswerable": true,
+              "updatedAt": "2026-10-21T23:59:29Z"
+            }
+          ]
+        },
+        "discussions": {
+          "totalCount": 0,
+          "nodes": []
+        },
+        "object": null,
+        "adoption": {
+          "number": 3,
+          "state": "CLOSED",
+          "url": "https://github.com/uibcdf/moli-agent/issues/3"
+        }
+      },
+      {
+        "nameWithOwner": "uibcdf/recorda",
+        "hasDiscussionsEnabled": true,
+        "defaultBranchRef": {
+          "name": "main",
+          "target": {
+            "oid": "b455ff5ec6fee206f8c077cbac45712f0b6c704b"
+          }
+        },
+        "discussionCategories": {
+          "nodes": [
+            {
+              "id": "DIC_kwDOUoGm6c4DJSSx",
+              "name": "Announcements",
+              "slug": "announcements",
+              "description": "Maintainer updates on Recorda releases, provenance and public contracts.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-22T00:14:46Z"
+            },
+            {
+              "id": "DIC_kwDOUoGm6c4DJSS0",
+              "name": "Ideas",
+              "slug": "ideas",
+              "description": "Early ideas for Recorda; decisions go to issues or the appropriate versioned record.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-22T00:15:10Z"
+            },
+            {
+              "id": "DIC_kwDOUoGm6c4DJSSz",
+              "name": "Q&A",
+              "slug": "q-a",
+              "description": "Questions about using Recorda and recording provenance; actionable findings go to issues.",
+              "isAnswerable": true,
+              "updatedAt": "2026-10-22T00:49:21Z"
+            }
+          ]
+        },
+        "discussions": {
+          "totalCount": 0,
+          "nodes": []
+        },
+        "object": null,
+        "adoption": {
+          "number": 28,
+          "state": "CLOSED",
+          "url": "https://github.com/uibcdf/recorda/issues/28"
+        }
+      },
+      {
+        "nameWithOwner": "uibcdf/molsyssuite",
+        "hasDiscussionsEnabled": true,
+        "defaultBranchRef": {
+          "name": "main",
+          "target": {
+            "oid": "4e6cee88a3c60cffa7b596f790f2d213bcc20cd3"
+          }
+        },
+        "discussionCategories": {
+          "nodes": [
+            {
+              "id": "DIC_kwDOQwPE5c4DFAmf",
+              "name": "Announcements",
+              "slug": "announcements",
+              "description": "Maintainer updates on MolSysSuite releases, member coordination and shared contracts.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-22T00:55:10Z"
+            },
+            {
+              "id": "DIC_kwDOQwPE5c4DFAmi",
+              "name": "Ideas",
+              "slug": "ideas",
+              "description": "Ideas for MolSysSuite and its members; decisions go to issues or versioned records.",
+              "isAnswerable": false,
+              "updatedAt": "2026-10-22T00:55:35Z"
+            },
+            {
+              "id": "DIC_kwDOQwPE5c4DFAmh",
+              "name": "Q&A",
+              "slug": "q-a",
+              "description": "Questions about MolSysSuite and its members; actionable findings go to owning issues.",
+              "isAnswerable": true,
+              "updatedAt": "2026-10-22T00:56:00Z"
+            }
+          ]
+        },
+        "discussions": {
+          "totalCount": 1,
+          "nodes": [
+            {
+              "number": 2,
+              "title": "Welcome to molsyssuite Discussions!",
+              "url": "https://github.com/uibcdf/molsyssuite/discussions/2",
+              "category": {
+                "name": "Announcements"
+              }
+            }
+          ]
+        },
+        "object": null,
+        "adoption": {
+          "number": 120,
+          "state": "OPEN",
+          "url": "https://github.com/uibcdf/molsyssuite/issues/120"
+        }
+      }
+    ],
+    "checks": {
+      "all_seven_enabled": true,
+      "common_names_slugs_descriptions_match": true,
+      "q_and_a_answerability": true,
+      "unused_defaults_absent": true,
+      "sabueso_data_sources_preserved": true,
+      "existing_two_welcome_threads_preserved": true,
+      "no_new_threads": true,
+      "five_owner_adoption_issues_closed": true
+    },
+    "maintainer_ui_evidence": {
+      "observer": "Diego Prada (dprada), repository principal maintainer",
+      "source": "Task conversation: completion replies following the per-repository manual checklists; owning issue receipts linked below.",
+      "confirmations": {
+        "uibcdf/moli": "MolI listo",
+        "uibcdf/sabueso": "Sabueso listo",
+        "uibcdf/praxis": "Praxis listo",
+        "uibcdf/nextia": "Nextia listo",
+        "uibcdf/moli-agent": "moli-agent listo",
+        "uibcdf/recorda": "Recorda listo",
+        "uibcdf/molsyssuite": "MolSysSuite listo"
+      },
+      "actual_formats": "Maintainer-reported Announcement / Question and answer / Open-ended discussion checks for the three common categories. API booleans independently establish Q&A answerability, not Announcement format.",
+      "form_previews": "Maintainer-reported Q&A/Ideas forms in MolI and Data sources form in Sabueso. Other inspected repositories have no local DISCUSSION_TEMPLATE directory.",
+      "independent_browser_inspection_by_cli": false
+    },
+    "owner_receipts": {
+      "uibcdf/moli": "https://github.com/uibcdf/moli/issues/23#issuecomment-6327163619",
+      "uibcdf/sabueso": "https://github.com/uibcdf/sabueso/issues/149#issuecomment-6327246646",
+      "uibcdf/praxis": "https://github.com/uibcdf/praxis/issues/12#issuecomment-6327297616",
+      "uibcdf/nextia": "https://github.com/uibcdf/nextia/issues/4#issuecomment-6327396233",
+      "uibcdf/moli-agent": "https://github.com/uibcdf/moli-agent/issues/3#issuecomment-6329289305",
+      "uibcdf/recorda": "https://github.com/uibcdf/recorda/issues/28#issuecomment-6329957638",
+      "uibcdf/molsyssuite": "https://github.com/uibcdf/molsyssuite/issues/120"
+    },
+    "ownership": "dprada owns MolI triage; the respective repository maintainers are accountable for the other repositories until explicit named delegation, under the accepted common policy.",
+    "scope": "Seven registered platform/root repositories only; no suite-member settings, member policy publication, scientific runtime, package release or Nextia implementation qualification.",
+    "remaining_delegated_work": {
+      "owner": "MolSysSuite development team",
+      "issue": "https://github.com/uibcdf/molsyssuite/issues/120",
+      "state": "open",
+      "work": "Suite-owned versioned rule, future-repository route and member adoption inventory/rollout/evidence."
+    }
+  },
+  "last_updated_at_utc": "2026-10-22T00:57:32.445178+00:00",
+  "capability_limit_at_initial_checkpoint": {
+    "github_public_graphql": "Mutation schema inspected: no DiscussionCategory create/update/delete mutations. isAnswerable alone does not prove announcement format.",
+    "computer_use": "Inventory returned apps=[] and browsers=[]; createBrowserTab(iab) returned Browser is not available: iab.",
+    "repository_permission": "ADMIN (independent preflight)"
   }
 }

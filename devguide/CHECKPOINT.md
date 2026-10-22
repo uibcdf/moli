@@ -1,12 +1,13 @@
-# MOLI development checkpoint
+# MolI development checkpoint
 
-**Refreshed on:** 2026-10-21 during the Discussions policy/configuration in
+**Refreshed on:** 2026-10-22 UTC after completing the Discussions policy and
+seven platform/root configurations in
 [#23](https://github.com/uibcdf/moli/issues/23), after the bounded optional Ackredit review in
 [#46](https://github.com/uibcdf/moli/issues/46), the contributor-instruction
 step of #34, #47 and the earlier review/integration of PRs #65, #66 and #67.
 Each owning issue records the exact final published source, native gates and
 temporary-resource disposition; receipt links below identify their scoped evidence.
-This page is a dated navigation aid. Recheck the live [MOLI issue board](https://github.com/uibcdf/moli/issues),
+This page is a dated navigation aid. Recheck the live [MolI issue board](https://github.com/uibcdf/moli/issues),
 the relevant owner issues and current repository heads before acting. Do not use a
 historical issue count or this page to infer that an adoption or CI run still has
 the same state.
@@ -18,7 +19,7 @@ the same state.
   [`README.md`](README.md) indexes the normative devguide documents, and
   [`INFRASTRUCTURE_CENSUS.md`](INFRASTRUCTURE_CENSUS.md) records pinned
   implementation snapshots rather than a live issue queue.
-- MOLI owns platform contracts and its directly governed components. The
+- MolI owns platform contracts and its directly governed components. The
   [MolSysSuite issue board](https://github.com/uibcdf/molsyssuite/issues) and
   its own registry/guide own member policy and rollout. Route owner-local fixes
   and shared-provider changes through their owning issues; link impact issues
@@ -27,7 +28,19 @@ the same state.
   to resume reading, not a new priority order or acceptance decision. Issue
   comments and linked evidence are the current work record.
 
-## Last completed MOLI work
+## Last completed MolI work
+
+- **[#23](https://github.com/uibcdf/moli/issues/23), Discussions:** required
+  Announcements/Q&A/Ideas and local extensions are accepted; all seven registered
+  platform/root repositories are enabled and configured. API readback and
+  Diego's reported UI checks are distinct evidence in the
+  [archived decision](archive/github_discussions.md) and
+  [receipt](evidence/github_discussions_23_20261021.json). Five component owner
+  issues are closed; Sabueso preserves Data sources and both existing welcome
+  threads survive. Suite [#120](https://github.com/uibcdf/molsyssuite/issues/120)
+  stays open for its own versioned member rule and rollout. Root setup does
+  not claim member adoption or Nextia runtime development. Final documentary
+  source/CI/cleanup are recorded in #23's closeout.
 
 - **[#46](https://github.com/uibcdf/moli/issues/46), bounded optional Ackredit review:**
   the [direct-consumer policy](policies/ackredit_client_policy.md), registered
@@ -89,7 +102,7 @@ the same state.
   lane are separate evidence. #36/#18 remain open for project context, retention,
   routing, telemetry and explicit Nextia interpretation.
 - [#68](https://github.com/uibcdf/moli/issues/68): public GitHub Release titles
-  use the exact version. The MOLI rule and direct-component guide copies were
+  use the exact version. The MolI rule and direct-component guide copies were
   delivered; the [full guide audit](https://github.com/uibcdf/moli/actions/runs/39468857387)
   passed. MolSysSuite handled its own member rollout in
   [#119](https://github.com/uibcdf/molsyssuite/issues/119).
@@ -111,13 +124,12 @@ the same state.
 
 ## Open coordination that was active at the pause
 
-| MOLI issue | Current boundary and next evidence |
+| MolI issue | Current boundary and next evidence |
 | --- | --- |
-| [#23](https://github.com/uibcdf/moli/issues/23) | [Discussions policy](governance/github_discussions.md) requires enabled Discussions and common Announcements/Q&A/Ideas across MOLI repositories, with local extensions; MOLI is enabled and its forms are published. [Implementation record](pending_proposals/github_discussions.md) and [receipt](evidence/github_discussions_23_20261021.json) distinguish desired categories from GitHub's still-present defaults. Category editor and rendered forms need a connected browser or maintainer handoff before closure. Sabueso #149 and suite #120 own adoption; Praxis, Nextia, MOLI Agent and Recorda were observed disabled and now require tracked adoption. |
 | [#40](https://github.com/uibcdf/moli/issues/40) | Python 3.14 editable co-development is documented; Recorda/Praxis source and development compatibility with recent public providers has been received. The combined workspace remains partial: [suite #82](https://github.com/uibcdf/molsyssuite/issues/82) still has TopoMT authorization and broader integration, and [Recorda #26](https://github.com/uibcdf/recorda/issues/26) owns a future public release for the latest-provider cohort. A fourteen-member suite receipt plus two direct consumers does not establish a sixteen-component qualification. |
-| [#62](https://github.com/uibcdf/moli/issues/62) | Shared diagnostic-provider work has public provider evidence and specific consumer handoffs, but application-owned policy, scoped-capture adoption and receiving decisions remain issue-bound. Check the latest provider and consumer comments before selecting a MOLI action; availability of a provider release does not itself approve adoption. |
+| [#62](https://github.com/uibcdf/moli/issues/62) | Shared diagnostic-provider work has public provider evidence and specific consumer handoffs, but application-owned policy, scoped-capture adoption and receiving decisions remain issue-bound. Check the latest provider and consumer comments before selecting a MolI action; availability of a provider release does not itself approve adoption. |
 
-## Other open MOLI issues
+## Other open MolI issues
 
 - **Scientific and interoperability contracts:** [#3](https://github.com/uibcdf/moli/issues/3),
   [#17](https://github.com/uibcdf/moli/issues/17),
@@ -128,8 +140,7 @@ the same state.
   consumer, implementation or owner decision; read the issue before treating
   the design as ready for closure.
 - **Operations and governance decisions:** [#8](https://github.com/uibcdf/moli/issues/8)
-  (Conda upload credential access) and [#23](https://github.com/uibcdf/moli/issues/23)
-  (Discussions).
+  (Conda upload credential access).
 - **Longer-horizon or explicitly deferred scope:** [#12](https://github.com/uibcdf/moli/issues/12)
   (cross-component quantity canary), [#18](https://github.com/uibcdf/moli/issues/18)
   and [#19](https://github.com/uibcdf/moli/issues/19) (project telemetry and
@@ -144,13 +155,13 @@ the same state.
 
 1. Synchronize this clone with `origin/main`; check for local work before
    changing branches or files. Read this checkpoint, then refresh the live
-   MOLI and relevant owner issue states and their latest evidence.
+   MolI and relevant owner issue states and their latest evidence.
 2. Select one issue with the maintainer. Resolve its ownership boundary using
    [`MOLI_GUIDE.md`](../MOLI_GUIDE.md), applicable `moli.toml` policy entries and
    the relevant architecture decision. For MolSysSuite member work, notify its
    team through a linked suite issue rather than editing member repositories.
 3. Update the owning issue with the decision, exact evidence and remaining
-   limits. For MOLI governance edits, run
+   limits. For MolI governance edits, run
    `python devtools/scripts/validate_governance.py`; verify applicable hosted
    gates on the delivered head. Refresh this checkpoint when the pause state
    or next resumption path materially changes.
@@ -162,5 +173,6 @@ step is complete; its scientist-facing pilot and notifications remain pending.
 The bounded #46 provider-contract review is complete; owner-selected consumer
 adoption is separate. Nextia runtime work remains deferred; #28/Nextia #1 must
 not be taken as selected implementation work from this checkpoint.
-The #23 implementation is partial for the required repository rollout and
-explicitly recorded browser-dependent category configuration. Recheck its issue before starting unrelated work.
+The #23 platform policy/root configuration scope is complete; suite #120
+retains delegated member policy and rollout. Recheck that owning issue before
+claiming member adoption.

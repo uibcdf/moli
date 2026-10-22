@@ -70,8 +70,11 @@ The [GitHub Discussions policy](governance/github_discussions.md) requires
 Discussions across MolI repositories with common Announcements, Q&A and Ideas
 categories, plus component-specific extensions. It defines triage ownership
 and promotion to owning issues or versioned decisions. The
-[implementation record](pending_proposals/github_discussions.md) tracks MolI's
-live configuration and owner-local rollout, including delegated suite adoption.
+[archived implementation record](archive/github_discussions.md) and
+[dated receipt](evidence/github_discussions_23_20261021.json) record the seven
+configured platform/root repositories. MolSysSuite
+[#120](https://github.com/uibcdf/molsyssuite/issues/120) retains its own member
+policy and rollout; the root configuration does not establish member adoption.
 
 The [temporary-resource lifecycle](governance/temporary_resource_lifecycle.md)
 requires owner-scoped cleanup after the last useful use while preserving active
