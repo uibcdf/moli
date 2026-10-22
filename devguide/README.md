@@ -124,6 +124,12 @@ supplies public acceptance material for #36: original scientific/credit artifact
 explicit application consumption, independent read and failed/unavailable delivery.
 Its bounded example is not an accepted ProjectRecord schema or routing runtime.
 
+The [retrieval/archive contract review](pending_proposals/retrieval_archive_contract.md)
+under [#33](https://github.com/uibcdf/moli/issues/33) compares pinned Sabueso
+behavior with candidate project-level retention, sharing, storage and replay
+guarantees. It is a proposal for owner review, not an accepted wire schema,
+shared mirror service or Nextia implementation.
+
 
 ## Cross-platform scientific communication
 

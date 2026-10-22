@@ -1,14 +1,10 @@
 # MolI development checkpoint
 
-**Refreshed on:** 2026-10-22 UTC after actual seventeen-package receiving in #40,
-recording Diego's #8 credential-access
-decision and reconciling #40's workspace evidence,
-Recorda's core adoption and
-inventorying optional diagnostic receiving in #62, completing Discussions and
-seven platform/root configurations in [#23](https://github.com/uibcdf/moli/issues/23),
-and the bounded optional Ackredit review in
-[#46](https://github.com/uibcdf/moli/issues/46), the contributor-instruction
-step of #34, #47 and the earlier review/integration of PRs #65, #66 and #67.
+**Refreshed on:** 2026-10-22 UTC for the bounded retrieval/archive contract
+review in [#33](https://github.com/uibcdf/moli/issues/33) and reconciliation of
+the obsolete open-coordination entry for closed #62. Earlier workspace receiving,
+credential guidance, Discussions, optional-provider reviews and contributor-rule
+deliveries retain their scoped evidence below.
 Each owning issue records the exact final published source, native gates and
 temporary-resource disposition; receipt links below identify their scoped evidence.
 This page is a dated navigation aid. Recheck the live [MolI issue board](https://github.com/uibcdf/moli/issues),
@@ -177,11 +173,16 @@ the same state.
   [#45](https://github.com/uibcdf/moli/issues/45) were also closed after their
   recorded evidence was checked. Read each issue for its exact accepted scope.
 
-## Open coordination that was active at the pause
+## Selected coordination at resumption
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
-| [#62](https://github.com/uibcdf/moli/issues/62) | Recorda's core adoption is reconciled; the pinned direct-component inventory is complete. Optional receiving decisions remain in Sabueso #150, Praxis #13 and Recorda #29. Accept adoption evidence or reasoned deferral/non-applicability before closing the coordination scope. Suite #106 is independent; new provider releases alone do not approve adoption. |
+| [#33](https://github.com/uibcdf/moli/issues/33) | Review the retrieval/archive/mirror boundary against pinned Sabueso source. The [candidate contract](pending_proposals/retrieval_archive_contract.md) separates existing local behavior from proposed project retention, sharing, storage and replay guarantees. Owner review and consumer acceptance remain open; no Nextia runtime or shared service is selected. |
+
+The former #62 coordination is closed/completed; its accepted dispositions and
+owner-local revisit triggers are recorded above and in the archived review.
+Sabueso #150, Praxis #13 and Recorda #29 are completed receiving records, not
+outstanding direct-component blockers. Suite #106 retains its independent scope.
 
 ## Other open MolI issues
 

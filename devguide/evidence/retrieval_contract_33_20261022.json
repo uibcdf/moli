@@ -1,0 +1,148 @@
+{
+  "schema": "moli.retrieval_contract_inspection/1",
+  "owner_issue": "uibcdf/moli#33",
+  "date_utc": "2026-10-22",
+  "verification": "inspected",
+  "status": "candidate for owner review; no policy/schema acceptance",
+  "source": {
+    "repository": "uibcdf/sabueso",
+    "commit": "4ae60603371fa8afa173d4d24cdff9a2b7121012",
+    "checkout_clean": true,
+    "files": [
+      {
+        "path": "devguide/CACHE_POLICY.md",
+        "bytes": 8921,
+        "sha256": "7d6cdfe5ade3e551c8ca1e658599ae32834566b09832d699775e43cdf0c21955"
+      },
+      {
+        "path": "devguide/SOURCE_ACCESS.md",
+        "bytes": 17250,
+        "sha256": "79444aca5b15a6edfdecd87daa44448e6567560f476e6a26530bf5d30b0d5610"
+      },
+      {
+        "path": "sabueso/tools/db/_archive.py",
+        "bytes": 15080,
+        "sha256": "99e84478238fdf4f90d27e6c449e79c3cc28e0fcad1f62f65e1b3ec4a3fe613a"
+      },
+      {
+        "path": "sabueso/tools/db/_http.py",
+        "bytes": 19565,
+        "sha256": "8103eba94072472e83c02324c3557ee7752e5349fc7d049f21f5135cd1ea3f35"
+      },
+      {
+        "path": "sabueso/tools/db/_mirror.py",
+        "bytes": 4215,
+        "sha256": "c5b568871046ba68c196517162bf07ef6d54c96ee39fc03f37807886719c052a"
+      },
+      {
+        "path": "sabueso/tools/db/bindingdb_mirror.py",
+        "bytes": 11143,
+        "sha256": "6839f55d937acc2ee58ec9f4a83dd9837a838d68fef3c1d81a4df88430f784cd"
+      },
+      {
+        "path": "sabueso/mirrors.py",
+        "bytes": 5297,
+        "sha256": "bd6264ac621e27679348194611741138d4da13d3bdf3e15dcc0b73d57c0ab29b"
+      },
+      {
+        "path": "sabueso/core/card.py",
+        "bytes": 48958,
+        "sha256": "a54f34baea3c4435a907a9cd403840582ce2ed6b79259c852ce1226570c43373"
+      },
+      {
+        "path": "sabueso/core/terms.py",
+        "bytes": 23930,
+        "sha256": "dfab0ba0dd21fbe79d4eb42763f82a9616df22ef95fbac8e7d70c5371a6891dc"
+      },
+      {
+        "path": "tests/core/test_retrieval_archive_offline.py",
+        "bytes": 6657,
+        "sha256": "dc0c952a5ce75cc3b89a5a397475ba6d2732866167d80f2feeb8329854edcd50"
+      },
+      {
+        "path": "tests/core/test_mirrors_offline.py",
+        "bytes": 6952,
+        "sha256": "2ed694e81ec2a0bef691d4bb4d7df42eb32e1656aedc5f75e2eb0469faafcade"
+      }
+    ]
+  },
+  "architecture_and_governance_base": {
+    "repository": "uibcdf/moli",
+    "commit": "3c42c6397152748c6a5b83ea0e397f50b5e9f8e2",
+    "files": [
+      {
+        "path": "architecture_1.0/DECISIONS.md",
+        "bytes": 8778,
+        "sha256": "51e3bc6a756024fde759c4ff5c02e7216d93b7f403b381794d29a135fbdafacc"
+      },
+      {
+        "path": "architecture_1.0/OBJECT_IDENTITY_AND_PORTABILITY.md",
+        "bytes": 7600,
+        "sha256": "c45267811ce72430ec97beb4e75eb3d9ea820b0d266c80f52f69d3457ae80d29"
+      },
+      {
+        "path": "architecture_1.0/PROJECT_ARCHITECTURE.md",
+        "bytes": 29692,
+        "sha256": "5de8ac5d16d0ee3c3e5d1db06b02828b01f361850311744c6b35590f00a80bae"
+      },
+      {
+        "path": "architecture_1.0/VISIBILITY_AND_CONFIDENTIALITY.md",
+        "bytes": 5366,
+        "sha256": "ece9838dc0c40db18f921fa7eb41daecac209e553adeb26f5a8846073ff8efb2"
+      },
+      {
+        "path": "devguide/REPRODUCIBILITY_AUDIT_AND_REPLAY.md",
+        "bytes": 27879,
+        "sha256": "38bf9bd0c6db378ee3b3f899cc6cf78eed0c5addba9f51b84f0a7849b48a4744"
+      },
+      {
+        "path": "MOLI_GUIDE.md",
+        "bytes": 24474,
+        "sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c"
+      },
+      {
+        "path": "moli.toml",
+        "bytes": 9929,
+        "sha256": "0a8f39c726d4e03281811bb91a18a4bba83e649f523fab91292a24b0775ff76d"
+      }
+    ]
+  },
+  "observations": [
+    "retrieval metadata and payload have distinct identity; source label is outside the reference hash",
+    "get checks response-content digest; portable metadata verification and authorization are not established by that check",
+    "manifest replay and unpinned latest request lookup are distinct",
+    "Card.explain retrieval lineage basis is source_in_build, not exact response-to-field support",
+    "retention report is derived at read time; record has no metadata-only non-retention branch",
+    "only BindingDB is registered as a mirror adapter; release ZIP uses MD5 verification and own downloaded ZIP is removed after indexing",
+    "SQLite sessions and per-instance thread lock do not qualify shared multi-process or distributed operation",
+    "auto/keep mirror cleanup does not account for project pin dependencies"
+  ],
+  "existing_tests_inspected_not_executed": [
+    "tests/core/test_retrieval_archive_offline.py",
+    "tests/core/test_mirrors_offline.py"
+  ],
+  "qualification_limits": {
+    "component_tests_executed": false,
+    "live_source_queries": false,
+    "source_payload_downloads": false,
+    "mirror_installation": false,
+    "provider_or_consumer_implementation_changes": false,
+    "package_or_environment_changes": false,
+    "release_or_public_installation_qualification": false,
+    "nextia_runtime_development": false,
+    "suite_or_member_adoption": false
+  },
+  "checkpoint_correction": {
+    "issue": "uibcdf/moli#62",
+    "github_state": "closed",
+    "state_reason": "completed",
+    "closed_at_utc": "2026-10-22T20:16:15Z",
+    "meaning": "remove obsolete open-coordination row; keep original completion evidence and delegated suite scope"
+  },
+  "temporary_resources": {
+    "owner": "Codex working with Diego",
+    "purpose": "pinned read-only source inspection and exact-head documentation CI verification",
+    "retirement_trigger": "after durable issue delivery and completed gate verification",
+    "retained_evidence": "this normalized receipt, maintained proposal and owner issue comments"
+  }
+}
