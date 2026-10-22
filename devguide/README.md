@@ -60,6 +60,17 @@ meaning, source vocabulary, schema migration and adoption evidence.
 
 The scheduled component-guide audit checks byte-identical copies and Python-package classification in directly governed repositories. Guide updates are synchronized to those repositories when the canonical guide changes.
 
+The [Python 3.14 workspace review](pending_proposals/python_314_workspace.md)
+records the delivered contributor guidance and separates suite-only integration,
+direct-consumer compatibility, the remaining joint workspace and public releases.
+MolSysSuite owns its environment recipe; #40 coordinates the direct-component gap.
+
+The [Conda credential-access contract](policies/python_distribution_policy.md#conda-publication-credential-access)
+names Diego Prada as administrator of `ANACONDA_UIBCDF_TOKEN`, with selected
+repository access requested through owning issues. Onboarding and release
+checklists distinguish availability from actual publication evidence; #8 tracks
+the remaining execution/adoption evidence.
+
 The [agent-instruction lifecycle](governance/agent_instruction_lifecycle.md)
 defines when an accepted development lesson becomes a root or nested
 `AGENTS.md` rule. Its [adoption inventory](governance/agent_instruction_adoption.md)

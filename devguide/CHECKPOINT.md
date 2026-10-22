@@ -1,6 +1,8 @@
 # MolI development checkpoint
 
-**Refreshed on:** 2026-10-22 UTC after reconciling Recorda's core adoption and
+**Refreshed on:** 2026-10-22 UTC after recording Diego's #8 credential-access
+decision and reconciling #40's workspace evidence,
+Recorda's core adoption and
 inventorying optional diagnostic receiving in #62, completing Discussions and
 seven platform/root configurations in [#23](https://github.com/uibcdf/moli/issues/23),
 and the bounded optional Ackredit review in
@@ -30,6 +32,25 @@ the same state.
   comments and linked evidence are the current work record.
 
 ## Last completed MolI work
+
+- **Administrative decision in [#8](https://github.com/uibcdf/moli/issues/8):**
+  Diego Prada confirmed the canonical `ANACONDA_UIBCDF_TOKEN` organization
+  secret, his administration/rotation responsibility and selected-repository
+  grants requested through an owning issue. The
+  [distribution contract](policies/python_distribution_policy.md#conda-publication-credential-access),
+  onboarding and release checklist record this once, with a presence-only
+  readiness example. Actual repository grants, execution and successful
+  authorized delivery remain separate evidence; the current API context cannot
+  inspect organization-secret metadata (403). No credential value, grant,
+  rotation, workflow dispatch or publication was accessed/performed here.
+
+- **Documentary reconciliation of [#40](https://github.com/uibcdf/moli/issues/40):**
+  the [workspace review](pending_proposals/python_314_workspace.md) replaces the
+  obsolete eight-member/Praxis-scaffold description with received fourteen-member
+  suite integration and separate Recorda/Praxis compatibility. Central guidance
+  is delivered. Joint receiving with direct components, suite-owned TopoMT
+  authorization/qualification and Recorda #26's public release remain distinct;
+  #40 stays partial. No environment, package, component source or guide changed.
 
 - **Bounded central review in [#62](https://github.com/uibcdf/moli/issues/62):**
   Recorda's current-core ecosystem review #2 is accepted as `adopted` in
@@ -141,7 +162,7 @@ the same state.
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
-| [#40](https://github.com/uibcdf/moli/issues/40) | Python 3.14 editable co-development is documented; Recorda/Praxis source and development compatibility with recent public providers has been received. The combined workspace remains partial: [suite #82](https://github.com/uibcdf/molsyssuite/issues/82) still has TopoMT authorization and broader integration, and [Recorda #26](https://github.com/uibcdf/recorda/issues/26) owns a future public release for the latest-provider cohort. A fourteen-member suite receipt plus two direct consumers does not establish a sixteen-component qualification. |
+| [#40](https://github.com/uibcdf/moli/issues/40) | [Evidence and owner reconciliation](pending_proposals/python_314_workspace.md) is current. Central guidance, fourteen-member suite integration and separate Recorda/Praxis compatibility are received. A combined workspace including the selected direct components remains unqualified; Sabueso #109 is closed for guidance, not this joint receiving. Suite #82 retains TopoMT authorization/qualification; Recorda #26 owns the independent public release. |
 | [#62](https://github.com/uibcdf/moli/issues/62) | Recorda's core adoption is reconciled; the pinned direct-component inventory is complete. Optional receiving decisions remain in Sabueso #150, Praxis #13 and Recorda #29. Accept adoption evidence or reasoned deferral/non-applicability before closing the coordination scope. Suite #106 is independent; new provider releases alone do not approve adoption. |
 
 ## Other open MolI issues
@@ -154,8 +175,9 @@ the same state.
   and [#36](https://github.com/uibcdf/moli/issues/36). Several require a real
   consumer, implementation or owner decision; read the issue before treating
   the design as ready for closure.
-- **Operations and governance decisions:** [#8](https://github.com/uibcdf/moli/issues/8)
-  (Conda upload credential access).
+- **Operations and governance follow-up:** [#8](https://github.com/uibcdf/moli/issues/8)
+  has its administrative model settled; per-repository readiness/adoption and
+  actual publication evidence remain owner-local, with suite #45 delegated.
 - **Longer-horizon or explicitly deferred scope:** [#12](https://github.com/uibcdf/moli/issues/12)
   (cross-component quantity canary), [#18](https://github.com/uibcdf/moli/issues/18)
   and [#19](https://github.com/uibcdf/moli/issues/19) (project telemetry and

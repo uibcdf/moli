@@ -69,7 +69,14 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    and tests exist, measure coverage in CI and add a live Codecov percentage
    only after Codecov accepts a recent report for this repository and branch;
    otherwise record a scoped, reviewable non-applicability or pending state.
-6. Before a public component GitHub Release is created or edited, check that
+6. Before Conda publication, follow the
+   [credential-access contract](../policies/python_distribution_policy.md#conda-publication-credential-access).
+   Request selected-repository access to the organization secret
+   `ANACONDA_UIBCDF_TOKEN` from Diego Prada through an owning issue. Record the
+   trusted release route, a non-disclosing availability result and actual
+   target-channel publication evidence; a secret reference is not verified
+   access. Local build/test work needs no personal publication token.
+7. Before a public component GitHub Release is created or edited, check that
    its visible title is exactly the canonical `X.Y.Z` version and equals the
    release tag and project/package version. Put descriptions in the release
    notes. Include this action in the root contributor instructions and the

@@ -154,6 +154,13 @@ records, for each gate:
   metadata and resolved closure, recipe/build inputs, generated runtime resources,
   and the candidate artifact coordinate and content digest once built.
 
+For a directly governed Conda publisher, the checklist also references the
+[credential-access contract](python_distribution_policy.md#conda-publication-credential-access):
+administrator disposition, selected repository/trusted workflow, presence-only
+availability result and, after authorized publication, the actual upload and
+independent target-channel poststate. Keep availability, validity and successful
+delivery distinct; retain no token value. MolSysSuite owns member adoption.
+
 A receipt names every component and artifact consumed by a combined gate. The
 identity can be recorded in a machine-readable manifest or an inspectable release
 record; this policy does not prescribe a file format or workflow layout. Missing or

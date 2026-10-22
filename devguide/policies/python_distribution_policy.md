@@ -263,8 +263,89 @@ their own release evidence.
 The build/upload action is UIBCDF-owned
 [support infrastructure](../governance/support_infrastructure.md). Report action
 defects to its provider repository; report platform-wide usage changes to MOLI.
-Credential access and communication are tracked separately in
-[MOLI #8](https://github.com/uibcdf/moli/issues/8).
+Credential access follows the contract below, accepted through
+[MolI #8](https://github.com/uibcdf/moli/issues/8).
+
+## Conda publication credential access
+
+Diego Prada (`dprada`) administers and rotates the UIBCDF Anaconda publication
+credential. Its canonical GitHub Actions name is `ANACONDA_UIBCDF_TOKEN`, stored
+as an **organization secret available to selected repositories**. Diego
+confirmed this administrative model on 2026-10-22 UTC in #8. The collaborator
+preparing a package does not need to obtain or supply a personal upload token.
+
+For a direct component that needs access, open or update an issue in the
+component repository and link #8. Identify the repository, responsible release
+maintainer, intended `uibcdf` package, reviewed publication workflow and its
+trusted events/environments. Request repository access from Diego; he records
+the grant or refusal there without disclosing the credential. Use the same
+route for unavailable/revoked access or a suspected expired token. Diego owns
+rotation and repository selection; record changed access and recheck affected
+publication routes after rotation. No rotation interval is invented here.
+
+The repository owner records who may invoke publication and the trusted
+release/manual route, candidate checks and any environment approval it uses.
+An organization-secret grant does not authorize a release. Ordinary tests and
+fork/PR code must not publish or run with the upload credential. Build/test
+work remains possible without it. Pass the canonical secret only to the
+trusted publisher's documented input/environment; do not introduce a new
+personal-token fallback or silently shadow the organization secret with a
+same-name repository/environment secret. Existing aliases require owner review
+when the route is next changed; this rule neither rotates credentials nor
+rewrites historical releases.
+
+### Readiness and evidence
+
+Before an authorized publication, verify availability in the actual trusted
+workflow context with a presence-only check, early enough to avoid an expensive
+build doomed by missing access. An equivalent early check in the selected
+publisher is acceptable. For example, inside that trusted job:
+
+```yaml
+- name: Check publication credential availability
+  shell: bash
+  env:
+    MOLI_CONDA_TOKEN: ${{ secrets.ANACONDA_UIBCDF_TOKEN }}
+  run: |
+    set +x
+    if [[ -z "${MOLI_CONDA_TOKEN:-}" ]]; then
+      echo '::error::ANACONDA_UIBCDF_TOKEN unavailable; request repository access from Diego Prada through the owning issue.'
+      exit 1
+    fi
+    echo 'Publication credential available (presence only).'
+```
+
+Keep the token out of command arguments, traces, artifacts and diagnostic
+payloads. Retain only the repository, exact workflow/source/run, availability
+result and administrator's issue disposition. An empty value establishes
+unavailability in that context, not whether the cause is a missing grant,
+event restriction or another configuration problem. Escalate that result to
+Diego through the owning issue.
+
+Availability does not prove validity or write access to `uibcdf`. The next
+authorized real release must retain the successful exact-file upload/promotion
+and independently verified target-channel poststate under the existing
+immutable-coordinate rules. Do not manufacture a package/upload to test a token.
+A past successful upload proves that recorded transaction, not future access.
+Unknown grant, failed check, failed upload and unverified public poststate stay
+visible as distinct readiness states; do not mark a repository ready from a
+workflow reference, repository admin role or successful build alone.
+
+[GitHub's secret usage documentation](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets)
+describes selected-repository organization access, empty unavailable secret
+expressions and reusable-workflow forwarding. Its
+[precedence reference](https://docs.github.com/en/actions/reference/security/secrets)
+explains same-name environment/repository overrides. These technical details
+do not decide MolI's release authority or prove an actual repository grant.
+
+MolSysSuite owns equivalent member guidance, workflow adoption and receiving
+evidence through [suite #45](https://github.com/uibcdf/molsyssuite/issues/45).
+Requests involving its members retain that governance route and the same
+credential administrator; MolI does not edit member workflows or grant access.
+The existing canonical guide already links this distribution policy. Component
+onboarding and release checklists link this section rather than copying the
+administrative contract. Per-repository execution/adoption is recorded in #8
+and the owning distribution/release issues; the policy alone is not deployment.
 
 ## Onboarding and adoption
 
