@@ -1,0 +1,1220 @@
+{
+  "issue": "uibcdf/moli#62",
+  "reviewed_at_utc": "2026-10-22T01:14:19.232736+00:00",
+  "kind": "source-inspection-and-original-native-ci-verification",
+  "owner": "MolI governance / Diego",
+  "review_trigger": "Reconcile the three direct-owner receiving dispositions before closing #62; reassess scaffolds at first runtime integration.",
+  "baseline_moli_head": "5ad9aea3e55e943fea82b0e0365c0648fd7d6783",
+  "canonical_guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+  "registry_change": {
+    "component": "recorda",
+    "field": "python_ecosystem_review",
+    "owning_issue": "uibcdf/recorda#2",
+    "from": "partial",
+    "to": "adopted",
+    "scope": "Completed current-core applicability and implemented qualified uses; other reviews and optional receiving unchanged."
+  },
+  "consumers": [
+    {
+      "repository": "uibcdf/sabueso",
+      "head": "f392844ec48fd8364d83c72a9521808daf1c598a",
+      "tree_sha": "f392844ec48fd8364d83c72a9521808daf1c598a",
+      "complete_tree": true,
+      "blob_count": 1434,
+      "receiving_issue": "uibcdf/sabueso#150",
+      "disposition": "owner-decision-pending"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "head": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
+      "tree_sha": "55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512",
+      "complete_tree": true,
+      "blob_count": 125,
+      "receiving_issue": "uibcdf/praxis#13",
+      "disposition": "owner-decision-pending"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "head": "b455ff5ec6fee206f8c077cbac45712f0b6c704b",
+      "tree_sha": "b455ff5ec6fee206f8c077cbac45712f0b6c704b",
+      "complete_tree": true,
+      "blob_count": 120,
+      "receiving_issue": "uibcdf/recorda#29",
+      "disposition": "owner-decision-pending"
+    },
+    {
+      "repository": "uibcdf/nextia",
+      "head": "32d12e20fae26f00a523d0ed4812e46def8a64e9",
+      "tree_sha": "32d12e20fae26f00a523d0ed4812e46def8a64e9",
+      "complete_tree": true,
+      "blob_count": 17,
+      "receiving_issue": null,
+      "disposition": "no-current-runtime-reassess-at-first-provider-integration"
+    },
+    {
+      "repository": "uibcdf/moli-agent",
+      "head": "08d0e2b809e7e5c46add5ee554ae9528831f7454",
+      "tree_sha": "08d0e2b809e7e5c46add5ee554ae9528831f7454",
+      "complete_tree": true,
+      "blob_count": 13,
+      "receiving_issue": null,
+      "disposition": "no-current-runtime-reassess-at-first-provider-integration"
+    }
+  ],
+  "providers": [
+    {
+      "repository": "uibcdf/smonitor",
+      "inspected_source": "066b69cad8896cdc126d5586fd53268af4ea6490",
+      "reported_public_version": "0.21.0",
+      "reported_conda_file": "smonitor-0.21.0-py_2.tar.bz2",
+      "reported_sha256": "62b6cbae37f7fa06374af87923792f00253020955d000294b1a7d37eb9d04e56",
+      "evidence_scope": "Pinned Git blobs verified here; public artifact/matrices reported in provider and suite #106 receipts, not reexecuted here."
+    },
+    {
+      "repository": "uibcdf/argdigest",
+      "inspected_source": "2b9c9b289ae9b1d97d3bf04250f5c882feab3d41",
+      "reported_public_version": "0.16.0",
+      "reported_conda_file": "argdigest-0.16.0-py_0.tar.bz2",
+      "reported_sha256": "e82d82680d79ae3d5df9917b1662d2855ed8485128943b72ddec87a5769a467d",
+      "evidence_scope": "Pinned Git blobs verified here; public artifact/matrices reported in provider and suite #106 receipts, not reexecuted here."
+    }
+  ],
+  "source_files": [
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "pyproject.toml",
+      "blob": "4a8f011d0583df52af488688fede8771aa8db6c3",
+      "sha256": "3edeaa8ad75deb6d5e6936d17161332307f74e12ee0c20c7ef0f01df114a8f0c"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "sabueso/__init__.py",
+      "blob": "4fca382df6a767fc8359a24c9d0e0dabbaa151f5",
+      "sha256": "44cd8decee73f3312eb023237049849b4b427335a77c2295ffbfb0e986628822"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "sabueso/_smonitor.py",
+      "blob": "4f2a6e7e2754a7f6cb5b2e9bfb433c88a8837fb8",
+      "sha256": "ac8cf8f243c5624380afcb836c1907573bacdf0215a9d4b0de30b0b904b70f3e"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "sabueso/_argdigest.py",
+      "blob": "e2642d3158160082b96e9d0bbb9730b488514b2a",
+      "sha256": "665587316d804ace41b91ec4031f13d091362c757aecaef5e674af226a89b924"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "sabueso/_private/smonitor/emitter.py",
+      "blob": "7eeb54b20b6884bb96e340413166e5b766821f08",
+      "sha256": "6eddd0873f15312def554f1ff6513969930152aede90378ef1dc60593bc08ee2"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "sabueso/_private/smonitor/meta.py",
+      "blob": "3294658b7d87e8015427f9744a986bac9b82be50",
+      "sha256": "59ee9bdd20e82d1942d1fe13d4e845b5a0d0112f74830114029f03ea98e55767"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "sabueso/_private/smonitor/catalog.py",
+      "blob": "5da294c7267d3513326a3295c21794afa496b36e",
+      "sha256": "0636071ad19c1fe35dc22f613515ddf9dedd5c2110ca322ae707321c3846232e"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "sabueso/_private/smonitor/outcomes.py",
+      "blob": "0482b7935b2ecc7aebed2acb4945f69421f772f8",
+      "sha256": "2b2e8e83e6617ea91836e5e3078c8172cb434dcda57175950575d2dbf95fb2f7"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "tests/core/test_smonitor_integration_offline.py",
+      "blob": "e0e459f6bfde35de0eeaa8a55075c94e55b495cf",
+      "sha256": "d36d09d1a2f34d1fc52a273118a90283adee8d7c1bb3c1dcc3ee31053b94be25"
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "path": "devguide/DIAGNOSTICS.md",
+      "blob": "ef4ad853fad4e0cd09caa81f67d9a341198c115b",
+      "sha256": "1c76a0ace5f807e6686f03b859f3be1534649f8db090f0ff33d30e3f43562f20"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "path": "pyproject.toml",
+      "blob": "931ce54bec798f956d0d0010ac47ac707023b327",
+      "sha256": "a2d5ee06b0f0d79c109b104d44a449080cbe77875fe9d2f5f37dcfb13a9ab2a8"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "path": "src/praxis/__init__.py",
+      "blob": "5eb35568b877fe811d29cd427bf165271f4caea3",
+      "sha256": "f79fa757ecb4b1796caf4da01df6912c62198d075142972fd51d90a29d17ec50"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "path": "src/praxis/_smonitor.py",
+      "blob": "a8cbb7cc163441db8055848e6165165157df8050",
+      "sha256": "4ed20482c61cfa1c13ab60bb91b1e248b8bb13f6b2952508b2d8c8c573331937"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "path": "src/praxis/_diagnostics.py",
+      "blob": "e3649b938d9685c52f62b3be1a52d4feba5620d3",
+      "sha256": "10e53b8b99e50dae5fdf2c9a9a0b8d2ecf4dd1aeb2783d57505394c5c24b7f51"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "path": "devguide/LATEST_SUPPORT_RECEIVING.md",
+      "blob": "c02532680f8d1246e981b17f9b6548f4223c9bbb",
+      "sha256": "8fcd95be4e4de3ca5b17d349192a378b902d3f71271612e1a7fbd4b18724fa45"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "path": "devguide/releases/engineering_reviews.md",
+      "blob": "20ab5e774108251ba0197dede07c4f608a03d010",
+      "sha256": "742558ebd929af5523424f7cedc67b35697dd4ba742ffc30dfeff25c894ca709"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "pyproject.toml",
+      "blob": "b39ad052182d542c76028a25d53f164fce4cd2a9",
+      "sha256": "7007a8976156ca548af18297615fa5b5d53eb119bd6850cc13736ed06eec98b3"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "src/recorda/__init__.py",
+      "blob": "3f6e121c66b129437bb7b3aa161965094d129a05",
+      "sha256": "b90075f7bc0246fc6b41f7f24ae9c14bfe70bc3928e1d4fce5ee8b3596d59994"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "src/recorda/_smonitor.py",
+      "blob": "4559b6066188ed11acea9d4c009eeb60e2f73793",
+      "sha256": "4a2269549e84cb68393d27382bd615737f4b7cab6817820ae71c75df6929fe2a"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "src/recorda/integrations/argdigest.py",
+      "blob": "536a988d052203b4d702c8408e06871ff3f72785",
+      "sha256": "beb444156e44ba8d08565c0a50ab7a9b37fd9b3691f65d02739601006b7507f9"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "src/recorda/integrations/smonitor.py",
+      "blob": "40886db8ba5bd89eba5c90211f20b586ddc23a02",
+      "sha256": "340ce6b8629bb611bdcec418a69bf5174b14400bcf50ae73c59584330b9a8c9a"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "tests/test_argdigest_policy.py",
+      "blob": "b3046edbda6b635594d376180befad1585935ffa",
+      "sha256": "37db952baa71b1e760f6c58ce2cee41ee28e13f078f771d0af145e8acbae531b"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "tests/test_recovery_diagnostics.py",
+      "blob": "375878b02a0287ef15b440777c2d3960b577f5f2",
+      "sha256": "a4672ed43f1f16453e31f36ce0f43f2fa0e9479ac66cce8065a55d999dd7e072"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "tests/test_smonitor_recovery.py",
+      "blob": "09065b0f000a2a96d3710e296222396b351bd526",
+      "sha256": "4d9585009b443534e4cde1ee38cd7483a332324d7203a78bb33a4be281780511"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "devguide/SUPPORT_LIBRARIES.md",
+      "blob": "3aaf2e3e9d9269aed5e1d70e465b851cb063ebee",
+      "sha256": "f138e9b69c547aa98e0f489aafc2393bc3f302a3e6926feaf162014321fb49f4"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "devguide/INSPECTION_PRESENTATION.md",
+      "blob": "cb072d2b68cb62e6b1172c553f57a00e0790ae50",
+      "sha256": "40f75f3e72e3ee6a80bf0cc8a1852acfeb344f4ca56566e1076211f1318a6915"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "devguide/DIAGNOSTIC_CORRELATION.md",
+      "blob": "659c4dfa06d88c7535989855a3da1c2f1e0341ff",
+      "sha256": "43bd81a6ebe277524cbd4f4129b19d3c8464e6948f4154757f1f383bf9c36827"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "devguide/LATEST_SUPPORT_RECEIVING.md",
+      "blob": "b706fe4bc4edc69f70e8bdf63e1b5d2516277662",
+      "sha256": "770a053df5e34e0919a2e6f15494f6f23c895dd0dbf17d1d3705bb703e739cf4"
+    },
+    {
+      "repository": "uibcdf/nextia",
+      "path": "README.md",
+      "blob": "f6ad91d0d541244a0440cfa857853d5f0f8a71f4",
+      "sha256": "dd32c7dd8c7a99ffd8eaeb7e789512760ac2f532ed4a649eac9bb23d322e92ea"
+    },
+    {
+      "repository": "uibcdf/moli-agent",
+      "path": "README.md",
+      "blob": "d5274282c95e21e3efc6aa7c5b70dea6d8f20a50",
+      "sha256": "099295e1c2401bc523e640de5e664ebc4afad958f22bf24d5a1afb92ad051d89"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "path": "src/praxis/_arguments.py",
+      "blob": "7230a6a97815957836562371374850ee7f3ba09e",
+      "sha256": "cf42e2875618f133febbd105e4e6206a3bc6c8f4d015fe5aeb57c8ce760629bc"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "path": "tests/test_support_integrations.py",
+      "blob": "8d013fe8f501af55556e2a411ae927069c980eed",
+      "sha256": "263e1071d134c42f153a3adc7a5b9f8f0afab41a24eb7e1a0cb61ae0c048dd5a"
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "path": "tests/test_review_regressions.py",
+      "blob": "3354c81c84f49d3ebf8e06da388ad782feb67905",
+      "sha256": "8a64a9ccc526fd2b28bbb000b046bf4e5e9a292c1e12111c8425d99d5286a60a"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "src/recorda/_arguments.py",
+      "blob": "7b8a22e1b120caf8ee87a18d23aafec11724c17b",
+      "sha256": "fda6f429a5ca264bc4230173d7114dd4e52f8128a4721634bdb3bb1854c0aa0f"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "tests/test_inspection_view.py",
+      "blob": "dc1d2806e08050b272a2ed3b693a0e9fc6a2d373",
+      "sha256": "087a3160c659bbab4e69039291f31f95027033401ce211d953cbba472699f49d"
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "path": "tests/test_support_environment.py",
+      "blob": "477e225452f32d5bf00c700af87236c21012fd63",
+      "sha256": "2b22ce82065a9d98818387ce107c9bf2535a07ae5aa503a8f8b5876b83d42e36"
+    },
+    {
+      "repository": "uibcdf/smonitor",
+      "path": "docs/content/user/library-integrators/scoped-capture.md",
+      "blob": "07feb334f832418fe5b45588d0757b5911d8fd6c",
+      "sha256": "65bdd71e8def2f08c76e544a5de5e53da3c3e5498da9c30be13986ebf45f3735"
+    },
+    {
+      "repository": "uibcdf/smonitor",
+      "path": "docs/content/user/bundles-and-export.md",
+      "blob": "43648cc8aaa7e4f009e121d0c42329dd1d75a331",
+      "sha256": "ad87f7a54d98ea8e9cf9a7084b64139ed77d23b6f07ca9f90aedac91a0577afd"
+    },
+    {
+      "repository": "uibcdf/argdigest",
+      "path": "argdigest/__init__.py",
+      "blob": "b3b6927f317149a8b7d245f3a29fb955266ba3b0",
+      "sha256": "07518ec0f8d53c99d67f40aa76dc1a9f021ab659fc97ee4eb24a2e325e4feaee"
+    },
+    {
+      "repository": "uibcdf/argdigest",
+      "path": "argdigest/diagnostics.py",
+      "blob": "aa74ee4c957f9b0d85b21a8737d9adc52f7d5581",
+      "sha256": "2ab1c77c7832f2b62161b8da57b228b12b89e7a667c6973d19ec8b9e041c2559"
+    },
+    {
+      "repository": "uibcdf/smonitor",
+      "path": "smonitor/integrations/core.py",
+      "blob": "94f7d6ea06e09573e2b937eca1cbaf183323c255",
+      "sha256": "77f572afd7baa16b783a424fa3bc1a5debcf7e684461697b1e0d3a88afb6612d"
+    },
+    {
+      "repository": "uibcdf/smonitor",
+      "path": "smonitor/integrations/provider.py",
+      "blob": "d75bab5f993f631bd45a62b515ef33e6f58b504f",
+      "sha256": "dc51dc872c0164c42ce2b4e34fa6724ed31292991937c557c1cb86445b609f96"
+    }
+  ],
+  "original_recorda_ci": {
+    "url": "https://github.com/uibcdf/recorda/actions/runs/37534456487",
+    "run_id": 37534456487,
+    "head_sha": "c6248686815bd405a08955565e4fdc232bcef906",
+    "workflow": ".github/workflows/tests.yml",
+    "event": "push",
+    "branch": "main",
+    "attempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "published_receptor_version": "1.2.0",
+    "published_receptor_wheel_sha256": "a69b4ce158eb5c74a9b165847279d12f6867ddd41e9fdaa47b3de11463cf210c",
+    "capture_manifest": {
+      "api_version": "2022-11-28",
+      "capture_policy": "full",
+      "captured_at": "2026-10-22T01:14:19.232736+00:00",
+      "complete": true,
+      "head_sha": "c6248686815bd405a08955565e4fdc232bcef906",
+      "hostname": "github.com",
+      "members": [
+        {
+          "bytes": 12832,
+          "complete": true,
+          "kind": "github.workflow_run",
+          "path": "run.json",
+          "sha256": "61eb6e37a6480eccb0cdc0a89d24fc383c7492c65ad8d3240362f558af488e41"
+        },
+        {
+          "bytes": 521,
+          "complete": true,
+          "kind": "github.workflow",
+          "path": "workflow.json",
+          "sha256": "91d40764029b78a61ff11aa586c75dc807edeb1a5b0536ee266955268cb6b7a6"
+        },
+        {
+          "bytes": 47731,
+          "complete": true,
+          "kind": "github.jobs",
+          "path": "jobs.json",
+          "sha256": "48115ade74367866931d2b004bd84e10fd233f74b8d98646c2eddb291b70f15c"
+        },
+        {
+          "bytes": 42,
+          "complete": true,
+          "kind": "github.artifacts",
+          "path": "artifacts.json",
+          "sha256": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490"
+        },
+        {
+          "bytes": 47428,
+          "complete": true,
+          "kind": "github.check_runs",
+          "path": "checks.json",
+          "sha256": "6a47f5a13b33a4193d7a96072fa318c27c2f00358400214a00afbed0e0041a36"
+        },
+        {
+          "bytes": 113596,
+          "complete": true,
+          "kind": "github.logs",
+          "path": "logs.zip",
+          "sha256": "1cbd7794d79fbc166b5a1f53d17a2038ace87646a89aaac5c9b2e101acbc1ff7"
+        }
+      ],
+      "receptor_version": "1.2.0",
+      "repository": "uibcdf/recorda",
+      "run_attempt": 1,
+      "run_id": 37534456487,
+      "schema": "gh-run-receptor.bundle@1",
+      "warnings": []
+    },
+    "jobs": [
+      {
+        "name": "quality",
+        "id": 112511752996,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install ruff==0.16.5 PyYAML==6.0.3 packaging",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/validate_governance.py",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ruff check .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ruff format --check .",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Check out the reviewed MOLI governance core",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Check shared MOLI governance core",
+            "number": 10,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Check out the reviewed MOLI governance core",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "number": 19,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 20,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 21,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "SMonitor recovery / Python 3.11",
+        "id": 112511753308,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Provision published SMonitor from Conda",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify the published provider and feature contract",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed Recorda with published SMonitor",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Provision published SMonitor from Conda",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "SMonitor recovery / Python 3.14",
+        "id": 112511753371,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Provision published SMonitor from Conda",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify the published provider and feature contract",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed Recorda with published SMonitor",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Provision published SMonitor from Conda",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "tests (macos-latest, 3.13)",
+        "id": 112511753377,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run mamba-org/setup-micromamba@v2",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/verify_support_environment.py argdigest",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed package",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run mamba-org/setup-micromamba@v2",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "tests (ubuntu-latest, 3.11)",
+        "id": 112511753399,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run mamba-org/setup-micromamba@v2",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/verify_support_environment.py argdigest",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed package",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run mamba-org/setup-micromamba@v2",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "SMonitor recovery / Python 3.12",
+        "id": 112511753406,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Provision published SMonitor from Conda",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify the published provider and feature contract",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed Recorda with published SMonitor",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Provision published SMonitor from Conda",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "SMonitor recovery / Python 3.13",
+        "id": 112511753420,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Provision published SMonitor from Conda",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify the published provider and feature contract",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed Recorda with published SMonitor",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Provision published SMonitor from Conda",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "tests (ubuntu-latest, 3.13)",
+        "id": 112511753436,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run mamba-org/setup-micromamba@v2",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/verify_support_environment.py argdigest",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed package",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run mamba-org/setup-micromamba@v2",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "tests (macos-latest, 3.14)",
+        "id": 112511753532,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run mamba-org/setup-micromamba@v2",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/verify_support_environment.py argdigest",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed package",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run mamba-org/setup-micromamba@v2",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "tests (ubuntu-latest, 3.14)",
+        "id": 112511753553,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run mamba-org/setup-micromamba@v2",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/verify_support_environment.py argdigest",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed package",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run mamba-org/setup-micromamba@v2",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "name": "tests (ubuntu-latest, 3.12)",
+        "id": 112511753587,
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "number": 1,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run mamba-org/setup-micromamba@v2",
+            "number": 3,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install pytest-receptor==1.1.0",
+            "number": 4,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/check_dependencies.py",
+            "number": 5,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python devtools/verify_support_environment.py argdigest",
+            "number": 6,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --no-deps --no-build-isolation .",
+            "number": 7,
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip check",
+            "number": 8,
+            "conclusion": "success"
+          },
+          {
+            "name": "Test installed package",
+            "number": 9,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run mamba-org/setup-micromamba@v2",
+            "number": 17,
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "number": 18,
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "number": 19,
+            "conclusion": "success"
+          }
+        ]
+      }
+    ],
+    "test_log_excerpts": [
+      {
+        "member": "0_tests (ubuntu-latest, 3.12).txt",
+        "command": "2026-10-06T21:33:59.1374564Z ##[group]Run python -m pytest --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:34:02.0017778Z PASS exit=0 | 209 passed, 12 skipped | 2.46s"
+      },
+      {
+        "member": "1_tests (macos-latest, 3.14).txt",
+        "command": "2026-10-06T21:36:29.1417480Z ##[group]Run python -m pytest --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:36:32.7481070Z PASS exit=0 | 209 passed, 12 skipped | 3.11s"
+      },
+      {
+        "member": "2_tests (ubuntu-latest, 3.14).txt",
+        "command": "2026-10-06T21:34:08.1854331Z ##[group]Run python -m pytest --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:34:10.9419529Z PASS exit=0 | 209 passed, 12 skipped | 2.32s"
+      },
+      {
+        "member": "4_SMonitor recovery _ Python 3.13.txt",
+        "command": "2026-10-06T21:33:18.5426510Z ##[group]Run python -m pytest -p pytest_receptor.plugin --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:33:21.2328097Z PASS exit=0 | 221 passed | 2.38s"
+      },
+      {
+        "member": "5_tests (ubuntu-latest, 3.11).txt",
+        "command": "2026-10-06T21:33:17.5519687Z ##[group]Run python -m pytest --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:33:23.3476527Z PASS exit=0 | 209 passed, 12 skipped | 5.50s"
+      },
+      {
+        "member": "6_SMonitor recovery _ Python 3.12.txt",
+        "command": "2026-10-06T21:32:36.2824125Z ##[group]Run python -m pytest -p pytest_receptor.plugin --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:32:41.9498875Z PASS exit=0 | 221 passed | 5.43s"
+      },
+      {
+        "member": "7_tests (ubuntu-latest, 3.13).txt",
+        "command": "2026-10-06T21:32:58.8575654Z ##[group]Run python -m pytest --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:33:01.5802919Z PASS exit=0 | 209 passed, 12 skipped | 2.30s"
+      },
+      {
+        "member": "8_tests (macos-latest, 3.13).txt",
+        "command": "2026-10-06T21:35:30.6529350Z ##[group]Run python -m pytest --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:35:34.1463300Z PASS exit=0 | 209 passed, 12 skipped | 2.98s"
+      },
+      {
+        "member": "9_SMonitor recovery _ Python 3.14.txt",
+        "command": "2026-10-06T21:31:51.4203401Z ##[group]Run python -m pytest -p pytest_receptor.plugin --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:31:53.7386712Z PASS exit=0 | 221 passed | 2.02s"
+      },
+      {
+        "member": "10_SMonitor recovery _ Python 3.11.txt",
+        "command": "2026-10-06T21:32:31.7963733Z ##[group]Run python -m pytest -p pytest_receptor.plugin --receptor=ci -o pythonpath=''",
+        "summary": "2026-10-06T21:32:34.5784259Z PASS exit=0 | 221 passed | 2.47s"
+      }
+    ]
+  },
+  "delegated_followup": {
+    "issue": "uibcdf/molsyssuite#106",
+    "reported_settled": 2,
+    "reported_pending": 9,
+    "scope": "Suite-owned optional scoped receiving, not direct MolI adoption."
+  },
+  "limits": [
+    "No scientific component/runtime-provider code was executed, installed or modified by this review. Published GH Run Receptor was used as a development tool.",
+    "No consumer or runtime-provider package was built, downloaded, upgraded or released.",
+    "No new shared runtime contract or normative support-library rule was added.",
+    "The final MolI exact-head administrative gates and resource retirement are recorded in issue #62 after delivery."
+  ]
+}

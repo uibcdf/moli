@@ -297,7 +297,7 @@ role = "recording-substrate"
 governance = "direct"
 guide_delivery = "vendored"
 capabilities = ["python-package"]
-python_ecosystem_review = { issue = "uibcdf/recorda#2", state = "partial" }
+python_ecosystem_review = { issue = "uibcdf/recorda#2", state = "adopted" }
 python_distribution_review = { issue = "uibcdf/recorda#3", state = "partial" }
 coverage_review = { issue = "uibcdf/recorda#6", state = "pending" }
 supported_os = []

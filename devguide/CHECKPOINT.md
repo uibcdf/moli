@@ -1,8 +1,9 @@
 # MolI development checkpoint
 
-**Refreshed on:** 2026-10-22 UTC after completing the Discussions policy and
-seven platform/root configurations in
-[#23](https://github.com/uibcdf/moli/issues/23), after the bounded optional Ackredit review in
+**Refreshed on:** 2026-10-22 UTC after reconciling Recorda's core adoption and
+inventorying optional diagnostic receiving in #62, completing Discussions and
+seven platform/root configurations in [#23](https://github.com/uibcdf/moli/issues/23),
+and the bounded optional Ackredit review in
 [#46](https://github.com/uibcdf/moli/issues/46), the contributor-instruction
 step of #34, #47 and the earlier review/integration of PRs #65, #66 and #67.
 Each owning issue records the exact final published source, native gates and
@@ -29,6 +30,20 @@ the same state.
   comments and linked evidence are the current work record.
 
 ## Last completed MolI work
+
+- **Bounded central review in [#62](https://github.com/uibcdf/moli/issues/62):**
+  Recorda's current-core ecosystem review #2 is accepted as `adopted` in
+  `moli.toml`, after independent published-receptor inspection of all eleven
+  native jobs and required steps in original CI 37534456487. Distribution,
+  OS, coverage and public release remain separate. The
+  [receiving inventory](pending_proposals/application_diagnostic_policy.md) and
+  [receipt](evidence/diagnostic_receiving_62_20261022.json) fix all five direct
+  source identities. Sabueso #150, Praxis #13 and Recorda #29 own the remaining
+  optional decisions; #62 stays partial. Provider publication is available,
+  not a remaining blocker or automatic adoption. Nextia/Moli scaffolds have no
+  present receiving runtime; Nextia development remains deferred. Suite #106
+  retains independent member decisions. Final source/gates/cleanup are recorded
+  in #62's delivery comment.
 
 - **[#23](https://github.com/uibcdf/moli/issues/23), Discussions:** required
   Announcements/Q&A/Ideas and local extensions are accepted; all seven registered
@@ -127,7 +142,7 @@ the same state.
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
 | [#40](https://github.com/uibcdf/moli/issues/40) | Python 3.14 editable co-development is documented; Recorda/Praxis source and development compatibility with recent public providers has been received. The combined workspace remains partial: [suite #82](https://github.com/uibcdf/molsyssuite/issues/82) still has TopoMT authorization and broader integration, and [Recorda #26](https://github.com/uibcdf/recorda/issues/26) owns a future public release for the latest-provider cohort. A fourteen-member suite receipt plus two direct consumers does not establish a sixteen-component qualification. |
-| [#62](https://github.com/uibcdf/moli/issues/62) | Shared diagnostic-provider work has public provider evidence and specific consumer handoffs, but application-owned policy, scoped-capture adoption and receiving decisions remain issue-bound. Check the latest provider and consumer comments before selecting a MolI action; availability of a provider release does not itself approve adoption. |
+| [#62](https://github.com/uibcdf/moli/issues/62) | Recorda's core adoption is reconciled; the pinned direct-component inventory is complete. Optional receiving decisions remain in Sabueso #150, Praxis #13 and Recorda #29. Accept adoption evidence or reasoned deferral/non-applicability before closing the coordination scope. Suite #106 is independent; new provider releases alone do not approve adoption. |
 
 ## Other open MolI issues
 
