@@ -1,10 +1,10 @@
 ---
-summary: Reconcile qualified core adoption and inventory optional diagnostic receiving.
+summary: Complete direct diagnostic receiving with bounded fixes and explicit deferrals.
 issue: uibcdf/moli#62
-status: partial
+status: resolved
 opened: 2026-10-06
-closed:
-verification: inspected
+closed: 2026-10-22
+verification: measured
 area: [diagnostics, support-libraries, receiving]
 blocked_by: []
 supersedes: []
@@ -16,11 +16,14 @@ supersedes: []
 
 The original advance notice in [MolI #62](https://github.com/uibcdf/moli/issues/62)
 predates the implemented and published provider capabilities. This review
-reconciles Recorda's completed core adoption and inventories every direct
-component. Optional receiving decisions stay with their owners. The
+reconciles Recorda's completed core adoption and closes the direct receiving
+scope through bounded Sabueso, Praxis and Recorda owner decisions. Optional
+capabilities have explicit deferral/non-applicability and revisit triggers. The
 [dated receipt](../evidence/diagnostic_receiving_62_20261022.json) records pinned
-files, metadata and independently rechecked original Recorda CI. It is source
-inspection and CI verification, not new component execution or qualification.
+files, metadata and independently rechecked original Recorda CI. That initial receipt is source
+inspection and original CI verification; later executed receiving is recorded
+separately in the component sections below. No common provider upgrade or new
+shared runtime contract is selected.
 
 The existing [support-library policy](../policies/python_support_libraries_policy.md)
 applies. Recorda's ecosystem state changes from `partial` to `adopted` for its
@@ -56,12 +59,58 @@ owner receiving is recorded below with its own implementation and evidence.
 
 | Component | Observed boundary | Owner-local follow-up |
 | --- | --- | --- |
-| [Sabueso `f392844`](https://github.com/uibcdf/sabueso/tree/f392844ec48fd8364d83c72a9521808daf1c598a) | Import calls `ensure_configured`; provider recommendations include warning/logging capture. Its catalog emitter constructs a `DiagnosticBundle` with compatibility defaults. Metadata permits SMonitor >=0.17.0 / ArgDigest >=0.13.0, before the new capabilities. | [#150](https://github.com/uibcdf/sabueso/issues/150): decide setup/scoped-capture applicability and qualify import/first use/emission on selected installed providers. #31's basic adoption stays accepted. Source inspection does not prove a regression. |
+| [Sabueso `c31e8c9`](https://github.com/uibcdf/sabueso/tree/c31e8c9815cb8d08b495fe83dbc04e367771f361) | Reviewed argument-error paths now check caller capture permissions before repr/str. Existing import/bundle bootstrap is retained; effective unconfigured policy depends on provider import order. | [#150](https://github.com/uibcdf/sabueso/issues/150): scoped argument receiving adopted on capable public cohorts, application/project precedence and real emission qualified, registration-only setup deferred with an embedding trigger; safe audience maps/identity export not applicable. Older declared floors do not imply newer semantics. See the dated receiving below. |
 | [Praxis `eb3b0c8`](https://github.com/uibcdf/praxis/tree/eb3b0c829b6466aa2080ce24e823bb749bb48ace) | Both real advice sites now enter a restrictive scope before registration and emission. Request first-use configuration remains explicit and preserves selected application/project policy. | [#13](https://github.com/uibcdf/praxis/issues/13): scoped advice adopted with installed receiving; pure registration-only behavior deferred with a concrete embedding trigger; audience maps/identity export not applicable to the current slice. See the dated receiving below. #10 compatibility remains separate. |
 | [Recorda `ebe95dc`](https://github.com/uibcdf/recorda/tree/ebe95dcc8528cfa4760951a87c818b812c4ebbba) | Safe first-use argument setup and the completed nonemitting inspection adapter are retained. Recovery catalog registration preserves setup; actual emission retains the compatibility empty-handler console fallback. | [#29](https://github.com/uibcdf/recorda/issues/29): baseline retained with fresh-process installed receiving on both public cohorts; registration-only execution and per-call audience deferred with concrete triggers; safe audience maps/identity export not applicable to this slice. See the dated receiving below. #26's release decision stays separate. |
 | [Nextia `32d12e2`](https://github.com/uibcdf/nextia/tree/32d12e20fae26f00a523d0ed4812e46def8a64e9) | Tree has no installable Python package or current diagnostic runtime to receive these APIs. | No present receiving boundary. Reassess at its first runtime/provider integration. Implementation remains deferred by Diego. |
 | [Moli `08d0e2b`](https://github.com/uibcdf/moli-agent/tree/08d0e2b809e7e5c46add5ee554ae9528831f7454) | Agent tree has no installable Python package or current diagnostic runtime to receive these APIs. | No present receiving boundary. Reassess at its first runtime/provider integration; no scaffold implementation is requested. |
 | MolSysSuite | Delegated member governance, outside the direct runtime inventory. | [Suite #106](https://github.com/uibcdf/molsyssuite/issues/106) owns its independent dispositions: two settled and nine pending at this review. Do not translate that count into MolI adoption or edit members. |
+
+## Sabueso receiving — 2026-10-22 UTC
+
+[Sabueso #150](https://github.com/uibcdf/sabueso/issues/150) fixes diagnostic
+construction in `c31e8c9815cb8d08b495fe83dbc04e367771f361`. Seven reproduced
+cases on the original source evaluated rejected-value repr or native-error str
+before SMonitor and replaced the intended `ArgumentError`. The bounded fix
+consults the provider's capture permissions before formatting those payloads,
+including shared option/field-path, structures, knowledge-query and threshold
+errors. Detailed defaults, validation, units, schema and runtime floors remain.
+The legacy capability-absence branch keeps detailed behavior; it does not
+pretend an older provider offers scoped collection or application ownership.
+
+Both selected public cohorts (SMonitor 0.19 / ArgDigest 0.15 and SMonitor 0.21 /
+ArgDigest 0.16) pass 178 source and 178 installed-wheel cases each in disposable
+Linux x86_64/Python 3.14.9 environments. All 21 new receiving cases pass without
+skips. The public repository-input checkpoint passes 5,031 cases with ten
+explicit unshared-original exclusions; those originals were not copied from the
+caller checkout. Published pytest-receptor 1.2.1 artifacts are complete and
+integrity-valid, with matching JUnit/native results. The
+[owner receipt and compressed inputs](https://github.com/uibcdf/sabueso/blob/c31e8c9815cb8d08b495fe83dbc04e367771f361/devguide/evidence/diagnostic_receiving_150_20261022.json)
+retain exact public archives, all 549 installed runtime-file hashes, dependency
+closures, failed-harness/quota attempts and their successful recovery. The
+Sphinx build with fatal warnings, fixture/dependency/governance and Ruff gates
+pass. The [exact-head ordinary CI](https://github.com/uibcdf/sabueso/actions/runs/39842639454)
+and [governance run](https://github.com/uibcdf/sabueso/actions/runs/39842643795)
+have their final native gate/capture verification in #150.
+
+Fresh processes qualify configured/project setup, reload and real emission,
+including the compatibility empty-handler console fallback. With no explicit
+setup, the original cohort selects ArgDigest's logging-on/warning-capture-off
+baseline; the latest selects Sabueso's logging/warning-capture-on baseline.
+This review preserves both rather than forcing a global reconfiguration.
+The [owner decision](https://github.com/uibcdf/sabueso/blob/c31e8c9815cb8d08b495fe83dbc04e367771f361/devguide/DIAGNOSTIC_RECEIVING.md)
+defers pure registration-only setup until a named host needs no implicit capture;
+all imports and actual emission need review together. Safe audience maps/export
+have no selected current boundary. No scientific/source operation bridge is added.
+
+Real fixture-backed Card resolution retains source/status facts and its ordinary
+Python warning through filtered or failed delivery. Rendered enrichment `detail`
+can vary across capture policies because it uses catalog exception prose;
+delivery tests compare within the same policy. No universal redaction or
+byte-identical cross-policy detail is claimed. Independent `HTTPError` resource
+warnings are reported in [Sabueso #151](https://github.com/uibcdf/sabueso/issues/151),
+with ownership/allocation still to investigate. They are not suppressed or
+translated into a platform receiving blocker, a release or scientific acceptance.
 
 ## Praxis receiving — 2026-10-22 UTC
 
@@ -165,18 +214,17 @@ Its wider ranges from #24 do not retroactively qualify another public Recorda
 package. This correction changes neither those ranges nor its empty registered
 OS claims or other review states.
 
-## Remaining decisions and closure
+## Closure and future receiving
 
-Each relevant optional boundary needs an adoption with receiving evidence,
-deferral with reason/revisit trigger, or reasoned non-applicability in its owner
-issue. Review fresh configured/unconfigured processes, import/first use/repeated
-registration and real emissions. Preserve native errors, application hooks and
-handlers, scientific results, safe-field boundaries and fallback behavior.
-Capability refusal must fail selected-feature qualification rather than become
-an unnoticed passing skip.
+All direct-owner decisions in this review now have an adoption with bounded
+receiving, deferral with a reason/revisit trigger, or reasoned non-applicability.
+Praxis #13, Recorda #29 and Sabueso #150 settle this scope. #62 is resolved and
+this report is archived. Future optional adoption still needs its own exact
+consumer/provider evidence; capability refusal or skipped cases cannot be
+counted as passing selected-feature qualification. MolSysSuite #106 retains its
+independent member decisions. Recorda #26, Sabueso #151 and consumer scientific
+acceptance retain their separate owners and gates.
 
-#62 stays `partial` until Sabueso #150 settles the remaining direct-component
-receiving scope; Praxis #13 and Recorda #29 have their bounded owner dispositions above.
 The providers' original publication blocker is gone. No platform runtime,
 shared correlation/routing/reliability contract, automatic diagnostic attachment
 or Nextia interpretation is accepted here. Recorda's completed #14/#15 analyses

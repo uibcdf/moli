@@ -75,10 +75,11 @@ the same state.
   `moli.toml`, after independent published-receptor inspection of all eleven
   native jobs and required steps in original CI 37534456487. Distribution,
   OS, coverage and public release remain separate. The
-  [receiving inventory](pending_proposals/application_diagnostic_policy.md) and
+  [receiving inventory](archive/application_diagnostic_policy.md) and
   [receipt](evidence/diagnostic_receiving_62_20261022.json) fix all five direct
-  source identities. Sabueso #150, Praxis #13 and Recorda #29 own the remaining
-  optional decisions; #62 stays partial. Provider publication is available,
+  initial source identities. Sabueso #150, Praxis #13 and Recorda #29 now
+  settle the direct receiving scope through qualified fixes, retained baselines
+  and explicit optional deferrals; #62 is resolved. Provider publication is available,
   not a remaining blocker or automatic adoption. Nextia/Moli scaffolds have no
   present receiving runtime; Nextia development remains deferred. Suite #106
   retains independent member decisions. Final source/gates/cleanup are recorded

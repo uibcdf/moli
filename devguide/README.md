@@ -47,11 +47,12 @@ profiles and actual receiving evidence remain separate. Its
 [review inventory](archive/review_ackredit_optional_contracts.md) identifies the
 accepted scope and component-owned follow-ups without requiring an upgrade.
 
-The [diagnostic receiving review](pending_proposals/application_diagnostic_policy.md)
+The [diagnostic receiving review](archive/application_diagnostic_policy.md)
 reconciles Recorda's completed core support-library adoption and inventories
 optional application-policy/scoped-capture decisions in Sabueso, Praxis and
 Recorda. Public capability availability, compatibility and selected receiving
-remain distinct; #62 stays partial for the owner-local decisions.
+remain distinct. #62 is resolved with bounded fixes and explicit optional
+deferrals; future receiving and MolSysSuite member decisions retain their owners.
 
 The [quantity integrity policy](policies/quantity_integrity_policy.md) applies wherever
 physical quantities cross an API, storage, process or component boundary. PyUnitWizard
