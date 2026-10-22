@@ -1,6 +1,7 @@
 # MolI development checkpoint
 
-**Refreshed on:** 2026-10-22 UTC after recording Diego's #8 credential-access
+**Refreshed on:** 2026-10-22 UTC after actual seventeen-package receiving in #40,
+recording Diego's #8 credential-access
 decision and reconciling #40's workspace evidence,
 Recorda's core adoption and
 inventorying optional diagnostic receiving in #62, completing Discussions and
@@ -33,6 +34,21 @@ the same state.
 
 ## Last completed MolI work
 
+- **Actual joint receiving in [#40](https://github.com/uibcdf/moli/issues/40):**
+  a fresh Linux/Python 3.14.8 Conda environment installs fourteen eligible suite
+  sources plus Sabueso/Praxis/Recorda from fixed clean snapshots. Joint dependency
+  closure, all seventeen editable/import origins and official Qt 6.11.2 pass.
+  Published pytest-receptor runs 19 handoff, seven Praxis integration/real-MolSysMT/
+  quantity and 345 Recorda cases: **371 passed, zero skips**. The
+  [resolved review](archive/python_314_workspace.md) and
+  [receipt](evidence/python_314_workspace_40_20261022.json) keep this exact cohort
+  distinct from public packages, other OS/minors and full scientific/GUI admission.
+  TopoMT stays suite-owned/excluded; Recorda #26 stays the release owner. The
+  caller's environment retains its twelve prior findings; unrelated/concurrent
+  owner work is preserved. Known receptor #4 warning and optional absent beartype
+  are explicit. Final CI, issue closure and temporary-prefix/cache retirement
+  are recorded in #40's closeout.
+
 - **Administrative decision in [#8](https://github.com/uibcdf/moli/issues/8):**
   Diego Prada confirmed the canonical `ANACONDA_UIBCDF_TOKEN` organization
   secret, his administration/rotation responsibility and selected-repository
@@ -44,13 +60,15 @@ the same state.
   inspect organization-secret metadata (403). No credential value, grant,
   rotation, workflow dispatch or publication was accessed/performed here.
 
-- **Documentary reconciliation of [#40](https://github.com/uibcdf/moli/issues/40):**
-  the [workspace review](pending_proposals/python_314_workspace.md) replaces the
+- **Earlier documentary reconciliation of [#40](https://github.com/uibcdf/moli/issues/40):**
+  the [workspace review](archive/python_314_workspace.md) replaces the
   obsolete eight-member/Praxis-scaffold description with received fourteen-member
   suite integration and separate Recorda/Praxis compatibility. Central guidance
   is delivered. Joint receiving with direct components, suite-owned TopoMT
   authorization/qualification and Recorda #26's public release remain distinct;
-  #40 stays partial. No environment, package, component source or guide changed.
+  #40 stayed partial at that earlier checkpoint. The receiving above now
+  resolves its direct integration criterion. No primary environment, component
+  source or guide was changed by the documentary reconciliation.
 
 - **Bounded central review in [#62](https://github.com/uibcdf/moli/issues/62):**
   Recorda's current-core ecosystem review #2 is accepted as `adopted` in
@@ -162,7 +180,6 @@ the same state.
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
-| [#40](https://github.com/uibcdf/moli/issues/40) | [Evidence and owner reconciliation](pending_proposals/python_314_workspace.md) is current. Central guidance, fourteen-member suite integration and separate Recorda/Praxis compatibility are received. A combined workspace including the selected direct components remains unqualified; Sabueso #109 is closed for guidance, not this joint receiving. Suite #82 retains TopoMT authorization/qualification; Recorda #26 owns the independent public release. |
 | [#62](https://github.com/uibcdf/moli/issues/62) | Recorda's core adoption is reconciled; the pinned direct-component inventory is complete. Optional receiving decisions remain in Sabueso #150, Praxis #13 and Recorda #29. Accept adoption evidence or reasoned deferral/non-applicability before closing the coordination scope. Suite #106 is independent; new provider releases alone do not approve adoption. |
 
 ## Other open MolI issues

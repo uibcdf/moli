@@ -1,10 +1,10 @@
 ---
-summary: Reconcile Python 3.14 workspace evidence and remaining joint integration.
+summary: Qualify one joint Python 3.14 source-development cohort of seventeen packages.
 issue: uibcdf/moli#40
-status: partial
+status: resolved
 opened: 2026-10-03
-closed:
-verification: inspected
+closed: 2026-10-22
+verification: measured
 area: [development-environment, interoperability]
 blocked_by: []
 supersedes: []
@@ -12,7 +12,68 @@ supersedes: []
 
 # Python 3.14 shared development workspace
 
-## Current assessment — 2026-10-22 UTC
+## Receiving outcome — 2026-10-22 UTC
+
+The remaining direct-component integration is now measured in one disposable
+Linux x86_64 / Python 3.14.8 environment. All fourteen eligible suite members
+and Sabueso, Praxis and Recorda install as editables from seventeen clean,
+fixed Git snapshots. A fresh public-channel Conda solve, native builds,
+`pip check`, actual imports from a neutral directory, editable metadata and
+official Qt 6.11.2 all pass together. The existing MolSysSuite installer and
+runtime probe were reused; no new installer, registry membership or recipe
+was introduced.
+
+The [normalized receipt](../evidence/python_314_workspace_40_20261022.json)
+records all seventeen commits, metadata/native-file hashes, versions, recipe
+and probe identities, commands, limitations and test artifacts. Its
+[compressed public Conda inputs](../evidence/python_314_workspace_40_20261022_conda.json.gz)
+retain all 389 resolved archive identities. Conda input records and subsequent
+editable overlays are explicitly distinct; this is source development,
+not qualification of seventeen public packages.
+
+| Executed selection | Result | Actual boundary |
+| --- | --- | --- |
+| Existing Sabueso–Recorda handoff tests | 19 passed | Public fixture production, original results/pins/credit, application consumption, native errors and unavailable/changed delivery. |
+| Existing Praxis support, real-provider and quantity tests | 7 passed | Recorda/Ackredit session borrowing and failures; actual MolSysMT RMSD conventions, unit-bearing outputs, blocked cases, audit/replay preflight; nondefault unit policy. |
+| Recorda current-source tests, recovery explicitly enabled | 345 passed | Standalone capture/configuration/inspection, required support-library integration, native failures and recovery. |
+
+All **371 cases pass with zero failures or skips**. Published pytest-receptor
+1.2.0 runs in `llm` mode; its PyPI wheel digest verifies independently.
+Each JSONL artifact is complete with verified integrity and agrees with JUnit
+and process exit status. During pytest only, the published receptor overlays
+the development receptor; the separate runtime probe verifies all seventeen
+editable source origins without that overlay.
+
+The published receptor emits the known post-verdict `/dev/null` ResourceWarning
+after Recorda. It is retained and reported in
+[provider #4](https://github.com/uibcdf/pytest-receptor/issues/4#issuecomment-6331106506),
+separate from the later source fix; it changes no verdict or exit. The base
+recipe lacks optional `beartype`; its disabled-checker messages remain visible
+and that optional capability is not qualified by these operations.
+
+The caller's original Python 3.14.7 environment is preserved with its twelve
+metadata findings. Five concern older local Praxis/Recorda ceilings and seven
+are the known external findings. This receipt qualifies the clean disposable
+cohort; it does not silently repair the named environment. Sabueso's unrelated
+changes remain intact. Other sessions advanced MolSysSuite, MolSysMT and Viewer
+during the work, and Viewer edits also evolved; those changes were preserved.
+The isolated tested snapshots did not change with them.
+
+MolI #40's direct receiving criterion is satisfied for this recorded cohort.
+TopoMT remains outside its authorized profile under suite #82/#51 and TopoMT
+#16; MolSysSuite owns that remaining expansion/scientific qualification.
+Recorda #26's future public compatible release remains independent, as do
+optional diagnostics in #62 and credential execution/adoption in #8. No
+Nextia runtime, full-suite science, GUI/browser rendering, other-OS or older-minor
+admission is inferred. Recheck changed participants/inputs before expanding
+the result. Final exact-head administrative CI and resource retirement are
+recorded in #40's closeout.
+
+## Pre-receiving documentary assessment — 2026-10-22 UTC
+
+The following inventory preserves the evidence and gaps used to select the
+receiving above. Its joint-integration gap is resolved by the new receipt;
+historical individual results remain separate.
 
 The accepted [distribution policy](../policies/python_distribution_policy.md#development-and-ci),
 [component guide](../../MOLI_GUIDE.md#moli-engineering-baseline),
@@ -58,7 +119,7 @@ already passes for all five direct repositories at
 registry, installer or environment. Final documentary-head validation is
 recorded in #40's delivery comment.
 
-## Outstanding work and owners
+## Work identified before receiving and its owners
 
 1. **Joint direct-component receiving — MolI #40, coordinated with suite #82.**
    Select the participating suite and Sabueso/Praxis/Recorda revisions and
@@ -81,8 +142,9 @@ recorded in #40's delivery comment.
    public-only latest-provider recording in Praxis; it is not a prerequisite
    invented for the already completed editable-source receiving.
 
-Keep #40 `partial` for its broader joint integration scope. Central contributor
-guidance is delivered; public publication and delegated cohort expansion retain
-their own owners. Do not infer scientific, GUI, additional-OS or public-package
-qualification from a guide, solver or import check. Optional diagnostic-capability
-decisions remain independently tracked in [#62](https://github.com/uibcdf/moli/issues/62).
+At the documentary checkpoint, #40 remained `partial` for joint integration.
+The receiving above now supplies that evidence for the selected cohort.
+Public publication and delegated cohort expansion retain their own owners.
+Do not infer scientific, GUI, additional-OS or public-package qualification
+from a guide, solver or import check. Optional diagnostic-capability decisions
+remain independently tracked in [#62](https://github.com/uibcdf/moli/issues/62).

@@ -60,10 +60,12 @@ meaning, source vocabulary, schema migration and adoption evidence.
 
 The scheduled component-guide audit checks byte-identical copies and Python-package classification in directly governed repositories. Guide updates are synchronized to those repositories when the canonical guide changes.
 
-The [Python 3.14 workspace review](pending_proposals/python_314_workspace.md)
-records the delivered contributor guidance and separates suite-only integration,
-direct-consumer compatibility, the remaining joint workspace and public releases.
-MolSysSuite owns its environment recipe; #40 coordinates the direct-component gap.
+The [resolved Python 3.14 workspace review](archive/python_314_workspace.md)
+records the delivered contributor guidance and an actual seventeen-package
+joint source-development cohort: clean dependency/import checks and 371 passing
+tests. Its [receipt](evidence/python_314_workspace_40_20261022.json) fixes the
+selected sources and limits. MolSysSuite owns its recipe and remaining cohort
+expansion; public releases and the caller's unchanged environment are separate.
 
 The [Conda credential-access contract](policies/python_distribution_policy.md#conda-publication-credential-access)
 names Diego Prada as administrator of `ANACONDA_UIBCDF_TOKEN`, with selected
