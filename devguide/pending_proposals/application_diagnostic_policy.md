@@ -51,16 +51,60 @@ local reviews automatically. No shared rule is added to the normative policy.
 
 ## Direct-component inventory
 
-The receipt fixes full identities; links select the inspected main snapshots.
+The original receipt fixes full identities for the initial inspection; later
+owner receiving is recorded below with its own implementation and evidence.
 
 | Component | Observed boundary | Owner-local follow-up |
 | --- | --- | --- |
 | [Sabueso `f392844`](https://github.com/uibcdf/sabueso/tree/f392844ec48fd8364d83c72a9521808daf1c598a) | Import calls `ensure_configured`; provider recommendations include warning/logging capture. Its catalog emitter constructs a `DiagnosticBundle` with compatibility defaults. Metadata permits SMonitor >=0.17.0 / ArgDigest >=0.13.0, before the new capabilities. | [#150](https://github.com/uibcdf/sabueso/issues/150): decide setup/scoped-capture applicability and qualify import/first use/emission on selected installed providers. #31's basic adoption stays accepted. Source inspection does not prove a regression. |
-| [Praxis `55b7d6d`](https://github.com/uibcdf/praxis/tree/55b7d6d2f9f7495a148ebe4d6bbc7acbffd9a512) | Request digestion bootstraps a safe first-use baseline inside a metadata-only scope. Lazy catalog advice registers and emits without a local restrictive scope or nonbootstrap option. Recommendations disable global capture. | [#13](https://github.com/uibcdf/praxis/issues/13): decide inherited-context treatment and behavior in unconfigured applications at request/advice boundaries. #10's latest-provider compatibility stays accepted separately. No leak or policy corruption was reproduced here. |
+| [Praxis `eb3b0c8`](https://github.com/uibcdf/praxis/tree/eb3b0c829b6466aa2080ce24e823bb749bb48ace) | Both real advice sites now enter a restrictive scope before registration and emission. Request first-use configuration remains explicit and preserves selected application/project policy. | [#13](https://github.com/uibcdf/praxis/issues/13): scoped advice adopted with installed receiving; pure registration-only behavior deferred with a concrete embedding trigger; audience maps/identity export not applicable to the current slice. See the dated receiving below. #10 compatibility remains separate. |
 | [Recorda `b455ff5`](https://github.com/uibcdf/recorda/tree/b455ff5ec6fee206f8c077cbac45712f0b6c704b) | Argument pipelines use metadata-only diagnostics with an explicit safe baseline; recovery emits safe IDs. The completed inspection adapter resolves count-only facts without emitting or importing ArgDigest, with fresh-process guards. | [#29](https://github.com/uibcdf/recorda/issues/29): decide whether registration-only behavior enables another useful slice. Completed #21 presentation / #24 compatibility do not select a new argument path, per-call audience or nonbootstrap emission contract. |
 | [Nextia `32d12e2`](https://github.com/uibcdf/nextia/tree/32d12e20fae26f00a523d0ed4812e46def8a64e9) | Tree has no installable Python package or current diagnostic runtime to receive these APIs. | No present receiving boundary. Reassess at its first runtime/provider integration. Implementation remains deferred by Diego. |
 | [Moli `08d0e2b`](https://github.com/uibcdf/moli-agent/tree/08d0e2b809e7e5c46add5ee554ae9528831f7454) | Agent tree has no installable Python package or current diagnostic runtime to receive these APIs. | No present receiving boundary. Reassess at its first runtime/provider integration; no scaffold implementation is requested. |
 | MolSysSuite | Delegated member governance, outside the direct runtime inventory. | [Suite #106](https://github.com/uibcdf/molsyssuite/issues/106) owns its independent dispositions: two settled and nine pending at this review. Do not translate that count into MolI adoption or edit members. |
+
+## Praxis receiving — 2026-10-22 UTC
+
+[Praxis #13](https://github.com/uibcdf/praxis/issues/13) implements the bounded fix
+in `eb3b0c829b6466aa2080ce24e823bb749bb48ace`. The earlier source-only suspicion
+was reproduced: both checker and recording-gap advice attached enclosing
+scientific argument summaries, tags and ordinary extras across all four
+audiences (eight expected failures before the fix). The local scope excludes
+that context before event construction, keeps fixed safe messages/hints and
+caller-approved primitive facts, and restores capture state. Imports are also
+inside the presentation-failure guard. Retained findings, failed attempts and
+native recording-error identity survive filtering and diagnostic failures.
+
+Fresh disposable Linux x86_64/Python 3.14.9 environments installed the changed
+Praxis wheel and original public provider files. The legacy cohort passes
+199 tests with one explicit absent-MolSysMT skip; the latest cohort passes 196
+with that skip and three absent-Recorda skips. All 43 diagnostic tests pass
+without skips in each cohort. Public Recorda 0.3.0 remains incompatible with the
+latest mandatory-provider cohort; its optional integration executes in the
+legacy cohort. Both environments pass `pip check`. Provider archives and installed
+Python files are verified against their Conda hashes. The
+[owner receipt](https://github.com/uibcdf/praxis/blob/eb3b0c829b6466aa2080ce24e823bb749bb48ace/devguide/evidence/diagnostics_13_20261022.json)
+and compressed closures retain identities, integrity-checked receptor summaries,
+exclusions and the local wheel digest. This does not qualify a public Praxis
+release or repeat #40's scientific MolSysMT receiving.
+
+The ordinary exact-head [Python workflow](https://github.com/uibcdf/praxis/actions/runs/39827135703)
+builds an unpublished candidate and runs installed Linux/macOS Python 3.11–3.14,
+the routine Linux 3.14 wheel and latest-public-provider lane, quality and measured
+coverage. [Local governance CI](https://github.com/uibcdf/praxis/actions/runs/39827135424)
+is separate. Final native conclusions and the published GH Run Receptor capture
+are recorded in #13; skipped optional steps are not passing test evidence.
+
+The [owner decision](https://github.com/uibcdf/praxis/blob/eb3b0c829b6466aa2080ce24e823bb749bb48ace/devguide/DIAGNOSTICS.md)
+retains the safe first-request baseline and compatibility console for direct
+advice in an unconfigured process. Pure registration-only execution is deferred
+until a concrete host requires no implicit handler or configuration; revisit
+request setup and real emission together. This also leaves SMonitor's existing
+empty-handler console fallback in place; the configured-application receiving
+uses an application-owned sink and makes no handlerless-host claim.
+Per-audience safe template maps and
+identity export have no current local use case. No provider floor, application
+policy, scientific contract, registry state or shared platform rule changes.
 
 ## Registry acceptance evidence
 
@@ -95,8 +139,9 @@ handlers, scientific results, safe-field boundaries and fallback behavior.
 Capability refusal must fail selected-feature qualification rather than become
 an unnoticed passing skip.
 
-#62 stays `partial` until the three direct-owner decisions settle its receiving
-scope. The providers' original publication blocker is gone. No platform runtime,
+#62 stays `partial` until the remaining Sabueso #150 and Recorda #29 decisions
+settle its receiving scope; Praxis #13 has its bounded owner disposition above.
+The providers' original publication blocker is gone. No platform runtime,
 shared correlation/routing/reliability contract, automatic diagnostic attachment
 or Nextia interpretation is accepted here. Recorda's completed #14/#15 analyses
 and [Lab #13](https://github.com/uibcdf/recorda-lab/issues/13)/[#14](https://github.com/uibcdf/recorda-lab/issues/14)
