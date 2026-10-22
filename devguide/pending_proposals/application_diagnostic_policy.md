@@ -58,7 +58,7 @@ owner receiving is recorded below with its own implementation and evidence.
 | --- | --- | --- |
 | [Sabueso `f392844`](https://github.com/uibcdf/sabueso/tree/f392844ec48fd8364d83c72a9521808daf1c598a) | Import calls `ensure_configured`; provider recommendations include warning/logging capture. Its catalog emitter constructs a `DiagnosticBundle` with compatibility defaults. Metadata permits SMonitor >=0.17.0 / ArgDigest >=0.13.0, before the new capabilities. | [#150](https://github.com/uibcdf/sabueso/issues/150): decide setup/scoped-capture applicability and qualify import/first use/emission on selected installed providers. #31's basic adoption stays accepted. Source inspection does not prove a regression. |
 | [Praxis `eb3b0c8`](https://github.com/uibcdf/praxis/tree/eb3b0c829b6466aa2080ce24e823bb749bb48ace) | Both real advice sites now enter a restrictive scope before registration and emission. Request first-use configuration remains explicit and preserves selected application/project policy. | [#13](https://github.com/uibcdf/praxis/issues/13): scoped advice adopted with installed receiving; pure registration-only behavior deferred with a concrete embedding trigger; audience maps/identity export not applicable to the current slice. See the dated receiving below. #10 compatibility remains separate. |
-| [Recorda `b455ff5`](https://github.com/uibcdf/recorda/tree/b455ff5ec6fee206f8c077cbac45712f0b6c704b) | Argument pipelines use metadata-only diagnostics with an explicit safe baseline; recovery emits safe IDs. The completed inspection adapter resolves count-only facts without emitting or importing ArgDigest, with fresh-process guards. | [#29](https://github.com/uibcdf/recorda/issues/29): decide whether registration-only behavior enables another useful slice. Completed #21 presentation / #24 compatibility do not select a new argument path, per-call audience or nonbootstrap emission contract. |
+| [Recorda `ebe95dc`](https://github.com/uibcdf/recorda/tree/ebe95dcc8528cfa4760951a87c818b812c4ebbba) | Safe first-use argument setup and the completed nonemitting inspection adapter are retained. Recovery catalog registration preserves setup; actual emission retains the compatibility empty-handler console fallback. | [#29](https://github.com/uibcdf/recorda/issues/29): baseline retained with fresh-process installed receiving on both public cohorts; registration-only execution and per-call audience deferred with concrete triggers; safe audience maps/identity export not applicable to this slice. See the dated receiving below. #26's release decision stays separate. |
 | [Nextia `32d12e2`](https://github.com/uibcdf/nextia/tree/32d12e20fae26f00a523d0ed4812e46def8a64e9) | Tree has no installable Python package or current diagnostic runtime to receive these APIs. | No present receiving boundary. Reassess at its first runtime/provider integration. Implementation remains deferred by Diego. |
 | [Moli `08d0e2b`](https://github.com/uibcdf/moli-agent/tree/08d0e2b809e7e5c46add5ee554ae9528831f7454) | Agent tree has no installable Python package or current diagnostic runtime to receive these APIs. | No present receiving boundary. Reassess at its first runtime/provider integration; no scaffold implementation is requested. |
 | MolSysSuite | Delegated member governance, outside the direct runtime inventory. | [Suite #106](https://github.com/uibcdf/molsyssuite/issues/106) owns its independent dispositions: two settled and nine pending at this review. Do not translate that count into MolI adoption or edit members. |
@@ -106,6 +106,42 @@ Per-audience safe template maps and
 identity export have no current local use case. No provider floor, application
 policy, scientific contract, registry state or shared platform rule changes.
 
+## Recorda setup decision — 2026-10-22 UTC
+
+[Recorda #29](https://github.com/uibcdf/recorda/issues/29) records the bounded
+decision and receiving in `ebe95dcc8528cfa4760951a87c818b812c4ebbba`. Runtime
+implementation, dependency ranges, schema and application contracts are
+unchanged. The explicit safe first-use argument baseline is retained; application
+and project configuration take precedence. The completed #21 count-only
+inspection path already resolves without emission, bootstrap or ArgDigest import.
+
+Fresh processes distinguish repeated recovery-adapter registration from actual
+emission and session recovery. Registration is nonconfiguring; real emission
+keeps SMonitor's compatibility console fallback when handlers are empty, including
+explicit application `handlers=[]`. Restrictive capture does not prevent that
+bootstrap. Existing application sinks, hooks, native error identity/cause, fixed
+recovery notes and incomplete work are preserved. This is qualification of the
+retained behavior, not a reproduced Recorda runtime defect or a new setup API.
+
+Two disposable Linux x86_64/Python 3.14.9 environments install the Recorda wheel
+with verified original public legacy/latest provider files. Each passes all
+357 tests without skips, explicitly enabling recovery, including twelve new
+fresh-process setup cases. Both pass `pip check`; installed runtime bytes match
+the unchanged source. The
+[dated owner receipt](https://github.com/uibcdf/recorda/blob/ebe95dcc8528cfa4760951a87c818b812c4ebbba/devguide/evidence/diagnostic_setup_29_20261022.json)
+and compressed dependency closures retain exact identities and integrity-checked
+published pytest-receptor 1.2.1 results. The
+[ordinary exact-head CI](https://github.com/uibcdf/recorda/actions/runs/39833860794)
+and native gate verification are recorded in #29. This does not qualify another
+public Recorda package; #26 remains independent.
+
+The [owner decision](https://github.com/uibcdf/recorda/blob/ebe95dcc8528cfa4760951a87c818b812c4ebbba/devguide/DIAGNOSTIC_SETUP.md)
+defers registration-only setup until a named embedding host needs no implicit
+configuration/handlers; argument first use and real recovery emission must be
+reviewed together. Per-call audience awaits a real need for different audiences
+in one process. Safe audience maps and identity export have no selected current
+boundary. No new dependency floor, provider rollout or shared rule is introduced.
+
 ## Registry acceptance evidence
 
 Recorda's accepted implementation is
@@ -139,8 +175,8 @@ handlers, scientific results, safe-field boundaries and fallback behavior.
 Capability refusal must fail selected-feature qualification rather than become
 an unnoticed passing skip.
 
-#62 stays `partial` until the remaining Sabueso #150 and Recorda #29 decisions
-settle its receiving scope; Praxis #13 has its bounded owner disposition above.
+#62 stays `partial` until Sabueso #150 settles the remaining direct-component
+receiving scope; Praxis #13 and Recorda #29 have their bounded owner dispositions above.
 The providers' original publication blocker is gone. No platform runtime,
 shared correlation/routing/reliability contract, automatic diagnostic attachment
 or Nextia interpretation is accepted here. Recorda's completed #14/#15 analyses
