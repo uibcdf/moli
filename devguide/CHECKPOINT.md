@@ -3,7 +3,7 @@
 **Refreshed on:** 2026-11-04 UTC for central publication rules in #75/#80 and
 the bounded developer-tool disposition in #79. Component changes remain with
 their teams. The [adoption record](governance/publication_policy_adoption.md)
-separates central delivery, pending copies and draft owner handoffs. Earlier workspace receiving,
+separates central delivery, pending copies and published owner handoffs. Earlier workspace receiving,
 credential guidance, Discussions, optional-provider reviews and contributor-rule
 deliveries retain their scoped evidence below.
 Each owning issue records the exact final published source, native gates and
@@ -35,8 +35,9 @@ the same state.
   release/package-event notices are in normative documents, registry, root
   instructions, canonical guide and onboarding/templates. Actual component
   instructions/copies remain pending in the adoption record; both coordination
-  issues stay partial. Owner/suite handoff drafts await explicit publication
-  authorization after automatic review rejected the first attempted owner issue.
+  issues stay partial. Diego authorized the prepared owner/suite handoffs;
+  all five owner issues and two suite-return comments are published with
+  verified readback and an immutable receipt in the adoption record.
   An unchanged guide audit reports copy differences until the teams adopt.
 - **Bounded #79 review:** the registered component snapshots have no maintained
   GH Run Receptor installation/executable version pin to migrate. The central
@@ -190,7 +191,7 @@ the same state.
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
-| [#75](https://github.com/uibcdf/moli/issues/75) / [#80](https://github.com/uibcdf/moli/issues/80) | Central policy ready; owner requests and suite return drafts prepared, awaiting explicit publication authorization. Component teams own commits and actual guide equality/native evidence. No central rollout success is inferred. |
+| [#75](https://github.com/uibcdf/moli/issues/75) / [#80](https://github.com/uibcdf/moli/issues/80) | Central policy and authorized owner/suite handoffs are delivered. Component teams own commits and actual guide equality/native evidence; the adoption record links all five requests. No rollout success is inferred from issue publication. |
 | [#33](https://github.com/uibcdf/moli/issues/33) | Review the retrieval/archive/mirror boundary against pinned Sabueso source. The [candidate contract](pending_proposals/retrieval_archive_contract.md) separates existing local behavior from proposed project retention, sharing, storage and replay guarantees. Owner review and consumer acceptance remain open; no Nextia runtime or shared service is selected. |
 
 The former #62 coordination is closed/completed; its accepted dispositions and

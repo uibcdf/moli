@@ -11,13 +11,14 @@ canonical guide, root action, onboarding and starter/template changes.
 
 **Central source delivery is distinct from adoption.** Both issues remain
 partial until their outstanding owner delivery criteria have evidence. No
-component or suite/member source is edited by this central task. The
-[prepared owner requests](../pending_proposals/publication_policy_owner_drafts.json)
-are local/internal drafts, not published issues or proof of delivery. Automatic
-approval review rejected the first attempted Sabueso issue creation, requiring
-explicit destination/content permission; no owner issue was created. Publication
-of those concrete drafts awaits human authorization. Internal MolI policy work
-and reporting continue.
+component or suite/member source is edited by this central task. Diego explicitly
+authorized the exact five issue requests and two suite comments with “procede”
+after reviewing the destination/content request. All seven
+[approved requests](../pending_proposals/publication_policy_owner_drafts.json)
+are now published; readback matches the approved bodies. The
+[delivery receipt](../evidence/publication_policy_handoff_75_80_20261104.json)
+records their identities and body digests. This resolves the earlier automatic
+approval rejection; publishing a request does not prove component adoption.
 
 ## Component-owned work
 
@@ -33,11 +34,11 @@ instruction. Keep that owner review explicit.
 
 | Component | Inspected source | Instruction/guide adoption |
 | --- | --- | --- |
-| Sabueso | `129020182555787d3cab58cc110e7a707fc5e553` | Pending team delivery; draft request prepared |
-| Praxis | `17e1856fa45a50b26097b19be28accb7ab88f689` | Pending team delivery; draft request prepared |
-| Nextia | `32d12e20fae26f00a523d0ed4812e46def8a64e9` | Pending team delivery; runtime remains deferred |
-| Moli | `08d0e2b809e7e5c46add5ee554ae9528831f7454` | Pending team delivery; draft request prepared |
-| Recorda | `ff52fa5d8628d796f413b833c8abe73907990cf9` | Pending team delivery; draft request prepared |
+| Sabueso | `129020182555787d3cab58cc110e7a707fc5e553` | [Owner #187](https://github.com/uibcdf/sabueso/issues/187); team delivery pending |
+| Praxis | `17e1856fa45a50b26097b19be28accb7ab88f689` | [Owner #17](https://github.com/uibcdf/praxis/issues/17); team delivery pending |
+| Nextia | `32d12e20fae26f00a523d0ed4812e46def8a64e9` | [Owner #5](https://github.com/uibcdf/nextia/issues/5); instructions pending, runtime deferred |
+| Moli | `08d0e2b809e7e5c46add5ee554ae9528831f7454` | [Owner #4](https://github.com/uibcdf/moli-agent/issues/4); team delivery pending |
+| Recorda | `ff52fa5d8628d796f413b833c8abe73907990cf9` | [Owner #38](https://github.com/uibcdf/recorda/issues/38); team delivery pending |
 
 All five inspected copies have the former canonical SHA-256
 `12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c`.
@@ -54,10 +55,11 @@ have separate results.
 [Suite #129](https://github.com/uibcdf/molsyssuite/issues/129) owns the separate
 release-notice member rule and delivery. [Suite #159](https://github.com/uibcdf/molsyssuite/issues/159)
 owns member external-publication instructions. Their reported deliveries are
-not evidence for the five direct copies above. The prepared return comments
-identify central delivery and its limits; their publication awaits the same
-specific human authorization as the owner requests. Suite/member sources and
-their policy-release identities remain unchanged by this task.
+not evidence for the five direct copies above. The authorized return comments
+in [suite #129](https://github.com/uibcdf/molsyssuite/issues/129#issuecomment-6641705819)
+and [suite #159](https://github.com/uibcdf/molsyssuite/issues/159#issuecomment-6641707682)
+identify central delivery and its limits. Suite/member sources and their
+policy-release identities remain unchanged by this task.
 
 ## Separate developer-tool review
 

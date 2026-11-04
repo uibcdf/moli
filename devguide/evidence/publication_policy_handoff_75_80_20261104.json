@@ -1,0 +1,97 @@
+{
+  "schema": "moli.publication_policy_handoff/1",
+  "date_utc": "2026-11-04",
+  "owner_issues": [
+    "uibcdf/moli#75",
+    "uibcdf/moli#80"
+  ],
+  "central_policy_commit": "458777fe0f541f33b81ead856e814a2deac866d9",
+  "canonical_guide_sha256": "618f79bff3d519e6949d5373aec4cf3bfaebeb1cbf7a8dba31f12cfd36665cf2",
+  "authorization": {
+    "approver": "Diego Prada Gracia",
+    "user_reply": "procede",
+    "scope": "exact five component issues and two MolSysSuite return comments offered with the approved draft link",
+    "approved_draft_commit": "458777fe0f541f33b81ead856e814a2deac866d9",
+    "approved_draft_path": "devguide/pending_proposals/publication_policy_owner_drafts.json",
+    "approved_draft_sha256": "8b2164f1c766463f13b0a5aa58ff21f9cba4728aa05f302842a690cc0d2fe09d",
+    "earlier_automatic_review_rejection": "resolved by subsequent explicit destination/content authorization"
+  },
+  "published": [
+    {
+      "action": "create_issue",
+      "repository_full_name": "uibcdf/sabueso",
+      "issue_number": 187,
+      "url": "https://github.com/uibcdf/sabueso/issues/187",
+      "title": "Adopt MolI external-publication authority and release-notice instructions",
+      "body_readback_matches_approved": true,
+      "body_utf8_bytes": 2730,
+      "body_sha256": "166b1b13b0fa767199e1ca536c28a82e4198d5bdde67e76855258ba717cbaecb"
+    },
+    {
+      "action": "create_issue",
+      "repository_full_name": "uibcdf/praxis",
+      "issue_number": 17,
+      "url": "https://github.com/uibcdf/praxis/issues/17",
+      "title": "Adopt MolI external-publication authority and release-notice instructions",
+      "body_readback_matches_approved": true,
+      "body_utf8_bytes": 2730,
+      "body_sha256": "166b1b13b0fa767199e1ca536c28a82e4198d5bdde67e76855258ba717cbaecb"
+    },
+    {
+      "action": "create_issue",
+      "repository_full_name": "uibcdf/nextia",
+      "issue_number": 5,
+      "url": "https://github.com/uibcdf/nextia/issues/5",
+      "title": "Adopt MolI external-publication authority and release-notice instructions",
+      "body_readback_matches_approved": true,
+      "body_utf8_bytes": 2730,
+      "body_sha256": "166b1b13b0fa767199e1ca536c28a82e4198d5bdde67e76855258ba717cbaecb"
+    },
+    {
+      "action": "create_issue",
+      "repository_full_name": "uibcdf/moli-agent",
+      "issue_number": 4,
+      "url": "https://github.com/uibcdf/moli-agent/issues/4",
+      "title": "Adopt MolI external-publication authority and release-notice instructions",
+      "body_readback_matches_approved": true,
+      "body_utf8_bytes": 2730,
+      "body_sha256": "166b1b13b0fa767199e1ca536c28a82e4198d5bdde67e76855258ba717cbaecb"
+    },
+    {
+      "action": "create_issue",
+      "repository_full_name": "uibcdf/recorda",
+      "issue_number": 38,
+      "url": "https://github.com/uibcdf/recorda/issues/38",
+      "title": "Adopt MolI external-publication authority and release-notice instructions",
+      "body_readback_matches_approved": true,
+      "body_utf8_bytes": 2730,
+      "body_sha256": "166b1b13b0fa767199e1ca536c28a82e4198d5bdde67e76855258ba717cbaecb"
+    },
+    {
+      "action": "add_comment",
+      "repository_full_name": "uibcdf/molsyssuite",
+      "issue_number": 129,
+      "comment_id": 6641705819,
+      "url": "https://github.com/uibcdf/molsyssuite/issues/129#issuecomment-6641705819",
+      "body_readback_matches_approved": true,
+      "body_utf8_bytes": 864,
+      "body_sha256": "45bd3bfd458055b427a2b7770cb200b04846f3c02d8a6cee8b180dbd3f141126"
+    },
+    {
+      "action": "add_comment",
+      "repository_full_name": "uibcdf/molsyssuite",
+      "issue_number": 159,
+      "comment_id": 6641707682,
+      "url": "https://github.com/uibcdf/molsyssuite/issues/159#issuecomment-6641707682",
+      "body_readback_matches_approved": true,
+      "body_utf8_bytes": 864,
+      "body_sha256": "45bd3bfd458055b427a2b7770cb200b04846f3c02d8a6cee8b180dbd3f141126"
+    }
+  ],
+  "limits": [
+    "issue/comment delivery is not component source adoption",
+    "component instruction/guide commits, equality and native gates remain team-owned",
+    "central #75/#80 remain partial; no issue closure or global green audit inferred",
+    "no component, suite/member source, package, operator environment or Nextia runtime changed"
+  ]
+}

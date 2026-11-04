@@ -3,7 +3,7 @@
     "uibcdf/moli#75",
     "uibcdf/moli#80"
   ],
-  "status": "prepared, NOT published; pending explicit destination/content authorization after automatic approval rejection",
+  "status": "all five component requests and two suite returns published after explicit authorization; actual adoption remains pending",
   "component_requests": [
     {
       "action": "create_issue",
@@ -49,5 +49,6 @@
       "issue_number": 159,
       "body": "Central MolI policy delivery for #75/#80 is recorded in https://github.com/uibcdf/moli/issues/75 and https://github.com/uibcdf/moli/issues/80. Normative external-publication authority and release/package-event notices, registry, canonical guide, root actions, onboarding and templates are provided. Prepared canonical guide SHA-256: 618f79bff3d519e6949d5373aec4cf3bfaebeb1cbf7a8dba31f12cfd36665cf2. Five direct component teams own instruction/copy delivery and native evidence; no suite/member or component source was changed by the central task. Central governance and actual guide-copy auditing have separate results; no component adoption or future event compliance is inferred. Your independent member rule/rollout remains under suite #129/#159. Exact central source, gate/capture evidence and current handoff state remain in the two central delivery comments."
     }
-  ]
+  ],
+  "delivery_receipt": "devguide/evidence/publication_policy_handoff_75_80_20261104.json"
 }
