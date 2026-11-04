@@ -1,0 +1,254 @@
+{
+  "schema": "moli.runtime_dependency_bounds_review/1",
+  "issue": "uibcdf/moli#76",
+  "date_utc": "2026-11-04",
+  "verification": "inspected",
+  "decision_status": "proposed, awaiting principal-maintainer decision; not an accepted MolI policy",
+  "central_base": "f02c5f9fa5495af2a61ba2fcd433c9d896c5c57e",
+  "inspected_public_files": [
+    {
+      "repository": "uibcdf/sabueso",
+      "commit": "ca9e0f376f4f2f62ac817de82a8da3886efae16a",
+      "path": "pyproject.toml",
+      "git_blob_sha1": "2a1d959e31825c290fc402fa671ac2cd58b6a8aa",
+      "content_bytes": 2820,
+      "content_sha256": "bb4bdc957bc862fb962f8c1154db9256fc45a14fc5e6e5e7d9f0a5909884e276",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/sabueso",
+      "commit": "ca9e0f376f4f2f62ac817de82a8da3886efae16a",
+      "path": "devtools/conda-build/meta.yaml",
+      "git_blob_sha1": "98bb0b008718f6093db422d76298e7a0de44b63d",
+      "content_bytes": 1618,
+      "content_sha256": "f803bf87d230278125b5dd0dd6aac85470b07a3df235aa5ae7c8f0efba5dc216",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "commit": "17e1856fa45a50b26097b19be28accb7ab88f689",
+      "path": "pyproject.toml",
+      "git_blob_sha1": "b01ef34515374e0194dec7d9e60146acb42a4756",
+      "content_bytes": 836,
+      "content_sha256": "8eb6170e40b65c8081d449b2c2ebfd56493a218dd266e0c7cf3206b6730123b2",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "commit": "17e1856fa45a50b26097b19be28accb7ab88f689",
+      "path": "devtools/conda-build/meta.yaml",
+      "git_blob_sha1": "d755d3bb19ad43069c534879bf267452f5a28bd4",
+      "content_bytes": 904,
+      "content_sha256": "8e47217eed0b6c1a20b35056da332c74495d07e5ee0add724cf40cd9ac160975",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "commit": "ff52fa5d8628d796f413b833c8abe73907990cf9",
+      "path": "pyproject.toml",
+      "git_blob_sha1": "f599382985bec8863c48f7f82142e03ad3b89e99",
+      "content_bytes": 762,
+      "content_sha256": "27f80ea924860baec969206b184a9e81b8abb1c0ed226066aa44a82d8b390ba9",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "commit": "ff52fa5d8628d796f413b833c8abe73907990cf9",
+      "path": "devtools/conda-build/meta.yaml",
+      "git_blob_sha1": "fab10f4d43a9cafaff79354362898eb893254626",
+      "content_bytes": 734,
+      "content_sha256": "bc08a7baf4cf37e90960641fd62f998170343a4b9af0066ebf8cf518be3996a2",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/molsyssuite",
+      "commit": "3feec0e6534200820a53fd4b131609ce38b653f9",
+      "path": "devguide/python_distribution_policy.md",
+      "git_blob_sha1": "dc05b9e0419e1f08c45dc224cfebb23d2aa2968f",
+      "content_bytes": 17896,
+      "content_sha256": "c18318567740150a128a19e76f28bd7f7875b0ef7a8cd3ec9d7ee4fc02e5bc07",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "commit": "ff52fa5d8628d796f413b833c8abe73907990cf9",
+      "path": "devguide/DEPENDENCY_POLICY.md",
+      "git_blob_sha1": "d10021b71e3f2d346ca479e27d9eff728105f3d6",
+      "content_bytes": 5744,
+      "content_sha256": "c77bb14396d3011647b17d1ab7ee738f16aeaf37f03704d9e1e039b228697002",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "commit": "ff52fa5d8628d796f413b833c8abe73907990cf9",
+      "path": "devguide/evidence/dependency_policy_35_hosted.json",
+      "git_blob_sha1": "cdad6f1e09aa9953c1c6aa849a56941e9b829d54",
+      "content_bytes": 45829,
+      "content_sha256": "04f1a6ffb83b9fdab622b17dc994e82485f8432efb2f60ac603d9de4c8a53119",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "commit": "ff52fa5d8628d796f413b833c8abe73907990cf9",
+      "path": ".github/workflows/latest_support.yml",
+      "git_blob_sha1": "7ff44a76549d9e09eb7d656800fc7c48c51b0e5e",
+      "content_bytes": 3099,
+      "content_sha256": "e6d892e3fd54cb105b10f8087471925c9f6a2fed565e0145eb963704f3648e5c",
+      "git_blob_verified": true
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "commit": "ff52fa5d8628d796f413b833c8abe73907990cf9",
+      "path": "devguide/evidence/release_0_3_3.json",
+      "git_blob_sha1": "c085ca66374e46cec23abfe2e4f2fd90dd991125",
+      "content_bytes": 14429,
+      "content_sha256": "b6154197f7f368bf76fea261711d76ebacaf1e2fab2e32475140bed787141bb6",
+      "git_blob_verified": true
+    }
+  ],
+  "inspected_local_policy_files": [
+    {
+      "path": "moli.toml",
+      "bytes": 10560,
+      "sha256": "85135663abd7df63570d83044efad601b7cfaf9343cb1913f9be273fb4396188"
+    },
+    {
+      "path": "MOLI_GUIDE.md",
+      "bytes": 27284,
+      "sha256": "618f79bff3d519e6949d5373aec4cf3bfaebeb1cbf7a8dba31f12cfd36665cf2"
+    },
+    {
+      "path": "devguide/policies/python_distribution_policy.md",
+      "bytes": 23585,
+      "sha256": "6301976f0bca746cd161ff57d7dafdf66911bb620d15595bc836d8be69ce432a"
+    },
+    {
+      "path": "devguide/policies/python_ci_policy.md",
+      "bytes": 8681,
+      "sha256": "0805beea57086c777013b23c5ef98edf3cf713090a0dbdde03ddb2dc6e153055"
+    },
+    {
+      "path": "devguide/policies/python_support_libraries_policy.md",
+      "bytes": 6206,
+      "sha256": "b7b272510158336db2923c873c464946fa9e77ba82d87882522239bad380e199"
+    }
+  ],
+  "component_declarations": {
+    "uibcdf/sabueso": {
+      "commit": "ca9e0f376f4f2f62ac817de82a8da3886efae16a",
+      "requires_python": ">=3.11,<3.15",
+      "runtime_requirements": [
+        "smonitor>=0.17.0",
+        "pyunitwizard>=0.27.0",
+        "argdigest>=0.13.0",
+        "depdigest>=0.11.0",
+        "ackredit>=0.9.0"
+      ],
+      "optional_dependency_groups": {
+        "dataframe": [
+          "pandas>=2"
+        ],
+        "compression": [
+          "backports.zstd>=1.8.0; python_version < '3.14'"
+        ],
+        "test": [
+          "pytest>=8",
+          "pytest-receptor==1.2.0",
+          "nbformat>=5",
+          "pyyaml>=6",
+          "ruff==0.16.5"
+        ]
+      },
+      "recipe_run": [
+        "python >=3.11,<3.15",
+        "smonitor >=0.17.0",
+        "pyunitwizard >=0.27.0",
+        "argdigest >=0.13.0",
+        "depdigest >=0.11.0",
+        "ackredit >=0.9.0"
+      ]
+    },
+    "uibcdf/praxis": {
+      "commit": "17e1856fa45a50b26097b19be28accb7ab88f689",
+      "requires_python": ">=3.11,<3.15",
+      "runtime_requirements": [
+        "argdigest>=0.15,<0.18",
+        "depdigest>=0.13,<0.16",
+        "smonitor>=0.19,<0.23",
+        "pyunitwizard>=0.28.1,<0.30"
+      ],
+      "optional_dependency_groups": {
+        "recording": [
+          "recorda>=0.3,<0.4"
+        ],
+        "attribution": [
+          "ackredit>=0.12,<0.13"
+        ]
+      },
+      "recipe_run": [
+        "python >=3.11,<3.15",
+        "argdigest >=0.15,<0.18",
+        "depdigest >=0.13,<0.16",
+        "smonitor >=0.19,<0.23",
+        "pyunitwizard >=0.28.1,<0.30"
+      ]
+    },
+    "uibcdf/recorda": {
+      "commit": "ff52fa5d8628d796f413b833c8abe73907990cf9",
+      "requires_python": ">=3.11,<3.15",
+      "runtime_requirements": [
+        "argdigest>=0.15.0",
+        "smonitor>=0.19.0"
+      ],
+      "optional_dependency_groups": {
+        "smonitor": [],
+        "argdigest": []
+      },
+      "recipe_run": [
+        "python >=3.11,<3.15",
+        "argdigest >=0.15.0",
+        "smonitor >=0.19.0"
+      ]
+    }
+  },
+  "interpretation": [
+    "Sabueso and Recorda required metadata already have minimum-only shape; no automatic rewrite is needed",
+    "Praxis has four required and two optional bounded ranges; metadata shape alone does not establish their compatibility rationale",
+    "required recipe names/ranges agree with inspected metadata for these three source snapshots",
+    "source shape is not executed API-floor or current compatibility proof",
+    "Recorda #35/#37 historical test/release results are read from owner reports; no provider or consumer rerun is claimed",
+    "MolSysSuite #137 is an independent accepted member decision and remains partial for owner dispositions"
+  ],
+  "recommended_default": "evidenced provider>=X; justified API/ABI/scientific/runtime/engine ceilings or exclusions; preserve optionality, Python support and exact qualification pins",
+  "proposed_verification": [
+    "actual consumed API minimums with stated cohorts and platforms",
+    "separate current-public installed compatibility monitoring with actual origins/closure and visible failures",
+    "fixed-source/file/digest release evidence retains its original scope"
+  ],
+  "limits": {
+    "component_sources_changed": false,
+    "runtime_or_recipe_constraints_changed": false,
+    "canonical_guide_or_registry_changed": false,
+    "workflows_changed": false,
+    "environments_changed": false,
+    "new_solves_or_installations": false,
+    "component_or_provider_tests_executed": false,
+    "historical_CI_requalified": false,
+    "scientific_acceptance": false,
+    "nextia_runtime": false,
+    "external_owner_notices_published": false
+  },
+  "reviewed_owner_records": [
+    "uibcdf/moli#76",
+    "uibcdf/recorda#35",
+    "uibcdf/moli#78",
+    "uibcdf/molsyssuite#137",
+    "uibcdf/praxis#9",
+    "uibcdf/praxis#14"
+  ],
+  "temporary_lifecycle": {
+    "owner": "Codex working with Diego under MolI #76",
+    "purpose": "source inspection and final documentation CI",
+    "retirement_trigger": "after exact-head native verification and durable decision handoff"
+  }
+}

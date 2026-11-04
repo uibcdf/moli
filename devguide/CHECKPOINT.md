@@ -1,8 +1,9 @@
 # MolI development checkpoint
 
-**Refreshed on:** 2026-11-04 UTC for central publication rules in #75/#80 and
-the bounded developer-tool disposition in #79. Component changes remain with
-their teams. The [adoption record](governance/publication_policy_adoption.md)
+**Refreshed on:** 2026-11-04 UTC for the central dependency-bounds evaluation
+in [#76](https://github.com/uibcdf/moli/issues/76), awaiting a principal-maintainer
+decision on its [concrete proposed rule](pending_proposals/runtime_dependency_bounds.md).
+Component changes remain with their teams. The [adoption record](governance/publication_policy_adoption.md)
 separates central delivery, pending copies and published owner handoffs. Earlier workspace receiving,
 credential guidance, Discussions, optional-provider reviews and contributor-rule
 deliveries retain their scoped evidence below.
@@ -191,6 +192,7 @@ the same state.
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
+| [#76](https://github.com/uibcdf/moli/issues/76) | Evaluation complete with pinned source inventory, alternatives and concrete normative text. Recommendation: evidenced runtime minimums, justified exceptions and separate compatibility monitoring. Await the principal decision before policy/registry/guide adoption; component metadata and CI remain team-owned. |
 | [#75](https://github.com/uibcdf/moli/issues/75) / [#80](https://github.com/uibcdf/moli/issues/80) | Central policy and authorized owner/suite handoffs are delivered. Component teams own commits and actual guide equality/native evidence; the adoption record links all five requests. No rollout success is inferred from issue publication. |
 | [#33](https://github.com/uibcdf/moli/issues/33) | Review the retrieval/archive/mirror boundary against pinned Sabueso source. The [candidate contract](pending_proposals/retrieval_archive_contract.md) separates existing local behavior from proposed project retention, sharing, storage and replay guarantees. Owner review and consumer acceptance remain open; no Nextia runtime or shared service is selected. |
 
