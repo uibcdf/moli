@@ -37,7 +37,10 @@ the same state.
   evidence. The single distribution policy, registry, canonical guide and
   onboarding/starter references carry the rule. Component bounds, CI and actual
   guide equality remain team-owned in the adoption record; no requirement is
-  removed automatically. Exact delivery/native evidence belongs in #76.
+  removed automatically. All six owner comments have verified readbacks; #76
+  closes for the central decision with an [archived review](archive/runtime_dependency_bounds.md).
+  Native governance54 and coverage pass on the exact policy source; the guide
+  audit retains its five pending-copy failures.
 
 - **Central #75/#80 policy work:** accepted external issue/PR authority and
   release/package-event notices are in normative documents, registry, root
@@ -199,7 +202,6 @@ the same state.
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
-| [#76](https://github.com/uibcdf/moli/issues/76) | Rule accepted by Diego and implemented centrally. Owner notices and native delivery evidence are recorded in the issue/adoption inventory; component constraints and actual guide receiving stay with their teams. Central closure does not certify adoption. |
 | [#75](https://github.com/uibcdf/moli/issues/75) / [#80](https://github.com/uibcdf/moli/issues/80) | Central policy and authorized owner/suite handoffs are delivered. Component teams own commits and actual guide equality/native evidence; the adoption record links all five requests. No rollout success is inferred from issue publication. |
 | [#33](https://github.com/uibcdf/moli/issues/33) | Review the retrieval/archive/mirror boundary against pinned Sabueso source. The [candidate contract](pending_proposals/retrieval_archive_contract.md) separates existing local behavior from proposed project retention, sharing, storage and replay guarantees. Owner review and consumer acceptance remain open; no Nextia runtime or shared service is selected. |
 

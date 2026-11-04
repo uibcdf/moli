@@ -122,7 +122,7 @@ new scientific MolI components.
 The accepted [runtime dependency rule](policies/python_distribution_policy.md#runtime-dependency-version-bounds)
 under [#76](https://github.com/uibcdf/moli/issues/76) uses evidenced API minimums,
 justified ceilings/exclusions and separate minimum/latest/fixed-cohort evidence.
-The [decision review](pending_proposals/runtime_dependency_bounds.md) retains the
+The [decision review](archive/runtime_dependency_bounds.md) retains the
 reasoning; the [adoption record](governance/runtime_dependency_adoption.md) assigns
 component receiving and guide delivery without automatic constraint removal.
 

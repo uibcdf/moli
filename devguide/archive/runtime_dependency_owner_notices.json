@@ -1,7 +1,7 @@
 {
   "owner_issue": "uibcdf/moli#76",
   "policy_status": "approved by Diego; central implementation",
-  "publication_status": "prepared; actual delivery identities/readbacks belong to the owning delivery receipt",
+  "publication_status": "all six comments published after explicit authorization; body readbacks match; actual adoption remains team-owned",
   "canonical_guide_sha256": "262dc66dfd4e553ca1513907cecad81d2ead731238d36dab2b16d943a832d875",
   "owner_comments": [
     {
@@ -40,5 +40,6 @@
       "issue_number": 137,
       "body": "Diego explicitly approved MolI #76's concrete runtime-bounds proposal with \"apruebo\". MolI now adopts the general evidenced provider>=X default, concrete incompatibility exceptions and distinct minimum/current-public/fixed-cohort evidence, preserving optionality, actual Python/native/engine constraints and exact qualification pins. This aligns with your independently accepted 3feec0e6534200820a53fd4b131609ce38b653f9 member decision; it neither supplies nor replaces suite/member adoption.\n\nThe exact central source/decision and native gates are recorded in https://github.com/uibcdf/moli/issues/76. Direct component teams own metadata/recipe/CI choices. Existing Sabueso #187, Praxis #17, Recorda #38, Nextia #5 and Moli #4 routes receive the related guide update (new SHA-256 262dc66dfd4e553ca1513907cecad81d2ead731238d36dab2b16d943a832d875); scaffold runtime stays deferred. The central team changes no component, suite/member source, environment, package or policy-release identity. Your ongoing owner floor/exception dispositions remain under suite #137. No central all-green adoption, scientific qualification or automatic cap removal is inferred."
     }
-  ]
+  ],
+  "handoff_receipt": "devguide/evidence/runtime_dependency_handoff_76_20261104.json"
 }

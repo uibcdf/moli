@@ -29,10 +29,11 @@ into a linked local issue if useful.
 | Nextia | [#5](https://github.com/uibcdf/nextia/issues/5) | Receive the current canonical guide; no fabricated Python requirements, monitoring lane or resumed runtime work. |
 | Moli | [#4](https://github.com/uibcdf/moli-agent/issues/4) | Receive the current canonical guide; runtime applicability is reassessed when a Python package exists. |
 
-Owner notices are prepared in
-[the explicit handoff payloads](../pending_proposals/runtime_dependency_owner_notices.json).
-Actual publication/readback and native central evidence are recorded in #76's
-delivery comment. A prepared notice or a copied guide is not team adoption.
+All six [authorized handoff payloads](../archive/runtime_dependency_owner_notices.json)
+are published and independently read back against their approved bodies. The
+[handoff receipt](../evidence/runtime_dependency_handoff_76_20261104.json) records
+actual identities, body digests and source-bound native evidence. Published
+comments and copied guides are not team adoption.
 Teams return a precise disposition: source/guide receiving, actual API floor and
 cap rationale, executed compatibility and public-package availability remain
 separate states. Keep actual provider versions/builds/digests, tested source,
@@ -60,8 +61,17 @@ its independently accepted member rule and ongoing dispositions. The central
 return notice records alignment and the separate MolI boundary; no member guide,
 constraint, policy-release identity or environment is changed by this work.
 
-#76 may close for its accepted central decision once normative delivery,
-explicit owner handoffs and applicable evidence/limits are recorded. Actual
+#76 closes for its accepted central decision, normative delivery, six authorized
+owner handoffs and recorded native evidence/limits. Actual
 component work remains open in its owner routes and #75/#80 copy coordination.
 A later shared-contract defect returns to its owning MolI issue; no automatic
 provider upgrade, public-file rewrite or Nextia implementation follows here.
+
+## Published owner returns
+
+- [uibcdf/sabueso #187](https://github.com/uibcdf/sabueso/issues/187#issuecomment-6644388197)
+- [uibcdf/praxis #17](https://github.com/uibcdf/praxis/issues/17#issuecomment-6644389405)
+- [uibcdf/recorda #38](https://github.com/uibcdf/recorda/issues/38#issuecomment-6644390637)
+- [uibcdf/nextia #5](https://github.com/uibcdf/nextia/issues/5#issuecomment-6644392524)
+- [uibcdf/moli-agent #4](https://github.com/uibcdf/moli-agent/issues/4#issuecomment-6644394952)
+- [uibcdf/molsyssuite #137](https://github.com/uibcdf/molsyssuite/issues/137#issuecomment-6644396889)

@@ -1,9 +1,9 @@
 ---
 summary: Evaluate minimum-only runtime requirements with justified exceptions and separate compatibility evidence.
 issue: uibcdf/moli#76
-status: partial
+status: resolved
 opened: 2026-10-24
-closed:
+closed: 2026-11-04
 verification: inspected
 area: [governance, distribution, compatibility]
 blocked_by: []
@@ -26,7 +26,9 @@ Diego Prada Gracia explicitly approved this concrete proposal with “apruebo”
 This record retains the evaluated sources, reasoning and accepted historical text;
 component constraints/CI, installed compatibility and actual guide adoption remain
 with their teams under the [adoption record](../governance/runtime_dependency_adoption.md).
-Central delivery/owner notices are being completed before this decision is archived.
+Central normative delivery and all six explicitly authorized owner comments are
+complete. This record is archived for the accepted central decision; actual
+component receiving remains with the teams and the adoption inventory.
 Nextia runtime remains deferred; MolSysSuite keeps its independent member authority.
 
 ## Evidence and its limits
@@ -180,9 +182,9 @@ compatibility claims follow component review and applicable release gates.
   qualification without inventing compatible provider versions.
 - [x] Prepare concrete normative text and separate central/team responsibilities.
 - [x] Record Diego's explicit approval of the proposed rule in #76.
-- [ ] Finish central publication and explicit owner notices; archive this decision
-  after its delivery evidence is recorded. Retain actual component adoption and
-  public release evidence separately.
+- [x] Publish the central rule and six authorized owner comments, verify native
+  administrative evidence and archive this decision. Actual component adoption
+  and public release evidence remain separately owned.
 
 The original evaluation commit `cd1fb7191c0f0e469fec32356371ca86f5c23798`
 changed only analysis/navigation/evidence. The subsequent acceptance changes
@@ -195,3 +197,13 @@ The original evaluation checks passed: `validate_governance.py`, 59 Markdown tar
 all eleven public-file Git-blob/content identities, the five unchanged local
 policy/registry/guide hashes and whitespace. That evaluation deferred no changed-code test and supplied no new remote or
 component qualification. Accepted-policy delivery retains its own checks in #76.
+
+## Resolution and delivery
+
+Policy source `959c6529f4c7cca652d1b8d31b7fffe9648384e0` passes both native
+governance jobs, all 54 administrative tests and coverage publication. Its guide
+audit fails for exactly five pending component copies; no global rollout success
+is claimed. [The delivery receipt](../evidence/runtime_dependency_handoff_76_20261104.json)
+binds the explicit six-comment approval, actual published bodies/readbacks and
+all twelve full-capture member identities. The owning issue records final
+source/closeout and temporary retirement. No component source was changed.
