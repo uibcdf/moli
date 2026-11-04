@@ -1,8 +1,10 @@
 # MolI development checkpoint
 
-**Refreshed on:** 2026-11-04 UTC for Diego's accepted runtime dependency rule
-in [#76](https://github.com/uibcdf/moli/issues/76), its normative delivery and
-[team-owned receiving](governance/runtime_dependency_adoption.md).
+**Refreshed on:** 2026-11-04 UTC for central receipt of Recorda 0.3.3 in
+[#78](https://github.com/uibcdf/moli/issues/78) and reconciliation of received
+credential evidence in [#8](https://github.com/uibcdf/moli/issues/8). The accepted
+runtime dependency rule in [#76](https://github.com/uibcdf/moli/issues/76) and its
+[team-owned receiving](governance/runtime_dependency_adoption.md) retain their scope.
 Component changes remain with their teams. The [adoption record](governance/publication_policy_adoption.md)
 separates central delivery, pending copies and published owner handoffs. Earlier workspace receiving,
 credential guidance, Discussions, optional-provider reviews and contributor-rule
@@ -31,6 +33,23 @@ the same state.
   comments and linked evidence are the current work record.
 
 ## Last completed MolI work
+
+- **Central release receipt in [#78](https://github.com/uibcdf/moli/issues/78):**
+  Recorda 0.3.3's immutable release receipt agrees with the notice's original
+  source, file, digest and public-delivery identities; Recorda #37 is closed.
+  #78 is completed for receipt of this event and now links accepted #76.
+  Original producer/installed/public evidence stays dated; no release gates,
+  installation or live registry check were rerun centrally. Consumer receiving
+  and scientific acceptance remain team-owned. A later event for this same
+  release updates its existing notice.
+- **Received credential evidence reconciled in [#8](https://github.com/uibcdf/moli/issues/8):**
+  MolSysSuite's policy receiving at `d03b863` and Recorda's real 0.3.1/0.3.2/0.3.3
+  publication receipts are acknowledged. Recorda #26 is completed rather than
+  a pending next-release boundary. Other direct-component and suite-member
+  adoption/readiness remain owner work, so #8 stays open/partial. This review
+  inspects published receipts; it performs no credential query or new upload
+  and makes no current/future token-validity claim. Pause for owner returns;
+  deferred implementation and Nextia runtime remain unstarted here.
 
 - **Accepted central #76 decision:** Diego approved evidenced runtime minimums,
   justified incompatibility exceptions and separate minimum/latest/fixed-cohort
@@ -77,9 +96,11 @@ the same state.
   [distribution contract](policies/python_distribution_policy.md#conda-publication-credential-access),
   onboarding and release checklist record this once, with a presence-only
   readiness example. Actual repository grants, execution and successful
-  authorized delivery remain separate evidence; the current API context cannot
-  inspect organization-secret metadata (403). No credential value, grant,
-  rotation, workflow dispatch or publication was accessed/performed here.
+  authorized delivery remain separate evidence. The initial central review
+  received HTTP 403 for organization-secret metadata; this is a dated observation,
+  not a repeated current probe. The subsequent owner receipts acknowledged above
+  establish their recorded scope. No credential value, grant, rotation, workflow
+  dispatch or publication was accessed/performed by this central review.
 
 - **Earlier documentary reconciliation of [#40](https://github.com/uibcdf/moli/issues/40):**
   the [workspace review](archive/python_314_workspace.md) replaces the
@@ -221,8 +242,9 @@ outstanding direct-component blockers. Suite #106 retains its independent scope.
   consumer, implementation or owner decision; read the issue before treating
   the design as ready for closure.
 - **Operations and governance follow-up:** [#8](https://github.com/uibcdf/moli/issues/8)
-  has its administrative model settled; per-repository readiness/adoption and
-  actual publication evidence remain owner-local, with suite #45 delegated.
+  has its administrative model settled, with suite policy receiving and Recorda
+  transactions recorded. Remaining per-repository readiness/adoption and actual
+  publication evidence stay owner-local, with suite #45 delegated.
 - **Longer-horizon or explicitly deferred scope:** [#12](https://github.com/uibcdf/moli/issues/12)
   (cross-component quantity canary), [#18](https://github.com/uibcdf/moli/issues/18)
   and [#19](https://github.com/uibcdf/moli/issues/19) (project telemetry and
