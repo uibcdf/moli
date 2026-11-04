@@ -12,7 +12,7 @@ supersedes: []
 
 # Runtime dependency bounds: central evaluation
 
-## Outcome for maintainer review — 2026-11-04
+## Accepted decision — 2026-11-04
 
 **Recommendation:** use `provider>=X` as the general runtime declaration, where
 `X` is the evidenced consumed-API floor. Require a concrete compatibility reason
@@ -20,12 +20,14 @@ for a ceiling, exclusion or narrower range. Keep exact qualification pins and
 separate public-provider monitoring. Apply the same reasoning to optional runtime
 features without making them mandatory.
 
-This is a **completed evaluation and proposed decision**, not an accepted MolI
-rule or a command to remove component bounds. [MolI #76](https://github.com/uibcdf/moli/issues/76)
-owns the principal-maintainer decision. MolI's current distribution/CI policies,
-canonical guide and registry remain unchanged by this review. Component teams
-own metadata, recipes, provider contracts, CI and publication; Nextia runtime
-remains deferred. MolSysSuite independently owns its member rule and adoption.
+Diego Prada Gracia explicitly approved this concrete proposal with “apruebo” on
+2026-11-04. Its normative text is now in the single
+[distribution policy](../policies/python_distribution_policy.md#runtime-dependency-version-bounds).
+This record retains the evaluated sources, reasoning and accepted historical text;
+component constraints/CI, installed compatibility and actual guide adoption remain
+with their teams under the [adoption record](../governance/runtime_dependency_adoption.md).
+Central delivery/owner notices are being completed before this decision is archived.
+Nextia runtime remains deferred; MolSysSuite keeps its independent member authority.
 
 ## Evidence and its limits
 
@@ -76,11 +78,11 @@ with justified API/ABI/scientific exceptions and member-owned floor/exception
 review still partial. This is relevant alignment evidence, not adoption by MolI
 or authority to change member repositories.
 
-## Proposed normative text
+## Accepted normative text — historical decision copy
 
-On acceptance, incorporate this section into MolI's single
-[distribution policy](../policies/python_distribution_policy.md), register it
-and link onboarding/CI guidance. It is not a second dependency manifest.
+The maintained rule is in MolI's [distribution policy](../policies/python_distribution_policy.md#runtime-dependency-version-bounds).
+The accepted text below preserves the reviewed decision; later policy maintenance
+belongs in that normative document rather than in this historical analysis.
 
 ### General runtime interval and exceptions
 
@@ -153,9 +155,8 @@ compatibility claims follow component review and applicable release gates.
 
 ## Owner actions after a decision
 
-1. Principal maintainer accepts the text above or records a justified alternative
-   in #76. Until then this remains a proposal; accepted registry/guide bytes stay
-   unchanged.
+1. Diego approved the exact proposed rule with “apruebo”. The central normative
+   text, registry and contributor references now implement that accepted decision.
 2. MolI publishes the central rule and a linked rollout inventory. Its central
    policy decision may then close with component work explicitly assigned and
    tracked separately, rather than claiming all metadata is migrated.
@@ -178,15 +179,19 @@ compatibility claims follow component review and applicable release gates.
 - [x] Compare alternatives, failure modes, scope and meaningful minimum/latest
   qualification without inventing compatible provider versions.
 - [x] Prepare concrete normative text and separate central/team responsibilities.
-- [ ] Record the principal-maintainer decision in #76.
-- [ ] If accepted, publish policy/registry/guide links and explicit owner handoffs;
-  retain actual component adoption and public release evidence separately.
+- [x] Record Diego's explicit approval of the proposed rule in #76.
+- [ ] Finish central publication and explicit owner notices; archive this decision
+  after its delivery evidence is recorded. Retain actual component adoption and
+  public release evidence separately.
 
-No runtime code, requirements, recipe, workflow, guide copy, environment, package,
-tag or existing scientific contract changes in this evaluation. The receipt and
-proposal support a decision, not an installed compatibility claim.
+The original evaluation commit `cd1fb7191c0f0e469fec32356371ca86f5c23798`
+changed only analysis/navigation/evidence. The subsequent acceptance changes
+central governance and the canonical guide, while component runtime code,
+constraints, recipes, workflows, guide copies, environments, packages/tags and
+scientific contracts remain unchanged. Neither source inspection nor central
+policy approval is an installed compatibility claim.
 
-Local review checks pass: `validate_governance.py`, 59 Markdown targets/anchors,
+The original evaluation checks passed: `validate_governance.py`, 59 Markdown targets/anchors,
 all eleven public-file Git-blob/content identities, the five unchanged local
-policy/registry/guide hashes and whitespace. This documentation-only evaluation
-does not defer a changed-code test or claim a new remote/component qualification.
+policy/registry/guide hashes and whitespace. That evaluation deferred no changed-code test and supplied no new remote or
+component qualification. Accepted-policy delivery retains its own checks in #76.

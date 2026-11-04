@@ -130,6 +130,20 @@ MOLI owns the engineering baseline for directly governed components. Applicable 
 
 For directly governed repositories carrying the `python-package` capability, the baseline includes Python support, CI coverage, Ruff/pytest quality tooling, applicable UIBCDF support libraries, developer receptors, distribution, release-version semantics, repository badge evidence, and archival/DOI rules when applicable. MolSysSuite sets corresponding requirements for its members.
 
+General runtime requirements use `provider>=X` with an evidenced consumed-API
+minimum, including optional runtime features without making them mandatory.
+Ceilings/exclusions need a concrete API/ABI/scientific/runtime/engine incompatibility
+or documented breaking boundary, an owner issue, evidence and reassessment/removal
+condition. A new version number, pre-1.0 status or absent future tests alone does
+not justify automatic next-minor caps. Preserve real Python/native/engine limits
+and exact reproducibility pins. Keep minimum-provider, current-public installed
+monitoring and fixed-cohort/release evidence distinct; admitting a version is not
+proof it works. Component teams review existing floors/caps and execute meaningful
+receiving before changing them. Follow the [runtime version rule](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_distribution_policy.md#runtime-dependency-version-bounds)
+and [adoption record](https://github.com/uibcdf/moli/blob/main/devguide/governance/runtime_dependency_adoption.md).
+MolSysSuite independently owns its member rule; no new full scientific suite per
+internal push or Nextia runtime is selected by this requirement.
+
 Routine local development and push/PR tests for directly governed Python packages use Python 3.14, including local pytest runs. Keep the full required test matrix for every supported minor, currently 3.11–3.14. MolSysSuite sets its member rule independently in its own registry and guide. Its [development environment recipe](https://github.com/uibcdf/molsyssuite/blob/main/devtools/conda-envs/README.md) names `molsyssuite@uibcdf_3.14`; MolSysSuite governs which members are qualified for it and how to create it.
 
 During authorized direct-push development, group small local commits when a remote checkpoint is unnecessary. Match checks to the change: documentation and research evidence need applicable local checks; changed scientific or public behavior needs targeted regressions and broader checks where affected. Consider `[skip ci]` only for a locally checked push that the repository permits, with a reliable route to recover deferred code tests. Normally finish code work with an unskipped push and inspect its applicable gates on the actual head; an explicitly authorized manual run of those same exact-head gates is also valid. A skipped run is not passing evidence and cannot evade required PR checks. For admission, release or publication, every mandatory gate must actually pass for the exact candidate and required installed artifact/closure. A marker on the original producer commit does not disqualify it when the authorized manual route proves those gates against the original commit, file and digest; never rebuild the recorded file just to change its CI status. Follow [MOLI's direct-push CI decision rule](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_ci_policy.md#validation-during-direct-push-development) and [candidate evidence lifecycle](https://github.com/uibcdf/moli/blob/main/devguide/policies/release_version_policy.md#candidate-evidence-lifecycle); MolSysSuite owns its member rule and recovery implementation.

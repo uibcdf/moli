@@ -1,8 +1,8 @@
 # MolI development checkpoint
 
-**Refreshed on:** 2026-11-04 UTC for the central dependency-bounds evaluation
-in [#76](https://github.com/uibcdf/moli/issues/76), awaiting a principal-maintainer
-decision on its [concrete proposed rule](pending_proposals/runtime_dependency_bounds.md).
+**Refreshed on:** 2026-11-04 UTC for Diego's accepted runtime dependency rule
+in [#76](https://github.com/uibcdf/moli/issues/76), its normative delivery and
+[team-owned receiving](governance/runtime_dependency_adoption.md).
 Component changes remain with their teams. The [adoption record](governance/publication_policy_adoption.md)
 separates central delivery, pending copies and published owner handoffs. Earlier workspace receiving,
 credential guidance, Discussions, optional-provider reviews and contributor-rule
@@ -31,6 +31,13 @@ the same state.
   comments and linked evidence are the current work record.
 
 ## Last completed MolI work
+
+- **Accepted central #76 decision:** Diego approved evidenced runtime minimums,
+  justified incompatibility exceptions and separate minimum/latest/fixed-cohort
+  evidence. The single distribution policy, registry, canonical guide and
+  onboarding/starter references carry the rule. Component bounds, CI and actual
+  guide equality remain team-owned in the adoption record; no requirement is
+  removed automatically. Exact delivery/native evidence belongs in #76.
 
 - **Central #75/#80 policy work:** accepted external issue/PR authority and
   release/package-event notices are in normative documents, registry, root
@@ -192,7 +199,7 @@ the same state.
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
-| [#76](https://github.com/uibcdf/moli/issues/76) | Evaluation complete with pinned source inventory, alternatives and concrete normative text. Recommendation: evidenced runtime minimums, justified exceptions and separate compatibility monitoring. Await the principal decision before policy/registry/guide adoption; component metadata and CI remain team-owned. |
+| [#76](https://github.com/uibcdf/moli/issues/76) | Rule accepted by Diego and implemented centrally. Owner notices and native delivery evidence are recorded in the issue/adoption inventory; component constraints and actual guide receiving stay with their teams. Central closure does not certify adoption. |
 | [#75](https://github.com/uibcdf/moli/issues/75) / [#80](https://github.com/uibcdf/moli/issues/80) | Central policy and authorized owner/suite handoffs are delivered. Component teams own commits and actual guide equality/native evidence; the adoption record links all five requests. No rollout success is inferred from issue publication. |
 | [#33](https://github.com/uibcdf/moli/issues/33) | Review the retrieval/archive/mirror boundary against pinned Sabueso source. The [candidate contract](pending_proposals/retrieval_archive_contract.md) separates existing local behavior from proposed project retention, sharing, storage and replay guarantees. Owner review and consumer acceptance remain open; no Nextia runtime or shared service is selected. |
 

@@ -47,6 +47,12 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    evidence required by the applicable policies. The [component guide](../../MOLI_GUIDE.md)
    and `moli.toml` identify those rules. Start local development and routine
    push/PR tests on Python 3.14; retain full tests on every supported minor.
+   Declare evidenced runtime API minimums; document any narrower compatibility
+   interval with its owner issue, concrete reason, evidence and review/removal
+   condition. Keep optional features optional and exact qualification pins
+   separate. Plan meaningful minimum/current-public receiving under the
+   [runtime version rule](../policies/python_distribution_policy.md#runtime-dependency-version-bounds),
+   preserving actual Python/native/engine restrictions and existing release gates.
    Create the declared Conda development environment; run local pytest under
    Python 3.14 and install the checkout with
    `python -m pip install --no-deps --editable .`. For integrated work, install

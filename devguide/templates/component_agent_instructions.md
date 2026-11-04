@@ -62,6 +62,13 @@ Python components editable in the same compatible environment and verify
 their import paths; track packages that cannot yet join. Follow
 `MOLI_GUIDE.md#moli-engineering-baseline`.
 
+When declaring or changing runtime dependencies, use evidenced API minimums and
+justify ceilings/exclusions through an owner-reviewed incompatibility, evidence
+and a reassessment/removal condition. Preserve optionality, real Python/ABI/engine
+restrictions and exact qualification pins. Keep minimum/current-public/fixed-cohort
+evidence distinct and follow the runtime version rule linked from
+`MOLI_GUIDE.md#moli-engineering-baseline`.
+
 During authorized direct-push development, batch short local commits when
 possible. Match local checks and remote CI to the actual change; consider
 `[skip ci]` only when this repository permits it and has a clear recovery

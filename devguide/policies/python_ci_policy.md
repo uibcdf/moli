@@ -65,6 +65,17 @@ and leave any missing or failed gate visible under its owning issue. The
 exact-head/manual qualification clarification is tracked in
 [MOLI #45](https://github.com/uibcdf/moli/issues/45).
 
+## Dependency compatibility evidence
+
+The accepted [runtime version rule](python_distribution_policy.md#runtime-dependency-version-bounds)
+distinguishes minimum-provider evidence, current-public installed monitoring and
+fixed-cohort/release qualification. Keep selected/installed identities, actual
+closure, meaningful consumed-contract results and visible failures. Neither a
+successful solve nor an allowed interval establishes runtime/scientific support.
+The component owns cadence, scope and justified gaps; preserve this policy's
+supported-minor/OS requirements and exact-candidate gates. This does not add a
+full scientific suite to every internal push or replace an immutable verifier.
+
 ## Operating-system support
 
 Linux and macOS are the platform baseline for public MOLI Python packages. A

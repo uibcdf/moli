@@ -1,0 +1,84 @@
+{
+  "owner_issue": "uibcdf/moli#76",
+  "approver": "Diego Prada Gracia",
+  "user_reply": "apruebo",
+  "date_utc": "2026-11-04",
+  "approved_evaluation_commit": "cd1fb7191c0f0e469fec32356371ca86f5c23798",
+  "approved_evaluation_path": "devguide/pending_proposals/runtime_dependency_bounds.md",
+  "approved_normative_utf8_sha256": "52e70201b744a0bb6822456ffc4b0fe037a573f5cea85751bd29157675bc8cbd",
+  "implementation": "devguide/policies/python_distribution_policy.md#runtime-dependency-version-bounds",
+  "component_changes": "left to component development teams",
+  "original_evaluation_receipt_sha256": "41b3597c90870da28663a65b40c164921cd5c196d2d36e1600ddaa008ac4e09b",
+  "canonical_guide_sha256": "262dc66dfd4e553ca1513907cecad81d2ead731238d36dab2b16d943a832d875",
+  "central_files": [
+    {
+      "path": "moli.toml",
+      "bytes": 10964,
+      "sha256": "45defa5a27cb987a4a828b4f03bab1699492a2248c83020d640cb58fc20e48bb"
+    },
+    {
+      "path": "MOLI_GUIDE.md",
+      "bytes": 28468,
+      "sha256": "262dc66dfd4e553ca1513907cecad81d2ead731238d36dab2b16d943a832d875"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 6065,
+      "sha256": "27fbb05d0e0eaf03778db8784db8cc9361e43c009cf210a5868bdbe0735eb3ca"
+    },
+    {
+      "path": "devguide/policies/python_distribution_policy.md",
+      "bytes": 27741,
+      "sha256": "1573f8b12d7af367bde19a4212a55c13acfecfa5e54ba581f8d040eb79f288c7"
+    },
+    {
+      "path": "devguide/policies/python_ci_policy.md",
+      "bytes": 9375,
+      "sha256": "c0f4512a701129bae37f6caede25af4125e9fc61c204ff62238475a9057f7e72"
+    },
+    {
+      "path": "devguide/governance/new_component_onboarding.md",
+      "bytes": 7598,
+      "sha256": "9c88fdb933640ae9f6db95e51b4c898c537f2efb88ed3b25cc90156349688fed"
+    },
+    {
+      "path": "devguide/templates/component_agent_instructions.md",
+      "bytes": 6269,
+      "sha256": "f8b1a15e46bbe798d8787316d26670ac125b177a02cee26920649af2357dead3"
+    }
+  ],
+  "adoption_status": "central decision accepted; component implementation/actual copies remain owner work; publication identities are retained separately",
+  "owner_routes": [
+    {
+      "repository": "uibcdf/sabueso",
+      "issue_number": 187
+    },
+    {
+      "repository": "uibcdf/praxis",
+      "issue_number": 17
+    },
+    {
+      "repository": "uibcdf/recorda",
+      "issue_number": 38
+    },
+    {
+      "repository": "uibcdf/nextia",
+      "issue_number": 5
+    },
+    {
+      "repository": "uibcdf/moli-agent",
+      "issue_number": 4
+    },
+    {
+      "repository": "uibcdf/molsyssuite",
+      "issue_number": 137
+    }
+  ],
+  "limits": [
+    "no component or suite/member source changed",
+    "no constraint or recipe rewritten centrally",
+    "no environment/package/tag/scientific receiving changed",
+    "historical inspection/qualified results keep their original scope",
+    "guide equality and runtime adoption require separate evidence"
+  ]
+}

@@ -108,6 +108,74 @@ installations. Environment files may add development tools and optional-feature
 packages, but must not silently substitute for missing runtime metadata. Recheck
 recipe and CI environments whenever a required dependency or Python bound changes.
 
+## Runtime dependency version bounds
+
+Accepted by Diego Prada Gracia through [MolI #76](https://github.com/uibcdf/moli/issues/76)
+on 2026-11-04 after the source-bound evaluation. Applies to directly governed
+Python packages and their optional runtime features; MolSysSuite owns its member
+rule independently. The [adoption record](../governance/runtime_dependency_adoption.md)
+separates central delivery from team-owned constraints and executed compatibility.
+
+### General runtime interval and exceptions
+
+Declare a required runtime provider as `provider>=X`, with an evidenced minimum
+for the contracts actually consumed. Apply this default to required dependencies
+and optional runtime features, keeping features optional. Newer published siblings
+are the intended compatible direction; admitting selection does not certify that
+an unexecuted version works.
+
+Add a ceiling, exclusion or narrower interval only for a concrete incompatible
+API, ABI, scientific, runtime or supported-engine contract. A provider's documented
+breaking boundary may justify a prospective restriction without waiting for a
+production failure. A new version number, pre-1.0 status or absence of tests alone
+does not justify a mechanical next-minor cap. Retain real native ABI/run-export,
+platform and qualified optional-engine restrictions while necessary.
+
+Record provider/affected versions, the consumed contract, evidence or documented
+boundary, owning issue, responsible owner, interim interval and review/removal
+condition. Report incompatibilities through the owning feedback route; external
+publication follows its separate approval rule. Do not remove an existing cap
+until its owner has reviewed the reason and applicable receiving evidence.
+
+### Minimum support, parity and reproducibility
+
+Derive `X` from the minimum published version providing the consumed API and test
+that boundary. The lowest declared number or the latest version that happened to
+pass is not an API-floor proof. Retain the actual tested cohort, installed origin,
+platform/Python scope and unresolved gaps. Where all minima cannot form one valid
+closure, distinguish a per-provider minimum test with compatible peers from a
+combined-minima claim. This does not demand an exhaustive Cartesian product.
+
+Keep `pyproject.toml` and recipe runtime intervals consistent. Preserve dependency
+optionality, explicit name translations and scoped route constraints. Exact
+version/build/digest or full-source pins remain appropriate for reproducible
+development/build environments, CI and release qualification; they serve a
+different purpose from the public runtime interval. Python support and existing
+candidate/installed-artifact gates remain separately governed.
+
+### Observe current public compatibility separately
+
+Use applicable scheduled/manual compatibility checks for newer public providers,
+separate from a fixed-cohort verifier. An initial useful route uses routine Python
+3.14 on Linux and the additional claimed platforms where affected contracts need
+coverage; retain the existing supported-minor/OS and exact-release requirements.
+The component records cadence, scope and justified gaps. This does not add a full
+scientific suite to every internal push or resume deferred scientific work.
+
+Retain selected stable public version/build/file identities, index/source basis,
+installed origins, clean dependency closure, consumer source/artifact, meaningful
+consumed-contract results and actual exclusions. A constrained older selection
+must not be called the newest public provider; surface the excluded newer version
+and its reason. Distinguish a public installed lane from source co-development.
+Neither solver success nor synthetic version-metadata fixtures prove runtime or
+scientific compatibility.
+
+A failed or incomplete selection/installation/test remains visible with its
+identities and an owning report. Do not silently rewrite the qualified-cohort
+verifier, hide the failure or relabel its selected closure as qualified. Preserve
+old releases/files and their original receipts. Changes to minimums, caps or
+compatibility claims follow component review and applicable release gates.
+
 ## Early dependency-contract preflight
 
 Before an expensive candidate build, each applicable Python component runs a cheap,

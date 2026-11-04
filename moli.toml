@@ -184,6 +184,17 @@ pypi_route = "optional-verified"
 review_field = "python_distribution_review"
 normative = "devguide/policies/python_distribution_policy.md"
 
+[policies.runtime_dependency_bounds]
+status = "accepted"
+applies_to = ["capability:python-package"]
+normative = "devguide/policies/python_distribution_policy.md"
+section = "runtime-dependency-version-bounds"
+issue = "uibcdf/moli#76"
+default_requirement = "provider>=X"
+upper_bounds = "justified-incompatibility"
+qualification_pins = "exact-source-file-and-closure"
+component_adoption = "owner-reviewed"
+
 [policies.release_version]
 status = "accepted"
 applies_to = ["repository"]

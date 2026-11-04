@@ -50,6 +50,13 @@ MolSysSuite, or both according to the affected consumers. Follow
 `devguide/governance/cross_component_feedback.md` before publishing the provider
 change or starting consumer rollout when the impact is known in advance.
 
+When declaring or changing runtime dependencies, use an evidenced API minimum;
+justify ceilings/exclusions through an owner-reviewed incompatibility. Preserve
+optionality, real Python/ABI/engine restrictions and exact qualification pins;
+keep minimum/latest/fixed-cohort evidence separate. Component teams own changes
+and receiving. Follow
+`devguide/policies/python_distribution_policy.md#runtime-dependency-version-bounds`.
+
 For authorized direct-push development, group short local commits when possible
 and choose local checks and remote CI according to the change. Consider
 `[skip ci]` only for a locally checked push permitted by the repository's CI

@@ -42,8 +42,13 @@ instruction. Keep that owner review explicit.
 
 All five inspected copies have the former canonical SHA-256
 `12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c`.
-The new canonical guide SHA-256 is
+The initial #75/#80 canonical guide SHA-256 was
 `618f79bff3d519e6949d5373aec4cf3bfaebeb1cbf7a8dba31f12cfd36665cf2`.
+Diego's later #76 decision adds the runtime version rule. Receive the latest
+exact guide/hash from the [runtime adoption record](runtime_dependency_adoption.md),
+coordinating the two instruction actions with that copy. The original seven
+approved messages/receipt retain their original bytes and source scope; they
+are not rewritten as proof of receiving a later guide.
 Local inspection reports exactly five copy differences. The hosted guide audit
 remains active and may report these pending copies; do not suppress, skip or
 relabel that result. The final native run evidence belongs in #75/#80's delivery
