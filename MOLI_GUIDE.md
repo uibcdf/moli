@@ -58,6 +58,25 @@ For concerns internal to MolSysSuite, follow MolSysSuite governance rather than 
 
 GitHub issues are the stable identity for bugs/proposals. Durable analysis or decisions may be recorded under the owning repository's `devguide/`; small findings need no extra report.
 
+## External issue and pull-request authority
+
+Before an agent creates or publishes an issue or pull request outside MolI's
+scope or in a repository not owned by us, obtain prior explicit permission from
+either **Diego Prada Gracia** or **Liliana Marisol Moreno Vargas**. Every
+repository outside `https://github.com/uibcdf` is covered; a remote draft PR is
+already an external write. UIBCDF ownership alone does not authorize every
+destination. Credentials, working alongside an approver, internal direct-push
+permission and the feedback duty do not supply external publication authority.
+
+Investigate read-only, prepare the concrete report/patch locally and identify
+destination, action and disclosure for review. Without permission, retain the
+internal finding or hand it to the human. Existing explicit authorization for
+the same scope persists; a new destination or broader disclosure needs its own
+permission. Do not bypass the boundary through a fork, another agent, account,
+tool or automation. Follow the [external-publication rule](https://github.com/uibcdf/moli/blob/main/devguide/governance/external_publication_authority.md).
+Internal reporting and confidentiality duties remain; MolSysSuite owns member
+instruction delivery under [suite #159](https://github.com/uibcdf/molsyssuite/issues/159).
+
 ## Durable instructions for development agents
 
 An incident does not by itself call for an `AGENTS.md` change. Report a bug or need to its owner; put source behavior, scientific facts, API details and edge cases in the fix, regression tests and relevant technical documentation as applicable. Use `AGENTS.md` only for an accepted, lasting instruction about **how contributors or agents should work** across future tasks in that file's scope, when existing guidance is insufficient. Put a repository-wide working instruction in the root file and a directory-specific one in the nested file. Do this with the fix or decision; open a linked adoption issue only when that accepted instruction cannot be placed in the same change. Routine defect triage does not require asking a human whether to edit `AGENTS.md`; the issue-feedback and human-review rules still apply. Point to the authoritative policy rather than copying long procedures.
@@ -120,6 +139,28 @@ Linux and macOS are the operating-system support baseline for public Python pack
 macOS support is currently limited to Apple Silicon (arm64). Intel-based macOS (x86_64) is not part of the supported platform matrix. Support may be reconsidered if there is demonstrated user demand. A component claims arm64 only after its own installed-package and runtime evidence; noarch packaging or a solver result alone is insufficient. MolSysSuite governs the architecture rollout for its members.
 
 Review public API contracts for ArgDigest, optional or heavy dependencies for DepDigest, user-facing diagnostics for SMonitor, and physical quantities for PyUnitWizard. Use each library where its boundary exists; record justified non-applicability or a bounded exception in the component's review issue. Follow [MOLI's support-library policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_support_libraries_policy.md) for the exact applicability rule.
+
+## Release and package-publication notices
+
+Every new component release, including a source-only release without a package,
+and every new package publication needs a release-specific central issue notice.
+Direct components outside MolSysSuite membership report to `uibcdf/moli`;
+MolSysSuite members report to `uibcdf/molsyssuite` under their own rule. The
+release/publication maintainer records exact version, immutable source/tag and
+release URL; for actual packages include route/channel/index, subdirectory,
+filename/build/digest, producer/public verification evidence and limits. State
+source-only or pending-package scope honestly. Identify ecosystem pins and
+receiving/follow-up owners. Update the same release notice when package files
+or a later build become public.
+
+This is post-event coordination, not central pre-release permission, automatic
+dependency adoption or a new scientific test gate. Preserve immutable tags and
+files, existing candidate gates and the separate advance provider-impact notice.
+Follow the [notice policy and exception route](https://github.com/uibcdf/moli/blob/main/devguide/governance/release_publication_notices.md)
+and its [template](https://github.com/uibcdf/moli/blob/main/devguide/templates/release_publication_notice.md).
+Root contributor instructions carry the action. MolSysSuite owns member
+delivery under [suite #129](https://github.com/uibcdf/molsyssuite/issues/129);
+central policy delivery does not establish component adoption or future compliance.
 
 ## Temporary development resources
 

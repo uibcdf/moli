@@ -1,8 +1,9 @@
 # MolI development checkpoint
 
-**Refreshed on:** 2026-10-22 UTC for the bounded retrieval/archive contract
-review in [#33](https://github.com/uibcdf/moli/issues/33) and reconciliation of
-the obsolete open-coordination entry for closed #62. Earlier workspace receiving,
+**Refreshed on:** 2026-11-04 UTC for central publication rules in #75/#80 and
+the bounded developer-tool disposition in #79. Component changes remain with
+their teams. The [adoption record](governance/publication_policy_adoption.md)
+separates central delivery, pending copies and draft owner handoffs. Earlier workspace receiving,
 credential guidance, Discussions, optional-provider reviews and contributor-rule
 deliveries retain their scoped evidence below.
 Each owning issue records the exact final published source, native gates and
@@ -29,6 +30,18 @@ the same state.
   comments and linked evidence are the current work record.
 
 ## Last completed MolI work
+
+- **Central #75/#80 policy work:** accepted external issue/PR authority and
+  release/package-event notices are in normative documents, registry, root
+  instructions, canonical guide and onboarding/templates. Actual component
+  instructions/copies remain pending in the adoption record; both coordination
+  issues stay partial. Owner/suite handoff drafts await explicit publication
+  authorization after automatic review rejected the first attempted owner issue.
+  An unchanged guide audit reports copy differences until the teams adopt.
+- **Bounded #79 review:** the registered component snapshots have no maintained
+  GH Run Receptor installation/executable version pin to migrate. The central
+  inspection uses published 1.4.0 without modifying caller environments; the
+  [inventory](evidence/gh_run_receptor_79_20261104.json) retains exact scope.
 
 - **Actual joint receiving in [#40](https://github.com/uibcdf/moli/issues/40):**
   a fresh Linux/Python 3.14.8 Conda environment installs fourteen eligible suite
@@ -177,6 +190,7 @@ the same state.
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
+| [#75](https://github.com/uibcdf/moli/issues/75) / [#80](https://github.com/uibcdf/moli/issues/80) | Central policy ready; owner requests and suite return drafts prepared, awaiting explicit publication authorization. Component teams own commits and actual guide equality/native evidence. No central rollout success is inferred. |
 | [#33](https://github.com/uibcdf/moli/issues/33) | Review the retrieval/archive/mirror boundary against pinned Sabueso source. The [candidate contract](pending_proposals/retrieval_archive_contract.md) separates existing local behavior from proposed project retention, sharing, storage and replay guarantees. Owner review and consumer acceptance remain open; no Nextia runtime or shared service is selected. |
 
 The former #62 coordination is closed/completed; its accepted dispositions and

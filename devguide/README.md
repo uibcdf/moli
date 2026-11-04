@@ -86,6 +86,18 @@ Its [adoption record](pending_proposals/human_facing_issue_feedback.md) tracks t
 bounded contributor instruction separately from the scientist-facing runtime
 pilot and verified-fix notifications in #34.
 
+The [external-publication authority rule](governance/external_publication_authority.md)
+requires prior explicit permission from Diego Prada Gracia or Liliana Marisol
+Moreno Vargas before agents create/publish external issues or PRs, including
+remote drafts. Internal findings and local preparation remain available.
+
+The [release/publication notice rule](governance/release_publication_notices.md)
+requires a release-specific central issue for every new component release and
+package publication, including source-only releases and later package builds.
+Use its [template](templates/release_publication_notice.md). The
+[adoption record](governance/publication_policy_adoption.md) keeps central #75/#80
+delivery distinct from component-owned changes and checked guide equality.
+
 The [GitHub Discussions policy](governance/github_discussions.md) requires
 Discussions across MolI repositories with common Announcements, Q&A and Ideas
 categories, plus component-specific extensions. It defines triage ownership

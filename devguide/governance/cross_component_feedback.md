@@ -20,6 +20,13 @@ For private discovery programs, sanitize the report so the provider can reproduc
 
 ## Contributing a fix across repositories
 
+Before applying any route below to a repository outside MolI's scope or not
+owned by us, follow the [external-publication authority rule](external_publication_authority.md).
+Prior explicit permission from Diego Prada Gracia or Liliana Marisol Moreno
+Vargas is required for issue/PR creation/publication, including remote draft
+PRs. Without it, prepare the concrete report/patch locally and use an internal
+handoff. Internal reporting/direct-push permission does not bypass this boundary.
+
 When work on one component requires a change in another repository, route the
 change through the repository that owns the behavior:
 
@@ -41,6 +48,10 @@ also follows the consumer-impact notice below; provider approval does not
 substitute for coordination with affected consumers.
 
 ## Changes to shared auxiliary providers
+
+Every release/package-publication event also follows its governing domain's
+[central notice rule](release_publication_notices.md). That post-event notice
+does not replace the advance impact notice in this section.
 
 When a developer or agent changes a UIBCDF auxiliary library or development
 action that other components consume, assess the effect on those consumers.

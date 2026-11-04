@@ -6,6 +6,13 @@ member-specific release routes, coupled-package staging, promotion and rollout
 evidence. A repository owns its package recipe, environments, CI, release
 workflow and publication decision.
 
+Each package-publication event also needs the release-specific
+[central notice](../governance/release_publication_notices.md), including its
+exact route/file/build/digest and actual public verification. Update the same
+notice when a previously source-only release gains a package or another build.
+This post-event record does not replace candidate gates, owner release authority
+or advance shared-provider impact reporting.
+
 ## Public installation and truthful claims
 
 The official user-installation route for a public UIBCDF Python component is a

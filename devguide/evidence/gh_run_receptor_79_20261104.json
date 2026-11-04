@@ -1,0 +1,470 @@
+{
+  "schema": "moli.gh_run_receptor_review/1",
+  "issue": "uibcdf/moli#79",
+  "date_utc": "2026-11-04",
+  "verification": "inspected",
+  "central_base": "d6c85a79b412cbdf58d867312d5ec5200160499b",
+  "reviewed_provider": "1.4.0",
+  "official_wheel_sha256": "caf4e33e81d3e7fcd3438315f03b35829783fd2a17bb6f1eb797c56fe71eb1e4",
+  "provider_full_qualification_reexecuted": false,
+  "registered_direct_vendored_consumers": {
+    "sabueso": {
+      "head": "129020182555787d3cab58cc110e7a707fc5e553",
+      "operational_inputs": [
+        {
+          "path": ".github/DISCUSSION_TEMPLATE/data-sources.yml",
+          "bytes": 2181,
+          "sha256": "14c9efbc52c0447f8d67e6442e4cd9a1428415455038d46b5e130149ea8e7f77"
+        },
+        {
+          "path": ".github/workflows/build_and_upload_conda_packages.yaml",
+          "bytes": 10027,
+          "sha256": "0cb32b513b6b78024209b441dea1bee108f611a2fb9897198c75bdc281c1e57b"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "bytes": 16535,
+          "sha256": "1eb37296f72f54d5cae7b00ca4c2c9eaa93c8c042120517381be547c13cab59b"
+        },
+        {
+          "path": ".github/workflows/moli-governance.yml",
+          "bytes": 372,
+          "sha256": "6247e3c5b95b463e7af47a607efbe53fd5bb579dc85769f194591badc352d272"
+        },
+        {
+          "path": ".github/workflows/promote_conda_package.yaml",
+          "bytes": 6679,
+          "sha256": "1accac41f0f317a04c26ad0ecfb329b72f8375b7fd038e9d00e3259f78cbcca5"
+        },
+        {
+          "path": ".github/workflows/test_staged_conda_package.yaml",
+          "bytes": 13376,
+          "sha256": "9366c86e6c3474444289266b1f064c9eb699257393b2041e7619f37ced084ab0"
+        },
+        {
+          "path": ".github/workflows/withdraw_conda_package.yaml",
+          "bytes": 2744,
+          "sha256": "976d53141329789fddd630c76e5e709ffe1d38c39ce8dcc94f64554f7e7a97b8"
+        },
+        {
+          "path": "devtools/check_exploration_transport.py",
+          "bytes": 2284,
+          "sha256": "f4ca33380b608aaa9a30f9ad894e5a9e147e640c911e07e059552a393f3c5b66"
+        },
+        {
+          "path": "devtools/compare_exploration_compressors.py",
+          "bytes": 15684,
+          "sha256": "4bbb3bad8b8a8cf44a1d35d029c495ea6954b3a35541a38dd2c692f7c84f693c"
+        },
+        {
+          "path": "devtools/conda-build/README.md",
+          "bytes": 18228,
+          "sha256": "8872d05098aeff4d872a4fc250ddc38e43691ee88771b0916d83d705b46e6c9f"
+        },
+        {
+          "path": "devtools/conda-build/build.sh",
+          "bytes": 173,
+          "sha256": "011eedb2fbe85db71d51e6f943dab2d1682059a23f1741859bd8a70e8c7a107f"
+        },
+        {
+          "path": "devtools/conda-build/check_local_wheel.py",
+          "bytes": 1776,
+          "sha256": "d9ac100c480746e124a846c9e3e6c8f1e133dde7f2eeb74d741b4bf8b02d645a"
+        },
+        {
+          "path": "devtools/conda-build/freeze_project_version.py",
+          "bytes": 2196,
+          "sha256": "0c05bf3af768eca730c7c88d47fd62bfb3f5567e73ac718e195b16b54675221b"
+        },
+        {
+          "path": "devtools/conda-build/meta.yaml",
+          "bytes": 1618,
+          "sha256": "f803bf87d230278125b5dd0dd6aac85470b07a3df235aa5ae7c8f0efba5dc216"
+        },
+        {
+          "path": "devtools/conda-build/release_notes_0.12.0.md",
+          "bytes": 5446,
+          "sha256": "168ac44c945426ad97b13809e047640d3a32ed20c0b893bf563e4309255fd5c7"
+        },
+        {
+          "path": "devtools/conda-build/release_notes_0.13.0.md",
+          "bytes": 6310,
+          "sha256": "73bdd93e0db4a617183e03508516e6f794b52e3bea6ef6fab356116688cfbb1f"
+        },
+        {
+          "path": "devtools/conda-build/release_notes_0.14.0.md",
+          "bytes": 4911,
+          "sha256": "11b6c385e76a6f605690a6b46a95283d27fb2c591af9d1c383241c2fd506760a"
+        },
+        {
+          "path": "devtools/conda-build/release_notes_0.15.0.md",
+          "bytes": 9276,
+          "sha256": "f446bcefae7dd69b54753cf537525ad578b987600ad5254371a547ae6b153584"
+        },
+        {
+          "path": "devtools/conda-build/release_plan.toml",
+          "bytes": 1168,
+          "sha256": "fe53e33d995d115da7c07f14729cb2a3418b731684d652049edbfc357d581736"
+        },
+        {
+          "path": "devtools/conda-build/release_route.py",
+          "bytes": 14806,
+          "sha256": "7221d02133383485c3ab3105d6997cf82678342ca4405070a7425f61f355acfd"
+        },
+        {
+          "path": "devtools/conda-build/verify_staged_install.py",
+          "bytes": 14895,
+          "sha256": "4552f3135c8175ed9074d960eedba3c22f09979440c840eb8e5036264e8b215b"
+        },
+        {
+          "path": "devtools/conda-build/withdraw_package.py",
+          "bytes": 4441,
+          "sha256": "02c2e538a0db59bda08fd595b142e0fe02d5c1f7cffbe5b36a28c6574d816db3"
+        },
+        {
+          "path": "devtools/conda-envs/README.md",
+          "bytes": 1377,
+          "sha256": "d63e9c700a1d5645ef41b043b1a865c25d473fe1c82e756deaf3cc7f7acbc87d"
+        },
+        {
+          "path": "devtools/conda-envs/build_env.yaml",
+          "bytes": 338,
+          "sha256": "c3ea883379c8c6b334d2e1bf4445feb39d3c48704220dc9c480aeda0221544a1"
+        },
+        {
+          "path": "devtools/conda-envs/development_env.yaml",
+          "bytes": 862,
+          "sha256": "048bcb5e905551f23ff155045c761c476bd34283dae7c8ee0f263c655c9ce47b"
+        },
+        {
+          "path": "devtools/conda-envs/docs_env.yaml",
+          "bytes": 682,
+          "sha256": "d8b44b74917621a61b3a0cd64c470f873342cc25d63672ca74d4c99a8b05671a"
+        },
+        {
+          "path": "devtools/conda-envs/test_env.yaml",
+          "bytes": 621,
+          "sha256": "5e16ea2bc74b4755e2c99f79cbbe5f34fef051c703bdaa268bb2b377b198b6bb"
+        },
+        {
+          "path": "devtools/dependency_preflight.py",
+          "bytes": 13027,
+          "sha256": "d41fb64d94f1319e446fa1ad059c2039fd1dbb994b1ea658392c04b8b41e5e1a"
+        },
+        {
+          "path": "devtools/dependency_routes.toml",
+          "bytes": 2693,
+          "sha256": "818a226128746e159d24bcb281e233f06e7c89646173854418e830fdedc470e4"
+        },
+        {
+          "path": "devtools/experiment_exploration_storage.py",
+          "bytes": 12744,
+          "sha256": "4fe8f6f8cff1b2be08315bcadefef6022a3fafa4fa1d007225db4c6d6bfbd429"
+        },
+        {
+          "path": "devtools/inspect_exploration_storage.py",
+          "bytes": 5210,
+          "sha256": "bc09d838dafa3842fc2752d55f01933cdfdd01c2d00e95a8ccbbfe22f76b8897"
+        },
+        {
+          "path": "devtools/measure_card_exploration.py",
+          "bytes": 7378,
+          "sha256": "2bfbd8dffcb4ddbe7aa0cfab4f76b1889287303c2b6ea909d4e9be5c68620684"
+        },
+        {
+          "path": "devtools/measure_component_navigation.py",
+          "bytes": 12758,
+          "sha256": "68490b9d072c0a3347710958429687e13bcf8459e0331330056d05c107a91243"
+        },
+        {
+          "path": "devtools/moli_governance.py",
+          "bytes": 2145,
+          "sha256": "18e9c7fff853a71da33a63155dea1e05f85b8ce845139078e3697e2e0e4b19a0"
+        },
+        {
+          "path": "devtools/probe_zstd_backend.py",
+          "bytes": 8570,
+          "sha256": "bc2af0d8b4df41b707c4439782983e8df53534267ed1901099af1c44a7477a8a"
+        },
+        {
+          "path": "pyproject.toml",
+          "bytes": 2820,
+          "sha256": "bb4bdc957bc862fb962f8c1154db9256fc45a14fc5e6e5e7d9f0a5909884e276"
+        }
+      ],
+      "hits": [
+        {
+          "path": "devtools/conda-build/verify_staged_install.py",
+          "line": 67,
+          "text": "    producers = list(evidence_dir.rglob(\"gh-run-receptor-events.json\"))"
+        },
+        {
+          "path": "devtools/conda-build/verify_staged_install.py",
+          "line": 77,
+          "text": "        producer.get(\"schema\") == \"gh-run-receptor.events@1\", \"Unexpected event schema\""
+        }
+      ],
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "agents_sha256": "83a84a27e554dbc71518e95a99d97d9ed077aeff1ecdc12f368a8c351d4e7ae9",
+      "disposition": "no maintained executable or operator-installation version pin identified; preserve generic inspection routes and historical receipts",
+      "owner_files_changed": false
+    },
+    "praxis": {
+      "head": "17e1856fa45a50b26097b19be28accb7ab88f689",
+      "operational_inputs": [
+        {
+          "path": ".github/workflows/build_and_upload_conda_packages.yaml",
+          "bytes": 2644,
+          "sha256": "c74cf67d4d1a6e00934b86ca1fb72824a645be41f9fdf8e79a1959cbad9c3721"
+        },
+        {
+          "path": ".github/workflows/moli-governance.yml",
+          "bytes": 351,
+          "sha256": "033bbd7dca433dc8335c39a381f950f98a0d352f3f2857c902a22899474d6b6f"
+        },
+        {
+          "path": ".github/workflows/publish_conda.yaml",
+          "bytes": 3724,
+          "sha256": "9d81a41c70ee5ec61a614a6b7b1ae5c8ca238c6298a4fc60c2f67b35f9886fa8"
+        },
+        {
+          "path": ".github/workflows/tests.yml",
+          "bytes": 8694,
+          "sha256": "8a005ebc6ec33b280962615bcdad955b4fbcb4ca8b754f0b6674078b5355dd64"
+        },
+        {
+          "path": "devtools/check_artifacts.py",
+          "bytes": 6198,
+          "sha256": "3a08ae450e6930df88489b0643b558b015f188879fd3e6e38ccdd5b978f6b529"
+        },
+        {
+          "path": "devtools/check_dependencies.py",
+          "bytes": 7556,
+          "sha256": "73768f102d3efe195b6299b992b0cfdba278fc53a890b843d0c5458039be7edf"
+        },
+        {
+          "path": "devtools/check_installed.py",
+          "bytes": 4313,
+          "sha256": "40c60ca2859d33ae4998f7d8ae433af464e88c14d6d32f4418de68014370465a"
+        },
+        {
+          "path": "devtools/conda-build/meta.yaml",
+          "bytes": 904,
+          "sha256": "8e47217eed0b6c1a20b35056da332c74495d07e5ee0add724cf40cd9ac160975"
+        },
+        {
+          "path": "devtools/conda-envs/build_env.yaml",
+          "bytes": 284,
+          "sha256": "95b2a7723b584d2ec1e76bc20888b5c4d25f5da7386c0707e2f6bb6a52109091"
+        },
+        {
+          "path": "devtools/conda-envs/development_env.yaml",
+          "bytes": 395,
+          "sha256": "f7085256775e5cd4c6aef7f158ca86911904195f227c5cc3b39098f290673d1f"
+        },
+        {
+          "path": "devtools/conda-envs/latest_support_env.yaml",
+          "bytes": 395,
+          "sha256": "8f58afb5e43ac0421d2dd5742e981995c00d3182e1246012f40a41c585f5c038"
+        },
+        {
+          "path": "devtools/conda-envs/test_env.yaml",
+          "bytes": 360,
+          "sha256": "924d3076e9457d6d80d8f7ac7dfcc8ac8ede296976268c1c1c43ddcb39e11598"
+        },
+        {
+          "path": "devtools/dependency_routes.json",
+          "bytes": 1010,
+          "sha256": "2cac53e5df084f402de6ee0c75960ef80e1c7deb71a0487bf82ddecf74c191e4"
+        },
+        {
+          "path": "devtools/moli_governance.py",
+          "bytes": 2079,
+          "sha256": "573f1e86d926beb59900996ac4ac573836a76db4b697a834359d5707d7ab8710"
+        },
+        {
+          "path": "devtools/normalize_coverage.py",
+          "bytes": 3428,
+          "sha256": "fdf02f9f372f62ad0259452b1b0942226bab1071e274f3f198500de73448cbd1"
+        },
+        {
+          "path": "devtools/release_route.py",
+          "bytes": 7895,
+          "sha256": "01037f9d6b965900f03dcc617e1259a0f2dae14d44f2bc4885c14d271dc085bc"
+        },
+        {
+          "path": "pyproject.toml",
+          "bytes": 836,
+          "sha256": "8eb6170e40b65c8081d449b2c2ebfd56493a218dd266e0c7cf3206b6730123b2"
+        }
+      ],
+      "hits": [],
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "agents_sha256": "457d3d81a562a97ccd3d065b2bb7b45106d089fc42b4d5bc9e9f9804072cc598",
+      "disposition": "no maintained executable or operator-installation version pin identified; preserve generic inspection routes and historical receipts",
+      "owner_files_changed": false
+    },
+    "nextia": {
+      "head": "32d12e20fae26f00a523d0ed4812e46def8a64e9",
+      "operational_inputs": [
+        {
+          "path": ".github/workflows/moli-governance.yml",
+          "bytes": 351,
+          "sha256": "033bbd7dca433dc8335c39a381f950f98a0d352f3f2857c902a22899474d6b6f"
+        },
+        {
+          "path": "devtools/moli_governance.py",
+          "bytes": 2079,
+          "sha256": "573f1e86d926beb59900996ac4ac573836a76db4b697a834359d5707d7ab8710"
+        }
+      ],
+      "hits": [],
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "agents_sha256": "49180d3b94fcb288d635a155cce052bef04f9ed7ed4ff1dafa564d5a8df87827",
+      "disposition": "no maintained executable or operator-installation version pin identified; preserve generic inspection routes and historical receipts",
+      "owner_files_changed": false
+    },
+    "moli-agent": {
+      "head": "08d0e2b809e7e5c46add5ee554ae9528831f7454",
+      "operational_inputs": [
+        {
+          "path": ".github/workflows/moli-governance.yml",
+          "bytes": 351,
+          "sha256": "033bbd7dca433dc8335c39a381f950f98a0d352f3f2857c902a22899474d6b6f"
+        },
+        {
+          "path": "devtools/moli_governance.py",
+          "bytes": 2079,
+          "sha256": "573f1e86d926beb59900996ac4ac573836a76db4b697a834359d5707d7ab8710"
+        }
+      ],
+      "hits": [],
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "agents_sha256": "49180d3b94fcb288d635a155cce052bef04f9ed7ed4ff1dafa564d5a8df87827",
+      "disposition": "no maintained executable or operator-installation version pin identified; preserve generic inspection routes and historical receipts",
+      "owner_files_changed": false
+    },
+    "recorda": {
+      "head": "ff52fa5d8628d796f413b833c8abe73907990cf9",
+      "operational_inputs": [
+        {
+          "path": ".github/workflows/build_and_upload_conda_packages.yaml",
+          "bytes": 6862,
+          "sha256": "2409cc3941fc980b370153ad2c13a2cbf8f8447e027ce94b637c68256c644454"
+        },
+        {
+          "path": ".github/workflows/latest_support.yml",
+          "bytes": 3099,
+          "sha256": "e6d892e3fd54cb105b10f8087471925c9f6a2fed565e0145eb963704f3648e5c"
+        },
+        {
+          "path": ".github/workflows/publication_readiness.yml",
+          "bytes": 711,
+          "sha256": "beacc9727620dd661629b9eddb81de2fd27d921ec3d0c6137aaf8b4dd430769e"
+        },
+        {
+          "path": ".github/workflows/release_candidate.yml",
+          "bytes": 6774,
+          "sha256": "a900af06baf7244358af44db5b3d45591b66d677020a8d769ef894a41db1a9c4"
+        },
+        {
+          "path": ".github/workflows/tests.yml",
+          "bytes": 5403,
+          "sha256": "452c15f9a7a2e5c0546a2d2186ec8f04bfb1cbbaf07cc06458d855878f8b46a4"
+        },
+        {
+          "path": "devtools/check_dependencies.py",
+          "bytes": 7795,
+          "sha256": "5e6be13d0d85924af3119e13193789001939294f98010ba2e41f6218c7a77f45"
+        },
+        {
+          "path": "devtools/conda-build/meta.yaml",
+          "bytes": 734,
+          "sha256": "bc08a7baf4cf37e90960641fd62f998170343a4b9af0066ebf8cf518be3996a2"
+        },
+        {
+          "path": "devtools/conda-envs/README.md",
+          "bytes": 4996,
+          "sha256": "493a39f209e808051d22560f12900561daaba1b6e70bfc97f4d016e4bbd10bc1"
+        },
+        {
+          "path": "devtools/conda-envs/build_env.yaml",
+          "bytes": 254,
+          "sha256": "8f03351242ba18589cfd84347f238c58e374cc959e185b3123b58db4c8d40691"
+        },
+        {
+          "path": "devtools/conda-envs/development_env.yaml",
+          "bytes": 283,
+          "sha256": "0dbfda306e4c2583f71e310d1090680607b37d49b10083c563e4ed80f04854d3"
+        },
+        {
+          "path": "devtools/conda-envs/latest_support_env.yaml",
+          "bytes": 272,
+          "sha256": "07936fcda999a4fa763bd987c2c837a2dcaa84db05d404cb09e82583c77dba4a"
+        },
+        {
+          "path": "devtools/conda-envs/recovery_test_env.yaml",
+          "bytes": 279,
+          "sha256": "8be674c02f452169dae157261ecb075580bf1e481c10a681c35e974aecbc077e"
+        },
+        {
+          "path": "devtools/conda-envs/support_test_env.yaml",
+          "bytes": 278,
+          "sha256": "dc128378fa97cb8cb7308e1f369c326967eb70756e849b140a084913505d4f6f"
+        },
+        {
+          "path": "devtools/conda-envs/test_env.yaml",
+          "bytes": 275,
+          "sha256": "184e43ef437217a4fb1154853cb112b6e7f48b04d970f494252ab69f6ffec273"
+        },
+        {
+          "path": "devtools/dependency_routes.json",
+          "bytes": 426,
+          "sha256": "b493c78471176b654108b5144886dbc9973a82900a50a633e90e2d2f9e0cf88f"
+        },
+        {
+          "path": "devtools/latest_support.py",
+          "bytes": 6145,
+          "sha256": "0a3833a51c481bf68f31fee1d9c1ee9537868fc1ef72e36d35d4cdc05b9ea73a"
+        },
+        {
+          "path": "devtools/release_candidate.py",
+          "bytes": 10818,
+          "sha256": "432e0c3967c0fffc1a91f483bb2f75ca315e6f99caa2606a30f7d75a888e00fe"
+        },
+        {
+          "path": "devtools/validate_governance.py",
+          "bytes": 2620,
+          "sha256": "cb501c41d50f10a537bfb1e3be4203d8722b34b462439eb5b67dfcf62957c503"
+        },
+        {
+          "path": "devtools/verify_support_environment.py",
+          "bytes": 4857,
+          "sha256": "6b8226b2f08a0ae9357b27200d319e10549d3b388f3be8bbbc05d4bcf1675507"
+        },
+        {
+          "path": "pyproject.toml",
+          "bytes": 762,
+          "sha256": "27f80ea924860baec969206b184a9e81b8abb1c0ed226066aa44a82d8b390ba9"
+        }
+      ],
+      "hits": [],
+      "guide_sha256": "12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c",
+      "agents_sha256": "e7e3eeeb80d2668938b06cdadb3bc0053173bc80f6c83404624ab2cd7e83f14c",
+      "disposition": "no maintained executable or operator-installation version pin identified; preserve generic inspection routes and historical receipts",
+      "owner_files_changed": false
+    }
+  },
+  "operator_prose_review": {
+    "scope": "root AGENTS/README, maintained devguide, docs, standards and source workflows/tools; historical evidence is not a current version pin",
+    "findings": "Sabueso has generic watch/inspection commands; Praxis and Recorda versioned mentions describe past inspections, not an installation instruction. Nextia/Moli have no executable GHR route. Canonical guide asks for a published release without a minimum."
+  },
+  "central_disposition": "use verified published 1.4.0 from isolated scratch for this task; no maintained central executable installation pin to change",
+  "delegated_scope": "MolSysSuite owns suite #158/#144 and its registered guide/tool consumers; not inferred from this audit",
+  "limits": [
+    "source inspection of the listed fixed snapshots, not automatic future compatibility",
+    "caller or other operator environments not changed",
+    "no component runtime/scientific receiving or provider matrix rerun",
+    "no new platform minimum; older compatible published releases remain allowed"
+  ]
+}

@@ -18,6 +18,22 @@ Deliver an accepted report through an observable issue/update or explain the
 private route or maintainer handoff. Follow
 `MOLI_GUIDE.md#reporting-bugs-and-proposals` and its linked human-facing policy.
 
+Before creating or publishing an issue or PR outside MolI's scope or in a
+repository not owned by us, obtain prior explicit permission from Diego Prada
+Gracia or Liliana Marisol Moreno Vargas, including for remote draft PRs. Prepare
+the concrete report/patch locally for review; without permission use an internal
+finding or human handoff. Existing scoped permission persists; another agent,
+account, fork or tool cannot bypass the boundary. Internal reporting/direct-push
+authority does not authorize external publication. Follow
+`MOLI_GUIDE.md#external-issue-and-pull-request-authority`.
+
+For every new component release, with or without a package, and each new package
+publication, send a release-specific central issue notice to `uibcdf/moli`.
+Update the same notice for later package/build events. Retain exact source,
+version and artifact identities, actual verification limits and follow-up owners.
+This post-event notice is separate from advance provider-impact reporting and
+release gates. Follow `MOLI_GUIDE.md#release-and-package-publication-notices`.
+
 Report defects in their owning issues and fix them with code, tests and
 technical documentation. Do not store source-specific facts, edge cases or
 workarounds in `AGENTS.md`. Only after normal owner review, put a lasting

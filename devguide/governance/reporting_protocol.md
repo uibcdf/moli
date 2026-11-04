@@ -1,5 +1,11 @@
 # Reporting Protocol
 
+Issue and pull-request publication is subject to the
+[external-publication authority rule](external_publication_authority.md).
+The feedback duty below authorizes no external write by itself. Prepare an
+internal finding and a locally reviewable draft when external permission is
+pending; preserve reporting through the authorized internal/private route.
+
 The issue-feedback commitment below applies to everyone using, developing,
 maintaining or operating a MOLI component or UIBCDF support tool, including
 MolSysSuite members, pytest-receptor, gh-run-receptor, the Conda build/upload
@@ -80,6 +86,11 @@ The [instruction adoption record](../pending_proposals/human_facing_issue_feedba
 MOLI delivery, owner-local component review and the remaining runtime pilot.
 
 ## GitHub Discussions
+
+Release/publication maintainers also send the required
+[central event notice](release_publication_notices.md) for each new component
+release and package publication. This post-event record is distinct from an
+advance shared-provider impact notice and from consumer adoption.
 
 Discussions support usage questions, announcements and early conversation under
 the [Discussions policy](github_discussions.md). They do not replace an owning

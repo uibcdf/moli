@@ -21,6 +21,22 @@ Deliver an accepted report through an observable issue/update or explain the
 private route or maintainer handoff. Follow
 `devguide/governance/reporting_protocol.md#human-facing-issue-feedback`.
 
+Before creating or publishing an issue or pull request outside MolI's scope or
+in a repository not owned by us, obtain prior explicit permission from Diego
+Prada Gracia or Liliana Marisol Moreno Vargas, including for remote draft PRs.
+Prepare the report/patch locally first; without permission retain an internal
+finding or human handoff. Preserve existing scoped authorization; do not bypass
+the boundary through another agent, account, fork or tool. Follow
+`devguide/governance/external_publication_authority.md`.
+
+For each new component release, with or without a package, and each new package
+publication, send a release-specific central issue notice: `uibcdf/moli` for
+direct components outside MolSysSuite membership, `uibcdf/molsyssuite` for its
+members. Update the same notice for later package/build events, retaining exact
+source/artifact identities, evidence, limits and receiving owners. Follow
+`devguide/governance/release_publication_notices.md`; this post-event notice
+does not replace advance shared-provider impact reporting or release gates.
+
 When MOLI changes a platform rule that may affect MolSysSuite or its members,
 record the required adoption and evidence in an existing or new
 `uibcdf/molsyssuite` issue, linked to the MOLI decision. Leave changes to the

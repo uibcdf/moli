@@ -35,6 +35,16 @@ previously published title. [MOLI #68](https://github.com/uibcdf/moli/issues/68)
 tracks adoption of this convention; MolSysSuite owns member adoption in its
 separate governance domain.
 
+## Central event notice
+
+Each new component release, including source-only releases, and every package
+publication follows the [central notice policy](../governance/release_publication_notices.md)
+and [template](../templates/release_publication_notice.md). Retain exact
+source/tag/file/build identities, actual public availability/evidence and
+consumer follow-up owners. Update the same release notice for later package
+events. This post-event duty does not change release authority, candidate gates
+or immutable tags/artifacts and does not replace advance impact reporting.
+
 ## Archive tags
 
 Accepted through [MOLI #47](https://github.com/uibcdf/moli/issues/47), the reserved

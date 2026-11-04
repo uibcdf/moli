@@ -43,6 +43,23 @@ applies_to = ["repository", "direct-component"]
 normative = "devguide/governance/reporting_protocol.md"
 issue = "uibcdf/moli#34"
 
+[policies.external_publication_authority]
+status = "accepted"
+applies_to = ["repository", "direct-component", "support-infrastructure"]
+normative = "devguide/governance/external_publication_authority.md"
+issue = "uibcdf/moli#80"
+prior_human_approval = true
+approvers = ["Diego Prada Gracia", "Liliana Marisol Moreno Vargas"]
+
+[policies.release_publication_notices]
+status = "accepted"
+applies_to = ["direct-component"]
+normative = "devguide/governance/release_publication_notices.md"
+issue = "uibcdf/moli#75"
+direct_component_destination = "uibcdf/moli"
+suite_member_destination = "uibcdf/molsyssuite"
+source_only_releases = true
+
 [policies.github_discussions]
 status = "accepted"
 applies_to = ["repository", "direct-component"]

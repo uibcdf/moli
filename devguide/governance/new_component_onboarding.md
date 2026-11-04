@@ -18,6 +18,11 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    human-facing action to offer an owning issue for uncertain or nonblocking
    findings, preserve existing reporting authority and respect disclosure
    decisions under the [reporting protocol](reporting_protocol.md#human-facing-issue-feedback).
+   State that external issue/PR publication, including remote drafts, needs prior
+   explicit permission from Diego Prada Gracia or Liliana Marisol Moreno Vargas;
+   internal reporting/direct-push authority is insufficient. Keep a locally
+   reviewable draft/internal handoff until authorized and follow the
+   [external-publication rule](external_publication_authority.md).
    Include the
    shared-provider impact-notice, cross-repository contribution, direct-push
    validation and temporary-resource closeout routes, and follow the
@@ -82,6 +87,14 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    notes. Include this action in the root contributor instructions and the
    component's release-preparation route from the first public release. Follow
    the [release-version policy](../policies/release_version_policy.md#github-release-title).
+8. Include the [release/publication notice action](release_publication_notices.md)
+   in root instructions and the release closeout route. Each component release
+   (including source-only) and package publication has a release-specific issue
+   in `uibcdf/moli`; update it for later package/build events with exact source,
+   artifact, public verification, limits and receiving owners. Use the
+   [notice template](../templates/release_publication_notice.md). This is
+   post-event coordination, not central release permission or consumer adoption.
+   MolSysSuite members use their delegated starter and notice destination.
 
 The component still owns its implementation, tests, local API, release
 decisions, and additional scoped instructions. Report a shared contract to
