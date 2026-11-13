@@ -57,13 +57,17 @@ the same state.
   Exact source `dd4ac1301b092038934b594afbf7ec559ab20a1b` now has ordinary
   hosted governance/coverage success (55 tests); the guide audit fails only
   for five differing copies, with verified published-receptor full captures.
-  [Native proof](evidence/platform_guidance_native_20261112.json) and the
-  [twelve exact owner drafts](pending_proposals/platform_guidance_owner_notices.json)
-  retain actual states. Automatic review rejected the first Sabueso issue;
-  zero external notices are published. Named-human publication approval is
-  pending. #81/#85/#93 stay partial for handoffs/adoption; #94/#96 also retain
-  actual profile/integration receiving. #97 receives only central identity/domain;
-  #95 is superseded, not a fixed host-protection incident.
+  [Native proof](evidence/platform_guidance_native_20261112.json) retains its
+  original source and pre-authorization state. Diego then explicitly approved
+  the [twelve exact notices](archive/platform_guidance_owner_notices.json) with
+  “procede”; all are published with exact readbacks in the
+  [handoff receipt](evidence/platform_guidance_handoff_20261112.json). The earlier
+  automatic-review rejection is resolved. New Sabueso #195 and suite #197 retain
+  owner adoption; the other ten comments have their recorded destinations.
+  #81/#93 close for central rules and handoffs. #85 stays partial for actual
+  direct-component/tool adoption; #94/#96 retain actual profile/integration
+  receiving. #97 receives only central identity/domain; #95 is superseded,
+  not a fixed host-protection incident. Current guide equality remains owner work.
 
 - **Central release receipt in [#78](https://github.com/uibcdf/moli/issues/78):**
   Recorda 0.3.3's immutable release receipt agrees with the notice's original
@@ -254,7 +258,7 @@ the same state.
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
-| #81 / #85 / #93 / #94 / #96 / #97 | Central source and review material are in the [batch adoption record](governance/platform_guidance_adoption.md); actual owner notices/guide receiving and executable qualification remain separate. #95's superseded disposition makes no host-protection claim. |
+| #85 / #94 / #96, with completed central #81/#93/#97 | The [batch adoption record](governance/platform_guidance_adoption.md) links all twelve verified owner notices. Current guide receiving, direct tool adoption, actual profiles and executable integration remain separate owner work. #95's superseded disposition makes no host-protection claim. |
 | [#75](https://github.com/uibcdf/moli/issues/75) / [#80](https://github.com/uibcdf/moli/issues/80) | Central policy and authorized owner/suite handoffs are delivered. Component teams own commits and actual guide equality/native evidence; the adoption record links all five requests. No rollout success is inferred from issue publication. |
 | [#33](https://github.com/uibcdf/moli/issues/33) | Review the retrieval/archive/mirror boundary against pinned Sabueso source. The [candidate contract](pending_proposals/retrieval_archive_contract.md) separates existing local behavior from proposed project retention, sharing, storage and replay guarantees. Owner review and consumer acceptance remain open; no Nextia runtime or shared service is selected. |
 

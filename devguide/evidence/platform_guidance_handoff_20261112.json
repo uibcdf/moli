@@ -1,0 +1,165 @@
+{
+  "schema": "moli.platform-guidance-handoff/1",
+  "date": "2026-11-12",
+  "central_source": "dd4ac1301b092038934b594afbf7ec559ab20a1b",
+  "approved_payload": {
+    "commit": "5b65fc6bd66ea0f2473e4425dcc82024b49ca713",
+    "path": "devguide/pending_proposals/platform_guidance_owner_notices.json",
+    "sha256": "dc0787812714a56096d7afdda576413d0fcaf7f42fd1f89814efa94206726d76"
+  },
+  "authorization": {
+    "approver": "Diego Prada Gracia",
+    "user_reply": "procede",
+    "scope": "The exact twelve offered notices: two new owner issues and ten comments; destinations/actions/bodies linked from the approval question",
+    "earlier_automatic_rejection": "Resolved by this explicit destination/action/content authorization; first rejected attempt published nothing"
+  },
+  "canonical_guide_sha256": "f25d34aad11bfdebb11206cad70fa9abd1e81b2979b33b7bfc47c98395359336",
+  "published": [
+    {
+      "action_index": 0,
+      "action": "create_issue",
+      "repository": "uibcdf/sabueso",
+      "issue_number": 195,
+      "url": "https://github.com/uibcdf/sabueso/issues/195",
+      "readback_matches_approved": true,
+      "title": "Receive November MolI distribution, inventory, execution and Discussions guidance",
+      "body_utf8_bytes": 2857,
+      "body_sha256": "02f9ef6e529d0c84da180495a3316a46e07f7659e10db538832ffdc97d1388bf"
+    },
+    {
+      "action_index": 1,
+      "action": "comment",
+      "repository": "uibcdf/praxis",
+      "issue_number": 17,
+      "comment_id": 6841770431,
+      "url": "https://github.com/uibcdf/praxis/issues/17#issuecomment-6841770431",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 2835,
+      "body_sha256": "df7a54830dd5e4afe5082a84208157c294431a37c266fd93686fb78aeebceb0c"
+    },
+    {
+      "action_index": 2,
+      "action": "comment",
+      "repository": "uibcdf/recorda",
+      "issue_number": 38,
+      "comment_id": 6841771686,
+      "url": "https://github.com/uibcdf/recorda/issues/38#issuecomment-6841771686",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 2835,
+      "body_sha256": "df7a54830dd5e4afe5082a84208157c294431a37c266fd93686fb78aeebceb0c"
+    },
+    {
+      "action_index": 3,
+      "action": "comment",
+      "repository": "uibcdf/nextia",
+      "issue_number": 5,
+      "comment_id": 6841773070,
+      "url": "https://github.com/uibcdf/nextia/issues/5#issuecomment-6841773070",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 2808,
+      "body_sha256": "809438594a850eb1fc5aa46bb2798eb31fb5517d9955a26eb9de8c227bca9ad0"
+    },
+    {
+      "action_index": 4,
+      "action": "comment",
+      "repository": "uibcdf/moli-agent",
+      "issue_number": 4,
+      "comment_id": 6841774430,
+      "url": "https://github.com/uibcdf/moli-agent/issues/4#issuecomment-6841774430",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 2808,
+      "body_sha256": "809438594a850eb1fc5aa46bb2798eb31fb5517d9955a26eb9de8c227bca9ad0"
+    },
+    {
+      "action_index": 5,
+      "action": "comment",
+      "repository": "uibcdf/molsyssuite",
+      "issue_number": 167,
+      "comment_id": 6841776412,
+      "url": "https://github.com/uibcdf/molsyssuite/issues/167#issuecomment-6841776412",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 1125,
+      "body_sha256": "5e7c2320818ee9ef9ea7c95d96a4c7f23ac9661f5f48c4533572ad164045c8a4"
+    },
+    {
+      "action_index": 6,
+      "action": "comment",
+      "repository": "uibcdf/molsyssuite",
+      "issue_number": 190,
+      "comment_id": 6841781310,
+      "url": "https://github.com/uibcdf/molsyssuite/issues/190#issuecomment-6841781310",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 1197,
+      "body_sha256": "8eb0311ad12c8fee6a85735c8d6f4c8befb61b746db3ac40dba373d7b5ab6be9"
+    },
+    {
+      "action_index": 7,
+      "action": "comment",
+      "repository": "uibcdf/molsyssuite",
+      "issue_number": 171,
+      "comment_id": 6841782654,
+      "url": "https://github.com/uibcdf/molsyssuite/issues/171#issuecomment-6841782654",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 1193,
+      "body_sha256": "72ae3dda38eccd2811905fe11f4882fb472ed45965fe4aa82d6fdb78846fc724"
+    },
+    {
+      "action_index": 8,
+      "action": "comment",
+      "repository": "uibcdf/molsyssuite",
+      "issue_number": 174,
+      "comment_id": 6841783815,
+      "url": "https://github.com/uibcdf/molsyssuite/issues/174#issuecomment-6841783815",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 1072,
+      "body_sha256": "6ecf5df4206b017b8b95f65ee46e429c3c139b9ed0c7b799e9c6b62adeb612fe"
+    },
+    {
+      "action_index": 9,
+      "action": "comment",
+      "repository": "uibcdf/molsyssuite",
+      "issue_number": 175,
+      "comment_id": 6841784812,
+      "url": "https://github.com/uibcdf/molsyssuite/issues/175#issuecomment-6841784812",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 1101,
+      "body_sha256": "1e7068f73425f438c52873a4d357b540fd025e257c7154c1c14e1daade3028d9"
+    },
+    {
+      "action_index": 10,
+      "action": "create_issue",
+      "repository": "uibcdf/molsyssuite",
+      "issue_number": 197,
+      "url": "https://github.com/uibcdf/molsyssuite/issues/197",
+      "readback_matches_approved": true,
+      "title": "Review member adoption of MolI's general resource-aware execution rule (#96)",
+      "body_utf8_bytes": 2469,
+      "body_sha256": "de600eddfbb16bbadcc6b41a41178f8b7a27342d72111a70645adf2ee10ef6e8"
+    },
+    {
+      "action_index": 11,
+      "action": "comment",
+      "repository": "uibcdf/uibcdf-infrastructure",
+      "issue_number": 1,
+      "comment_id": 6841786968,
+      "url": "https://github.com/uibcdf/uibcdf-infrastructure/issues/1#issuecomment-6841786968",
+      "readback_matches_approved": true,
+      "body_utf8_bytes": 1645,
+      "body_sha256": "1f987cb577cac9eca2b9dce1513932bc4e8b7826d8584507dc856334a9e72430"
+    }
+  ],
+  "prior_native_receipt": {
+    "commit": "5b65fc6bd66ea0f2473e4425dcc82024b49ca713",
+    "path": "devguide/evidence/platform_guidance_native_20261112.json",
+    "sha256": "31c6b73c0158b07fb4c449110f964ec2a4d1ddc2ec9514ab275439848835cbe9",
+    "scope": "Historical pre-authorization handoff state; exact-source governance2/2/all55 tests/coverage pass; guide audit fails for five differing copies"
+  },
+  "limits": [
+    "All12 actions published with exact readback; two new issues and ten comments",
+    "Publication is not owner adoption, guide equality, installed receiving or scientific/infrastructure qualification",
+    "No component, suite/member source, prefix/kernel, host configuration, package, tag or model execution changed centrally",
+    "Executable/registry/canonical guide and original source/native receipts keep their own immutable identities",
+    "Prior owned capture/tool root was retired; this publication closeout creates no temporary clone, environment or capture root"
+  ],
+  "readback_verified_at_utc": "2026-11-13T02:16:35.581615+00:00"
+}
