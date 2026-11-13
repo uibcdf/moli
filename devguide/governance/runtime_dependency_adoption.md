@@ -41,12 +41,15 @@ platform/Python scope and gaps with each claimed result.
 
 ## Canonical guide coordination
 
-The latest guide SHA-256 is
+The accepted November 4 guide SHA-256 was
 `262dc66dfd4e553ca1513907cecad81d2ead731238d36dab2b16d943a832d875`.
 It includes #75/#80 instructions plus the accepted #76 rule. The initial
 #75/#80 target `618f79bff3d519e6949d5373aec4cf3bfaebeb1cbf7a8dba31f12cfd36665cf2`
 and approved messages keep their original historical evidence. Receive the latest
 exact published central source and hash when completing those owner tasks.
+The [November 12 guidance batch](platform_guidance_adoption.md) now changes the
+guide again. Its delivery/source/hash supersede that copy target, while the #76
+normative decision and original six-comment receipt retain their identities.
 
 The registered guide audit stays active. Its actual source-bound result belongs
 in the delivery receipt; pending differences remain failures, never a passing

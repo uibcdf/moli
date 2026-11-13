@@ -1,0 +1,216 @@
+{
+  "schema": "moli.platform-guidance/1",
+  "date": "2026-11-12",
+  "owner": "uibcdf/moli",
+  "baseline_source": "9fbedc85567a12b44fea2d509979055cccc3ff9d",
+  "authorization": {
+    "approver": "Diego Prada Gracia",
+    "reply": "ok, procede con ellas",
+    "scope": "Central issues #81/#97/#85/#93/#94/#95/#96; implementation and migration remain with component/infrastructure owners"
+  },
+  "issues": [
+    81,
+    97,
+    85,
+    93,
+    94,
+    95,
+    96
+  ],
+  "accepted_working_rules": [
+    "current official Conda route and sole active pytest-receptor PyPI exception, with future reviewed routes",
+    "complete acquisition or partial/unknown remote inventory conclusions",
+    "individually optional Discussions suggestions and discoverable local upkeep",
+    "four development/production name patterns, actual minor and owned migration",
+    "general infrastructure-independent resource-aware contributor conduct"
+  ],
+  "review_material": [
+    "portable workload exchange and active policy discovery; no frozen schema/adapter",
+    "actual MolI development/production profile and receiving remain unselected"
+  ],
+  "bindingmt": {
+    "repository": "uibcdf/bindingmt",
+    "repository_id": 1380446251,
+    "source": "95b69dfb573e40073b5f2b182c4c6043aed98db3",
+    "component_issue": 108,
+    "suite_issue": 190,
+    "scope": "continuing identity and accepted domain; bounded existing docking differs from future capabilities; original ordinary gate remains incomplete"
+  },
+  "inspected_owner_files": [
+    {
+      "url": "https://github.com/uibcdf/bindingmt/blob/95b69df/devguide/SCIENTIFIC_SCOPE.md",
+      "git_blob": "e9f3d535798173e605b005749a5ed94ccc50e312"
+    },
+    {
+      "url": "https://github.com/uibcdf/molsyssuite/blob/e162210a0f5130ff9bd1f9380e7ba991623c91a4/devguide/package_channels.toml",
+      "git_blob": "f8719c560e7d761cf6282d17e759c4b3be36f4f5"
+    },
+    {
+      "url": "https://github.com/uibcdf/molsyssuite/blob/e162210a0f5130ff9bd1f9380e7ba991623c91a4/devguide/production_environment_profiles.md",
+      "git_blob": "5d2d120d4509dde4d86c1e0e3682274abe6e4412"
+    },
+    {
+      "url": "https://github.com/uibcdf/molsyssuite/blob/ea14a4115e132ae6e89531a53b12c9cea360e284/devguide/github_inventories.md",
+      "git_blob": "160d20e8ffacf01be1dd831f410ca3778f59a851"
+    }
+  ],
+  "frozen_architecture": {
+    "unchanged": true,
+    "git_tree": "d465ee85866df110f52a3ed5755da176393dba6d"
+  },
+  "canonical_guide_sha256": "f25d34aad11bfdebb11206cad70fa9abd1e81b2979b33b7bfc47c98395359336",
+  "central_files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 6922,
+      "sha256": "b0063096a38785124729d58f2e7f401195755388bf6758854ba8d98b6476f9f2"
+    },
+    {
+      "path": "MOLI_GUIDE.md",
+      "bytes": 33184,
+      "sha256": "f25d34aad11bfdebb11206cad70fa9abd1e81b2979b33b7bfc47c98395359336"
+    },
+    {
+      "path": "README.md",
+      "bytes": 9275,
+      "sha256": "da03ff3b66be85dec766efb56934d579d957ea8fea2f3392eea7c0c494611454"
+    },
+    {
+      "path": "devguide/CHECKPOINT.md",
+      "bytes": 21659,
+      "sha256": "efa25efa533635c1a89f6c54c5a1b81df6d5be5cad859f00fcb13dcc60bfeb00"
+    },
+    {
+      "path": "devguide/INFRASTRUCTURE_CENSUS.md",
+      "bytes": 17674,
+      "sha256": "4dd83483f858886d3df4a42c303537f6623adc92d16b6f133f9d5728e9839077"
+    },
+    {
+      "path": "devguide/README.md",
+      "bytes": 12724,
+      "sha256": "467870e69c75b867237e4b97a410cfc7b9c8be8218786d80fc3e885fbfb083bd"
+    },
+    {
+      "path": "devguide/RECORDA.md",
+      "bytes": 43057,
+      "sha256": "684e60b07afed83a6d8e8608651e47c5aab05b72ee07a703ffc4c46c290b983c"
+    },
+    {
+      "path": "devguide/discussions.md",
+      "bytes": 3342,
+      "sha256": "d7708fa37625659102df9bb79cf29f1003a12bf449d93787f2575f8e96c7bf7d"
+    },
+    {
+      "path": "devguide/governance/component_responsibilities.md",
+      "bytes": 4723,
+      "sha256": "1caecae89fe17091cbe6e7fe951fa07c4a5afacc69bd797df2d2135d9a473c6a"
+    },
+    {
+      "path": "devguide/governance/development_environments.md",
+      "bytes": 4489,
+      "sha256": "71e34f8584720d73e7832ab383a31a7394f9e610071da4765aeada4f52162b2b"
+    },
+    {
+      "path": "devguide/governance/github_discussions.md",
+      "bytes": 10369,
+      "sha256": "c65f778c35414b27161b5282d2b8ff98e9edbd21707b9fc90f2cacfdd94a141c"
+    },
+    {
+      "path": "devguide/governance/github_inventory_integrity.md",
+      "bytes": 4010,
+      "sha256": "be6defb2df30ed90e9f6dd967a0e997e3ce6ce667834e8bb58e886bb422b8189"
+    },
+    {
+      "path": "devguide/governance/new_component_onboarding.md",
+      "bytes": 8831,
+      "sha256": "feeeaf51f1461e9bcaf74a36c1de180c388fc455d345aa63e7df73e49dfa72f0"
+    },
+    {
+      "path": "devguide/governance/platform_guidance_adoption.md",
+      "bytes": 4014,
+      "sha256": "a83fb502ad553049cd868167b1d6a5b0a641996dd759e9422bee3b5ebe38b4a4"
+    },
+    {
+      "path": "devguide/governance/publication_policy_adoption.md",
+      "bytes": 5853,
+      "sha256": "9a91ed8b4ea395ba86e855fcc01b836049bb8120a03a6e2f08e6eb8eb2c4fe1e"
+    },
+    {
+      "path": "devguide/governance/runtime_dependency_adoption.md",
+      "bytes": 5592,
+      "sha256": "edad157d2d086276d5ba59cf268a38bbb32ff6a5530158c8974a98e67ea8638d"
+    },
+    {
+      "path": "devguide/pending_proposals/execution_infrastructure_contract.md",
+      "bytes": 5428,
+      "sha256": "ecb4ba0452568841f3a17b54117b526b2bb3f32869854bbdcc0a0ecda8a43e34"
+    },
+    {
+      "path": "devguide/policies/README.md",
+      "bytes": 1258,
+      "sha256": "934e02a4d68fa9e39df30458e3cb432b7009e3698097a472a09e92a6514690b4"
+    },
+    {
+      "path": "devguide/policies/python_distribution_policy.md",
+      "bytes": 28720,
+      "sha256": "6b014e7aa77844ddf680e0d376c184b5cc9cb4015c19e20a867b0e0a31221db2"
+    },
+    {
+      "path": "devguide/policies/resource_aware_execution.md",
+      "bytes": 5715,
+      "sha256": "6e3b1de7335c4383487c7ff4063235698223a732194918ed7c9b762647a476eb"
+    },
+    {
+      "path": "devguide/templates/README.md",
+      "bytes": 916,
+      "sha256": "8c31afaa0d6fc3dc4161f4e5d7ff77f52eac13f75c0d6204a5da317da3b73e48"
+    },
+    {
+      "path": "devguide/templates/component_agent_instructions.md",
+      "bytes": 7577,
+      "sha256": "4d5062de9ab89b7092bfd030cd0b2018d381309c766372d9a75e90e7701768d2"
+    },
+    {
+      "path": "devguide/templates/discussions.md",
+      "bytes": 1626,
+      "sha256": "e026207d6cfcc382e0c8a71386cb7fa36d49c4caaed1e0731596ee167c29978c"
+    },
+    {
+      "path": "devtools/scripts/validate_governance.py",
+      "bytes": 23155,
+      "sha256": "dce7c18a8df011d441ab9a7c61ded49d48b4f494df52e34f1f8a807fb87fa0a9"
+    },
+    {
+      "path": "moli.toml",
+      "bytes": 12075,
+      "sha256": "e6a232720bdf68712ac6df76be570c268a650fe3ae9c9c3a106b31d1d8041798"
+    },
+    {
+      "path": "tests/test_python_distribution_policy.py",
+      "bytes": 2404,
+      "sha256": "9b2216875a515781b4a1d76e06395959718e6bfe90201958b929638e45481e66"
+    }
+  ],
+  "local_validation": {
+    "governance": true,
+    "archive_tags": true,
+    "native_unittest": 55,
+    "regression_against_old_validator": "one new test, two expected failed checks; no errors",
+    "ruff": "E4/E7/E9/F on two changed Python files",
+    "markdown_targets_anchors": 161,
+    "whitespace": true,
+    "scientific_or_component_tests": false
+  },
+  "planned_ci_inspection": {
+    "tool": "published GH Run Receptor 1.5.0",
+    "official_wheel_sha256": "f966682ca13a960dd0d0fdfc5fc2aa66f13b960b5f6429d7274ec57820acdd08",
+    "caller_environment_modified": false,
+    "source_bound_native_outcomes": "record separately after actual push; no success inferred"
+  },
+  "limits": [
+    "No component/suite/member source, prefix/kernel, system configuration, package/label/tag, new engine/model or scientific receiving changed",
+    "Owner drafts/publication/actual guide equality retain separate states",
+    "Earlier #75/#80/#76 sources and handoff bodies remain historical; new guide needs new receiving",
+    "Closing #95 as superseded does not resolve execution safety; #96 and infrastructure #1 retain work"
+  ]
+}

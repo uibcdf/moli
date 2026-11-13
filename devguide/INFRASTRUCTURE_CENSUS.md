@@ -138,3 +138,18 @@ followed by any separately qualified publication. [MOLI #63](https://github.com/
 tracks registration of the Python-package capability with those reviews pending
 and no adopted OS support claim. This implementation evidence does not establish
 a stable API, public release, or complete scientific/platform admission.
+
+## BindingMT identity and domain receiving — 2026-11-12
+
+[MolI #97](https://github.com/uibcdf/moli/issues/97) receives BindingMT, the
+continuing suite repository ID 1380446251, formerly DockingMT. The
+[current responsibility map](governance/component_responsibilities.md) links
+component #108 and suite #190, canonical technical names and the selected
+scientific domain. Pinned component source
+`95b69dfb573e40073b5f2b182c4c6043aed98db3` distinguishes bounded docking from
+accepted future complex prediction/refinement, binding free-energy and interface
+capabilities. Its reported selected installed/admin/DOM evidence is not a fresh
+central execution; the full ordinary gate remains incomplete after interruption.
+No new engine, public package or general accuracy claim follows. Original
+architecture and artifact snapshots retain their historical names and scope;
+MolSysSuite owns its member roster, profile and qualification.

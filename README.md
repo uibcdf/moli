@@ -56,6 +56,13 @@ Scientific Context is an architectural concept, not a requirement for a separate
 
 MolSysSuite is a first-class MolI component with its own delegated internal governance. MolI governs MolSysSuite at the platform boundary; MolSysSuite governs its internal components and shared modeling-ecosystem policies.
 
+[BindingMT](https://github.com/uibcdf/bindingmt), formerly DockingMT, is its
+continuing component for modeling and characterizing molecular binding. The
+[current responsibility map](devguide/governance/component_responsibilities.md)
+distinguishes bounded docking support from accepted future prediction,
+refinement, free-energy and interface capabilities; it does not claim those
+future engines are implemented or qualified.
+
 **MolSys-AI** belongs to the MolSysSuite domain as the AI subsystem specialized in understanding and operating MolSysSuite.
 
 ### Moli

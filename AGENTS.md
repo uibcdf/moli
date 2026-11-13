@@ -10,6 +10,20 @@ components. Use `moli.toml` to find accepted policies and their normative docume
 read the relevant decisions in `architecture_1.0/` for architectural work. Route
 bugs and proposals to the owning GitHub issue as the guide requires.
 
+Before absence, exhaustive-audit or duplicate-free creation claims about remote
+objects, establish complete acquisition for the declared scope and permissions.
+Treat failed, bounded or incomplete acquisition as partial/unknown, not empty.
+Follow `devguide/governance/github_inventory_integrity.md`.
+
+Before expensive execution, load the active infrastructure policy, estimate the
+whole workload, inspect shared resource pressure and use bounded concurrency.
+Respect scheduler/admission and child-process limits; a resource check is not a
+reservation. Monitor and reduce/defer/cancel only owned work when unsafe; report
+missing protections. Follow `devguide/policies/resource_aware_execution.md`.
+
+For Discussions work, read `devguide/discussions.md` and its linked policy before
+changing upkeep guidance or settings; preserve the distinction between them.
+
 During development, testing, scientific exploration and human conversations,
 surface actionable suspected defects, inconsistencies, missing capabilities
 and improvements, even uncertain or nonblocking ones. At a natural pause,

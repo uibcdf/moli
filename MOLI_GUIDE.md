@@ -28,6 +28,12 @@ The authoritative registry is `moli.toml`. Initial MOLI components are:
 
 Scientific Context is a conceptual grouping of Sabueso, Praxis, and Nextia; it is not a separate component repository.
 
+The maintained [current responsibility map](https://github.com/uibcdf/moli/blob/main/devguide/governance/component_responsibilities.md)
+receives member identity changes without rewriting frozen architecture. BindingMT
+is the continuing MolSysSuite component for modeling and characterizing molecular
+binding, formerly DockingMT. Accepted future domain is distinct from qualified
+engine/API support; MolSysSuite retains member registration and adoption.
+
 MolSysSuite is a MOLI component **with delegated internal governance**. MOLI governs MolSysSuite at the platform boundary. `uibcdf/molsyssuite` is the normative owner of its members' engineering and modeling policies, contracts, adoption, releases, and enforcement. MOLI engineering rules for direct components do not automatically become member rules; MolSysSuite remains responsible for platform contracts it owes to MOLI.
 
 ## Ownership rule
@@ -76,6 +82,52 @@ permission. Do not bypass the boundary through a fork, another agent, account,
 tool or automation. Follow the [external-publication rule](https://github.com/uibcdf/moli/blob/main/devguide/governance/external_publication_authority.md).
 Internal reporting and confidentiality duties remain; MolSysSuite owns member
 instruction delivery under [suite #159](https://github.com/uibcdf/molsyssuite/issues/159).
+
+## Remote inventory completeness
+
+Before declaring remote objects absent, an audit exhaustive or a new issue free
+of duplicates, establish complete acquisition for its repository/endpoint,
+filters, permissions and observation time. Follow every required page and check
+successful completion. Failed, capped, malformed or incomplete acquisition means
+partial/unknown, not empty or clean. Compact presentation may summarize complete
+evidence; a limited search/list alone cannot prove absence. Preserve endpoint
+issue/PR distinctions and safety-bound failures. Follow the [inventory rule](https://github.com/uibcdf/moli/blob/main/devguide/governance/github_inventory_integrity.md);
+component tools and MolSysSuite member adoption remain owner work.
+
+## Resource-aware execution
+
+Before expensive tests/builds/scientific jobs, load the trusted active infrastructure
+policy, estimate whole-job/child-worker demand and inspect shared resource pressure.
+Use bounded concurrency, respect scheduler/admission and actual whole-job limits,
+and preserve interactive/other-user capacity. A resource check is not a reservation.
+Monitor and reduce, defer or cancel only owned work when unsafe; report unavailable
+protections and bounded waiting honestly. Unknown demand needs a conservative probe
+or deferral, not all CPUs. No fixed host budget, site configuration or required
+UIBCDF runtime is selected. Follow the [general working rule](https://github.com/uibcdf/moli/blob/main/devguide/policies/resource_aware_execution.md)
+and [integration proposal](https://github.com/uibcdf/moli/blob/main/devguide/pending_proposals/execution_infrastructure_contract.md).
+The latter is review material, not implemented scheduling, containment or scientific
+Run/Evidence authority. MolSysSuite owns member rollout; infrastructure providers
+own host mechanisms and operational safeguards.
+
+## Discussions upkeep
+
+Every repository enables Discussions and retains Announcements, Q&A and Ideas
+with their required formats. Datasets and Benchmarks, Literature and Resources,
+and Methods and Tools are individually optional suggestions; any subset or
+purposeful local names/categories is allowed, with no exception for omission.
+Preserve useful local arrangements and history. Six categories is no universal target.
+
+Read the repository's discoverable local upkeep guide, reached from root AGENTS
+directly or through this shared guide. It explains purposes/owners, forms/thread
+contents, actual labels, source/review/reuse, answers/duplicates/corrections,
+confidentiality/authority and reciprocal issue/decision links. Accepted/deferred/
+rejected outcomes retain dates/reasons and revisit triggers. Resource arguments
+stay useful in Discussions; upkeep docs do not copy every conversation. Follow the
+[policy](https://github.com/uibcdf/moli/blob/main/devguide/governance/github_discussions.md)
+and [outline](https://github.com/uibcdf/moli/blob/main/devguide/templates/discussions.md).
+MolI's [local guide](https://github.com/uibcdf/moli/blob/main/devguide/discussions.md)
+is its implementation. Written guidance, remote settings and rendered forms need
+separate evidence; MolSysSuite owns member adoption.
 
 ## Durable instructions for development agents
 
@@ -130,6 +182,15 @@ MOLI owns the engineering baseline for directly governed components. Applicable 
 
 For directly governed repositories carrying the `python-package` capability, the baseline includes Python support, CI coverage, Ruff/pytest quality tooling, applicable UIBCDF support libraries, developer receptors, distribution, release-version semantics, repository badge evidence, and archival/DOI rules when applicable. MolSysSuite sets corresponding requirements for its members.
 
+Current public UIBCDF Python packages use `uibcdf` Conda, with `conda-forge` for
+third-party dependencies. Pytest Receptor is the sole current reviewed PyPI
+exception and retains Conda. Future additional routes need an owning decision,
+verified public package/closure and updated channel guidance; a wheel, GitHub
+Release or import does not prove PyPI availability. Local source/editable pip
+installation remains supported and distinct. This creates no unavailable public
+package claim or restriction on legitimate third-party/non-Python routes. Follow
+the [distribution policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_distribution_policy.md#public-installation-and-truthful-claims).
+
 General runtime requirements use `provider>=X` with an evidenced consumed-API
 minimum, including optional runtime features without making them mandatory.
 Ceilings/exclusions need a concrete API/ABI/scientific/runtime/engine incompatibility
@@ -144,7 +205,7 @@ and [adoption record](https://github.com/uibcdf/moli/blob/main/devguide/governan
 MolSysSuite independently owns its member rule; no new full scientific suite per
 internal push or Nextia runtime is selected by this requirement.
 
-Routine local development and push/PR tests for directly governed Python packages use Python 3.14, including local pytest runs. Keep the full required test matrix for every supported minor, currently 3.11–3.14. MolSysSuite sets its member rule independently in its own registry and guide. Its [development environment recipe](https://github.com/uibcdf/molsyssuite/blob/main/devtools/conda-envs/README.md) names `molsyssuite@uibcdf_3.14`; MolSysSuite governs which members are qualified for it and how to create it.
+Routine local development and push/PR tests for directly governed Python packages use Python 3.14, including local pytest runs. Keep the full required test matrix for every supported minor, currently 3.11–3.14. Development environment names are `moli_dev@<python>` and `molsyssuite_dev@<python>` with the actual major.minor suffix. Future production names `moli@<python>` and `molsyssuite@<python>` require separate design/qualification. Preserve the historical `molsyssuite@uibcdf_3.14` prefix and receipts until an owned replacement is verified. Follow the [naming, migration and documentation-tool guide](https://github.com/uibcdf/moli/blob/main/devguide/governance/development_environments.md). MolSysSuite owns its [recipe](https://github.com/uibcdf/molsyssuite/blob/main/devtools/conda-envs/README.md), eligible members and receiving; no environment is created or migrated by its name.
 
 During authorized direct-push development, group small local commits when a remote checkpoint is unnecessary. Match checks to the change: documentation and research evidence need applicable local checks; changed scientific or public behavior needs targeted regressions and broader checks where affected. Consider `[skip ci]` only for a locally checked push that the repository permits, with a reliable route to recover deferred code tests. Normally finish code work with an unskipped push and inspect its applicable gates on the actual head; an explicitly authorized manual run of those same exact-head gates is also valid. A skipped run is not passing evidence and cannot evade required PR checks. For admission, release or publication, every mandatory gate must actually pass for the exact candidate and required installed artifact/closure. A marker on the original producer commit does not disqualify it when the authorized manual route proves those gates against the original commit, file and digest; never rebuild the recorded file just to change its CI status. Follow [MOLI's direct-push CI decision rule](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_ci_policy.md#validation-during-direct-push-development) and [candidate evidence lifecycle](https://github.com/uibcdf/moli/blob/main/devguide/policies/release_version_policy.md#candidate-evidence-lifecycle); MolSysSuite owns its member rule and recovery implementation.
 
@@ -229,7 +290,7 @@ Cross-repository reports must not disclose confidential DiscoveryProjects, propr
 
 ## MolSysSuite internal governance
 
-MolSysSuite's status as a MOLI component does not transfer governance of MolSysMT, TopoMT, MolSysViewer, DockingMT, or other MolSysSuite members to MOLI.
+MolSysSuite's status as a MolI component does not transfer governance of MolSysMT, TopoMT, MolSysViewer, BindingMT, or other MolSysSuite members to MolI.
 
 ```text
 MOLI

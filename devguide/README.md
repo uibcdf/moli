@@ -2,6 +2,11 @@
 
 This directory contains durable development/governance knowledge for repositories directly governed by MolI.
 
+The [current responsibility map](governance/component_responsibilities.md)
+receives BindingMT's continuing identity/domain without changing frozen
+Architecture 1.0. [Current platform receiving](governance/platform_guidance_adoption.md)
+separates the November policy/source delivery from component-owned adoption.
+
 **Resume work here:** [`CHECKPOINT.md`](CHECKPOINT.md) records the dated state of
 the current pause, recent completions, live work to recheck, and a short
 resumption procedure. GitHub issues and `moli.toml` remain authoritative; the
@@ -61,6 +66,20 @@ meaning, source vocabulary, schema migration and adoption evidence.
 
 The scheduled component-guide audit checks byte-identical copies and Python-package classification in directly governed repositories. Guide updates are synchronized to those repositories when the canonical guide changes.
 
+The [remote-inventory rule](governance/github_inventory_integrity.md) requires
+complete acquisition for absence/exhaustiveness decisions or an explicit
+partial/unknown result. The [resource working rule](policies/resource_aware_execution.md)
+requires bounded, policy-aware execution; its [portable integration proposal](pending_proposals/execution_infrastructure_contract.md)
+remains review material, with site mechanisms and executable receiving outside
+this central delivery.
+
+The [environment convention](governance/development_environments.md) distinguishes
+development `moli_dev@<python>` / `molsyssuite_dev@<python>` from future production
+`moli@<python>` / `molsyssuite@<python>` profiles, preserving owned migration and
+actual documentation-renderer qualification. Current public UIBCDF Python routes
+use Conda; pytest-receptor is the sole active reviewed PyPI exception under the
+[distribution policy](policies/python_distribution_policy.md#public-installation-and-truthful-claims).
+
 The [resolved Python 3.14 workspace review](archive/python_314_workspace.md)
 records the delivered contributor guidance and an actual seventeen-package
 joint source-development cohort: clean dependency/import checks and 371 passing
@@ -107,6 +126,9 @@ and promotion to owning issues or versioned decisions. The
 configured platform/root repositories. MolSysSuite
 [#120](https://github.com/uibcdf/molsyssuite/issues/120) retains its own member
 policy and rollout; the root configuration does not establish member adoption.
+The [local upkeep guide](discussions.md) and [reusable outline](templates/discussions.md)
+carry #93's contributor reading route. Resource-category suggestions are
+individually optional; no uniform six-category configuration is imposed.
 
 The [temporary-resource lifecycle](governance/temporary_resource_lifecycle.md)
 requires owner-scoped cleanup after the last useful use while preserving active

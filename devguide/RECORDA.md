@@ -25,7 +25,7 @@ Conceptually:
     Nextia ---------|
     MolSysMT -------|
     TopoMT ---------|
-    DockingMT ------|
+    BindingMT ------|
     ...             |
                     v
                  Recorda

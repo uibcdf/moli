@@ -2,6 +2,15 @@
 
 ## Scope and status — 2026-11-04
 
+**Receiving update — 2026-11-12:** Sabueso returned its earlier #75/#80 adoption
+at `5c847281588bb8b0e62470c31e4d261126716ec7`; [owner #187](https://github.com/uibcdf/sabueso/issues/187)
+is closed and its [return](https://github.com/uibcdf/moli/issues/75#issuecomment-6662448949)
+records canonical #76 guide equality and bounded checks. Praxis #17, Recorda #38,
+Nextia #5 and Moli #4 remain open. This settles Sabueso's old delivery only;
+the [new guidance batch](platform_guidance_adoption.md) changes the canonical
+guide again and tracks owner receiving separately. The initial source/counts
+below remain dated inspection evidence, not a fresh global guide audit.
+
 The principal maintainer selected central work on [#75](https://github.com/uibcdf/moli/issues/75)
 and [#80](https://github.com/uibcdf/moli/issues/80), explicitly leaving component
 implementation to each development team. MolI now supplies the normative
@@ -34,13 +43,13 @@ instruction. Keep that owner review explicit.
 
 | Component | Inspected source | Instruction/guide adoption |
 | --- | --- | --- |
-| Sabueso | `129020182555787d3cab58cc110e7a707fc5e553` | [Owner #187](https://github.com/uibcdf/sabueso/issues/187); team delivery pending |
+| Sabueso | `5c847281588bb8b0e62470c31e4d261126716ec7` | [Owner #187](https://github.com/uibcdf/sabueso/issues/187) closed for #75/#80 and guide source #76; later guide receiving is separate |
 | Praxis | `17e1856fa45a50b26097b19be28accb7ab88f689` | [Owner #17](https://github.com/uibcdf/praxis/issues/17); team delivery pending |
 | Nextia | `32d12e20fae26f00a523d0ed4812e46def8a64e9` | [Owner #5](https://github.com/uibcdf/nextia/issues/5); instructions pending, runtime deferred |
 | Moli | `08d0e2b809e7e5c46add5ee554ae9528831f7454` | [Owner #4](https://github.com/uibcdf/moli-agent/issues/4); team delivery pending |
 | Recorda | `ff52fa5d8628d796f413b833c8abe73907990cf9` | [Owner #38](https://github.com/uibcdf/recorda/issues/38); team delivery pending |
 
-All five inspected copies have the former canonical SHA-256
+At the initial November 4 inspection, all five copies had the former canonical SHA-256
 `12104363c7fd0cc4ca99e4a3d3b77fe85e9a44e3ab49e88936900df3efac2a3c`.
 The initial #75/#80 canonical guide SHA-256 was
 `618f79bff3d519e6949d5373aec4cf3bfaebeb1cbf7a8dba31f12cfd36665cf2`.

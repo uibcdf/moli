@@ -27,14 +27,23 @@ operating-system support claim. Declare supported systems and verify the install
 artifact on them as required by [MOLI's Python CI policy](python_ci_policy.md):
 Linux and macOS are the baseline; Windows is optional and claimed only with evidence.
 
-PyPI is an optional *additional* public route, adopted for a documented component
-need rather than by default. Claim or recommend `pip install <package>` for users
+Under [MolI #81](https://github.com/uibcdf/moli/issues/81), the **current public
+UIBCDF Python-package route is `uibcdf` Conda**, with `conda-forge` for third-party
+dependencies. **`pytest-receptor` is the sole current reviewed PyPI publication
+exception and retains its Conda route.** Do not present a generic public pip hint
+for other UIBCDF packages as an available/default installation route.
+
+An additional PyPI route remains possible after a documented owner publication
+decision and verified public receiving. This is a current arrangement, not a
+permanent prohibition. Update the channel record, guidance and affected owners
+when a later route is accepted. Claim or recommend `pip install <package>` for users
 only after the matching version is published on PyPI and a clean installation of
 its declared runtime dependency closure succeeds on the claimed Python versions
 and platforms. A Conda-only required dependency makes a PyPI route incomplete
 until that dependency is available through the package index or the component
 changes its dependency contract. A Git repository or editable checkout is not
-evidence of PyPI availability. Distribution badges and README instructions follow
+evidence of PyPI availability; neither is a wheel, importable module or GitHub
+Release alone. Distribution badges and README instructions follow
 the independently observed publication state.
 
 `pytest-receptor` has a specific reason for PyPI publication: pytest's generated
@@ -70,8 +79,12 @@ incompatible package as a concrete adoption gap rather than claiming a complete
 workspace. Repositories without a Python package are outside this installation
 step.
 
-MolSysSuite owns the named `molsyssuite@uibcdf_3.14` development environment,
-its eligible member inventory and expansion to the full suite. Follow its
+Development profiles follow the [environment naming and migration convention](../governance/development_environments.md):
+`moli_dev@<python>` and `molsyssuite_dev@<python>`, with the actual major.minor
+suffix. The historical `molsyssuite@uibcdf_3.14` cohort retains its original name
+and evidence until an owned migration is verified. Production `moli@<python>`
+and `molsyssuite@<python>` profiles need separate future design/qualification.
+MolSysSuite owns its eligible member inventory and expansion. Follow its
 [Conda environment instructions](https://github.com/uibcdf/molsyssuite/blob/main/devtools/conda-envs/README.md)
 for the actual recipe and any build options required by its members. A shared
 workspace that also includes directly governed MOLI packages must verify their

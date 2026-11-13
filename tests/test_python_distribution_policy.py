@@ -12,7 +12,9 @@ POLICIES = {
         "applies_to": ["capability:python-package"],
         "primary_public_channel": "uibcdf",
         "third_party_channel": "conda-forge",
-        "pypi_route": "optional-verified",
+        "pypi_route": "reviewed-exception-only",
+        "current_pypi_exceptions": ["pytest-receptor"],
+        "current_route_issue": "uibcdf/moli#81",
         "review_field": "python_distribution_review",
         "normative": "devguide/policies/python_distribution_policy.md",
     }
@@ -20,6 +22,20 @@ POLICIES = {
 
 
 class PythonDistributionPolicyTests(unittest.TestCase):
+    def test_unreviewed_public_pypi_routes_are_rejected(self):
+        for changes in (
+            {"pypi_route": "optional-verified"},
+            {"current_pypi_exceptions": []},
+            {"current_pypi_exceptions": ["pytest-receptor", "future"]},
+        ):
+            with self.subTest(changes=changes):
+                policy = {**POLICIES["python_distribution"], **changes}
+                errors = validate_python_distribution_reviews(
+                    {}, {"python_distribution": policy}
+                )
+                self.assertTrue(errors)
+        self.assertEqual(validate_python_distribution_reviews({}, POLICIES), [])
+
     def test_future_direct_python_package_needs_own_review(self):
         components = {
             "future": {

@@ -53,6 +53,13 @@ the names alone do not configure GitHub's format.
 | Ideas / `ideas` | Open-ended discussion | Early questions without concrete actionable work. Triage to an owning issue when work becomes concrete; record a decision in that issue or a named versioned record. |
 
 Components may add their own categories and discussions on top of that baseline.
+Under [MolI #93](https://github.com/uibcdf/moli/issues/93), the following are
+**individually optional suggestions**: Datasets and Benchmarks; Literature and
+Resources; Methods and Tools. Use any subset, purposeful local names/groupings
+or other categories. Omitting a suggestion needs no exception. A six-category
+area is a local choice, not the platform target. Preserve useful existing
+organization, including Sabueso's Data sources.
+
 An additional intake category requires a category form, a triage owner and a
 named durable registry or issue destination. Document its disposition states
 and conversion rule locally. Other additional categories also need a purpose,
@@ -69,6 +76,30 @@ Sabueso's Data sources is an existing intake case: its owner maintains the form,
 source registry, statuses and generated page. MolI does not take over those
 implementation details. Keep that intake and its useful links when aligning
 the other categories.
+
+## Local upkeep guide and developer reading route
+
+Maintain a discoverable local guide such as `devguide/discussions.md`,
+`devguide/discussions/README.md` or a documented equivalent. Root `AGENTS.md`
+reaches it directly or through the required shared component guide. Use the
+[small reusable outline](../templates/discussions.md); do not duplicate long
+procedures in agent instructions. MolI's own [local guide](../discussions.md)
+implements this reading route.
+
+The local guide describes purposes/category choice, actual triage ownership,
+thread contents/forms, search and canonical resource reuse, actual label meanings
+and application rules, reviews/updates/corrections, duplicates/answers and useful
+history. It preserves actionable issue and accepted/deferred/rejected decision
+routes with reciprocal links, dates/reasons and revisit conditions. State posting
+authority, confidentiality and proposed versus observed settings. Local layouts,
+scientific label vocabularies and purposeful categories may differ.
+
+Resource descriptions, reviews, arguments and conclusions remain useful content
+in Discussions; an upkeep guide does not relocate every conversation into
+devguide. Reproducible artifacts and actionable decisions retain their appropriate
+authoritative records. Guide delivery, remote settings and rendered-form
+observation remain separate evidence. MolSysSuite owns the distinct member
+extension in [suite #174](https://github.com/uibcdf/molsyssuite/issues/174).
 
 ## From conversation to a durable outcome
 

@@ -10,3 +10,7 @@ Use the [release/publication notice](release_publication_notice.md) for an actua
 release or package event under the [notice policy](../governance/release_publication_notices.md).
 External issue/PR drafts need the named human approval before remote publication;
 follow the [authority rule](../governance/external_publication_authority.md).
+
+Use the [local Discussions upkeep outline](discussions.md) for the discoverable
+repository guide. Adapt actual categories, owners and labels rather than
+requiring a uniform complete configuration.

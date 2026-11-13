@@ -9,3 +9,8 @@ Applicability is recorded in `moli.toml` for directly registered components. Pol
 Several practices were developed first in MolSysSuite and later adopted independently for directly governed MOLI components. Similarity does not change each repository's authority to decide and version its own rules.
 
 Shared policy should answer a demonstrated cross-repository need rather than being added for symmetry.
+
+The [resource-aware execution rule](resource_aware_execution.md) covers general
+contributor conduct on shared compute. Infrastructure owners keep enforcement
+and site configuration; the [integration proposal](../pending_proposals/execution_infrastructure_contract.md)
+is separately pending executable review and receiving.

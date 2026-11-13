@@ -68,6 +68,9 @@ issue = "uibcdf/moli#23"
 activation = "required"
 common_categories = ["announcements", "q-a", "ideas"]
 component_extensions = true
+extension_issue = "uibcdf/moli#93"
+optional_categories = ["Datasets and Benchmarks", "Literature and Resources", "Methods and Tools"]
+local_upkeep_guide = true
 actionable_work_identity = "owning-github-issue"
 
 [policies.agent_instruction_lifecycle]
@@ -180,7 +183,9 @@ status = "accepted"
 applies_to = ["capability:python-package"]
 primary_public_channel = "uibcdf"
 third_party_channel = "conda-forge"
-pypi_route = "optional-verified"
+pypi_route = "reviewed-exception-only"
+current_pypi_exceptions = ["pytest-receptor"]
+current_route_issue = "uibcdf/moli#81"
 review_field = "python_distribution_review"
 normative = "devguide/policies/python_distribution_policy.md"
 
@@ -194,6 +199,31 @@ default_requirement = "provider>=X"
 upper_bounds = "justified-incompatibility"
 qualification_pins = "exact-source-file-and-closure"
 component_adoption = "owner-reviewed"
+
+[policies.remote_inventory_integrity]
+status = "accepted"
+applies_to = ["repository", "direct-component"]
+normative = "devguide/governance/github_inventory_integrity.md"
+issue = "uibcdf/moli#85"
+absence_requires_complete_acquisition = true
+incomplete_disposition = "partial-or-unknown"
+
+[policies.environment_naming]
+status = "accepted"
+applies_to = ["repository", "direct-component"]
+normative = "devguide/governance/development_environments.md"
+issue = "uibcdf/moli#94"
+development_pattern = "moli_dev@<python>"
+production_pattern = "moli@<python>"
+production_profile = "future-owner-designed"
+
+[policies.resource_aware_execution]
+status = "accepted"
+applies_to = ["repository", "direct-component"]
+normative = "devguide/policies/resource_aware_execution.md"
+issue = "uibcdf/moli#96"
+infrastructure_independent = true
+integration_contract = "design-review"
 
 [policies.release_version]
 status = "accepted"

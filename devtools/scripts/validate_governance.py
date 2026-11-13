@@ -121,7 +121,9 @@ def validate_python_distribution_reviews(
         "applies_to": ["capability:python-package"],
         "primary_public_channel": "uibcdf",
         "third_party_channel": "conda-forge",
-        "pypi_route": "optional-verified",
+        "pypi_route": "reviewed-exception-only",
+        "current_pypi_exceptions": ["pytest-receptor"],
+        "current_route_issue": "uibcdf/moli#81",
         "review_field": "python_distribution_review",
         "normative": "devguide/policies/python_distribution_policy.md",
     }

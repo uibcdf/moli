@@ -13,6 +13,11 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    destinations; add component-specific categories where useful. Follow the
    [Discussions baseline](github_discussions.md) and verify actual settings
    before declaring this onboarding step complete.
+   Provide a discoverable local Discussions upkeep guide using the
+   [outline](../templates/discussions.md), reached from root instructions
+   directly or through the shared guide. Suggested resource categories are
+   individually optional; useful existing categories and scientific labels
+   remain local. Written guidance does not certify remote configuration.
 2. Create a root `AGENTS.md` at repository inception. Link the vendored
    `MOLI_GUIDE.md`, state the issue-feedback duty and the
    human-facing action to offer an owning issue for uncertain or nonblocking
@@ -31,6 +36,10 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    Route developer-guide work to `devguide/AGENTS.md`. Adapt the
    [starter snippets](../templates/component_agent_instructions.md) to the
    component's actual ownership and local work.
+   Include the [remote-inventory completeness action](github_inventory_integrity.md)
+   and [resource-aware execution action](../policies/resource_aware_execution.md).
+   Missing/partial inventories do not prove absence; resource observations do
+   not reserve capacity. Keep host mechanisms with the infrastructure owner.
 3. Start `devguide/AGENTS.md` with the root-instruction link, current guidance,
    active `pending_bugs/` and `pending_proposals/` queues, historical
    `archive/`, and the reporting route. Keep the queue README files and
@@ -60,6 +69,13 @@ MolSysSuite member follows MolSysSuite's own admission and starter kit instead.
    environment, verify its import path and track any compatibility or packaging
    gap. Coordinate suite members through MolSysSuite rather than declaring its
    environment complete from this checklist.
+   Follow the [environment convention and owned migration](development_environments.md):
+   `moli_dev@<python>` identifies a selected source-development profile, while
+   `moli@<python>` production needs separate design/qualification. Check required
+   documentation extensions and actual renderers independently. Public hints
+   use the current official `uibcdf` Conda route; pytest-receptor is the sole
+   active reviewed PyPI exception. Local source pip and future reviewed public
+   routes retain their separate distribution-policy meanings.
    State which local checks apply to documentation, scientific exploration and
    code changes. If authorized direct pushes may use `[skip ci]`, document how
    deferred code tests are recovered and how an unskipped or explicitly

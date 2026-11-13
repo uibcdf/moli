@@ -1,6 +1,13 @@
 # MolI development checkpoint
 
-**Refreshed on:** 2026-11-04 UTC for central receipt of Recorda 0.3.3 in
+**Refreshed on:** 2026-11-12 UTC for central guidance under #81/#85/#93/#94/#96,
+BindingMT receiving in #97 and superseded resource coordination in #95.
+The [batch adoption record](governance/platform_guidance_adoption.md) separates
+central source from owner notices, actual guide copies and future executable
+receiving. Hosted native outcomes and actual published notices belong in the
+owning issue deliveries; neither is inferred from this checkpoint.
+
+The preceding 2026-11-04 checkpoint covered central receipt of Recorda 0.3.3 in
 [#78](https://github.com/uibcdf/moli/issues/78) and reconciliation of received
 credential evidence in [#8](https://github.com/uibcdf/moli/issues/8). The accepted
 runtime dependency rule in [#76](https://github.com/uibcdf/moli/issues/76) and its
@@ -33,6 +40,20 @@ the same state.
   comments and linked evidence are the current work record.
 
 ## Last completed MolI work
+
+- **November central source work:** current Conda/PyPI wording and its validator
+  reject unreviewed public routes; BindingMT's current map preserves historical
+  artifacts/frozen architecture and distinguishes future domains from shipped
+  engines. Complete/unknown inventory and resource-aware execution actions reach
+  root/shared/starter guidance. Discussions suggestions remain optional, with a
+  discoverable local upkeep guide; environment names do not create/migrate
+  prefixes. #95 is superseded by #96 and infrastructure #1, not a verified fix.
+  The portable execution integration remains a proposal; #94/#96 retain actual
+  profile/discovery/adapter/receiving work. All 55 native administrative unittest
+  cases pass locally, including a new regression that fails against the old
+  distribution validator. No component/member source, prefix, host setting,
+  package or model execution is changed. Follow the batch adoption record and
+  issue receipts for remaining handoffs and current native results.
 
 - **Central release receipt in [#78](https://github.com/uibcdf/moli/issues/78):**
   Recorda 0.3.3's immutable release receipt agrees with the notice's original
@@ -223,6 +244,7 @@ the same state.
 
 | MolI issue | Current boundary and next evidence |
 | --- | --- |
+| #81 / #85 / #93 / #94 / #96 / #97 | Central source and review material are in the [batch adoption record](governance/platform_guidance_adoption.md); actual owner notices/guide receiving and executable qualification remain separate. #95's superseded disposition makes no host-protection claim. |
 | [#75](https://github.com/uibcdf/moli/issues/75) / [#80](https://github.com/uibcdf/moli/issues/80) | Central policy and authorized owner/suite handoffs are delivered. Component teams own commits and actual guide equality/native evidence; the adoption record links all five requests. No rollout success is inferred from issue publication. |
 | [#33](https://github.com/uibcdf/moli/issues/33) | Review the retrieval/archive/mirror boundary against pinned Sabueso source. The [candidate contract](pending_proposals/retrieval_archive_contract.md) separates existing local behavior from proposed project retention, sharing, storage and replay guarantees. Owner review and consumer acceptance remain open; no Nextia runtime or shared service is selected. |
 

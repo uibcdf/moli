@@ -7,6 +7,21 @@ local rules. The canonical meaning lives in `MOLI_GUIDE.md` and
 ## Root `AGENTS.md` block
 
 ```markdown
+Before remote absence/exhaustive-audit or duplicate-free creation claims, acquire
+the complete declared repository/endpoint/filter scope and check all pages.
+Treat failed/bounded/incomplete acquisition as partial/unknown, not empty.
+Follow `MOLI_GUIDE.md#remote-inventory-completeness` and its normative rule.
+
+Before expensive execution, load the trusted active infrastructure policy,
+estimate the whole job, inspect shared resource pressure and bound concurrency.
+Respect scheduler/admission and child-process limits; observation is not a
+reservation. Monitor and reduce/defer/cancel only owned work when unsafe, and
+report missing protection. Follow `MOLI_GUIDE.md#resource-aware-execution`.
+
+For Discussions work, read the local upkeep guide reached through
+`MOLI_GUIDE.md#discussions-upkeep`. Preserve local categories/labels and useful
+history; suggested resource categories are individually optional.
+
 During development, testing, scientific exploration and human conversations,
 surface actionable suspected defects, inconsistencies, missing capabilities
 and improvements, even uncertain or nonblocking ones. At a natural pause,
@@ -61,6 +76,11 @@ run local pytest there, and install this checkout with
 Python components editable in the same compatible environment and verify
 their import paths; track packages that cannot yet join. Follow
 `MOLI_GUIDE.md#moli-engineering-baseline`.
+Use `moli_dev@<actual Python major.minor>` for a selected MolI development
+profile. A name is not an environment, migration or production qualification;
+follow the linked owner recipe and migration guidance. Public UIBCDF installation
+hints use the current official Conda route; local editable pip is distinct from
+public PyPI availability, whose sole current reviewed exception is pytest-receptor.
 
 When declaring or changing runtime dependencies, use evidenced API minimums and
 justify ceilings/exclusions through an owner-reviewed incompatibility, evidence
