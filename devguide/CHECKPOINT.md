@@ -54,6 +54,16 @@ the same state.
   distribution validator. No component/member source, prefix, host setting,
   package or model execution is changed. Follow the batch adoption record and
   issue receipts for remaining handoffs and current native results.
+  Exact source `dd4ac1301b092038934b594afbf7ec559ab20a1b` now has ordinary
+  hosted governance/coverage success (55 tests); the guide audit fails only
+  for five differing copies, with verified published-receptor full captures.
+  [Native proof](evidence/platform_guidance_native_20261112.json) and the
+  [twelve exact owner drafts](pending_proposals/platform_guidance_owner_notices.json)
+  retain actual states. Automatic review rejected the first Sabueso issue;
+  zero external notices are published. Named-human publication approval is
+  pending. #81/#85/#93 stay partial for handoffs/adoption; #94/#96 also retain
+  actual profile/integration receiving. #97 receives only central identity/domain;
+  #95 is superseded, not a fixed host-protection incident.
 
 - **Central release receipt in [#78](https://github.com/uibcdf/moli/issues/78):**
   Recorda 0.3.3's immutable release receipt agrees with the notice's original

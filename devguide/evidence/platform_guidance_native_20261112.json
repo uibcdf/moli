@@ -1,0 +1,326 @@
+{
+  "schema": "moli.platform-guidance-native/1",
+  "date": "2026-11-12",
+  "central_source": "dd4ac1301b092038934b594afbf7ec559ab20a1b",
+  "tool": {
+    "published": "gh-run-receptor 1.5.0",
+    "wheel_sha256": "f966682ca13a960dd0d0fdfc5fc2aa66f13b960b5f6429d7274ec57820acdd08",
+    "isolated_in_task_scratch": true,
+    "caller_installation_changed": false
+  },
+  "captures": {
+    "governance": {
+      "manifest": {
+        "api_version": "2022-11-28",
+        "capture_policy": "full",
+        "captured_at": "2026-11-13T01:51:36.862032+00:00",
+        "complete": true,
+        "head_sha": "dd4ac1301b092038934b594afbf7ec559ab20a1b",
+        "hostname": "github.com",
+        "members": [
+          {
+            "bytes": 12872,
+            "complete": true,
+            "kind": "github.workflow_run",
+            "path": "run.json",
+            "sha256": "dd51ca7e77c4869b99bf2740158b6e8629d96e31afb49e4a79a940fa676e38f7"
+          },
+          {
+            "bytes": 536,
+            "complete": true,
+            "kind": "github.workflow",
+            "path": "workflow.json",
+            "sha256": "628fbd7d1c483928b4aec4412d5a69eafcc3c68abd53a0fcc8b56daf14c0cbe2"
+          },
+          {
+            "bytes": 6576,
+            "complete": true,
+            "kind": "github.jobs",
+            "path": "jobs.json",
+            "sha256": "9b2cd76e9d7a9764730ede2f69bd9b113bbd82ae54d51e7fbccf945472b66b42"
+          },
+          {
+            "bytes": 868,
+            "complete": true,
+            "kind": "github.artifacts",
+            "path": "artifacts.json",
+            "sha256": "514432cd3222f942d339cf926a34a344f4349e26bd3da345d34619df649efb61"
+          },
+          {
+            "bytes": 8624,
+            "complete": true,
+            "kind": "github.check_runs",
+            "path": "checks.json",
+            "sha256": "d348e6c85c36984d367f9653a15a4459b8c422ee79fe627f3f6ac04b293d15ca"
+          },
+          {
+            "bytes": 39676,
+            "complete": true,
+            "kind": "github.logs",
+            "path": "logs.zip",
+            "sha256": "22fa110dd73a4d85a3a5527fcd9215a3c5c0f8f3008bdeb4f4aa55e2d299f7ce"
+          }
+        ],
+        "receptor_version": "1.5.0",
+        "repository": "uibcdf/moli",
+        "run_attempt": 1,
+        "run_id": 43347872598,
+        "schema": "gh-run-receptor.bundle@1",
+        "warnings": []
+      },
+      "native_run": {
+        "id": 43347872598,
+        "head_sha": "dd4ac1301b092038934b594afbf7ec559ab20a1b",
+        "run_attempt": 1,
+        "head_branch": "main",
+        "event": "push",
+        "path": ".github/workflows/validate_governance.yml",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      "native_jobs": [
+        {
+          "id": 131631490035,
+          "name": "governance",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Install governance inspection dependencies",
+              "conclusion": "success"
+            },
+            {
+              "name": "Validate MOLI governance",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check reserved archive tags",
+              "conclusion": "success"
+            },
+            {
+              "name": "Test governance contracts",
+              "conclusion": "success"
+            },
+            {
+              "name": "Retain administrative coverage XML",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "id": 131631605628,
+          "name": "Publish default-branch coverage",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/download-artifact@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Upload the measured report to Codecov",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "native_log_summaries": [
+        "2026-11-13T01:50:58.8811668Z Ran 55 tests in 0.263s",
+        "2026-11-13T01:50:58.8811671Z Ran 55 tests in 0.263s",
+        "2026-11-13T01:50:58.8812055Z OK",
+        "2026-11-13T01:50:58.8812060Z OK",
+        "2026-11-13T01:50:59.0325803Z Wrote XML report to coverage.xml",
+        "2026-11-13T01:50:59.0325862Z Wrote XML report to coverage.xml"
+      ],
+      "all_member_bytes_and_sha256_verified": true,
+      "log_zip_integrity_valid": true
+    },
+    "guides": {
+      "manifest": {
+        "api_version": "2022-11-28",
+        "capture_policy": "full",
+        "captured_at": "2026-11-13T01:51:41.312594+00:00",
+        "complete": true,
+        "head_sha": "dd4ac1301b092038934b594afbf7ec559ab20a1b",
+        "hostname": "github.com",
+        "members": [
+          {
+            "bytes": 12891,
+            "complete": true,
+            "kind": "github.workflow_run",
+            "path": "run.json",
+            "sha256": "aacec55cd4c34c3fbf2926d823811989d1572f9bdaf73d13c7dd71665c399ebe"
+          },
+          {
+            "bytes": 580,
+            "complete": true,
+            "kind": "github.workflow",
+            "path": "workflow.json",
+            "sha256": "0a8d478d0426db44a4d9e879341343074524305983d9906c87e3cd76a3938d9e"
+          },
+          {
+            "bytes": 2677,
+            "complete": true,
+            "kind": "github.jobs",
+            "path": "jobs.json",
+            "sha256": "c317fa3f156b46c5e463034ffb17e86f04beffc4f281f14e1feda80dc6717303"
+          },
+          {
+            "bytes": 42,
+            "complete": true,
+            "kind": "github.artifacts",
+            "path": "artifacts.json",
+            "sha256": "733015529a249a421892ec83190af9d23593d1877609d3653ae94f945a220490"
+          },
+          {
+            "bytes": 4319,
+            "complete": true,
+            "kind": "github.check_runs",
+            "path": "checks.json",
+            "sha256": "39a1d17986b5950f9c86a6c5dc6fd67f1c81c494f2bcf04dd3ef9462958a57ab"
+          },
+          {
+            "bytes": 9283,
+            "complete": true,
+            "kind": "github.logs",
+            "path": "logs.zip",
+            "sha256": "9592ae5f0b28b76f058f24e6b8b0357757d13da81ee2a80d4c851c4bc559e8b6"
+          }
+        ],
+        "receptor_version": "1.5.0",
+        "repository": "uibcdf/moli",
+        "run_attempt": 1,
+        "run_id": 43347872509,
+        "schema": "gh-run-receptor.bundle@1",
+        "warnings": []
+      },
+      "native_run": {
+        "id": 43347872509,
+        "head_sha": "dd4ac1301b092038934b594afbf7ec559ab20a1b",
+        "run_attempt": 1,
+        "head_branch": "main",
+        "event": "push",
+        "path": ".github/workflows/check-component-guides.yml",
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      "native_jobs": [
+        {
+          "id": 131631489281,
+          "name": "check",
+          "conclusion": "failure",
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out MOLI governance",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out directly governed components",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check canonical guide copies and agent routes",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Post Check out MOLI governance",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ],
+      "native_log_summaries": [
+        "2026-11-13T01:51:04.4396221Z uibcdf/moli-agent: MOLI_GUIDE.md: differs from canonical guide",
+        "2026-11-13T01:51:04.4396251Z uibcdf/moli-agent: MOLI_GUIDE.md: differs from canonical guide",
+        "2026-11-13T01:51:04.4397581Z uibcdf/nextia: MOLI_GUIDE.md: differs from canonical guide",
+        "2026-11-13T01:51:04.4397595Z uibcdf/nextia: MOLI_GUIDE.md: differs from canonical guide",
+        "2026-11-13T01:51:04.4398672Z uibcdf/praxis: MOLI_GUIDE.md: differs from canonical guide",
+        "2026-11-13T01:51:04.4398679Z uibcdf/praxis: MOLI_GUIDE.md: differs from canonical guide",
+        "2026-11-13T01:51:04.4399365Z uibcdf/recorda: MOLI_GUIDE.md: differs from canonical guide",
+        "2026-11-13T01:51:04.4399370Z uibcdf/recorda: MOLI_GUIDE.md: differs from canonical guide",
+        "2026-11-13T01:51:04.4400047Z uibcdf/sabueso: MOLI_GUIDE.md: differs from canonical guide",
+        "2026-11-13T01:51:04.4400058Z uibcdf/sabueso: MOLI_GUIDE.md: differs from canonical guide"
+      ],
+      "all_member_bytes_and_sha256_verified": true,
+      "log_zip_integrity_valid": true
+    }
+  },
+  "owner_handoffs": {
+    "status": "prepared; zero external actions published",
+    "payload": "devguide/pending_proposals/platform_guidance_owner_notices.json",
+    "actions": 12,
+    "automatic_review": {
+      "action": "create uibcdf/sabueso adoption issue",
+      "result": "rejected before publication",
+      "reason": "Proceeding with the central issues does not explicitly authorize this concrete external publication; named-human destination/action/content approval required"
+    },
+    "deduplication": {
+      "sabueso": {
+        "native_rest": "all-state issues, full pagination, PRs filtered",
+        "pages": 2,
+        "issues": 182,
+        "route": "new guidance distinct from completed #187"
+      },
+      "molsyssuite": {
+        "native_rest": "all-state issues, full pagination, PRs filtered",
+        "pages": 2,
+        "issues": 183,
+        "resource_request": "no matching #96/resource-admission issue identified; propose separate member adoption"
+      }
+    },
+    "prior_payloads_and_qualified_releases": "unchanged"
+  },
+  "limits": [
+    "Both native captures are complete without warnings; all12 member lengths/digests and both ZIPs independently verified",
+    "Governance2/2/all55 native tests/coverage upload pass at the exact central source",
+    "Guide audit fails for exactly five differing copies; no all-green adoption claim",
+    "No new scientific/installed/browser receiving or provider implementation is performed",
+    "Documentation closeout makes no new hosted passing-run claim; executable/registry/guide/policy source remains separately bound"
+  ]
+}

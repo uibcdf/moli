@@ -19,8 +19,10 @@ of equality with this newer guide.
 
 ## Direct-component handoff
 
-Use existing owner routes: Sabueso #187, Praxis #17, Recorda #38, Nextia #5 and
-moli-agent #4. Preserve their old notice bodies and independent adoption states.
+Use existing open routes Praxis #17, Recorda #38, Nextia #5 and moli-agent #4.
+Sabueso #187 is completed; the new batch proposes a distinct owner request,
+preserving its old closure and receipt. Preserve all prior notice bodies and
+independent adoption states.
 The November 5 Sabueso return settles its earlier #75/#80 instruction delivery,
 not this newly changed canonical source. Other four old receiving routes were
 still open at this review. #75/#80 keep owner adoption visible; no prior run or
@@ -40,3 +42,26 @@ payload and retain the authorized internal handoff. Published comment identities
 and exact readback evidence are added only after actual delivery. A draft is not
 a published notice or adopted component instruction. The owning MolI issues track
 any pending delivery rather than closing it as if it had happened.
+
+## Exact source, native results and pending publication
+
+Central source is `dd4ac1301b092038934b594afbf7ec559ab20a1b`; canonical guide
+SHA-256 is `f25d34aad11bfdebb11206cad70fa9abd1e81b2979b33b7bfc47c98395359336`.
+[Governance 43347872598](https://github.com/uibcdf/moli/actions/runs/43347872598)
+passes both native jobs/all 55 tests and coverage upload.
+[Guide audit 43347872509](https://github.com/uibcdf/moli/actions/runs/43347872509)
+fails only for the five differing copies. Published GH Run Receptor 1.5.0 full
+captures have no warnings; all twelve member lengths/digests, ZIP integrity,
+native steps and actual 55-test/five-difference logs were independently verified.
+The [native receipt](../evidence/platform_guidance_native_20261112.json) preserves
+that source and outcome; no global passing rollout follows.
+
+All twelve [exact owner notices](../pending_proposals/platform_guidance_owner_notices.json)
+are prepared and **not published**. Automatic review rejected the first proposed
+Sabueso issue because the central-work authorization did not expressly cover
+that concrete external publication. No issue was created. The complete payload
+is retained for named-human destination/action/content approval, not retried
+through another tool. #81/#85/#93 retain pending handoffs; #94/#96 also retain
+unexecuted profiles/integration. #97's central identity receiving and #95's
+superseded coordination have their own bounded closeout, not component/runtime
+certification.
